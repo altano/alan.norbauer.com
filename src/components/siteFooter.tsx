@@ -28,10 +28,11 @@ const Footer = styled("footer", {
         borderColor: "text",
       },
       embedded: {
-        borderTop: "1px solid",
+        borderTop: "0.5px solid",
         borderColor: "text",
+        marginBlockStart: "1rem",
         lg: {
-          borderTop: "none",
+          marginBlockStart: "3rem",
         },
       },
     },

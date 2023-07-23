@@ -36,7 +36,12 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "frontMatter.dashboard.openOnStart": true,
   "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**"],
-  "cssvar.ignore": ["**/node_modules/**", "styles/ignore.css", "out/**"],
+  "cssvar.ignore": [
+    "**/node_modules/**",
+    "styles/ignore.css",
+    "out/**",
+    "src/app/global.css"
+  ],
   "editor.minimap.enabled": false,
   "[mdx]": {
     "editor.wordWrap": "on"
