@@ -37,7 +37,6 @@ const Layout = styled("main", {
       "footer footer  footer"
     `,
 
-    alignItems: "flex-start",
     marginInline: 0,
     minHeight: "100vh",
 
