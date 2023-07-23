@@ -31,8 +31,8 @@ const Layout = styled("main", {
       "var(--article-min-gutter) minmax(calc(320px - 2*(var(--article-min-gutter))), 100%) var(--article-min-gutter) ",
     gridTemplateRows: "min-content min-content auto min-content",
     gridTemplateAreas: `
-      "...... heading ......"
-      "...... nav     ......"
+      "...... title   ......"
+      "...... header  ......"
       "...... article ......"
       "footer footer  footer"
     `,
@@ -46,8 +46,8 @@ const Layout = styled("main", {
         "1.3fr token(spacing.articleSidebarWidth) token(spacing.articleWidth) 2fr",
       gridTemplateRows: "min-content auto min-content",
       gridTemplateAreas: `
-        "...... ...... heading ......"
-        "...... nav    article ......"
+        "...... ...... title   ......"
+        "...... header article ......"
         "footer footer footer  footer"
       `,
     },

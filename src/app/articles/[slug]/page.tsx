@@ -49,9 +49,9 @@ export async function generateMetadata(
   };
 }
 
-const ArticleHeading = styled("h1", {
+const ArticleTitle = styled("h1", {
   base: {
-    gridArea: "heading",
+    gridArea: "title",
     maxWidth: "100%",
     fontSize: "4rem",
     lg: {
@@ -106,21 +106,28 @@ const Article = styled("article", {
   },
 });
 
+const MetdataSections = styled("div", {
+  base: {
+    marginBlockEnd: "4",
+  },
+});
+
 const MetadataSection = styled("div", {
   base: {
     color: "text",
     flexDirection: "row",
     alignItems: "center",
     gap: "5",
+    marginBlock: "4",
     lg: {
       gap: "1",
       color: "text.faded",
       flexDirection: "column",
       alignItems: "flex-start",
+      marginBlockStart: "8",
     },
     fontSize: "16px",
     lineHeight: "24px",
-    marginTop: "8",
     display: "flex",
     "& span": {},
     "& img": {
@@ -140,20 +147,28 @@ const MetadataSection = styled("div", {
 });
 
 const ArticleNav = styled("nav", {
+  base: {},
+});
+
+const ArticleHeader = styled("header", {
   base: {
     fontSize: "1rem",
-    gridArea: "nav",
+    gridArea: "header",
 
     mdDown: {
       display: "block",
-      marginBlock: "5",
+      // marginBlock: "5",
     },
   },
 });
 
 const StickyWrapper = styled("div", {
   base: {
+    display: "flex",
+    flexDirection: "column",
+
     lg: {
+      flexDirection: "column-reverse",
       position: "sticky",
       alignSelf: "start",
       top: 3,
@@ -207,49 +222,53 @@ export default async function ArticlePage({ params }: ArticleProps) {
 
   return (
     <>
-      <ArticleHeading>{title}</ArticleHeading>
-      <ArticleNav>
+      <ArticleTitle>{title}</ArticleTitle>
+      <ArticleHeader>
         <StickyWrapper>
-          <ArticleNavHeading>Table of Contents</ArticleNavHeading>
-          <TableOfContents entries={article.tableOfContents} />
-          <MetadataSection>
-            <Image
-              data-invertible
-              alt="Calendar"
-              src={calendarIcon}
-              width={18}
-              height={18}
-            />
-            <span>{date}</span>
-          </MetadataSection>
-          <MetadataSection>
-            <Image
-              data-invertible
-              alt="Tag"
-              src={tagIcon}
-              width={18}
-              height={18}
-            />
-            <styled.span mt="1">
-              <Tags tags={article.tags} kind="navPill" />
-            </styled.span>
-          </MetadataSection>
-          <MetadataSection>
-            <Image
-              data-invertible
-              alt="Markdown source"
-              src={markdownIcon}
-              width={24}
-              height={24}
-            />
-            <styled.span mt="1">
-              <Link href={article.markdownSourceUrl}>
-                Markdown source of this article
-              </Link>
-            </styled.span>
-          </MetadataSection>
+          <MetdataSections>
+            <MetadataSection>
+              <Image
+                data-invertible
+                alt="Calendar"
+                src={calendarIcon}
+                width={18}
+                height={18}
+              />
+              <span>{date}</span>
+            </MetadataSection>
+            <MetadataSection>
+              <Image
+                data-invertible
+                alt="Tag"
+                src={tagIcon}
+                width={18}
+                height={18}
+              />
+              <styled.span mt="1">
+                <Tags tags={article.tags} kind="navPill" />
+              </styled.span>
+            </MetadataSection>
+            <MetadataSection>
+              <Image
+                data-invertible
+                alt="Markdown source"
+                src={markdownIcon}
+                width={24}
+                height={24}
+              />
+              <styled.span mt="1">
+                <Link href={article.markdownSourceUrl}>
+                  View this article's source code
+                </Link>
+              </styled.span>
+            </MetadataSection>
+          </MetdataSections>
+          <ArticleNav>
+            <ArticleNavHeading>Table of Contents</ArticleNavHeading>
+            <TableOfContents entries={article.tableOfContents} />
+          </ArticleNav>
         </StickyWrapper>
-      </ArticleNav>
+      </ArticleHeader>
       <Article>
         <ArticleSeries currentArticle={article} />
         <section>
