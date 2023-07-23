@@ -29,6 +29,7 @@ const Layout = styled("main", {
     "--article-min-gutter": "0.75rem",
     gridTemplateColumns:
       "var(--article-min-gutter) minmax(calc(320px - 2*(var(--article-min-gutter))), 100%) var(--article-min-gutter) ",
+    gridTemplateRows: "min-content min-content auto min-content",
     gridTemplateAreas: `
       "...... heading ......"
       "...... nav     ......"
@@ -36,9 +37,11 @@ const Layout = styled("main", {
       "footer footer  footer"
     `,
 
+    alignItems: "flex-start",
+    marginInline: 0,
+    minHeight: "100vh",
+
     lg: {
-      marginInline: 0,
-      minHeight: "100vh",
       gridGap: "1rem var(--spacing-article-column-gap)",
       gridTemplateColumns:
         "1.3fr token(spacing.articleSidebarWidth) token(spacing.articleWidth) 2fr",
