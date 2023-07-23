@@ -86,7 +86,7 @@ const Article = styled("article", {
     gridArea: "article",
     maxWidth: "100%",
     lg: {
-      margin: "auto",
+      marginInline: "auto",
     },
 
     "& ol, ul": {
