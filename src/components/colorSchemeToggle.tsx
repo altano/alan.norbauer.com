@@ -1,12 +1,16 @@
 "use client";
 
 import React from "react";
-import { cva } from "@styled-system/css";
-import { useEffect } from "react";
+import { css } from "@styled-system/css";
+import useIsomorphicLayoutEffect from "@/components/useIsomorphicLayoutEffect";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 
 type ColorScheme = "light" | "dark";
 
+/**
+ * @returns the color scheme preference, factoring in local storage and the
+ * system mode.
+ */
 function getColorSchemePreference(): ColorScheme {
   const userPreference = localStorage.getItem("color-scheme");
   if (
@@ -30,37 +34,25 @@ function setColorSchemeInDOM(colorScheme: ColorScheme): void {
   }
 }
 
-const toggleStyles = cva({
-  base: {
-    position: "fixed",
-    right: "5px",
-    bottom: "5px",
+const toggleStyles = css({
+  position: "fixed",
+  right: "5px",
+  bottom: "5px",
 
-    transition: "opacity var(--durations-color-scheme)",
-    _hover: {
-      opacity: "1",
-    },
-    hideBelow: "md",
+  transition: "opacity var(--durations-color-scheme)",
+  opacity: 0.5,
+  _hover: {
+    opacity: 1,
   },
-  variants: {
-    stage: {
-      initial: {
-        // we load this component async on the client, so let's fade it in after mount
-        opacity: 0,
-      },
-      mounted: {
-        opacity: 0.5,
-      },
-    },
-  },
+
+  hideBelow: "md",
 });
 
 export default function ColorSchemeToggle() {
   // This is the source of truth
-  const [currentColor, setCurrentColor] = React.useState<ColorScheme>(() =>
-    getColorSchemePreference()
-  );
-  const [isMounted, setIsMounted] = React.useState(false);
+  const [currentColor, setCurrentColor] = React.useState<
+    ColorScheme | undefined
+  >();
 
   const changeColorScheme = React.useCallback(
     (colorScheme: ColorScheme, isUserInitiated: boolean) => {
@@ -80,7 +72,15 @@ export default function ColorSchemeToggle() {
     changeColorScheme(newColorScheme, true);
   }, [changeColorScheme, currentColor]);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    console.info(`currentColor = ${currentColor}`);
+  }, [currentColor]);
+
+  useIsomorphicLayoutEffect(() => {
+    changeColorScheme(getColorSchemePreference(), false);
+  }, [changeColorScheme]);
+
+  useIsomorphicLayoutEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
 
     function reactToMediaQuery() {
@@ -98,14 +98,17 @@ export default function ColorSchemeToggle() {
     return () => mq.removeEventListener("change", reactToMediaQuery);
   }, [changeColorScheme, currentColor]);
 
-  useEffect(() => setIsMounted(true), []);
+  if (currentColor == null) {
+    return null;
+  }
 
   return (
     <DarkModeSwitch
-      className={toggleStyles({ stage: isMounted ? "mounted" : "initial" })}
+      className={toggleStyles}
       checked={currentColor === "dark"}
       onChange={onToggleSwitchClicked}
       size={25}
+      suppressHydrationWarning={true}
     />
   );
 }
