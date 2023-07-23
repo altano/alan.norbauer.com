@@ -7,8 +7,10 @@ import DateTime from "@/components/dateTime";
 import ArticleSeries from "@/components/articleSeries";
 import Image from "next/image";
 import calendarIcon from "assets/images/icons/calendar.svg";
+import markdownIcon from "assets/images/icons/markdown.svg";
 import tagIcon from "assets/images/icons/tag.svg";
 import Tags from "@/components/tags";
+import Link from "next/link";
 
 import type { Metadata, ResolvingMetadata } from "next";
 
@@ -124,6 +126,12 @@ const MetadataSection = styled("div", {
         opacity: 0.3,
       },
     },
+    "& a": {
+      textDecoration: "none",
+    },
+    "& a:not(:hover)": {
+      color: "inherit",
+    },
   },
 });
 
@@ -220,6 +228,20 @@ export default async function ArticlePage({ params }: ArticleProps) {
             />
             <styled.span mt="1">
               <Tags tags={article.tags} kind="navPill" />
+            </styled.span>
+          </MetadataSection>
+          <MetadataSection>
+            <Image
+              data-invertible
+              alt="Markdown source"
+              src={markdownIcon}
+              width={24}
+              height={24}
+            />
+            <styled.span mt="1">
+              <Link href={article.markdownSourceUrl}>
+                Markdown source of this article
+              </Link>
             </styled.span>
           </MetadataSection>
         </StickyWrapper>
