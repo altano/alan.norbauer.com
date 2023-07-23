@@ -21,6 +21,7 @@ export type Article = {
   authors: Required<Author>[];
   slug: string;
   url: string;
+  markdownSourceUrl: string;
   canonicalUrl: string;
   title: string;
   dateCreated: Date;
@@ -56,6 +57,7 @@ async function getArticlesIncludingDrafts(): Promise<Article[]> {
         tags: frontmatter.tags,
         authors: frontmatter.authors,
         url,
+        markdownSourceUrl: `https://github.com/altano/alan.norbauer.com/tree/main/src/content/articles/${slug}/index.mdx`,
         canonicalUrl: `${pkg.homepage}${url}`,
         tableOfContents: nullthrows(articleModule.tableOfContents),
         series: frontmatter.series ?? undefined,
