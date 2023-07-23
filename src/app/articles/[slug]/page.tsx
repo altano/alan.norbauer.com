@@ -131,8 +131,7 @@ const MetadataSection = styled("div", {
     display: "flex",
     "& span": {},
     "& img": {
-      flexBasis: "4",
-      minHeight: "24px",
+      flexBasis: "24px",
       lg: {
         opacity: 0.3,
       },
@@ -256,11 +255,9 @@ export default async function ArticlePage({ params }: ArticleProps) {
                 width={24}
                 height={24}
               />
-              <styled.span mt="1">
-                <Link href={article.markdownSourceUrl}>
-                  View this article's source code
-                </Link>
-              </styled.span>
+              <Link href={article.markdownSourceUrl}>
+                View this article's source code
+              </Link>
             </MetadataSection>
           </MetdataSections>
           <ArticleNav>
