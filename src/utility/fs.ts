@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 
 export function getProjectRootPath(): string {
   const modulePath = fileURLToPath(import.meta.url);
-  return path.join(modulePath, "..", "..");
+  return path.join(modulePath, "..", "..", "..");
 }
 
 /**

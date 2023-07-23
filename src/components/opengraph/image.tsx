@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/server";
 import fs from "node:fs";
-import { getAbsolutePathFromProjectRoot } from "@/fs";
+import { getAbsolutePathFromProjectRoot } from "@/utility/fs";
 
 import OpenGraphCard, { OpenGraphCardProps } from "./card";
 

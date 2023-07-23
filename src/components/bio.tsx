@@ -39,7 +39,8 @@ const BioSection = styled("section", {
       wide: {
         columnCount: 1,
         lg: {
-          columnCount: 4,
+          columnCount: "auto",
+          columnWidth: "16rem",
         },
       },
     },

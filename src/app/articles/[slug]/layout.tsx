@@ -52,6 +52,13 @@ const Layout = styled("main", {
   },
 });
 
+const PageFooterContent = styled("div", {
+  base: {
+    margin: "auto",
+    maxWidth: "breakpoint-xl",
+  },
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -62,8 +69,10 @@ export default function RootLayout({
       <Layout>
         {children}
         <PageFooter>
-          <Bio width="wide" />
-          <SiteFooter location="embedded" />
+          <PageFooterContent>
+            <Bio width="wide" />
+            <SiteFooter location="embedded" />
+          </PageFooterContent>
         </PageFooter>
       </Layout>
     </ArticleWrapper>
