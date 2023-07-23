@@ -7,6 +7,7 @@ import { token } from "@styled-system/tokens";
 const ColorSchemeToggle = dynamic(() => import("@/utility/colorSchemeToggle"), {
   ssr: false,
 });
+console.log(ColorSchemeToggle);
 
 import "./global.css";
 
@@ -60,7 +61,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="theme-basic">
+    <html
+      lang="en"
+      className="theme-basic"
+      // We're going to run our script that adds the theme to the <html> class.
+      // There is no other way to avoid hydration warnings (Accept-CH isn't
+      // widely supported and doesn't work on first request)
+      suppressHydrationWarning={true}
+    >
       <body className={cx(inter.variable, ibmPlexMono.variable, bodyStyles)}>
         <ColorSchemeToggle />
         <script
