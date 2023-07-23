@@ -1,0 +1,46 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.devbox": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.next": true,
+    "**/out": true
+  },
+  "editor.linkedEditing": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "stylelint.packageManager": "pnpm",
+  "stylelint.snippet": [
+    "css",
+    "less",
+    "postcss",
+    "typescript",
+    "typescriptreact"
+  ],
+  "stylelint.validate": [
+    "css",
+    "less",
+    "postcss",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "frontMatter.dashboard.openOnStart": true,
+  "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**"],
+  "cssvar.ignore": ["**/node_modules/**", "styles/ignore.css", "out/**"],
+  "editor.minimap.enabled": false,
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
+  "cSpell.enabled": true,
+  "editor.rulers": [80]
+}

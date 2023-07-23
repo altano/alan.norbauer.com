@@ -1,0 +1,117 @@
+---
+title: "CX4712 Review: A Quiet Rackmount NAS"
+date_created: "2022-05-23T22:48:19.028Z"
+description: "Sliger CX4712 4U Rackmount Storage Case Review"
+tags: ["homelab", "hardware", "reviews"]
+draft: true
+---
+
+[The new rackmount case line](https://www.sliger.com/products/rackmount/) from Sliger combines the quality and thoughtfulness of their SFF PC cases with rackmount hardware.
+
+If you're sick of trying to mod SuperMicro/Dell case to compensate for the fact that they were designed with only the datacenter in mind, tired of scrounging to find quieter 80mm fans and power supplies, then you're going to want to build your next NAS around this 4U storage-focused case.
+
+## What's Unusual
+
+- Noise and airflow were considered in the design of this case. Other rackmounts just bolt on extremely loud, high-RPM, unnecessarily tiny fans at the end and call it done.
+- Fan wall w/ 3x premium Noctua 120mm fans. No 80mm fans anywhere.
+- ATX PSU support. You lose redundancy but gain non-proprietary part compatibility, cheaper PSU support, and quieter operation.
+- Sliger's SFF quality, in a rackmount. Everything is galvanized steel, even the front panel. The entire case is a textured black paint finish that is much nicer than anything else in my rack.
+- Price: at $349 new this case is very competitive with the cheapest rackmount storage cases (e.g. the [Rosewill RSV-L4412U](https://www.newegg.com/rosewill-rsv-l4412u-black/p/N82E16811147330) at the same price) while being much higher build quality. You'll probably add the rails and premium Noctua fans to the car which brings the price up to $459, but that's still MUCH cheaper than equivalent SuperMicro case.
+
+## Drive Bays
+
+- pseudo-backplane setup.
+- SATA-only. No expander. Like SuperMicro TQ/A direct connect?
+- No LEDs
+- No trays: much easier to install
+- Simple locking mechanism
+
+## Hiccups
+
+- 10-32 bar nut, M5 screws
+- Brand new case, no manual
+- Backplane jacks missing plastic
+- Bay #1 not usable with IronWolf Pro drives, too wide and hitting sidebar
+- Rails: complicated af. Didn't give me a perfect fit, so hard to slide case in/out of rack.
+
+## Random notes
+
+- Different rack ears (secure/flat vs. pullable)
+- Magnetic front panel
+
+## Benchmarks
+
+- Subjective noise experience
+- Tweaking the SuperMicro fan curves
+- Drive temperatures
+
+## Recommended Accessories
+
+- right-angle SATA cables
+- power cables that go right into the PSU
+
+### Sidebar: Recommended Hard Drives
+
+My favorite drives (WD Ultrastar DC HC550) come in a SATA flavor with, apparently, roughly the same specs as the SAS equivalent, so I definitely recommend them. Here is the most price-comparable IronWolf Pro 16TB drive:
+
+| Feature                 | Seagate      | Western Digital    |
+| ----------------------- | ------------ | ------------------ |
+| Line                    | IronWolf Pro | Ultrastar DC HC550 |
+| Model                   | ST16000NE000 | WUH721818ALE6L4    |
+| Capacity                | 16TB         | ✅ 18TB            |
+| Interface               | SATA         | SATA               |
+| Bandwidth               | 6gbps        | 6gbps              |
+| Price                   | ✅ $330      | $340               |
+| Sustained transfer rate | 240MB/s      | ✅ 269MB/s         |
+| Average Latency         | 4.16ms       | 4.16ms             |
+| Power Usage (Idle)      | ✅ 5.0W      | 5.6W               |
+| Power Usage (Operating) | 7.6W         | ✅ 6.5W            |
+| Cache Size              | 256MB        | ✅ 512MB           |
+| MBTF                    | 1.2M hours   | ✅ 2.5M hours      |
+| AFR (advertised)        | 0.73%        | ✅ 0.35%           |
+| Warranty                | 5 years      | 5 years            |
+
+Strictly better (on paper) and 2TB larger for $10 more per drive? Yes please.
+
+I don't really follow the hard drive scene too closely but the HGST equivalent of this drive was among the highest rated by [Backblaze's published stats](https://www.backblaze.com/b2/hard-drive-test-data.html) but we'll have to see if that translates to the same reliability under the WD banner. [Their Q1 2022 stats](https://www.backblaze.com/blog/backblaze-drive-stats-for-q1-2022/) show 0 drive failures for the WUH\* drives which includes 1,200 of the 16TB equivalent (WUH721816ALE6L4) of the model in the comparison above. While that's a great start, they're WAY too young to know how they'll fair in the long term. tl/dr; there's no reason to think these drives aren't great on more than just paper.
+
+## Wishlist
+
+- Covers for the unused optical bays.
+- SATA plugs that clip and are tightly inserted.
+- The included SATA power cables terminate to a
+- SAS hard drive support (the backplane is currently SATA only). Bonus: Full SAS backplane.
+- Less complicated, easier to install rails.
+- Front fans? If necessary?
+
+## What I've Owned (For Comparison)
+
+### SilverStone RM420
+
+Price: $652 (new)
+
+This is a 4U, pro-sumer, 20-bay storage case I filled with a variety of 12-20 3.5" drives.
+
+It has 4x 80mm fans in the center wall. They are PWM but you can't connect them to your motherboard so you can't control their speed. I guess there's a temperature sensor somewhere in the drive cage. I tried swapping the stock fans (DF128038BH - 85.5CFM) out for quieter, lower-RPM 80mm fans (Noctua NF-A8 PWM - 33CFM) but the average drive temperature went up from 36 to 46℃. That might be in operating range but I didn't love the result.
+
+Other than the noise, I love this case.
+
+### SuperMicro SC216
+
+Price: $361 (used)
+
+This is a 2U, enterprise, 24-bay SAS2 SSD storage case, w/ 8 x 15.36 HPE enterprise SSDs (Samsung PM1633a) drives.
+
+It was very hard to get information on how hot these ran and I stumbled into a good deal on them, so I thought I'd see if I can quiet things with an all-flash NAS. Unfortunately, in addition to being insanely expensive, these drives ran much hotter than my 3.5" drives so the whole setup ended up being louder. This experiment was a total failure.
+
+It's nice how insanely fast these drives were, although I couldn't take much advantage of that, since 3.5" drives in a zfs array are going to saturate the 10gbps ethernet link just as much as these SSDs.
+
+## Conclusion
+
+This case has some rough edges (literally and figuratively) but the first version is already the best storage case I've had in my rack and I highly recommend it. I think all the compromises made are perfect for me and I'm glad to end my multi-year search for a quiet server rack.
+
+This case isn't just great in the homelab. I'd buy this in a small office environment as well. I think the datacenter is the one place I'd stick with the incumbents like SuperMicro, since that's probably a situation where you don't care at all about worse build quality and louder hardware while you do want certain features like a full backplane w/ SAS expander, hot-swap drives, drive LEDs, higher disk density per case, redundant power supplies, etc.
+
+## Disclaimer
+
+Sliger manufactures parts for [my husband's keyboard business](https://shop.norbauer.com/) but that has nothing to do with computer case, I don't stand to benefit from this review in any way, and I purchased the the case being reviewed out-of-pocket. I respect Kahlin Sliger's work and I want this case (and all attempts at higher-end rackmount hardware) to succeed, which is the only bias I come to this review with.

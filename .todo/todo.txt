@@ -1,0 +1,32 @@
+zrepl on nixos +articles
+zrepl to zfs.rent +articles
+truenas sucks +articles
+ssh on windows (with and without 1Password) +articles
+
+Soon after launch:
+Article Open Graph images don't work in production build (https://github.com/vercel/next.js/issues/51147). Blocks using exported static site.
+Navigation color fade transitions aren't smooth
+Get duk re-theming
+Fix theme script console warning (dev mode only), and NEXT_DYNAMIC_NO_SSR_CODE on 404 page
+
+Site:
+Investigate bundle size (lots of duplication): pnpm build:analyze
+TOC is causing scroll jank in Firefox (during GC)
+consider using and better integrating mastadon (social link, comments, etc)
+investigate analytics
+allow feed to be discoverable via <link alternate> thinger
+
+Styling:
+Fix the handlebars-loader icon background (make #F0772B ?)
+Make heading styling consistent everywhere (e.g. home vs. alanglow)
+open graph: add some color
+Add more gap to right of TOC
+Revisit custom fonts vs. https://modernfontstacks.com/
+Fix code block color transitions
+
+Experimentation:
+Images optimizations (e.g. resize)
+look into file metadata at root, e.g. favicon.ico (https://nextjs.org/docs/app/api-reference/file-conventions/metadata)
+site metadata (from gatsby-config.js)
+
+Cross-platform node.js reference not being markdown rendered correctly +safari

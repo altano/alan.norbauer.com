@@ -1,0 +1,55 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.pageFolders": [
+    {
+      "path": "[[workspace]]/src/content/articles",
+      "title": "Articles"
+    }
+  ],
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "default",
+      "fileType": "mdx",
+      "defaultFileName": "index",
+      "pageBundle": false,
+      "fields": [
+        {
+          "title": "title",
+          "name": "title",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "date_created",
+          "name": "date_created",
+          "type": "datetime",
+          "required": true
+        },
+        {
+          "title": "date_updated",
+          "name": "date_updated",
+          "type": "datetime",
+          "required": false
+        },
+        {
+          "title": "description",
+          "name": "description",
+          "type": "string",
+          "required": true
+        },
+        {
+          "title": "tags",
+          "name": "tags",
+          "type": "tags",
+          "default": []
+        },
+        {
+          "title": "draft",
+          "name": "draft",
+          "type": "datetime",
+          "default": false
+        }
+      ]
+    }
+  ]
+}

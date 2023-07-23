@@ -1,0 +1,42 @@
+x 2020-01-25 migrate all less styles to styles.jsx +gatsbyification
+x 2020-01-25 hide decade toggle when there isn't enough room (or display it at the bottom?) +gatsbyification
+x 2020-01-25 gifs are overflowing content area and causing it to horizontally scroll +gatsbyification
+x 2020-01-25 revisit everything below, see what's still valid +gatsbyification
+x 2020-01-25 copy over articles +gatsbyification
+x 2020-01-25 port homepage +gatsbyification
+x 2020-01-25 font attribution +gatsbyification
+x 2020-02-03 style 404 page +gatsbyification
+x 2020-02-03 make sure URLs are backwards compatible +gatsbyification
+x 2020-02-03 hookup 404 page +gatsbyification
+x 2020-02-03 page load: make sure noscript has 80s styling
+x 2020-02-03 page load: make sure there is no FOUC
+x 2020-02-03 fix webfonts in `npm run serve`
+x 2020-01-26 switch favicon to bunny emblem.png +asciiification
+x 2020-02-03 port homepage projects section +gatsbyification
+x 2020-05-01 make sure new RSS feed guids match old one +gatsbyification
+x 2020-05-01 implement table-of-contents scroll spy +gatsbyification
+x 2020-05-01 style table-of-contents scroll spy +gatsbyification
+x 2020-05-01 upload new site as a branch to the existing bitbucket repo? +gatsbyification
+x 2020-05-01 Add a proper draft mechanism that is graphql-filterable +gatsbyification
+x 2020-05-01 Put browser debugging article behind draft +content
+x 2020-05-01 get rid of build-staging, just use git branches +metalsmith
+x 2020-05-01 make 90s more 90s (Verdana) +asciiification
+x 2020-05-01 fix mobile homepage & article +style
+x 2020-05-05 deploy to Vercel, setup branch deploys +gatsbyification +deploy
+x 2020-05-05 get rid of months in https://alan.norbauer.com/#writing, just have years and chronological sorting +content
+x 2020-05-05 Custom 404 page +site
+x 2020-05-05 Switch to HTTPS +site
+x 2020-05-06 Safari: 80s/90s code block css not working +safari +style
+x 2020-05-06 Safari: 80s TOC unvisited links invisible +safari +style
+x 2020-05-05 Mobile: 90s TOC needs padding +style +mobile
+x 2020-05-06 Mobile: project titles/text are misaligned +mobile +style
+x 2020-05-06 Mobile: decade toggle renders below images +style +mobile
+x 2020-05-06 Mobile: miscolored (padding?) at right side of scrollable code blocks +mobile +style
+x 2020-05-06 Finish browser debugging article +content
+x 2020-05-10 link to all npm packages on homepage? +content
+x 2020-05-10 make inline code blocks not increase line height +style
+x 2020-05-11 Temporarily stop generating twitter cards in development until we add caching to it (to speed up dev incremental builds) +site
+x 2022-02-20 https://alan.norbauer.com/zerotier-on-truenas/scripts/zerotier-start.sh should be https://alan.norbauer.com/articles/zerotier-on-truenas/scripts/zerotier-start.sh +bugs
+x 2022-03-07 zeronsd +articles
+x 2022-03-07 zrepl on truenas +articles
+x 2022-03-07 font size of code blocks is huge +safari +mobile
