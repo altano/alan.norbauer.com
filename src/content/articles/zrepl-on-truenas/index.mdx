@@ -1,0 +1,210 @@
+---
+title: "Run zrepl on TrueNAS"
+date_created: "2022-02-18T05:42:00.231Z"
+description: "Run zrepl on TrueNAS in a way that survives reboots and OS updates"
+tags: ["homelab", "TrueNAS", "zrepl", "replication", "zfs"]
+series: "offsite backup of a zfs pool"
+---
+
+TrueNAS mounts several root directories as temporary filesystems (tmpfs) that are erased on every reboot. This includes the zrepl service script located at `/usr/local/etc/rc.d/zrepl`. This guide demonstrates how to setup zrepl in a way that survives reboots and OS updates while preserving `service zrepl XXX` functionality.
+
+## What is zrepl?
+
+[zrepl](https://zrepl.github.io/) is a "one-stop, integrated solution for ZFS replication." There is a replication engine built-into TrueNAS (written by the same folks as TrueNAS) called [zettarepl](https://github.com/truenas/zettarepl) but I've found it to be too buggy to use.
+
+## Prerequisites
+
+- TrueNAS (tested on version 12.0-U7)
+  - Web GUI access
+  - ssh access (with root/sudo)
+
+## Non-goals
+
+This guide only shows you how to _install_ zrepl on TrueNAS. Consult [my other guide on replacing zettarepl with zrepl for more information on using it](/articles/truenas-replace-zettarepl-with-zrepl)
+
+## Setup
+
+### Install the Package
+
+Figure out what version of `zrepl` you're going to need. The `zrepl` version must match on both the source and sink side of the replication. Once you know (e.g. `v0.5.0`) then you have to find the FreeBSD release branch that has that version. Your options are FreeBSD `stable` (your current machine), `quarterly` (slightly newer), or `latest` (newest)
+
+Backup the configs we're going to edit (rebooting would reset our edits to these config files so you can skip this if you'd like):
+
+```
+$ cp /usr/local/etc/pkg/repos/local.conf /usr/local/etc/pkg/repos/local.conf.orig
+$ cp /usr/local/etc/pkg/repos/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf.orig
+```
+
+Disable the TrueNAS package repo:
+
+```
+$ sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
+```
+
+#### Check FreeBSD Stable for our Package
+
+```
+$ sed -i .orig 's/enabled: no/enabled: yes/' /usr/local/etc/pkg/repos/FreeBSD.conf
+$ pkg search zrepl
+```
+
+This will output the version in stable, e.g. on TrueNAS 12.0-U7 we get:
+
+```
+$ pkg search zrepl
+zrepl-0.4.0_4                  ZFS dataset replication tool
+```
+
+If that version is what you want, skip to [the installation step below](#installation). Otherwise:
+
+#### Check FreeBSD Quarterly for our Package
+
+```
+$ sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
+$ cp /etc/pkg/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf
+$ pkg update
+$ pkg search zrepl
+```
+
+If that version is what you want, skip to [the installation step below](#installation). Otherwise:
+
+#### Check FreeBSD Latest for our Package
+
+```
+$ sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
+$ cp /etc/pkg/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf
+$ sed -i .quarterly 's/quarterly/latest/' /usr/local/etc/pkg/repos/FreeBSD.conf
+$ pkg update
+$ pkg search zrepl
+```
+
+If that version is what you want, head to [the installation step below](#installation). Otherwise you might be fucked. 🤷🏽‍♀️
+
+#### Installation
+
+Now that we have repo with the `zrepl` package matching the version we want, installation is simple:
+
+```
+$ pkg install -y zrepl
+```
+
+Validate that `zrepl` is on your path:
+
+```
+$ which zrepl
+/usr/local/bin/zrepl
+```
+
+And the service is available (albeit not running):
+
+```
+$ service zrepl onestatus
+zrepl is not running.
+```
+
+If we were to reboot now, the service would be erased. Let's address that.
+
+### Create a dataset
+
+We need storage that won't be erased on reboot/upgrade. Navigate to `Storage` -> `Pools` and create a dataset called `zrepl`, e.g. `tank/zrepl` mounted at `/mnt/tank/zrepl`. You can put this somewhere else if you like, as long as it's on a storage pool. It might look like this:
+
+```
+$ zfs list
+NAME                                                    USED  AVAIL     REFER  MOUNTPOINT
+...
+tank                                                    804M  27.8G       96K  /mnt/tank
+...
+tank/zrepl                                               96K  27.8G       96K  /mnt/tank/zrepl
+```
+
+### Persist the rc script
+
+The zrepl service rc script located at `/usr/local/etc/rc.d/zrepl` will get erased on reboot. To fix this, we copy it to our dataset:
+
+```
+$ cp /usr/local/etc/rc.d/zrepl /mnt/tank/zrepl/zrepl.rc.d
+```
+
+### Create your job yml
+
+```
+# Move the default job file to your storage pool
+$ mv /usr/local/etc/zrepl/zrepl.yml /mnt/tank/zrepl/zrepl.yml
+```
+
+Now edit `/mnt/tank/zrepl/zrepl.yml` (e.g. with `nano`) and configure it however you'd like. See [zrepl's configuration docs](https://zrepl.github.io/configuration/overview.html) for more information.
+
+### Create the startup script
+
+We now need a startup script that performs the following actions on TrueNAS boot:
+
+- Re-enable the rc service (using `sysrc`)
+- Symlink our backup copy of the rc.d service script back to the `/usr/local/etc/rc.d` directory
+- Symlink our job yaml file to the default location that `zrepl` looks for (`/usr/local/etc/zrepl/zrepl.yml`)
+- Start the rc service
+
+To accomplish this, use [my zrepl-start.sh script](https://alan.norbauer.com/articles/zrepl-on-truenas/scripts/zrepl-start.sh):
+
+```
+$ curl https://alan.norbauer.com/articles/zrepl-on-truenas/scripts/zrepl-start.sh -o /mnt/tank/zrepl/zrepl-start.sh
+$ chmod +x /mnt/tank/zrepl/zrepl-start.sh
+```
+
+The contents of the script are straightforward:
+
+```bash title="/mnt/tank/zrepl/zrepl-start.sh"
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+# Enable the service
+if [ ! -f /etc/rc.conf.d/zrepl ]
+then
+    touch /etc/rc.conf.d/zrepl
+    sysrc -f /etc/rc.conf.d/zrepl zrepl_enable=YES
+fi
+
+# Symlink the service rc.d script
+if [ ! -f /usr/local/etc/rc.d/zrepl ]
+then
+    ln -s ${SCRIPT_DIR}/zrepl.rc.d /usr/local/etc/rc.d/zrepl
+    chmod +x /usr/local/etc/rc.d/zrepl
+fi
+
+# Symlink the zrepl.yml job file
+mkdir -p /usr/local/etc/zrepl
+if [ ! -f /usr/local/etc/zrepl/zrepl.yml ]
+then
+    ln -s ${SCRIPT_DIR}/zrepl.yml /usr/local/etc/zrepl/zrepl.yml
+fi
+
+# Start zrepl service
+service zrepl start
+```
+
+Validate that your zrepl dataset now looks like this:
+
+```
+$ ls -1 /mnt/tank/zrepl/
+zrepl-start.sh
+zrepl.rc.d
+zrepl.yml
+```
+
+Add `zrepl-start.sh` to TrueNAS as a Post-Init startup script:
+
+- Go to Web GUI -> Tasks -> Init/Shutdown Scripts -> Add
+  - Description = "zrepl Startup"
+  - Type = "Script"
+  - Select /mnt/tank/zrepl/zrepl-start.sh
+  - When = "Post Init" Submit
+- Go to Web GUI -> Power (top-right) -> Restart (or`reboot`in shell)
+- ssh back in
+- Verify zrepl is running: `service zrepl status` and `zrepl status`
+- Verify your config is valid: `zrepl configcheck`
+
+And we're done! Your TrueNAS machine should now reliably run the zrepl service and any jobs you define in `/mnt/tank/zrepl/zrepl.yml`
+
+## Further Reading
+
+- https://zrepl.github.io/

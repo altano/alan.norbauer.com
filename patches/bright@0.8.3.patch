@@ -1,0 +1,47 @@
+#
+# https://github.com/code-hike/bright/issues/23
+#
+diff --git a/dist/index.js b/dist/index.js
+index 0e2f4bd40d0f06ab846f2f065b549d55727ac5b2..a4a0ab6227ba8d3c5223ee8a4585e40f6736ba34 100644
+--- a/dist/index.js
++++ b/dist/index.js
+@@ -528,7 +528,7 @@ function parseChildren(children, lang, code) {
+   var _a, _b, _c;
+   if (typeof children === "object" && (children == null ? void 0 : children.type) === "code") {
+     return {
+-      code: (_b = (_a = children.props) == null ? void 0 : _a.children) == null ? void 0 : _b.trim(),
++      code: (_b = (_a = children.props) == null ? void 0 : _a.children) == null ? void 0 : _b.replace(/\n+$/,""),
+       ...getLanguageAndTitle((_c = children.props) == null ? void 0 : _c.className)
+     };
+   } else if (typeof children === "object") {
+@@ -536,7 +536,7 @@ function parseChildren(children, lang, code) {
+       var _a2, _b2, _c2;
+       const codeProps = (_b2 = (_a2 = c.props) == null ? void 0 : _a2.children) == null ? void 0 : _b2.props;
+       return {
+-        code: (_c2 = codeProps.children) == null ? void 0 : _c2.trim(),
++        code: (_c2 = codeProps.children) == null ? void 0 : _c2.replace(/\n+$/,""),
+         ...getLanguageAndTitle(codeProps.className)
+       };
+     });
+diff --git a/dist/index.mjs b/dist/index.mjs
+index bca5a22a8055a504931806da163830152840cf30..c07e4b3cdec94d4b43c71edb6716eb2f1d79d35b 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -501,7 +501,7 @@ function parseChildren(children, lang, code) {
+   var _a, _b, _c;
+   if (typeof children === "object" && (children == null ? void 0 : children.type) === "code") {
+     return {
+-      code: (_b = (_a = children.props) == null ? void 0 : _a.children) == null ? void 0 : _b.trim(),
++      code: (_b = (_a = children.props) == null ? void 0 : _a.children) == null ? void 0 : _b.replace(/\n+$/,""),
+       ...getLanguageAndTitle((_c = children.props) == null ? void 0 : _c.className)
+     };
+   } else if (typeof children === "object") {
+@@ -509,7 +509,7 @@ function parseChildren(children, lang, code) {
+       var _a2, _b2, _c2;
+       const codeProps = (_b2 = (_a2 = c.props) == null ? void 0 : _a2.children) == null ? void 0 : _b2.props;
+       return {
+-        code: (_c2 = codeProps.children) == null ? void 0 : _c2.trim(),
++        code: (_c2 = codeProps.children) == null ? void 0 : _c2.replace(/\n+$/,""),
+         ...getLanguageAndTitle(codeProps.className)
+       };
+     });

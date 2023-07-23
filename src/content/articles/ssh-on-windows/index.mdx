@@ -1,0 +1,59 @@
+---
+title: "Developing on Windows"
+date_created: "2022-06-27T01:23:10.171Z"
+description: "My take on the best way to use SSH, git, and other developer tools on Windows"
+tags: ["ssh", "git", "windows"]
+draft: true
+---
+
+## Philosophy
+
+The internet is full of obsolete advice on how to do basic Linux-y things on Windows. For example, a lot of people recommend using PuTTY or Git Bash on Windows (or even Cygwin) to use SSH on Windows, despite OpenSSH shipping with Windows for years. People also assume the only way to develop on Windows is with WSL2 (e.g. in a Linux VM). I'd like to suggest better ways of making use of Windows, my primary development platform.
+
+NOTE: I know these suggestions won't universally work for everyone. If you have needs not met by these suggestions than feel free to ignore them! This is _not_ the only way to develop on Windows.
+
+## Pre-requisite
+
+Older versions of Windows may not support (or come with) all of the things I discuss below. If you're a developer on Windows I highly recommend being on the latest release of Windows 10 (21H2+) or Windows 11. If you can't be, for whatever reason, _most_ of the advice below will still apply.
+
+## Windows Developer Mode
+
+## Package Management
+
+## Command Line
+
+## SSH
+
+### OpenSSH
+
+Microsoft has been investing in a native Windows port of OpenSSH ([Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH/)) for many years now and, despite [some rockiness](https://github.com/PowerShell/Win32-OpenSSH/issues/1693#issuecomment-825931003), have [reiterated their commitment to the project](https://github.com/PowerShell/Win32-OpenSSH/issues/1693#issuecomment-829520885) have delivered something that works well and comes bundled with Windows.
+
+### Password Management (1Password)
+
+## Screenshots
+
+ShareX is my favorite screenshotting tool on any platform. It has a few quirks and is a little harder to use than macOS' amazing, built-in screenshotting/video recording, but the extra complexity comes with many features.
+
+## git
+
+## Diff/Merge
+
+Having a graphical diffing/merging tool that supports proper 3-way merge (where, in addition to the old and new code that is in conflict, you can see the common base) is critical to having a good experience with version control. There are a lot of tools here so my primary recommendation is that you use whatever you like best.
+
+If you want something more specific than that, I highly recommend [Beyond Compare 4](https://www.scootersoftware.com/index.php) by Scooter Software, because:
+
+1. The 3-way merge tool works, with a 4-th pane for the resulting code.
+1. You can re-align code manually, which is useful if you want to make sure some moved code is unchanged.
+1. The GUI has selected line-level diffing (which is great for diffing one really long line side-by-side).
+1. The advanced diff tools, e.g. the CSV differ and clipboard differ, have come in handy for me more than once.
+1. The license is my favorite kind: small one-time price and I can take my license to multiple platforms and use it both at home and work.
+1. Scooter Software is a great company. When they made their licenses cross-platform (they previously charged per platform) they upgraded my key for free, same-day.
+1. Beyond Compare works as a pretty great file/folder synchronization tool.
+
+I could go on but suffice it to say that Beyond Compare has been serving me well for a billion years and I wish I could pay them more money.
+
+## Windows Subsystem for Linux 2 (WSL2) vs. Native vs. Remote SSH
+
+## Node.js/NPM
+
+## Alternatives

@@ -1,0 +1,123 @@
+---
+title: "Run ZeroTier on NixOS"
+date_created: 2023-07-18T09:25:55.630Z
+description: "NixOS configuration to run ZeroTier"
+tags: ["homelab", "NixOS", "zerotier", "replication", "zfs"]
+series: "offsite backup of a zfs pool"
+draft: true
+---
+
+Running ZeroTier on NixOS is dead simple (unlike [on TrueNAS](/articles/zerotier-on-truenas))
+
+## Why
+
+I'm going to use a [NixOS](https://nixos.org) host as the target of my zfs pool's offsite backup. The backup replication will use zrepl. [zrepl's tcp transport](https://zrepl.github.io/configuration/transports.html#tcp-transport) does not encrypt data over the wire, so we need something else that will handle that. ZeroTier is a perfect fit as it will make sure that all communication between our zrepl source and sink is encrypted. Additionally I can use ZeroTier to lock down ssh[^ssh-secure] and any other services exposed by the NixOS host.
+
+## Prerequisites
+
+- A default NixOS host setup with editable configs, however you do that. See [the NixOS docs](https://nixos.org/learn.html) to get started
+- A ZeroTier network and the associated network id
+
+## Setup
+
+### Find your config values
+
+Jot down your ZeroTier network ID from [ZeroTier Central](https://my.zerotier.com/).
+
+Figure out what your ZeroTier network interface name will be. [As of ZeroTier v1.2.6](https://github.com/zerotier/ZeroTierOne/blob/master/RELEASE-NOTES.md#2018-04-17----version-126), ZeroTier on Linux will use a deterministically generated interface name based on your network address, so you can get the interface name your NixOS host will from any other Linux host on your ZeroTier network:
+
+```
+$ ip -oneline -family link a | grep zt
+```
+
+The interface name will start with `zt` and have a string of characters, e.g. `zt8qqmi6zh`.
+
+### Update your Nix config
+
+Update your NixOS config (e.g. `configuration.nix`) with the following. I recommend putting this in `zerotier.nix` and then adding `imports = [ ./zerotier.nix ]` to your `configuration.nix`.
+
+```nix title="zerotier.nix"
+{ config, pkgs, ... }:
+
+let
+  # @TODO Fill this in
+  privateZeroTierInterface = "<YOUR ZEROTIER NETWORK INTERFACE NAME>";
+  # @TODO Fill this in
+  zeroTierNetworkIds = [ "<YOUR ZEROTIER NETWORK ID>" ];
+in
+{
+  # ENABLING ZEROTIER
+  # ---------------------------------------------------------------------------
+
+  # Non-free Licensing workaround
+  nixpkgs.config.allowUnfree = true;
+
+  # Make the ZeroTier binaries available to all users
+  environment.systemPackages = [ pkgs.zerotierone ];
+
+  services.zerotierone.enable = true;
+  services.zerotierone.joinNetworks = zeroTierNetworkIds;
+}
+```
+
+You have two options for how to poke holes in your firewall. Pick one and add it to the config above:
+
+#### Option #1 - Open the entire ZeroTier interface and nothing else
+
+```nix title="zerotier.nix"
+  # Firewall: Open the entire ZeroTier interface
+  # ---------------------------------------------------------------------------
+
+  # Erect the system's firewall.
+  networking.firewall.enable = true;
+
+  # Unconditionally accept all traffic coming in from the ZeroTier interface.
+  networking.firewall.trustedInterfaces = [ privateZeroTierInterface ];
+
+  # Stop other configs from opening holes in the firewall for other interfaces,
+  # as the ZeroTier interface is already trusted, e.g.:
+  services.openssh.openFirewall = false;
+  services.jitsi-videobridge.openFirewall = false;
+  services.prometheus.exporters.node.openFirewall = false;
+  ...
+```
+
+#### Option #2 - Open specific ports, only on the ZeroTier interface
+
+```nix title="zerotier.nix"
+  # Firewall: Open specific ports on the ZeroTier interface
+  # ---------------------------------------------------------------------------
+
+  # Erect the system's firewall.
+  networking.firewall.enable = true;
+
+  # Whenever configuring other services, only open holes in the ZeroTier
+  # interface
+  services.openssh.listenAddresses = [
+    { addr = ????????????????; port = 22; }
+  ];
+  networking.firewall.interfaces.{privateZeroTierInterface}.allowedTCPPorts = [ 22 ];
+
+  # @TODO Switch to:
+  #   services.openssh.listenAddresses
+  #   networking.firewall.interfaces.<name>.allowedTCPPorts
+```
+
+### Deploy the changes
+
+- `nixos-rebuild switch`
+- Authorize your new node in [ZeroTier Central](https://my.zerotier.com/)
+
+### Verify everything looks good
+
+- Make sure the ZeroTier service is running on the host: `systemctl status zerotierone`
+- Try to connect to your new machine over ZeroTier, e.g. over ssh. I add an entry like this to my `~/.ssh/config`:
+  ```text title="~/.ssh/config"
+  host <alias-for-your-new-machine>
+      Hostname <zerotier-ip>
+      ...
+  ```
+  And then `ssh alias-for-your-new-machine` to make sure it works.
+- From another node in your ZeroTier network you can run `zerotier-cli peers` and make sure the link is `DIRECT` to the new node
+
+[^ssh-secure]: a bit redundant as ssh with public key authentication is already secure, but it will at least reduce spam in my logs from bots trying to log in

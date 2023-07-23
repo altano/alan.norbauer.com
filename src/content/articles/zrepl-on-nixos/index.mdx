@@ -1,0 +1,22 @@
+---
+title: "Run a zrepl sink on NixOS"
+date_created: "2022-02-21T03:47:40.567Z"
+description: "NixOS configuration to run zrepl"
+tags: ["homelab", "NixOS", "zrepl", "replication", "zfs"]
+series: "offsite backup of a zfs pool"
+draft: true
+---
+
+Unlike [on TrueNAS](/articles/zrepl-on-truenas), running zrepl on NixOS is dead simple.
+
+## Why
+
+I'm going to use a [NixOS](https://nixos.org) host as the target of my zfs pool's offsite backup. NixOS allows me to create a Nix config as both (a) documentation of my setup and (b) a way of perfectly reproducing that setup in the future. In other words, it's the perf
+
+## Prerequisites
+
+- A zrepl source, i.e. a host with a zrepl config that is ready to push snapshots to our sink.
+- A default NixOS host setup with editable configs, however you do that. See [the NixOS docs](https://nixos.org/learn.html) to get started
+- A place to
+
+## Setup

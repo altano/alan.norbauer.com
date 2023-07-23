@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "editorconfig.editorconfig",
+    "jetpack-io.devbox",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "dpkshrma.insert-iso-timestamp",
+    "mgmcdermott.vscode-language-babel",
+    "davraamides.todotxt-mode",
+    "streetsidesoftware.code-spell-checker",
+    "styled-components.vscode-styled-components",
+    "chakra-ui.panda-css-vscode",
+    "phoenisx.cssvar",
+    "samuherek.obcss"
+  ]
+}

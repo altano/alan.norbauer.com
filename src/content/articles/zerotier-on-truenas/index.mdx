@@ -1,0 +1,193 @@
+---
+title: "Run ZeroTier on TrueNAS"
+date_created: "2022-02-14T06:17:30.897Z"
+date_updated: "2022-02-21T02:04:52.769Z"
+description: "Run ZeroTier on TrueNAS in a way that survives reboots and OS updates"
+tags: ["homelab", "TrueNAS", "ZeroTier"]
+series: "offsite backup of a zfs pool"
+---
+
+TrueNAS mounts `/var` as a temporary filesystem (tmpfs) that is erased on every reboot. This includes the ZeroTier database located at `/var/db/zerotier-one`. This guide demonstrates how to setup ZeroTier in a way that survives reboots and OS updates while preserving `service zerotier XXX` functionality.
+
+## What is zerotier?
+
+ZeroTier is:
+
+- a mesh VPN, like [Tailscale](https://tailscale.com/) and [Nebula](https://github.com/slackhq/nebula)
+- a way of securely connecting your devices over the public internet in a p2p network, without the hassle of VPN
+- an emulated, secure Layer 2 ethernet network that sits on top of the public internet
+- absolutely awesome software
+
+In this case I'm installing it on TrueNAS as one piece of my "secure, offsite backup of my zfs pool" puzzle.
+
+## Prerequisites
+
+- TrueNAS (tested on version 12.0-U7)
+  - Web GUI access
+  - ssh access (with root/sudo)
+- A ZeroTier network and the associated network id
+
+## Setup
+
+Install on TrueNAS (using FreeBSD packages):
+
+```
+sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
+sed -i .orig 's/enabled: no/enabled: yes/' /usr/local/etc/pkg/repos/FreeBSD.conf
+pkg update
+pkg install -y zerotier
+```
+
+Do _not_ reboot yet.
+
+### Setup the ZeroTier database
+
+Start the service
+
+```
+$ service zerotier onestatus
+zerotier is not running.
+$ service zerotier onestart
+Starting zerotier.
+```
+
+Validate the database was created
+
+```
+$ ls -1 /var/db/zerotier-one
+authtoken.secret
+controller.d
+identity.public
+identity.secret
+planet
+zerotier-one.pid
+zerotier-one.port
+```
+
+### Move the database to a persisted zfs dataset
+
+Navigate to `Storage` -> `Pools` and create a dataset called `zerotier`, e.g. `tank/zerotier` mounted at `/mnt/tank/zerotier`. You can put this somewhere else if you like, as long as it's on a storage pool.
+Move your db to the dataset:
+
+```
+mkdir -p /mnt/tank/zerotier/db/
+mv /var/db/zerotier-one/* /mnt/tank/zerotier/db/
+```
+
+Mount the dataset dir as the db where zerotier will look for it:
+
+```
+$ /sbin/mount_nullfs /mnt/tank/zerotier/db/ /var/db/zerotier-one
+$ ls -1 /var/db/zerotier-one
+authtoken.secret
+controller.d
+identity.public
+identity.secret
+peers.d
+planet
+zerotier-one.pid
+zerotier-one.port
+```
+
+### Join ZeroTier network
+
+- Join: `zerotier-cli join <NETWORK-ID>`
+- Authorize the node in ZeroTier Central
+- Make sure `ifconfig` shows the ZeroTier interface. Optional: `zerotier-cli info`
+
+### Persist the rc script
+
+The ZeroTier service rc script located at `/usr/local/etc/rc.d/zerotier` will get erased on reboot, just like the `/var/db/zerotier-one/` directory. To fix this, we copy it to our dataset:
+
+```
+cp /usr/local/etc/rc.d/zerotier /mnt/tank/zerotier/zerotier.rc.d
+```
+
+### Create the startup script
+
+We now need a startup script that performs the following actions on TrueNAS boot:
+
+- Re-mount the ZeroTier DB in our dataset to the /var/db/zerotier-one directory.
+- Symlink our backup copy of the rc.d service script back to the `/usr/local/etc/rc.d` directory
+- Re-enable the rc service (using `sysrc`)
+- Start the rc service
+
+To accomplish this, use [my zerotier-start.sh script](https://alan.norbauer.com/articles/zerotier-on-truenas/scripts/zerotier-start.sh):
+
+```
+curl https://alan.norbauer.com/articles/zerotier-on-truenas/scripts/zerotier-start.sh -o /mnt/tank/zerotier/zerotier-start.sh
+chmod +x /mnt/tank/zerotier/zerotier-start.sh
+```
+
+The contents of the script are straightforward:
+
+```bash title="/mnt/tank/zerotier/zerotier-start.sh"
+#!/bin/bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+DB_DIR=${SCRIPT_DIR}/db
+
+# If you are running other daemons or require firewall rules to depend on
+# zerotier interfaces being available at startup, you may need to uncomment
+# the following line.
+#
+# This avoids a race condition where zerotier interfaces are created, but
+# not up, prior to firewalls and services trying to use them.
+#
+# sysctl net.link.tap.up_on_open=1
+
+# Remove the zerotier_enable rc.conf entry if you already
+# have it. This will be set by our start script, as zerotier
+# might start before the mountpoint is available, making
+# zerotier create new keys at each boot. This is prevented by
+# only enabling the service after the mountpoint is available.
+if [ ! -f /etc/rc.conf.d/zerotier ]
+then
+    touch /etc/rc.conf.d/zerotier
+    sysrc -f /etc/rc.conf.d/zerotier zerotier_enable=YES
+fi
+
+if [ ! -f /usr/local/etc/rc.d/zerotier ]
+then
+    ln -s ${SCRIPT_DIR}/zerotier.rc.d /usr/local/etc/rc.d/zerotier
+    chmod +x /usr/local/etc/rc.d/zerotier
+fi
+
+# Stop zerotier so we can modify the db directory location
+service zerotier stop
+
+# Use the zfs pool to store the db (to survive reboots)
+mkdir -p ${DB_DIR}
+mkdir -p /var/db/zerotier-one
+/sbin/mount_nullfs ${DB_DIR} /var/db/zerotier-one
+
+# Start zerotier service
+service zerotier start
+```
+
+Validate that your zerotier dataset now looks like this:
+
+```
+$ ls -1 /mnt/tank/zerotier
+db
+zerotier-start.sh
+zerotier.rc.d
+```
+
+Add `zerotier-start.sh` to TrueNAS as a Pre-Init startup script:
+
+- Go to Web GUI -> Tasks -> Init/Shutdown Scripts -> Add
+  - Description = "ZeroTier Startup"
+  - Type = "Script"
+  - Select /mnt/tank/zerotier/zerotier-start.sh
+  - When = "Pre Init" Submit
+- Go to Web GUI -> Power (top-right) -> Restart (or`reboot`in shell)
+- ssh back in
+- Verify zerotier is running: `zerotier-cli info` and `ifconfig`
+
+And we're done! Your TrueNAS machine should now reliably remain on your ZeroTier network.
+
+## Further Reading
+
+- https://www.truenas.com/community/threads/zerotier-surviving-reboots.77747/ ([User techlex](https://www.truenas.com/community/members/techlex.96811/))
+- https://killall.eu/truenas-or-freenas-zerotier-how-to-install-zerotier-on-truenas/
