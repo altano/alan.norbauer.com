@@ -1,13 +1,8 @@
 import pkg from "@root/package.json";
 import { css, cx } from "@styled-system/css";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
-import dynamic from "next/dynamic";
 import { token } from "@styled-system/tokens";
-
-const ColorSchemeToggle = dynamic(() => import("@/utility/colorSchemeToggle"), {
-  ssr: false,
-});
-console.log(ColorSchemeToggle);
+import ColorSchemeToggle from "@/components/colorSchemeToggle";
 
 import "./global.css";
 
@@ -70,28 +65,31 @@ export default function RootLayout({
       suppressHydrationWarning={true}
     >
       <body className={cx(inter.variable, ibmPlexMono.variable, bodyStyles)}>
-        <ColorSchemeToggle />
         <script
           dangerouslySetInnerHTML={{
             /* TODO Can this be replaced with middleware? */
             /* https://github.com/vercel/next.js/discussions/50772 */
             __html: `
-                try {
-                  if (
-                    localStorage.getItem("color-scheme") === "light" ||
-                    (localStorage.getItem("color-scheme") == null &&
-                      window.matchMedia("(prefers-color-scheme: light)").matches)
+            try {
+                if (
+                  localStorage.getItem("color-scheme") === "light" ||
+                  (localStorage.getItem("color-scheme") == null &&
+                  window.matchMedia("(prefers-color-scheme: light)").matches)
                   ) {
-                    document.documentElement.classList.remove("dark")
-                    document.documentElement.classList.add("light")
+                    document.documentElement.classList.remove("dark");
+                    document.documentElement.classList.add("light");
                   } else {
-                    document.documentElement.classList.remove("light")
-                    document.documentElement.classList.add("dark")
+                    document.documentElement.classList.remove("light");
+                    document.documentElement.classList.add("dark");
                   }
-                } catch (_) {}
+                  console.info("html.className: ", document.documentElement.className);
+              } catch (e) {
+                console.error(e);
+              }
               `,
           }}
         ></script>
+        <ColorSchemeToggle />
         {children}
       </body>
     </html>
