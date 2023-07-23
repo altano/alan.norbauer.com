@@ -9,8 +9,6 @@ const PageFooter = styled("footer", {
     fontSize: "16px",
     marginBlockStart: "3rem",
     padding: "1rem",
-    display: "flex",
-    flexDirection: "column",
     gap: "5",
     transitionDuration: "var(--durations-color-scheme)",
     transitionProperty: "background, color",
