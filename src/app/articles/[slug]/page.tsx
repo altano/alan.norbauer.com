@@ -87,6 +87,10 @@ const Article = styled("article", {
 
     gridArea: "article",
     maxWidth: "100%",
+
+    // For articles shorter than the viewport
+    alignSelf: "flex-start",
+
     lg: {
       marginInline: "auto",
     },
