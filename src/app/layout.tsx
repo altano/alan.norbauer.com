@@ -58,7 +58,7 @@ export default function RootLayout({
           {children}
           <ThemeSwitch
             className={css({
-              position: "absolute",
+              position: "fixed",
               right: "10px",
               bottom: "10px",
             })}

@@ -41,17 +41,25 @@ export const globalCss = defineGlobalStyles({
   },
   h2: {
     fontSize: "3rem",
-    margin: "2rem 0 1rem 0",
+    margin: "3rem 0 1.5rem 0",
     fontWeight: "700",
     textDecoration: "underline",
     textUnderlineOffset: "0.3rem",
     textDecorationThickness: "4px",
     lineHeight: "1.1", // TODO Revisit
   },
-  "h3, h4, h5, h6": {
+  h3: {
+    fontSize: "2rem",
+  },
+  h4: {
     fontSize: "1.5rem",
-    margin: "0.8rem 0 0.4rem 0",
-    fontWeight: "500",
+  },
+  "h5, h6": {
+    fontSize: "1.2rem",
+  },
+  "h3, h4, h5, h6": {
+    marginBlock: "2rem 1rem",
+    fontWeight: "600",
     lineHeight: "1.1", // TODO Revisit
   },
 
@@ -62,17 +70,11 @@ export const globalCss = defineGlobalStyles({
 
   // Paragraphs
   "p:not(:first-child)": {
-    marginBlockStart: "2",
+    marginBlockStart: "5",
   },
 
-  "p:not(:last-child)": {
+  "p:last-child": {
     marginBlockEnd: "2",
-  },
-
-  // Misc
-  "p, ul, ol": {
-    marginBlockStart: "0",
-    marginBlockEnd: "1",
   },
 
   code: {

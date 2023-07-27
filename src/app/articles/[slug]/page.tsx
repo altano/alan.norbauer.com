@@ -64,7 +64,15 @@ const ArticleTitle = styled("h1", {
 const Article = styled("article", {
   base: {
     "& .auto-link-toc-anchor": {
+      color: "text",
+      _hover: {
+        _after: {
+          opacity: 1,
+        },
+      },
       _after: {
+        opacity: 0,
+        transition: "opacity var(--durations-color-scheme)",
         content: `" #"`,
         display: "inline-block",
         position: "absolute",
@@ -84,19 +92,40 @@ const Article = styled("article", {
     "& table": {
       layerStyle: "card",
       transition: "background var(--durations-color-scheme)",
+      marginBlock: "10",
+      "& th, & td": {
+        padding: "0.5",
+        lg: {
+          padding: "3",
+        },
+      },
       "& th": {
         fontSize: "1.5rem",
-        padding: "2",
         textAlign: "left",
       },
       "& td": {
-        padding: "3",
         verticalAlign: "top",
       },
     },
 
+    "& ul:not(:first-child), ol:not(:first-child)": {
+      marginBlockStart: "5",
+      marginBlockEnd: "2",
+    },
+    "& li:not(:first-child)": {
+      marginBlockStart: "2",
+      marginBlockEnd: "1",
+    },
+
     "& blockquote": {
       layerStyle: "card",
+      marginBlockEnd: 0,
+      "&:not(:first-child)": {
+        marginBlockStart: "5",
+      },
+      borderLeftRadius: 0,
+      borderLeftWidth: "5px",
+      borderLeftColor: "var(--colors-gray-400)",
       "& p": {
         paddingLeft: "3",
       },
@@ -119,6 +148,18 @@ const Article = styled("article", {
     "& ol": {
       listStyleType: "decimal",
       paddingLeft: "40px",
+    },
+
+    "& img:not([data-invertible])": {
+      layerStyle: "card",
+      bg: "bg.card",
+      transition: "background var(--durations-color-scheme)",
+    },
+    "& img": {
+      marginBlock: "8",
+      lg: {
+        padding: "2rem",
+      },
     },
   },
 });
