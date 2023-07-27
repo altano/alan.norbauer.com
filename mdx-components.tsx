@@ -2,6 +2,7 @@ import { Chrome, Edge, Firefox } from "@/components/browser-logos";
 import { Code } from "bright";
 import firefoxLightCustomized from "./src/styles/code-themes/firefox-light-customized.json";
 import Image from "next/image";
+import { focus } from "@/utility/bright-extensions/focus";
 
 import type { MDXComponents } from "mdx/types";
 
@@ -11,6 +12,8 @@ Code.theme = {
   lightSelector: `:root.light`,
   darkSelector: `:root.dark`,
 };
+
+Code.extensions = (Code.extensions ?? []).concat(focus);
 
 function getLanguage(codeProps: any) {
   // Mostly copied-and-pasted out of bright (https://github.com/code-hike/bright) itself
