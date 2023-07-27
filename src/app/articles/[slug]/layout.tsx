@@ -39,15 +39,23 @@ const Layout = styled("main", {
     minHeight: "100vh",
 
     lg: {
-      gridGap: "1rem var(--spacing-article-column-gap)",
+      "--article-width":
+        "min(var(--breakpoints-md), calc(100vw - var(--article-column-gap) - var(--article-sidebar-width) - var(--article-column-gap) - var(--article-column-gap)))",
+      "--article-sidebar-width": "300px",
+      "--article-column-gap": "3rem",
+      gridGap: "2rem var(--article-column-gap)",
       gridTemplateColumns:
-        "1.3fr token(spacing.articleSidebarWidth) token(spacing.articleWidth) 2fr",
+        "1.8fr var(--article-sidebar-width) var(--article-width) 2fr",
       gridTemplateRows: "min-content auto min-content",
       gridTemplateAreas: `
-        "...... ...... title   ......"
-        "...... header article ......"
-        "footer footer footer  footer"
+      "...... ...... title   ......"
+      "...... header article ......"
+      "footer footer footer  footer"
       `,
+    },
+    xl: {
+      "--article-sidebar-width": "350px",
+      "--article-column-gap": "4rem",
     },
   },
 });

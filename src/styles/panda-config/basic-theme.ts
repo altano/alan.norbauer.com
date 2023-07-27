@@ -9,7 +9,7 @@ import type { Theme } from "@pandacss/types";
 const theme: Theme = {
   tokens: {
     durations: defineTokens.durations({
-      colorScheme: { value: "{durations.faster}" },
+      colorScheme: { value: "{durations.fastest}" },
     }),
     colors: defineTokens.colors({
       seafoam: { value: "#00FFCC" },
@@ -26,18 +26,7 @@ const theme: Theme = {
     }),
   },
   semanticTokens: {
-    spacing: defineSemanticTokens.spacing({
-      articleColumnGap: {
-        value: "3rem",
-      },
-      articleSidebarWidth: {
-        value: "300px",
-      },
-      articleWidth: {
-        value:
-          "min({breakpoints.md}, calc(100vw - {spacing.articleColumnGap} - {spacing.articleSidebarWidth} - {spacing.articleColumnGap} - {spacing.articleColumnGap}))",
-      },
-    }),
+    spacing: defineSemanticTokens.spacing({}),
     // TODO Factor all semantic colors out into color definitions for
     // readability
     colors: defineSemanticTokens.colors({

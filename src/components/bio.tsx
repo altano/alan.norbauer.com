@@ -91,6 +91,10 @@ const Bio = ({ width }: Props) => {
         follow Alan on <ThreadsLink text="Threads" /> or reach him by{" "}
         <EmailLink text="email" />.
       </Sentence>
+      <Sentence>
+        Opinions expressed are solely his own and do not express the views or
+        opinions of his employer.
+      </Sentence>
     </BioSection>
   );
 };
