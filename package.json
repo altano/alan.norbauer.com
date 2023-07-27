@@ -33,6 +33,7 @@
   "dependencies": {
     "@altano/remark-mdx-toc-with-slugs": "^1.0.3",
     "@altano/use-toc-visible-sections": "^1.0.5",
+    "@ark-ui/react": "^0.9.0",
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.12",
     "@ngsctt/remark-smartypants": "^0.2.0",
@@ -41,6 +42,8 @@
     "esbuild": "^0.17.19",
     "globby": "^13.2.2",
     "next": "^13.4.12",
+    "next-themes": "^0.2.1",
+    "nextra": "^2.10.0",
     "npm-run-all": "^4.1.5",
     "nullthrows": "^1.1.1",
     "postcss": "^8.4.27",
@@ -69,7 +72,7 @@
     "@types/react": "18.2.12",
     "@types/react-dom": "18.2.5",
     "@types/rss": "^0.0.30",
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
     "cross-env": "^7.0.3",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6"

@@ -3,7 +3,7 @@
   "tokenColors": [
     {
       "settings": {
-        "background": "#FCFCFC",
+        "background": "#FAFAFA",
         "foreground": "#939393"
       }
     },
@@ -594,7 +594,7 @@
     "dropdown.background": "#EDEDF0",
     "dropdown.border": "#0A84FF",
     "dropdown.foreground": "#D9DBDF",
-    "input.background": "#FCFCFC",
+    "input.background": "#FAFAFA",
     "input.border": "#E0E0E1",
     "input.foreground": "#000000",
     "input.placeholderForeground": "#767676",
@@ -619,7 +619,7 @@
     "activityBar.dropBackground": "#E0E0E1",
     "activityBar.foreground": "#939393",
     "activityBarBadge.background": "#8000D7",
-    "activityBarBadge.foreground": "#FCFCFC",
+    "activityBarBadge.foreground": "#FAFAFA",
     "sideBar.background": "#F9F9FA",
     "sideBar.foreground": "#3c3c3c",
     "sideBarTitle.foreground": "#939393",
@@ -631,14 +631,14 @@
     "tab.inactiveBackground": "#F9F9FA",
     "tab.inactiveForeground": "#4A4A4F",
     "tab.hoverBorder": "#0060df",
-    "editor.background": "#FCFCFC",
+    "editor.background": "#FAFAFA",
     "editor.foreground": "#4A4A4F",
     "editorLineNumber.foreground": "#c1c1c1",
     "editorLineNumber.activeForeground": "#4A4A4F",
     "editorCursor.background": "#4A4A4F",
     "editorCursor.foreground": "#000000",
     "editor.selectionBackground": "#B9D7FD",
-    "editor.selectionForeground": "#FCFCFC",
+    "editor.selectionForeground": "#FAFAFA",
     "editor.lineHighlightBackground": "#E7F1FE",
     "editor.lineHighlightBorder": "#E7F1FE",
     "editorWhitespace.foreground": "#D9DBDF",

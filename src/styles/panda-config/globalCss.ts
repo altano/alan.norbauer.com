@@ -2,13 +2,18 @@ import { defineGlobalStyles } from "@pandacss/dev";
 
 export const globalCss = defineGlobalStyles({
   html: {
+    scrollPaddingBlockStart: "3",
+    scrollBehavior: "smooth",
+    _motionReduce: {
+      scrollBehavior: "auto",
+    },
     transition:
       "color var(--durations-color-scheme), background var(--durations-color-scheme)",
   },
 
   "::selection": {
-    background: "token(colors.bg.selection)",
-    color: "token(colors.text.selection)",
+    background: "var(--colors-bg-selection)",
+    color: "var(--colors-text-selection)",
   },
 
   body: {
@@ -87,5 +92,9 @@ export const globalCss = defineGlobalStyles({
     _dark: {
       filter: "invert(100%)",
     },
+  },
+
+  em: {
+    fontStyle: "italic",
   },
 });
