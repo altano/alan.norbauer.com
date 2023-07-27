@@ -81,6 +81,27 @@ const Article = styled("article", {
       listStylePosition: "outside",
     },
 
+    "& table": {
+      layerStyle: "card",
+      transition: "background var(--durations-color-scheme)",
+      "& th": {
+        fontSize: "1.5rem",
+        padding: "2",
+        textAlign: "left",
+      },
+      "& td": {
+        padding: "3",
+        verticalAlign: "top",
+      },
+    },
+
+    "& blockquote": {
+      layerStyle: "card",
+      "& p": {
+        paddingLeft: "3",
+      },
+    },
+
     gridArea: "article",
     maxWidth: "100%",
 
