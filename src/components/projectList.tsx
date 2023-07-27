@@ -80,8 +80,7 @@ export default async function ProjectList() {
         <Project
           image={
             <Image
-              width={43}
-              height={51}
+              height={50}
               src={htmlCdnifyLogo}
               alt="logo for html-cdnify package"
             />
