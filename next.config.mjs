@@ -10,6 +10,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { fromHtml } from "hast-util-from-html";
 import bundleAnalyzer from "@next/bundle-analyzer";
 import rehypeMdxCodeProps from "rehype-mdx-code-props";
+import remarkSmartypants from "@ngsctt/remark-smartypants";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -21,6 +22,7 @@ const withMDX = mdx({
     remarkPlugins: [
       [remarkMdxTocWithSlugs, { name: "tableOfContents" }],
       remarkGfm,
+      remarkSmartypants,
       remarkSectionize,
       remarkFrontmatter,
       remarkMdxFrontmatter,
