@@ -36,7 +36,7 @@
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.12",
     "@pandacss/types": "^0.6.0",
-    "bright": "^0.8.3",
+    "bright": "^0.8.4",
     "esbuild": "^0.17.19",
     "globby": "^13.2.2",
     "hast-util-from-html": "^1.0.2",
