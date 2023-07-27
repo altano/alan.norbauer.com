@@ -64,17 +64,13 @@ const ArticleTitle = styled("h1", {
 const Article = styled("article", {
   base: {
     "& .auto-link-toc-anchor": {
-      visibility: "hidden",
-      display: "inline-block",
-      verticalAlign: "middle",
-      marginLeft: "0.75rem",
-      padding: "inherit",
-    },
-
-    "& *:hover > .auto-link-toc-anchor": {
-      visibility: "unset",
-      _dark: {
-        filter: "invert(100%)",
+      _after: {
+        content: `" #"`,
+        display: "inline-block",
+        position: "absolute",
+        color: "text.faded",
+        marginLeft: "2", // TODO Customize by heading size
+        textDecoration: "none",
       },
     },
 
