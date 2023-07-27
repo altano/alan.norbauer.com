@@ -9,7 +9,8 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import bundleAnalyzer from "@next/bundle-analyzer";
 import rehypeMdxCodeProps from "rehype-mdx-code-props";
-import remarkSmartypants from "@ngsctt/remark-smartypants";
+import remarkSmartypants from "remark-smartypants";
+import remarkFootnotes from "remark-footnotes";
 
 const withBundleAnalyzer = bundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
@@ -22,6 +23,7 @@ const withMDX = mdx({
       [remarkMdxTocWithSlugs, { name: "tableOfContents" }],
       remarkGfm,
       remarkSmartypants,
+      remarkFootnotes,
       remarkSectionize,
       remarkFrontmatter,
       remarkMdxFrontmatter,
