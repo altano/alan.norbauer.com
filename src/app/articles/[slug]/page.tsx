@@ -54,9 +54,9 @@ const ArticleTitle = styled("h1", {
     gridArea: "title",
     maxWidth: "100%",
     fontSize: "4rem",
+    marginBottom: "0", // handled by gridRowGap instead
     lg: {
       fontSize: "4rem",
-      marginBottom: "0", // handled by gridGap instead
     },
   },
 });
