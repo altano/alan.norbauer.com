@@ -9,6 +9,7 @@
     "**/.devbox": true
   },
   "search.exclude": {
+    "**/flaticon.html": true,
     "**/node_modules": true,
     "**/bower_components": true,
     "**/*.code-search": true,

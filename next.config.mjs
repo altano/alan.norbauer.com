@@ -37,8 +37,6 @@ const withMDX = mdx({
           behavior: "wrap",
           properties: {
             className: "auto-link-toc-anchor",
-            "aria-hidden": true,
-            "tab-index": -1,
           },
         },
       ],

@@ -15,7 +15,7 @@ const PageFooter = styled("footer", {
     background: "bg.footer",
     color: "text.footer",
     lg: {
-      marginBlockStart: "4rem",
+      marginBlockStart: "2rem",
       padding: "4rem",
     },
   },
@@ -25,6 +25,7 @@ const Layout = styled("main", {
   base: {
     display: "grid",
     "--article-min-gutter": "0.75rem",
+    gridRowGap: "2rem",
     gridTemplateColumns:
       "var(--article-min-gutter) minmax(calc(320px - 2*(var(--article-min-gutter))), 100%) var(--article-min-gutter) ",
     gridTemplateRows: "min-content min-content auto min-content",
@@ -42,8 +43,8 @@ const Layout = styled("main", {
       "--article-width":
         "min(var(--breakpoints-md), calc(100vw - var(--article-column-gap) - var(--article-sidebar-width) - var(--article-column-gap) - var(--article-column-gap)))",
       "--article-sidebar-width": "300px",
-      "--article-column-gap": "3rem",
-      gridGap: "2rem var(--article-column-gap)",
+      "--article-column-gap": "1rem",
+      gridColumnGap: "var(--article-column-gap)",
       gridTemplateColumns:
         "1.8fr var(--article-sidebar-width) var(--article-width) 2fr",
       gridTemplateRows: "min-content auto min-content",

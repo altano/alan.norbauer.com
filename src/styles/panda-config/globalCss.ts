@@ -37,7 +37,7 @@ export const globalCss = defineGlobalStyles({
     fontSize: "6rem",
     margin: "3rem 0 1.5rem 0",
     fontWeight: "800",
-    lineHeight: "1", // TODO Revisit
+    lineHeight: "none",
   },
   h2: {
     fontSize: "3rem",
@@ -46,7 +46,7 @@ export const globalCss = defineGlobalStyles({
     textDecoration: "underline",
     textUnderlineOffset: "0.3rem",
     textDecorationThickness: "4px",
-    lineHeight: "1.1", // TODO Revisit
+    lineHeight: "tight",
   },
   h3: {
     fontSize: "2rem",
@@ -60,12 +60,16 @@ export const globalCss = defineGlobalStyles({
   "h3, h4, h5, h6": {
     marginBlock: "2rem 1rem",
     fontWeight: "600",
-    lineHeight: "1.1", // TODO Revisit
+    lineHeight: "tight",
   },
 
   // Heading links
   ":is(h1, h2, h3, h4, h5, h6) > a": {
     textDecoration: "inherit",
+
+    _hover: {
+      textDecoration: "underline",
+    },
   },
 
   // Paragraphs
@@ -93,6 +97,7 @@ export const globalCss = defineGlobalStyles({
   "img[data-invertible]": {
     _dark: {
       filter: "invert(100%)",
+      transition: "filter var(--durations-color-scheme)",
     },
   },
 

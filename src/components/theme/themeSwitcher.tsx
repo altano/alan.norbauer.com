@@ -4,7 +4,7 @@ import { css } from "@styled-system/css";
 import { useTheme } from "next-themes";
 import { useMounted } from "nextra/hooks";
 import { MoonIcon, SunIcon } from "nextra/icons";
-import { Select } from "./select";
+import { Select } from "@/components/select";
 
 type ThemeSwitchProps = {
   lite?: boolean;

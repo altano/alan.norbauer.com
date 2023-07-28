@@ -19,11 +19,13 @@
   "scripts": {
     "prepare": "panda codegen",
     "dev": "next dev",
-    "build": "next build",
+    "build": "run-s lint build:site",
+    "build:site": "next build",
     "build:analyze": "cross-env ANALYZE=true next build",
     "start": "next start",
     "preview": "npx serve ./out",
     "lint:next": "next lint",
+    "lint:mdx": "mdx-local-link-checker src/content src/content",
     "lint": "run-s lint:*",
     "clean:next": "trash ./.next && trash ./out",
     "clean:panda": "panda codegen --clean",
@@ -76,7 +78,8 @@
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "cross-env": "^7.0.3",
     "eslint": "8.43.0",
-    "eslint-config-next": "13.4.6"
+    "eslint-config-next": "13.4.6",
+    "mdx-local-link-checker": "^2.1.1"
   },
   "peerDependencies": {
     "react": "18.x",

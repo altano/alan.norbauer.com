@@ -51,8 +51,8 @@ export default function OpenGraphCard({ title, subtitle }: OpenGraphCardProps) {
       {subtitle && (
         <footer
           style={{
-            background: "#eeeeee",
-            color: "#444444",
+            background: "#FCDED9",
+            color: "black",
             width: "100%",
             flexShrink: 0,
             fontSize: 60,

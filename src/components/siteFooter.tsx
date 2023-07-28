@@ -14,7 +14,7 @@ const Footer = styled("footer", {
     transition: "border-color var(--durations-color-cheme)",
     flexDirection: "row",
     flexWrap: "wrap",
-    fontSize: "16px",
+    fontSize: "1rem",
     gap: "1rem",
     "& > :first-child": {
       flexGrow: 1,
