@@ -7,7 +7,7 @@ import type { StaticImport } from "next/dist/shared/lib/get-img-props";
 import type { Url } from "next/dist/shared/lib/router/router";
 
 export const svgImgStyle = css({
-  lineHeight: "1rem",
+  lineHeight: "none",
   transitionProperty: "filter",
   transitionDuration: "var(--durations-color-scheme)",
 

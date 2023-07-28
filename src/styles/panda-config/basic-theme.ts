@@ -15,7 +15,7 @@ const theme: Theme = {
       seafoam: { value: "#00FFCC" },
       lavender: { value: "#e2d9fc" },
       light: { value: "white" },
-      dark: { value: "#1D1D1D" },
+      dark: { value: "#111111" },
       lightGray: { value: "#FAFAFA" },
       fuchsiaish: { value: "#ff006a" },
       rhodamine: { value: "#E10098" },
@@ -67,15 +67,15 @@ const theme: Theme = {
       text: {
         DEFAULT: {
           value: {
-            base: "black",
+            base: "{colors.dark}",
             _dark: "{colors.offWhite}",
           },
           description: "Main text color (e.g. body)",
         },
         button: {
           value: {
-            base: "black",
-            _dark: "black",
+            base: "{colors.dark}",
+            _dark: "{colors.dark}",
           },
         },
         card: {

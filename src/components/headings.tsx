@@ -4,7 +4,7 @@ export const Title = styled("h1", {
   base: {
     fontSize: "9rem",
     fontWeight: "800",
-    lineHeight: 1,
+    lineHeight: "none",
     flexGrow: "1",
     marginBlock: "3rem",
     smDown: {

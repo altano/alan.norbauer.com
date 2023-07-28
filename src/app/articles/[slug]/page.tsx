@@ -119,6 +119,7 @@ const Article = styled("article", {
 
     "& blockquote": {
       layerStyle: "card",
+      transition: "background var(--durations-color-scheme)",
       marginBlockEnd: 0,
       "&:not(:first-child)": {
         marginBlockStart: "5",
@@ -164,7 +165,7 @@ const Article = styled("article", {
   },
 });
 
-const MetdataSections = styled("div", {
+const MetadataSections = styled("div", {
   base: {
     marginBlockEnd: "4",
   },
@@ -184,8 +185,8 @@ const MetadataSection = styled("div", {
       alignItems: "flex-start",
       marginBlockStart: "8",
     },
-    fontSize: "16px",
-    lineHeight: "24px",
+    fontSize: "1rem",
+    lineHeight: "normal",
     display: "flex",
     "& span": {},
     "& img": {
@@ -241,8 +242,8 @@ const ArticleNavHeading = styled("h2", {
     },
     lg: {
       margin: 0,
-      fontSize: "16px",
-      lineHeight: "30px", // TODO
+      fontSize: "1rem",
+      lineHeight: "loose",
       fontWeight: "700",
       textTransform: "uppercase",
       mb: "1rem",
@@ -282,7 +283,7 @@ export default async function ArticlePage({ params }: ArticleProps) {
       <ArticleTitle>{title}</ArticleTitle>
       <ArticleHeader>
         <StickyWrapper>
-          <MetdataSections>
+          <MetadataSections>
             <MetadataSection>
               <Image
                 data-invertible
@@ -317,7 +318,7 @@ export default async function ArticlePage({ params }: ArticleProps) {
                 View this article's source code
               </Link>
             </MetadataSection>
-          </MetdataSections>
+          </MetadataSections>
           <ArticleNav>
             <ArticleNavHeading>Table of Contents</ArticleNavHeading>
             <TableOfContents entries={article.tableOfContents} />
