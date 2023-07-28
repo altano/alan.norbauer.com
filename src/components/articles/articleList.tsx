@@ -6,18 +6,13 @@ import {
 } from "@/content-utils/query/article";
 import Tags from "@/components/tags";
 import { css } from "@styled-system/css";
-import { styled } from "@styled-system/jsx";
 import { Card, Cards } from "@/components/cards";
+import { ListHeading } from "@/components/listHeading";
+import { Tagline } from "@/components/tagLine";
 
 const articleLinkStyle = css({
   display: "block",
   textDecoration: "none",
-});
-
-const ArticleTitle = styled("h3", {
-  base: {
-    mb: "2px",
-  },
 });
 
 async function ArticleCard({
@@ -35,10 +30,10 @@ async function ArticleCard({
   return (
     <Card>
       <Link href={article.url} className={articleLinkStyle}>
-        <ArticleTitle>{article.title}</ArticleTitle>
+        <ListHeading>{article.title}</ListHeading>
       </Link>
       <Tags tags={tags} kind="pill" />
-      <span className={css({ fontSize: "16px" })}>{article.description}</span>
+      <Tagline>{article.description}</Tagline>
     </Card>
   );
 }

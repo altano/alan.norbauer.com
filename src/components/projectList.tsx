@@ -8,6 +8,8 @@ import bookcisionLogo from "assets/images/projects/bookcision_logo.png";
 import handlebarsLogo from "assets/images/projects/handlebars_logo.png";
 import firefoxLogo from "assets/images/browser-logos/firefox.svg";
 import alanglowMetadata from "@/app/projects/alanglow/metadata.json";
+import { ListHeading } from "@/components/listHeading";
+import { Tagline } from "@/components/tagLine";
 
 const projectLinkStyle = css({
   display: "flex",
@@ -30,12 +32,6 @@ const ProjectIcon = styled("span", {
   },
 });
 
-const Tagline = styled("div", {
-  base: {
-    fontSize: "1rem",
-  },
-});
-
 function Project({
   href,
   title,
@@ -50,8 +46,13 @@ function Project({
   return (
     <Link href={href} className={projectLinkStyle}>
       <ProjectIcon>{image != null ? image : null}</ProjectIcon>
-      <styled.span flexGrow="1" flexBasis="min-content">
-        <h3>{title}</h3>
+      <styled.span
+        flexGrow="1"
+        flexBasis="min-content"
+        display="flex"
+        flexDir="column"
+      >
+        <ListHeading>{title}</ListHeading>
         <Tagline>{tagline}</Tagline>
       </styled.span>
     </Link>
