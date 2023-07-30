@@ -38,6 +38,13 @@ const theme: Theme = {
           },
           description: "Main Background",
         },
+        highlight: {
+          value: {
+            base: "#fff8dc",
+            _dark: "#FCEAA8",
+          },
+          description: "A highlighted section or text",
+        },
         card: {
           value: {
             base: "{colors.lightGray}",
@@ -71,6 +78,13 @@ const theme: Theme = {
             _dark: "{colors.offWhite}",
           },
           description: "Main text color (e.g. body)",
+        },
+        highlight: {
+          value: {
+            base: "{colors.dark}",
+            _dark: "{colors.dark}",
+          },
+          description: "A highlighted section or text",
         },
         button: {
           value: {
