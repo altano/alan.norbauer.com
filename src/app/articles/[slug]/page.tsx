@@ -71,11 +71,11 @@ const Article = styled("article", {
         },
       },
       _after: {
-        opacity: 0,
+        opacity: 0.1,
+        hideBelow: "sm", // I just can't find a balance on mobile between causing overflow (position:absolute) and ugly (opacity: 0.1, position: relative)
         transition: "opacity var(--durations-color-scheme)",
         content: `" #"`,
         display: "inline-block",
-        position: "absolute",
         color: "text.faded",
         marginLeft: "2", // TODO Customize by heading size
         textDecoration: "none",
