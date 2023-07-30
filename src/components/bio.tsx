@@ -64,9 +64,7 @@ const Bio = ({ width }: Props) => {
         <Sentence>
           Alan Norbauer lives in{" "}
           <a href="https://en.wikipedia.org/wiki/Weetzie_Bat">Los Angeles</a>{" "}
-          where he wrangles JavaScript for Netflix (opinions expressed are
-          solely his own and do not express the views or opinions of his
-          employer).{" "}
+          where he wrangles JavaScript for Netflix.{" "}
         </Sentence>
         <Sentence>
           He's extremely relieved to no longer be living in{" "}
@@ -91,6 +89,10 @@ const Bio = ({ width }: Props) => {
           or if you'd like to know way too much about his personal life you can
           watch <a href="https://youtu.be/vQYUwZFVbjg">this documentary</a> on
           Youtube.
+        </Sentence>
+        <Sentence>
+          Opinions expressed are solely his own and do not express the views or
+          opinions of his employer.
         </Sentence>
         <Sentence>
           You can subscribe to this site's <SubscribeLink text="RSS feed" /> or
