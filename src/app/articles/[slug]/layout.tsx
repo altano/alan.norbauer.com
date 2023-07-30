@@ -71,7 +71,7 @@ const Layout = styled("main", {
       // Grid
       gridColumnGap: "var(--article-column-gap)",
       gridTemplateColumns: `
-        1.8fr
+        1.9fr
         var(--article-sidebar-width)
         var(--article-width)
         2fr`,

@@ -82,11 +82,25 @@ const Article = styled("article", {
       },
     },
 
-    "& section.footnotes > ol": {
-      paddingLeft: "40px",
-      counterReset: "list-item 0",
-      listStyleType: "decimal",
-      listStylePosition: "outside",
+    "& section.footnotes": {
+      "& > ol": {
+        paddingLeft: "40px",
+        counterReset: "list-item 0",
+        listStyleType: "decimal",
+        listStylePosition: "outside",
+      },
+      "& :target": {
+        "&::marker": {
+          color: "text",
+        },
+        "& a": {
+          color: "inherit",
+        },
+        color: "text.highlight",
+        background: "bg.highlight",
+        transition:
+          "background var(--durations-slowest), color var(--durations-slowest)",
+      },
     },
 
     "& table": {
