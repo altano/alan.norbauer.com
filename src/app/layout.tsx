@@ -29,10 +29,10 @@ export const metadata: Metadata = {
 
 const bodyStyles = css({
   container: "body / normal",
+  minWidth: "320px",
+
   fontSize: "20px",
   fontFamily: "var(--font-inter)",
-  backgroundColor: "var(--background-color)",
-
   bg: "bg",
   color: "text",
 

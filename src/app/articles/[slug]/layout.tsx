@@ -7,7 +7,7 @@ const PageFooter = styled("footer", {
   base: {
     gridArea: "footer",
     fontSize: "16px",
-    marginBlockStart: "3rem",
+    marginBlockStart: "1rem",
     padding: "1rem",
     gap: "5",
     transitionDuration: "var(--durations-color-scheme)",
@@ -23,12 +23,28 @@ const PageFooter = styled("footer", {
 
 const Layout = styled("main", {
   base: {
+    // Variables
+    "--gutter": "12px",
+
+    // Misc
     display: "grid",
-    "--article-min-gutter": "0.75rem",
+    width: "100%",
+    minHeight: "100svh",
+
+    // Grid
+    gridColumnGap: 0,
     gridRowGap: "2rem",
-    gridTemplateColumns:
-      "var(--article-min-gutter) minmax(calc(320px - 2*(var(--article-min-gutter))), 100%) var(--article-min-gutter) ",
-    gridTemplateRows: "min-content min-content auto min-content",
+    gridTemplateColumns: `
+      var(--gutter)
+      minmax(0, 1fr)
+      var(--gutter)
+    `,
+    gridTemplateRows: `
+      min-content
+      min-content
+      auto
+      min-content
+    `,
     gridTemplateAreas: `
       "...... title   ......"
       "...... header  ......"
@@ -36,22 +52,38 @@ const Layout = styled("main", {
       "footer footer  footer"
     `,
 
-    marginInline: 0,
-    minHeight: "100vh",
-
+    mdDown: {
+      overflowWrap: "break-word",
+    },
     lg: {
-      "--article-width":
-        "min(var(--breakpoints-md), calc(100vw - var(--article-column-gap) - var(--article-sidebar-width) - var(--article-column-gap) - var(--article-column-gap)))",
+      // Variables
+      "--article-width": `
+        min(
+          var(--breakpoints-md),
+          calc(100vw - var(--article-sidebar-width) - (3 * var(--article-column-gap)))
+        )`,
       "--article-sidebar-width": "300px",
       "--article-column-gap": "1rem",
+
+      // Misc
+      marginInline: "0",
+
+      // Grid
       gridColumnGap: "var(--article-column-gap)",
-      gridTemplateColumns:
-        "1.8fr var(--article-sidebar-width) var(--article-width) 2fr",
-      gridTemplateRows: "min-content auto min-content",
+      gridTemplateColumns: `
+        1.8fr
+        var(--article-sidebar-width)
+        var(--article-width)
+        2fr`,
+      gridTemplateRows: `
+        min-content
+        auto
+        min-content
+      `,
       gridTemplateAreas: `
-      "...... ...... title   ......"
-      "...... header article ......"
-      "footer footer footer  footer"
+        "...... ...... title   ......"
+        "...... header article ......"
+        "footer footer footer  footer"
       `,
     },
     xl: {
