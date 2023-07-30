@@ -88,7 +88,7 @@ const Layout = styled("main", {
     },
     xl: {
       "--article-sidebar-width": "350px",
-      "--article-column-gap": "4rem",
+      "--article-column-gap": "3rem",
     },
   },
 });
