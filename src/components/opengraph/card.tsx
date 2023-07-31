@@ -6,8 +6,10 @@ export type OpenGraphCardProps = {
 function getTitleFontSize(length: number): number {
   if (length < 15) {
     return 210;
+  } else if (length < 20) {
+    return 178;
   } else if (length < 25) {
-    return 200;
+    return 148;
   } else if (length < 50) {
     return 142;
   } else if (length < 75) {
