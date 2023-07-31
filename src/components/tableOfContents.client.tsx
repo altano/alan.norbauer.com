@@ -53,9 +53,11 @@ const ListItem = styled("li", {
 
 const TableOfContentsItem = ({
   item,
+  maxDepth,
   depth,
 }: {
   item: TableOfContentsEntry;
+  maxDepth: number;
   depth: number;
 }) => {
   const url = `#${item.slug}`;
@@ -65,7 +67,11 @@ const TableOfContentsItem = ({
     <ListItem aria-level={depth} aria-current={isVisible} key={item.value}>
       <a href={url}>{item.value}</a>
       {item.children && (
-        <TableOfContents entries={item.children} depth={depth + 1} />
+        <TableOfContents
+          entries={item.children}
+          maxDepth={maxDepth}
+          depth={depth + 1}
+        />
       )}
     </ListItem>
   );
@@ -73,20 +79,35 @@ const TableOfContentsItem = ({
 
 type Props = {
   entries: TableOfContentsEntry[];
+  /**
+   * maximum depth of list items to use. 1 means only top-level, 2 means
+   * 2-levels deep, etc.
+   */
+  maxDepth?: number;
   depth?: number;
 };
 
-const TableOfContents = ({ entries: items, depth = 0 }: Props) =>
-  items == null ? null : (
+export default function TableOfContents({
+  entries: items,
+  maxDepth = 99,
+  depth = 1,
+}: Props) {
+  if (items == null) {
+    return null;
+  } else if (depth > maxDepth) {
+    return null;
+  }
+
+  return (
     <List>
       {items.map((item) => (
         <TableOfContentsItem
           key={item.value}
+          maxDepth={maxDepth}
           depth={depth}
           item={item}
         ></TableOfContentsItem>
       ))}
     </List>
   );
-
-export default TableOfContents;
+}
