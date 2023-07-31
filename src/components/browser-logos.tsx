@@ -10,11 +10,13 @@ type BrowserLogoProps = ImageMinus<"alt" | "src" | "width" | "height">;
 
 const logoStyles = css({
   display: "inline",
+  marginRight: "2",
 });
 
 export function Chrome(props: BrowserLogoProps) {
   return (
     <Image
+      data-no-style
       src={chromeIcon}
       className={logoStyles}
       width={40}
@@ -28,6 +30,7 @@ export function Chrome(props: BrowserLogoProps) {
 export function Firefox(props: BrowserLogoProps) {
   return (
     <Image
+      data-no-style
       src={firefoxIcon}
       className={logoStyles}
       width={40}
@@ -41,6 +44,7 @@ export function Firefox(props: BrowserLogoProps) {
 export function Edge(props: BrowserLogoProps) {
   return (
     <Image
+      data-no-style
       src={edgeIcon}
       className={logoStyles}
       width={40}
