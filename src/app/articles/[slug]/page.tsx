@@ -337,7 +337,7 @@ export default async function ArticlePage({ params }: ArticleProps) {
           </MetadataSections>
           <ArticleNav>
             <ArticleNavHeading>Table of Contents</ArticleNavHeading>
-            <TableOfContents entries={article.tableOfContents} />
+            <TableOfContents entries={article.tableOfContents} maxDepth={3} />
           </ArticleNav>
         </StickyWrapper>
       </ArticleHeader>

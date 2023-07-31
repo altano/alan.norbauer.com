@@ -1,3 +1,10 @@
+relay article:
+change "focus" tab to toggle. add toggle to other code examples
+x 2023-07-31 make toc only go 2-levels deep
+consider making TOC scroll spy less nerdy 
+
+x 2023-07-31 fix browser icons in browser debugging article
+
 zrepl on nixos +articles
 zrepl to zfs.rent +articles
 truenas sucks +articles
