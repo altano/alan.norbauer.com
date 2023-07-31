@@ -3,6 +3,8 @@ import { Code } from "bright";
 import firefoxLightCustomized from "./src/styles/code-themes/firefox-light-customized.json";
 import Image from "next/image";
 import { focus } from "@/utility/bright-extensions/focus";
+import { tabs } from "@/utility/bright-extensions/tabs";
+import { title } from "@/utility/bright-extensions/title";
 import { Answer, QuestionBody, QuestionHeading } from "@/components/markdown";
 
 import type { MDXComponents } from "mdx/types";
@@ -14,7 +16,7 @@ Code.theme = {
   darkSelector: `:root.dark`,
 };
 
-Code.extensions = (Code.extensions ?? []).concat(focus);
+Code.extensions = (Code.extensions ?? []).concat([tabs, title, focus]);
 
 function getLanguage(codeProps: any) {
   // Mostly copied-and-pasted out of bright (https://github.com/code-hike/bright) itself
@@ -46,6 +48,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
+    // @ts-expect-error
+    Code: Code,
     // @ts-expect-error
     img: Image,
     // @ts-expect-error
