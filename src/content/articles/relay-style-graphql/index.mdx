@@ -55,6 +55,8 @@ Two **critical** principles associated with good use of collocation of fragments
 
 #### An example Relay component
 
+<Code>
+
 ```issueSummary.tsx
 function IssueSummary(props: {
   issue: IssueSummaryFragment$key;
@@ -77,6 +79,34 @@ function IssueSummary(props: {
   );
 }
 ```
+
+```tsx
+// title (Focus Fragment)
+function IssueSummary(props: {
+  // focus(1:1)
+  issue: IssueSummaryFragment$key;
+}) {
+  // focus(1:9)
+  const issue = useFragment(
+    graphql`
+      fragment IssueSummaryFragment on Issue {
+        title
+        body
+      }
+    `,
+    props.issue
+  );
+
+  return (
+    <li>
+      <h1>{issue.title}</h1>
+      <div>{issue.body}</div>
+    </li>
+  );
+}
+```
+
+</Code>
 
 The parent component would then spread that fragment in its fragment and render the child component:
 
