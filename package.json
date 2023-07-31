@@ -22,7 +22,7 @@
     "build": "run-s lint build:site",
     "build:site": "next build",
     "build:analyze": "cross-env ANALYZE=true next build",
-    "start": "next start",
+    "start": "next dev",
     "preview": "npx serve ./out",
     "lint:next": "next lint",
     "lint:mdx": "mdx-local-link-checker src/content src/content",
