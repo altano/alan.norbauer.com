@@ -1,7 +1,18 @@
-import { getArticleBySlug } from "@/content-utils/query/article";
+import { getArticleBySlug, getArticles } from "@/content-utils/query/article";
 import OpenGraphImage from "@/components/opengraph/image";
 
 import type { ArticleProps } from "./page";
+
+export const runtime = "nodejs";
+export const contentType = "image/png";
+export const dynamic = "error";
+
+export async function generateStaticParams(): Promise<
+  ArticleProps["params"][]
+> {
+  const articles = await getArticles();
+  return articles.map((a) => ({ slug: a.slug }));
+}
 
 export default async function og({ params }: ArticleProps) {
   const article = await getArticleBySlug(params.slug);

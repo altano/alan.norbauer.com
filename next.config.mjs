@@ -51,12 +51,12 @@ const withMDX = mdx({
 const nextConfig = {
   // TODO Re-enable when dynamic open graph images are fixed: https://github.com/vercel/next.js/issues/51147
   // output: "export",
-
-  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // images: {
   //   // TODO Can we optimize images with export somehow? Check out next-optimized-images npm package
   //   unoptimized: true,
   // },
+
+  pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   experimental: {
     appDir: true,
     // mdxRs: false, // Currently incompatible with remark plugins
