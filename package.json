@@ -38,7 +38,6 @@
     "@ark-ui/react": "^0.9.0",
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.12",
-    "@pandacss/types": "^0.6.0",
     "bright": "^0.8.4",
     "esbuild": "^0.17.19",
     "globby": "^13.2.2",
@@ -48,7 +47,6 @@
     "npm-run-all": "^4.1.5",
     "nullthrows": "^1.1.1",
     "postcss": "^8.4.27",
-    "react-toggle-dark-mode": "^1.1.1",
     "rehype": "^12.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-mdx-code-props": "^1.0.0",
@@ -70,6 +68,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^13.4.12",
     "@pandacss/dev": "^0.6.0",
+    "@pandacss/types": "^0.6.0",
     "@types/mdx": "^2.0.5",
     "@types/node": "20.3.1",
     "@types/react": "18.2.12",

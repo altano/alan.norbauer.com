@@ -32,6 +32,7 @@ export function Select({
   return (
     <ArkSelect onChange={onChange}>
       <SelectTrigger
+        aria-label="Select light/dark theme"
         className={cx(
           css({
             height: 7,
