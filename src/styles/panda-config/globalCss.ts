@@ -43,9 +43,6 @@ export const globalCss = defineGlobalStyles({
     fontSize: "3rem",
     margin: "3rem 0 1.5rem 0",
     fontWeight: "700",
-    textDecoration: "underline",
-    textUnderlineOffset: "0.3rem",
-    textDecorationThickness: "4px",
     lineHeight: "tight",
   },
   h3: {
