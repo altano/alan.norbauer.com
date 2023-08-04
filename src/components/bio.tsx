@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "@styled-system/jsx";
-import { SubscribeLink } from "./social/subscribeLink";
+import { FeedLink } from "./social/feedLink";
 import { ThreadsLink } from "./social/threadsLink";
 import { EmailLink } from "./social/emailLink";
 
@@ -95,7 +95,7 @@ const Bio = ({ width }: Props) => {
           opinions of his employer.
         </Sentence>
         <Sentence>
-          You can subscribe to this site's <SubscribeLink text="RSS feed" /> or
+          You can subscribe to this site's <FeedLink text="RSS feed" /> or
           follow Alan on <ThreadsLink text="Threads" /> or reach him by{" "}
           <EmailLink text="email" />.
         </Sentence>

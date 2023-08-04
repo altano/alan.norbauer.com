@@ -1,11 +1,12 @@
 import { Attribution } from "./attribution";
-import { SubscribeLink } from "./social/subscribeLink";
+import { FeedLink } from "./social/feedLink";
 import { styled } from "@styled-system/jsx";
 import HomeLink from "./homeLink";
 import { StyledRecipeVariantProps } from "@/utility/StyledRecipeVariantProps";
 import { ThreadsLink } from "./social/threadsLink";
 import { EmailLink } from "./social/emailLink";
 import { GithubLink } from "./social/githubLink";
+import { MastodonLink } from "./social/mastodonLink";
 
 const Footer = styled("footer", {
   base: {
@@ -58,7 +59,8 @@ export default function SiteFooter({
           <ThreadsLink />
           <GithubLink />
           <EmailLink />
-          <SubscribeLink />
+          <MastodonLink />
+          <FeedLink />
         </styled.span>
       </styled.span>
     </Footer>

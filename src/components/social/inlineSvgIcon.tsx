@@ -21,31 +21,47 @@ export const linkStyle = css({
   alignItems: "center",
 });
 
+type ChildOrSrc =
+  | {
+      src: StaticImport;
+      alt: string;
+      href: Url;
+      rel?: string;
+      text?: string;
+      height?: number;
+      width?: number;
+    }
+  | {
+      href: Url;
+      rel?: string;
+      text?: string;
+      height?: number;
+      width?: number;
+      children?: React.ReactNode;
+    };
+
 export function InlineSvgIcon({
-  src,
-  alt,
   text,
   href,
   height,
   width,
-}: {
-  src: StaticImport;
-  alt: string;
-  href: Url;
-  text?: string;
-  height?: number;
-  width?: number;
-}) {
+  rel,
+  ...otherProps
+}: ChildOrSrc) {
   return (
-    <Link className={linkStyle} href={href}>
+    <Link className={linkStyle} href={href} rel={rel}>
       {text ? <styled.span mr="5px">{text}</styled.span> : null}
-      <Image
-        width={height ?? 18}
-        height={width ?? 18}
-        className={svgImgStyle}
-        src={src}
-        alt={alt}
-      />
+      {"children" in otherProps ? (
+        otherProps.children
+      ) : "src" in otherProps ? (
+        <Image
+          width={height ?? 18}
+          height={width ?? 18}
+          className={svgImgStyle}
+          src={otherProps.src}
+          alt={otherProps.alt}
+        />
+      ) : null}
     </Link>
   );
 }
