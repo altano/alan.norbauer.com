@@ -12,10 +12,7 @@ export const size = {
 
 export default async function Image({ params }: ArticleProps) {
   const interBold = fetch(
-    new URL(
-      "../../../../assets/fonts/Inter/static/Inter-Bold.ttf",
-      import.meta.url
-    )
+    new URL("../../../../assets/fonts/Inter/Inter-Bold.woff", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const article = await getArticleBySlug(params.slug);
