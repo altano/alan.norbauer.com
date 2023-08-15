@@ -2,18 +2,24 @@
 
 import { css } from "@styled-system/css";
 import { useTheme } from "next-themes";
-import { useMounted } from "nextra/hooks";
 import { MoonIcon, SunIcon } from "nextra/icons";
 import { Select } from "@/components/select";
+import { useEffect, useState } from "react";
 
 type ThemeSwitchProps = {
   lite?: boolean;
   className?: string;
 };
 
+function useIsMounted() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  return mounted;
+}
+
 export function ThemeSwitch({ className }: ThemeSwitchProps) {
   const { setTheme, resolvedTheme, theme = "" } = useTheme();
-  const mounted = useMounted();
+  const mounted = useIsMounted();
 
   // TODO Reconsider
   if (!mounted) {

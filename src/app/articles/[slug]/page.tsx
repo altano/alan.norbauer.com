@@ -1,5 +1,6 @@
 import React from "react";
-import { getArticleBySlug, getArticles } from "@/content-utils/query/article";
+import { getArticles } from "@/content-utils/query/articles";
+import { getArticleBySlug } from "@/content-utils/query/article";
 import { styled } from "@styled-system/jsx";
 import notNullish from "@/utility/notNullish";
 import TableOfContents from "@/components/tableOfContents.client";

@@ -1,4 +1,4 @@
-import { getArticles, getArticlesByTag } from "@/content-utils/query/article";
+import { getArticles, getArticlesByTag } from "@/content-utils/query/articles";
 import { Tag } from "@/components/tag";
 import { styled } from "@styled-system/jsx";
 import { ArticleList } from "@/components/articles/articleList";

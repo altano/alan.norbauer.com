@@ -1,6 +1,6 @@
 import pkg from "@root/package.json";
 import Rss from "rss";
-import { getArticles } from "@/content-utils/query/article";
+import { getArticles } from "@/content-utils/query/articles";
 import { feedUrl } from "./url";
 
 export async function GET() {

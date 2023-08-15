@@ -21,7 +21,8 @@ function getTitleFontSize(length: number): number {
   }
 }
 
-export default function OpenGraphCard({ title, subtitle }: OpenGraphCardProps) {
+export default function OpenGraphCard(props: OpenGraphCardProps) {
+  const { title, subtitle } = props;
   return (
     <main
       style={{
@@ -35,6 +36,7 @@ export default function OpenGraphCard({ title, subtitle }: OpenGraphCardProps) {
         justifyContent: "flex-start",
         margin: 0,
         boxSizing: "border-box",
+        fontWeight: "600",
       }}
     >
       <h1
@@ -46,6 +48,7 @@ export default function OpenGraphCard({ title, subtitle }: OpenGraphCardProps) {
           padding: "2rem",
           boxSizing: "border-box",
           margin: 0,
+          fontWeight: "700",
         }}
       >
         {title}
