@@ -1,4 +1,4 @@
-import { getArticles } from "@/content-utils/query/article";
+import { getArticles } from "@/content-utils/query/articles";
 import pkg from "@root/package.json";
 
 type SITEMAPPP = Array<{

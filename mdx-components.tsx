@@ -3,7 +3,7 @@ import { Code } from "bright";
 import firefoxLightCustomized from "./src/styles/code-themes/firefox-light-customized.json";
 import Image from "next/image";
 import { focus } from "@/utility/bright-extensions/focus";
-import { tabs } from "@/utility/bright-extensions/tabs";
+// import { tabs } from "@/utility/bright-extensions/tabs";
 import { title } from "@/utility/bright-extensions/title";
 import { Answer, QuestionBody, QuestionHeading } from "@/components/markdown";
 
@@ -16,7 +16,11 @@ Code.theme = {
   darkSelector: `:root.dark`,
 };
 
-Code.extensions = (Code.extensions ?? []).concat([tabs, title, focus]);
+Code.extensions = (Code.extensions ?? []).concat([
+  // tabs,
+  title,
+  focus,
+]);
 
 function getLanguage(codeProps: any) {
   // Mostly copied-and-pasted out of bright (https://github.com/code-hike/bright) itself

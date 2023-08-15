@@ -1,14 +1,12 @@
 import Link from "next/link";
-import {
-  Article,
-  getArticles,
-  getArticlesByTag,
-} from "@/content-utils/query/article";
+import { getArticles, getArticlesByTag } from "@/content-utils/query/articles";
 import Tags from "@/components/tags";
 import { css } from "@styled-system/css";
 import { Card, Cards } from "@/components/cards";
 import { ListHeading } from "@/components/listHeading";
 import { Tagline } from "@/components/tagLine";
+
+import type { Article } from "@/content-utils/query/article";
 
 const articleLinkStyle = css({
   display: "block",

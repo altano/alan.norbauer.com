@@ -1,5 +1,5 @@
 import React from "react";
-import { getArticles } from "@/content-utils/query/article";
+import { getArticles } from "@/content-utils/query/articles";
 import Link from "next/link";
 import { css } from "@styled-system/css";
 import { styled } from "@styled-system/jsx";
