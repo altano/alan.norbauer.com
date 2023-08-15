@@ -11,11 +11,10 @@ export const size = {
 
 export const contentType = "image/png";
 
-const fontData = fs.promises.readFile(
-  getAbsolutePathFromProjectRoot("./assets/fonts/Inter/static/Inter-Bold.ttf")
-);
-
 export default async function OpenGraphImage(props: OpenGraphCardProps) {
+  const fontData = fs.promises.readFile(
+    getAbsolutePathFromProjectRoot("./assets/fonts/Inter/static/Inter-Bold.ttf")
+  );
   return new ImageResponse(<OpenGraphCard {...props} />, {
     ...size,
     fonts: [
