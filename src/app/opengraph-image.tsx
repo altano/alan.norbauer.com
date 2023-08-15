@@ -19,7 +19,7 @@ export default async function Image() {
   //   )
   // ).then((res) => res.arrayBuffer());
   const interBold = fetch(
-    new URL("../../assets/fonts/Inter/static/Inter-Bold.ttf", import.meta.url)
+    new URL("../../assets/fonts/Inter/Inter-Bold.woff", import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   return OpenGraphImage({
