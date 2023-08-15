@@ -11,12 +11,6 @@ export const size = {
 };
 
 export default async function Image({ params }: ArticleProps) {
-  const interRegular = fetch(
-    new URL(
-      "../../../../assets/fonts/Inter/static/Inter-Regular.ttf",
-      import.meta.url
-    )
-  ).then((res) => res.arrayBuffer());
   const interSemiBold = fetch(
     new URL(
       "../../../../assets/fonts/Inter/static/Inter-SemiBold.ttf",
@@ -41,12 +35,6 @@ export default async function Image({ params }: ArticleProps) {
     imageOptions: {
       ...size,
       fonts: [
-        {
-          name: "Inter",
-          data: await interRegular,
-          style: "normal",
-          weight: 400,
-        },
         {
           name: "Inter",
           data: await interSemiBold,
