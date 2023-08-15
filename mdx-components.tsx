@@ -48,11 +48,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         />
       );
     },
-    // @ts-expect-error
     Code: Code,
     // @ts-expect-error
     img: Image,
-    // @ts-expect-error
     Image,
     Chrome,
     Firefox,
