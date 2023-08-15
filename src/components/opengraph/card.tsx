@@ -64,7 +64,7 @@ export default function OpenGraphCard(props: OpenGraphCardProps) {
             padding: "2rem",
             boxSizing: "border-box",
             margin: 0,
-            fontWeight: "600",
+            fontWeight: "500",
           }}
         >
           {subtitle}
