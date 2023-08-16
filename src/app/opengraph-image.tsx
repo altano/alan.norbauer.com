@@ -1,11 +1,8 @@
 import { host } from "@/components/homeLink";
 import OpenGraphImage from "@/components/opengraph/image";
 import pkg from "@root/package.json";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { readFile } from "node:fs/promises";
 
-export const runtime = "nodejs";
+export const runtime = "edge";
 export const contentType = "image/png";
 export const size = {
   width: 1200,
@@ -13,20 +10,15 @@ export const size = {
 };
 
 export default async function Image() {
-  // TODO When Satori supports it, switch to Inter Variable
-  //
-  // const interVariable = fetch(
-  //   new URL(
-  //     "../../public/fonts/Inter/Inter-VariableFont_slnt,wght.ttf",
-  //     import.meta.url
-  //   )
-  // ).then((res) => res.arrayBuffer());
-  const interBold = await readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      "../../../public/fonts/Inter/static/Inter-Bold.ttf"
-    )
-  );
+  const interRegular = fetch(
+    new URL("../../og/Inter-Regular.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
+  const interSemiBold = fetch(
+    new URL("../../og/Inter-SemiBold.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
+  const interBold = fetch(
+    new URL("../../og/Inter-Bold.ttf", import.meta.url)
+  ).then((res) => res.arrayBuffer());
 
   return OpenGraphImage({
     cardProps: {
@@ -38,8 +30,21 @@ export default async function Image() {
       fonts: [
         {
           name: "Inter",
-          data: interBold,
+          data: await interRegular,
           style: "normal",
+          weight: 400,
+        },
+        {
+          name: "Inter",
+          data: await interSemiBold,
+          style: "normal",
+          weight: 600,
+        },
+        {
+          name: "Inter",
+          data: await interBold,
+          style: "normal",
+          weight: 700,
         },
       ],
     },
