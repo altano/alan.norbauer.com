@@ -1,9 +1,12 @@
 import { getArticleBySlug } from "@/content-utils/query/article";
 import OpenGraphImage from "@/components/opengraph/image";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { readFile } from "node:fs/promises";
 
 import type { ArticleProps } from "./page";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = {
   width: 1200,
@@ -11,10 +14,12 @@ export const size = {
 };
 
 export default async function Image({ params }: ArticleProps) {
-  const interBold = fetch(
-    new URL("../../../../assets/fonts/Inter/Inter-Bold.woff", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-
+  const interBold = await readFile(
+    path.join(
+      fileURLToPath(import.meta.url),
+      "../../../../../public/fonts/Inter/static/Inter-Bold.ttf"
+    )
+  );
   const article = await getArticleBySlug(params.slug);
   const authors = article.authors.map((a) => a.name).join(" and");
 
@@ -28,7 +33,7 @@ export default async function Image({ params }: ArticleProps) {
       fonts: [
         {
           name: "Inter",
-          data: await interBold,
+          data: interBold,
           style: "normal",
         },
       ],
