@@ -1,9 +1,12 @@
 import { getArticleBySlug } from "@/content-utils/query/article";
 import OpenGraphImage from "@/components/opengraph/image";
+import { readFile } from "fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import type { ArticleProps } from "./page";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = {
   width: 1200,
@@ -11,15 +14,24 @@ export const size = {
 };
 
 export default async function Image({ params }: ArticleProps) {
-  const interRegular = fetch(
-    new URL("../../../../og/Inter-Regular.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-  const interSemiBold = fetch(
-    new URL("../../../../og/Inter-SemiBold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-  const interBold = fetch(
-    new URL("../../../../og/Inter-Bold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  const interRegular = readFile(
+    path.join(
+      fileURLToPath(import.meta.url),
+      "../../../../../og/Inter-Regular.ttf"
+    )
+  );
+  const interSemiBold = readFile(
+    path.join(
+      fileURLToPath(import.meta.url),
+      "../../../../../og/Inter-SemiBold.ttf"
+    )
+  );
+  const interBold = readFile(
+    path.join(
+      fileURLToPath(import.meta.url),
+      "../../../../../og/Inter-Bold.ttf"
+    )
+  );
 
   const article = await getArticleBySlug(params.slug);
   const authors = article.authors.map((a) => a.name).join(" and");
