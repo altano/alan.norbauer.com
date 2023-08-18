@@ -1,8 +1,11 @@
 import { host } from "@/components/homeLink";
 import OpenGraphImage from "@/components/opengraph/image";
 import pkg from "@root/package.json";
+import { readFile } from "fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 export const contentType = "image/png";
 export const size = {
   width: 1200,
@@ -10,15 +13,15 @@ export const size = {
 };
 
 export default async function Image() {
-  const interRegular = fetch(
-    new URL("../../og/Inter-Regular.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-  const interSemiBold = fetch(
-    new URL("../../og/Inter-SemiBold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-  const interBold = fetch(
-    new URL("../../og/Inter-Bold.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
+  const interRegular = readFile(
+    path.join(fileURLToPath(import.meta.url), "../../../og/Inter-Regular.ttf")
+  );
+  const interSemiBold = readFile(
+    path.join(fileURLToPath(import.meta.url), "../../../og/Inter-SemiBold.ttf")
+  );
+  const interBold = readFile(
+    path.join(fileURLToPath(import.meta.url), "../../../og/Inter-Bold.ttf")
+  );
 
   return OpenGraphImage({
     cardProps: {
