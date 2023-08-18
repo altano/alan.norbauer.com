@@ -14,13 +14,22 @@ export const size = {
 
 export default async function Image() {
   const interRegular = readFile(
-    path.join(fileURLToPath(import.meta.url), "../../../og/Inter-Regular.ttf")
+    path.join(
+      fileURLToPath(import.meta.url),
+      "../../../assets/fonts/Inter/static/Inter-Regular.ttf"
+    )
   );
   const interSemiBold = readFile(
-    path.join(fileURLToPath(import.meta.url), "../../../og/Inter-SemiBold.ttf")
+    path.join(
+      fileURLToPath(import.meta.url),
+      "../../../assets/fonts/Inter/static/Inter-SemiBold.ttf"
+    )
   );
   const interBold = readFile(
-    path.join(fileURLToPath(import.meta.url), "../../../og/Inter-Bold.ttf")
+    path.join(
+      fileURLToPath(import.meta.url),
+      "../../../assets/fonts/Inter/static/Inter-Bold.ttf"
+    )
   );
 
   return OpenGraphImage({

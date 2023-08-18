@@ -17,19 +17,19 @@ export default async function Image({ params }: ArticleProps) {
   const interRegular = readFile(
     path.join(
       fileURLToPath(import.meta.url),
-      "../../../../../og/Inter-Regular.ttf"
+      "../../../../../assets/fonts/Inter/static/Inter-Regular.ttf"
     )
   );
   const interSemiBold = readFile(
     path.join(
       fileURLToPath(import.meta.url),
-      "../../../../../og/Inter-SemiBold.ttf"
+      "../../../../../assets/fonts/Inter/static/Inter-SemiBold.ttf"
     )
   );
   const interBold = readFile(
     path.join(
       fileURLToPath(import.meta.url),
-      "../../../../../og/Inter-Bold.ttf"
+      "../../../../../assets/fonts/Inter/static/Inter-Bold.ttf"
     )
   );
 
