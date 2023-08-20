@@ -1,9 +1,7 @@
 import { host } from "@/components/homeLink";
 import OpenGraphImage from "@/components/opengraph/image";
+import getFonts from "@/utility/getFonts";
 import pkg from "@root/package.json";
-import { readFile } from "fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 export const runtime = "nodejs";
 export const contentType = "image/png";
@@ -13,25 +11,6 @@ export const size = {
 };
 
 export default async function Image() {
-  const interRegular = readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      "../../../assets/fonts/Inter/static/Inter-Regular.ttf"
-    )
-  );
-  const interSemiBold = readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      "../../../assets/fonts/Inter/static/Inter-SemiBold.ttf"
-    )
-  );
-  const interBold = readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      "../../../assets/fonts/Inter/static/Inter-Bold.ttf"
-    )
-  );
-
   return OpenGraphImage({
     cardProps: {
       title: pkg.description,
@@ -39,26 +18,7 @@ export default async function Image() {
     },
     imageOptions: {
       ...size,
-      fonts: [
-        {
-          name: "Inter",
-          data: await interRegular,
-          style: "normal",
-          weight: 400,
-        },
-        {
-          name: "Inter",
-          data: await interSemiBold,
-          style: "normal",
-          weight: 600,
-        },
-        {
-          name: "Inter",
-          data: await interBold,
-          style: "normal",
-          weight: 700,
-        },
-      ],
+      fonts: await getFonts(),
     },
   });
 }

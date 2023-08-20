@@ -80,7 +80,8 @@
     "cross-env": "^7.0.3",
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.6",
-    "mdx-local-link-checker": "^2.1.1"
+    "mdx-local-link-checker": "^2.1.1",
+    "satori": "^0.10.3"
   },
   "peerDependencies": {
     "react": "18.x",

@@ -1,10 +1,8 @@
 import { getArticleBySlug } from "@/content-utils/query/article";
 import OpenGraphImage from "@/components/opengraph/image";
-import { readFile } from "fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 import type { ArticleProps } from "./page";
+import getFonts from "@/utility/getFonts";
 
 export const runtime = "nodejs";
 export const contentType = "image/png";
@@ -14,25 +12,6 @@ export const size = {
 };
 
 export default async function Image({ params }: ArticleProps) {
-  const interRegular = readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      "../../../../../assets/fonts/Inter/static/Inter-Regular.ttf"
-    )
-  );
-  const interSemiBold = readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      "../../../../../assets/fonts/Inter/static/Inter-SemiBold.ttf"
-    )
-  );
-  const interBold = readFile(
-    path.join(
-      fileURLToPath(import.meta.url),
-      "../../../../../assets/fonts/Inter/static/Inter-Bold.ttf"
-    )
-  );
-
   const article = await getArticleBySlug(params.slug);
   const authors = article.authors.map((a) => a.name).join(" and");
 
@@ -43,26 +22,7 @@ export default async function Image({ params }: ArticleProps) {
     },
     imageOptions: {
       ...size,
-      fonts: [
-        {
-          name: "Inter",
-          data: await interRegular,
-          style: "normal",
-          weight: 400,
-        },
-        {
-          name: "Inter",
-          data: await interSemiBold,
-          style: "normal",
-          weight: 600,
-        },
-        {
-          name: "Inter",
-          data: await interBold,
-          style: "normal",
-          weight: 700,
-        },
-      ],
+      fonts: await getFonts(),
     },
   });
 }
