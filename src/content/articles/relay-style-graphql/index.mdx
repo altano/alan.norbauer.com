@@ -1,6 +1,7 @@
 ---
 title: "Relay-style GraphQL"
 date_created: "2023-07-31T10:52:57.159Z"
+date_updated: "2023-08-20T21:41:06.039Z"
 description: "GraphQL best practices for 2023"
 tags: ["graphql", "relay", "react", "javascript"]
 draft: false
@@ -609,7 +610,7 @@ Hopefully by this point I've made the case that Relay-style GraphQL is a fundame
   facilitates this).
 </Answer>
 
-[^guildwork]: The Guild is [working on](https://the-guild.dev/blog/unleash-the-power-of-fragments-with-graphql-codegen) bringing bringing these ideas to other libraries.
+[^guildwork]: The Guild is [working on](https://the-guild.dev/blog/unleash-the-power-of-fragments-with-graphql-codegen) bringing these ideas to other libraries.
 [^over-fetching-static-analysis]: _Static_ analysis has a hard time with this because GraphQL has abstract types for many fields, and those references could theoretically be tracked across your codebase, but the leaf fields are always primitive types (like `string` and `number`) and tracking references to primitive values across an entire codebase, across all code boundaries, is not a problem anyone has solved (to my knowledge). That said, _runtime_ analysis using JS `Proxy` can be used to detect what fields go unused with some level of accuracy. [Reddit Engineering wrote about it here](https://www.reddit.com/r/RedditEng/comments/x0rasj/identifying_unused_fields_in_graphql/). Runtime analysis is better than nothing, but strictly worse than just getting it exactly right at compile time.
 [^relay-store]: Relay's cache is [a normalized, in-memory object graph](https://relay.dev/docs/principles-and-architecture/runtime-architecture/#data-model).
 [^data-in-props]: Too many of my Relay nerd friends cringed at this line because it's not true. You actually receive the key to the data in the props, which can be used to lookup the data in the Relay store.
