@@ -10,7 +10,7 @@ import Image from "next/image";
 import calendarIcon from "assets/images/icons/calendar.svg";
 import markdownIcon from "assets/images/icons/markdown.svg";
 import tagIcon from "assets/images/icons/tag.svg";
-import Tags from "@/components/tags";
+import { Tags } from "@/components/tags";
 import Link from "next/link";
 
 import type { Metadata, ResolvingMetadata } from "next";

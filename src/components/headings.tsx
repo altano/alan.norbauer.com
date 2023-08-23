@@ -20,7 +20,8 @@ export const SectionHeading = styled("h2", {
   base: {
     fontSize: "4rem",
     fontWeight: "600",
-    mb: 10,
+    marginBlockStart: 16,
+    marginBlockEnd: 8,
     smDown: {
       fontSize: "clamp(1.5rem, 12vw, 3rem)",
     },
