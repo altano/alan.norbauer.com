@@ -94,7 +94,13 @@ const theme: Theme = {
         },
         card: {
           value: {
-            base: "black",
+            base: "{colors.dark}",
+            _dark: "{colors.offWhite}",
+          },
+        },
+        tag: {
+          value: {
+            base: "{colors.dark}",
             _dark: "{colors.offWhite}",
           },
         },
