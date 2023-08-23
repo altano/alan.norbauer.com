@@ -69,7 +69,7 @@ export default async function TagPage({ params }: TagProps) {
   return (
     <Layout>
       <Title>
-        Stuff related to <Tag kind="inline">{tag}</Tag>
+        <Tag kind="inline">{tag}</Tag> stuff
       </Title>
       <SectionHeading>Writing</SectionHeading>
       <ArticleList tag={tag} />
