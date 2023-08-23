@@ -13,7 +13,7 @@ import { Description } from "@/components/description";
 
 const projectLinkStyle = css({
   display: "flex",
-  alignItems: "center",
+  alignItems: "top",
   textDecoration: "none",
 });
 
@@ -24,6 +24,7 @@ const ProjectIcon = styled("span", {
     flexShrink: "0",
     height: "50px",
     display: "flex",
+    paddingTop: "2px",
     justifyContent: "center",
     marginRight: "5",
     "& img": {
@@ -45,7 +46,6 @@ function Project({
 }) {
   return (
     <Link href={href} className={projectLinkStyle}>
-      <ProjectIcon>{image != null ? image : null}</ProjectIcon>
       <styled.span
         flexGrow="1"
         flexBasis="min-content"
@@ -55,6 +55,7 @@ function Project({
         <ListHeading>{title}</ListHeading>
         <Description>{tagline}</Description>
       </styled.span>
+      <ProjectIcon>{image != null ? image : null}</ProjectIcon>
     </Link>
   );
 }
