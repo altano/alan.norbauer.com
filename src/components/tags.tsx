@@ -24,7 +24,7 @@ const linkStyle = css({
 
 type TagProps = StyledRecipeVariantProps<typeof Tag>;
 
-export default function Tags({
+export function Tags({
   tags,
   kind,
 }: {

@@ -9,7 +9,7 @@ import handlebarsLogo from "assets/images/projects/handlebars_logo.png";
 import firefoxLogo from "assets/images/browser-logos/firefox.svg";
 import alanglowMetadata from "@/app/projects/alanglow/metadata.json";
 import { ListHeading } from "@/components/listHeading";
-import { Tagline } from "@/components/tagLine";
+import { Description } from "@/components/description";
 
 const projectLinkStyle = css({
   display: "flex",
@@ -53,7 +53,7 @@ function Project({
         flexDir="column"
       >
         <ListHeading>{title}</ListHeading>
-        <Tagline>{tagline}</Tagline>
+        <Description>{tagline}</Description>
       </styled.span>
     </Link>
   );
