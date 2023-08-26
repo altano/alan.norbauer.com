@@ -11,14 +11,17 @@ export const size = {
 };
 
 export default async function Image() {
+  const fonts = await getFonts();
+
   return OpenGraphImage({
     cardProps: {
       title: pkg.description,
       subtitle: host,
+      fonts,
     },
     imageOptions: {
       ...size,
-      fonts: await getFonts(),
+      fonts,
     },
   });
 }

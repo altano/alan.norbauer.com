@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@altano/remark-mdx-toc-with-slugs": "^1.0.3",
+    "@altano/satori-fit-text": "^0.0.1",
     "@altano/use-toc-visible-sections": "^1.0.5",
     "@ark-ui/react": "^0.9.0",
     "@mdx-js/loader": "^2.3.0",
