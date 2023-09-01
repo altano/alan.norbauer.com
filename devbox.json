@@ -2,7 +2,7 @@
   "packages": [
     "nodePackages.pnpm@8.6.5",
     "git@2.40.1",
-    "git-branchless@0.7.1",
+    "git-branchless@0.8.0",
     "nodejs@20.3.1"
   ],
   "shell": {},
