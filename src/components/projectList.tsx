@@ -87,7 +87,7 @@ export default async function ProjectList() {
               alt="logo for html-cdnify package"
             />
           }
-          href="https://www.npmjs.com/package/html-cdnify"
+          href="https://www.npmjs.com/package/@altano/html-cdnify"
           title="html-cdnify"
           tagline="Transform relative URLs in HTML markup"
         />
