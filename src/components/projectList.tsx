@@ -13,8 +13,11 @@ import { Description } from "@/components/description";
 
 const projectLinkStyle = css({
   display: "flex",
-  alignItems: "top",
+  alignItems: "start",
   textDecoration: "none",
+  smDown: {
+    flexDirection: "row-reverse",
+  },
 });
 
 const ProjectIcon = styled("span", {
