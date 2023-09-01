@@ -38,11 +38,10 @@ export async function getArticles(): Promise<Article[]> {
   const allArticles = await getArticlesIncludingDrafts();
   const sortedArticles = [...allArticles].sort(articleDateDescending);
 
-  // return process.env.NODE_ENV === "development" ||
-  //   process.env.SHOW_DRAFTS === "true"
-  //   ? sortedArticles
-  //   : sortedArticles.filter((article) => !article.draft);
-  return sortedArticles.filter((article) => !article.draft);
+  return process.env.NODE_ENV === "development" ||
+    process.env.SHOW_DRAFTS === "true"
+    ? sortedArticles
+    : sortedArticles.filter((article) => !article.draft);
 }
 
 export async function getArticlesByTag(tag: string): Promise<Article[]> {
