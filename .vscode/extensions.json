@@ -11,6 +11,8 @@
     "styled-components.vscode-styled-components",
     "chakra-ui.panda-css-vscode",
     "phoenisx.cssvar",
-    "lakkannawalikar.css-converter"
+    "lakkannawalikar.css-converter",
+    "unifiedjs.vscode-mdx",
+    "xyc.vscode-mdx-preview"
   ]
 }

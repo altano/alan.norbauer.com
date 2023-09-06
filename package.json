@@ -1,5 +1,6 @@
 {
   "name": "alan.norbauer.com",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "description": "The innernet website of Alan Norbauer",
@@ -35,9 +36,10 @@
   },
   "dependencies": {
     "@altano/remark-mdx-toc-with-slugs": "^1.0.3",
-    "@altano/satori-fit-text": "^0.0.1",
+    "@altano/satori-fit-text": "^0.1.1",
     "@altano/use-toc-visible-sections": "^1.0.6",
     "@ark-ui/react": "^0.9.0",
+    "@codesandbox/sandpack-react": "^2.6.9",
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.4.19",
     "bright": "^0.8.4",
