@@ -48,5 +48,6 @@
     "editor.wordWrap": "on"
   },
   "cSpell.enabled": true,
-  "editor.rulers": [80]
+  "editor.rulers": [80],
+  "cSpell.words": ["altano", "Codesandbox"]
 }

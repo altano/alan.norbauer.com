@@ -161,12 +161,12 @@ const Article = styled("article", {
       paddingLeft: "40px",
     },
 
-    "& img:not([data-no-style]):not([data-invertible])": {
-      layerStyle: "card",
-      bg: "bg.card",
-      transition: "background var(--durations-color-scheme)",
-    },
-    "& img:not([data-no-style])": {
+    "& > img:not([data-no-style]), & p > img:not([data-no-style])": {
+      "&:not([data-invertible])": {
+        layerStyle: "card",
+        bg: "bg.card",
+        transition: "background var(--durations-color-scheme)",
+      },
       "&:not(:first-child)": {
         marginBlock: "8",
       },
