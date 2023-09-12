@@ -1,6 +1,6 @@
 import Image from "next/image";
-import lightBunny from "assets/images/1468844-bunnies-avatars/svg/068-bunny-67.svg";
-import darkBunny from "assets/images/sleepy-bunny/sleep.svg";
+import lightBunny from "assets/images/bunny-carrot-hole/bunny-light.svg";
+import darkBunny from "assets/images/bunny-carrot-hole/bunny-dark.svg";
 import { cva } from "@styled-system/css";
 
 const bunnyStyles = cva({
