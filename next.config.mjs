@@ -58,7 +58,6 @@ const nextConfig = {
   //   unoptimized: true,
   // },
   experimental: {
-    appDir: true,
     // mdxRs: false, // Currently incompatible with remark plugins
   },
   reactStrictMode: true,
