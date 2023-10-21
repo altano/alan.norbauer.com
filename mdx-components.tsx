@@ -6,6 +6,7 @@ import { focus } from "@/utility/bright-extensions/focus";
 // import { tabs } from "@/utility/bright-extensions/tabs";
 import { title } from "@/utility/bright-extensions/title";
 import { Answer, QuestionBody, QuestionHeading } from "@/components/markdown";
+import { Translation } from "@/components/markdown/translation";
 
 import type { MDXComponents } from "mdx/types";
 
@@ -36,6 +37,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Allows customizing built-in components, e.g. to add styling.
     // h1: ({ children }) => <h1 style={{ fontSize: "100px" }}>{children}</h1>,
     ...components,
+    Translation: Translation,
     QuestionHeading: QuestionHeading,
     QuestionBody: QuestionBody,
     Answer: Answer,
