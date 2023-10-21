@@ -53,9 +53,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     Code: Code,
+    /* eslint-disable jsx-a11y/alt-text */
     // @ts-expect-error
-    img: Image,
-    Image,
+    img: (props) => <Image {...props} />,
+    Image: (props) => <Image {...props} />,
     Chrome,
     Firefox,
     Edge,
