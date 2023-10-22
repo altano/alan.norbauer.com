@@ -1,13 +1,15 @@
+import { SvgLinkOptions } from "./SvgLinkOptions";
 import { InlineSvgIcon } from "./inlineSvgIcon";
 import twitterSVG from "assets/images/icons/twitter.svg";
+import pkg from "@root/package.json";
 
-export function TwitterLink({ text }: { text?: string }) {
+export function TwitterLink(options: SvgLinkOptions) {
   return (
     <InlineSvgIcon
+      {...options}
       src={twitterSVG}
       alt="Twitter"
-      text={text}
-      href="https://twitter.com/alannorbauer"
+      href={`https://twitter.com/${pkg.author.social.twitter}`}
     />
   );
 }

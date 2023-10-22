@@ -3,10 +3,8 @@ import { FeedLink } from "./social/feedLink";
 import { styled } from "@styled-system/jsx";
 import HomeLink from "./homeLink";
 import { StyledRecipeVariantProps } from "@/utility/StyledRecipeVariantProps";
-import { ThreadsLink } from "./social/threadsLink";
-import { EmailLink } from "./social/emailLink";
-import { GithubLink } from "./social/githubLink";
 import { MastodonLink } from "./social/mastodonLink";
+import { ContactLink } from "./social/contactLink";
 
 const Footer = styled("footer", {
   base: {
@@ -56,10 +54,9 @@ export default function SiteFooter({
       <styled.span gap="1" display="inline-flex" alignItems="center">
         <HomeLink /> &bull;{" "}
         <styled.span display="inline-flex" gap="1">
-          <ThreadsLink />
-          <GithubLink />
-          <EmailLink />
           <MastodonLink />
+          <ContactLink />
+          &bull;
           <FeedLink />
         </styled.span>
       </styled.span>

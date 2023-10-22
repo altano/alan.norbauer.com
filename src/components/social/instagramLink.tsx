@@ -1,17 +1,21 @@
 import { InlineSvgIcon } from "./inlineSvgIcon";
 import instagramSVG from "assets/images/icons/instagram.svg";
 import pkg from "@root/package.json";
+import { SvgLinkOptions } from "./SvgLinkOptions";
 
-export function InstagramLink({ text }: { text?: string }) {
-  const handle = pkg.author.social.instagram;
+export function InstagramLink({
+  width = 17, // Looks slightly too large at 18x18 relative to the other icons
+  height = 17,
+  ...otherOptions
+}: SvgLinkOptions) {
   return (
     <InlineSvgIcon
+      width={width}
+      height={height}
+      {...otherOptions}
       src={instagramSVG}
-      height={17} // Looks slightly too large at 18x18 relative to the other icons
-      width={17}
       alt="Instagram"
-      text={text}
-      href={`https://www.instagram.com/${handle}`}
+      href={`https://www.instagram.com/${pkg.author.social.instagram}`}
     />
   );
 }

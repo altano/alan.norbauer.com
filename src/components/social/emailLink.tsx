@@ -1,15 +1,15 @@
 import { InlineSvgIcon } from "./inlineSvgIcon";
 import emailSVG from "assets/images/icons/email.svg";
 import pkg from "@root/package.json";
+import { SvgLinkOptions } from "./SvgLinkOptions";
 
-export function EmailLink({ text }: { text?: string }) {
-  const { email } = pkg.author;
+export function EmailLink(options: SvgLinkOptions) {
   return (
     <InlineSvgIcon
+      {...options}
       src={emailSVG}
       alt="Email"
-      text={text}
-      href={`mailto:${email}?subject=Hey%20Nerd`}
+      href={`mailto:${pkg.author.email}?subject=Hey%20Nerd`}
     />
   );
 }
