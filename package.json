@@ -10,11 +10,15 @@
     "url": "https://alan.norbauer.com",
     "email": "altano@gmail.com",
     "social": {
+      "facebook": "alan.norbauer",
       "github": "altano",
-      "twitter": "@alannorbauer",
+      "hackernews": "altano",
       "instagram": "alan.norbauer",
+      "lobsters": "altano",
+      "mastodon": "@alannorbauer@indieweb.social",
+      "reddit": "altano",
       "threads": "@alan.norbauer",
-      "mastodon": "@alannorbauer@indieweb.social"
+      "twitter": "@alannorbauer"
     }
   },
   "license": "UNLICENSED",

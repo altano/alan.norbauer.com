@@ -1,11 +1,12 @@
 import { InlineSvgIcon } from "./inlineSvgIcon";
-import { FaMastodon } from "react-icons/fa6";
+import { AiOutlineReddit } from "react-icons/ai";
 import { token } from "@styled-system/tokens";
 import { SvgLinkOptions } from "./SvgLinkOptions";
+import pkg from "@root/package.json";
 
-export function MastodonLink({
-  width = 19,
-  height = 19,
+export function RedditLink({
+  width = 21,
+  height = 21,
   ...otherOptions
 }: SvgLinkOptions) {
   return (
@@ -13,11 +14,10 @@ export function MastodonLink({
       width={width}
       height={height}
       {...otherOptions}
-      alt="Mastodon"
-      href="https://indieweb.social/@alannorbauer"
-      rel="me"
+      alt="Reddit"
+      href={`https://www.reddit.com/user/${pkg.author.social.reddit}`}
     >
-      <FaMastodon size={width} color={token("colors.text")} />
+      <AiOutlineReddit size={width} color={token("colors.text")} />
     </InlineSvgIcon>
   );
 }

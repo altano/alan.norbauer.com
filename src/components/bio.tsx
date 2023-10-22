@@ -1,8 +1,8 @@
 import React from "react";
 import { styled } from "@styled-system/jsx";
 import { FeedLink } from "./social/feedLink";
-import { ThreadsLink } from "./social/threadsLink";
 import { EmailLink } from "./social/emailLink";
+import Link from "next/link";
 
 import type { StyledRecipeVariantProps } from "../utility/StyledRecipeVariantProps";
 
@@ -80,6 +80,10 @@ const Bio = ({ width }: Props) => {
           <a href="https://www.amazon.com/South-Border-West-Sun-Novel/dp/0679767398">
             bad novels
           </a>
+          . His politics are succinctly{" "}
+          <Link href="https://www.youtube.com/watch?v=pRl212Y440Q">
+            summarized by Divine
+          </Link>
           . He still doesn't know how to use Snapchat or TikTok.
         </Sentence>
         <Sentence>
@@ -95,9 +99,9 @@ const Bio = ({ width }: Props) => {
           opinions of his employer.
         </Sentence>
         <Sentence>
-          You can subscribe to this site's <FeedLink text="RSS feed" /> or
-          follow Alan on <ThreadsLink text="Threads" /> or reach him by{" "}
-          <EmailLink text="email" />.
+          You can subscribe to this site's <FeedLink text="RSS feed" />. You
+          reach Alan by <EmailLink text="email" /> or through{" "}
+          <Link href="/contact">another contact method</Link>.
         </Sentence>
       </BioSection>
     </>

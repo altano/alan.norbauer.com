@@ -17,11 +17,13 @@ export const svgImgStyle = css({
 });
 
 export const linkStyle = css({
+  wordBreak: "break-all",
+  filter: "grayscale(1)",
   display: "inline-flex",
   alignItems: "center",
 });
 
-type ChildOrSrc =
+export type ChildOrSrc =
   | {
       src: StaticImport;
       alt: string;
@@ -43,25 +45,31 @@ type ChildOrSrc =
 export function InlineSvgIcon({
   text,
   href,
-  height,
-  width,
+  height = 18,
+  width = 18,
   rel,
   ...otherProps
 }: ChildOrSrc) {
+  // const textFontSize = height < 50 ? undefined : height / 2;
   return (
-    <Link className={linkStyle} href={href} rel={rel}>
-      {text ? <styled.span mr="5px">{text}</styled.span> : null}
+    <Link
+      className={linkStyle}
+      href={href}
+      rel={rel}
+      style={{ gap: width / 3 }}
+    >
       {"children" in otherProps ? (
-        otherProps.children
+        <span style={{ width, height }}>{otherProps.children}</span>
       ) : "src" in otherProps ? (
         <Image
-          width={height ?? 18}
-          height={width ?? 18}
+          width={height}
+          height={width}
           className={svgImgStyle}
           src={otherProps.src}
           alt={otherProps.alt}
         />
       ) : null}
+      {text ? <styled.span style={{}}>{text}</styled.span> : null}
     </Link>
   );
 }

@@ -1,11 +1,11 @@
 import { InlineSvgIcon } from "./inlineSvgIcon";
-import { FaMastodon } from "react-icons/fa6";
+import { IoIosContact } from "react-icons/io";
 import { token } from "@styled-system/tokens";
 import { SvgLinkOptions } from "./SvgLinkOptions";
 
-export function MastodonLink({
-  width = 19,
-  height = 19,
+export function ContactLink({
+  width = 21,
+  height = 21,
   ...otherOptions
 }: SvgLinkOptions) {
   return (
@@ -13,11 +13,10 @@ export function MastodonLink({
       width={width}
       height={height}
       {...otherOptions}
-      alt="Mastodon"
-      href="https://indieweb.social/@alannorbauer"
-      rel="me"
+      alt="Other Contact Methods"
+      href="/contact"
     >
-      <FaMastodon size={width} color={token("colors.text")} />
+      <IoIosContact size={width} color={token("colors.text")} />
     </InlineSvgIcon>
   );
 }
