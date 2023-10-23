@@ -11,14 +11,14 @@ export const svgImgStyle = css({
   transitionProperty: "filter",
   transitionDuration: "var(--durations-color-scheme)",
 
+  filter: "grayscale(1)",
   _dark: {
-    filter: "invert(100%)",
+    filter: "grayscale(1) invert(100%)",
   },
 });
 
 export const linkStyle = css({
   wordBreak: "break-all",
-  filter: "grayscale(1)",
   display: "inline-flex",
   alignItems: "center",
 });
