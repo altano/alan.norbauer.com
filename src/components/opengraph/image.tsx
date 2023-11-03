@@ -1,4 +1,4 @@
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 import { type Font, findLargestUsableFontSize } from "@altano/satori-fit-text";
 import nullthrows from "nullthrows";
 
