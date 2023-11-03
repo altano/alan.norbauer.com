@@ -20,7 +20,6 @@ const Heading = styled("h1", {
     textTransform: "uppercase",
     marginTop: 0,
     marginBottom: "1rem",
-    // fontSize: "1rem",
     fontSize: "1rem",
     lineHeight: "normal",
     fontWeight: "800",
@@ -32,6 +31,12 @@ const BioSection = styled("section", {
     lineHeight: "1.5",
   },
   variants: {
+    font: {
+      small: {
+        fontSize: "1rem",
+      },
+      normal: {},
+    },
     width: {
       narrow: {
         columnCount: 1,
@@ -54,13 +59,15 @@ type BioSectionVariants = StyledRecipeVariantProps<typeof BioSection>;
 
 type Props = {
   width: Required<NonNullable<BioSectionVariants>>["width"];
+  font: Required<NonNullable<BioSectionVariants>>["font"];
 };
 
-const Bio = ({ width }: Props) => {
+const Bio = ({ width, font }: Props) => {
+  const iconSize = font === "small" ? 14 : undefined;
   return (
     <>
       {width === "wide" && <Heading>About the Author</Heading>}
-      <BioSection width={width}>
+      <BioSection width={width} font={font}>
         <Sentence>
           Alan Norbauer lives in{" "}
           <a href="https://en.wikipedia.org/wiki/Weetzie_Bat">Los Angeles</a>{" "}
@@ -99,9 +106,11 @@ const Bio = ({ width }: Props) => {
           opinions of his employer.
         </Sentence>
         <Sentence>
-          You can subscribe to this site's <FeedLink text="RSS feed" />. You
-          reach Alan by <EmailLink text="email" /> or through{" "}
-          <Link href="/contact">another contact method</Link>.
+          You can subscribe to this site's{" "}
+          <FeedLink text="RSS feed" width={iconSize} height={iconSize} />. You
+          reach Alan by{" "}
+          <EmailLink text="email" width={iconSize} height={iconSize} /> or
+          through <Link href="/contact">another contact method</Link>.
         </Sentence>
       </BioSection>
     </>
