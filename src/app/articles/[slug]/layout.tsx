@@ -111,7 +111,7 @@ export default function RootLayout({
         {children}
         <PageFooter>
           <PageFooterContent>
-            <Bio width="wide" />
+            <Bio width="wide" font="small" />
             <SiteFooter location="embedded" />
           </PageFooterContent>
         </PageFooter>

@@ -45,7 +45,7 @@ export default function Home() {
         <Title>{pkg.author.name}</Title>
         <ThemedBunny />
       </Header>
-      <Bio width="narrow" />
+      <Bio width="narrow" font="normal" />
       <SectionHeading>Writing</SectionHeading>
       <ArticleList />
       <SectionHeading>Projects</SectionHeading>
