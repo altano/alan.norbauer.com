@@ -7,7 +7,7 @@ import { ThemeSwitch } from "@/components/theme/themeSwitcher";
 
 import "./global.css";
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   title: {
@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   metadataBase: new URL(pkg.homepage),
+};
+
+export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: token("colors.light") },
     { media: "(prefers-color-scheme: dark)", color: token("colors.dark") },
