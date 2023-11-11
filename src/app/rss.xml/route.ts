@@ -7,8 +7,8 @@ export async function GET() {
   const articles = await getArticles();
 
   const feed = new Rss({
-    title: "Alan Norbauer",
-    managingEditor: pkg.author.email,
+    title: pkg.author.name,
+    managingEditor: `${pkg.author.email} (${pkg.author.name})`,
     description: pkg.description,
     feed_url: feedUrl,
     site_url: pkg.homepage,
