@@ -4,6 +4,7 @@ import { token } from "@styled-system/tokens";
 import { fontClassName } from "@/styles/fonts";
 import { Providers } from "@/components/providers";
 import { ThemeSwitch } from "@/components/theme/themeSwitcher";
+import { feedUrl } from "./rss.xml/url";
 
 import "./global.css";
 
@@ -21,6 +22,11 @@ export const metadata: Metadata = {
     type: "website",
   },
   metadataBase: new URL(pkg.homepage),
+  alternates: {
+    types: {
+      "application/rss+xml": feedUrl,
+    },
+  },
 };
 
 export const viewport: Viewport = {
