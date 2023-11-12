@@ -228,7 +228,7 @@ debug(window.location.assign);
 
 ## Debugging Property Reads
 
-If you have an oject and want to know whenever a property is read on it, use an object getter with a `debugger` call. For example, convert `{configOption: true}` to `{get configOption() { debugger; return true; }}` (either in the original source code or using a conditional breakpoint).
+If you have an object and want to know whenever a property is read on it, use an object getter with a `debugger` call. For example, convert `{configOption: true}` to `{get configOption() { debugger; return true; }}` (either in the original source code or using a conditional breakpoint).
 
 Useful when you're passing in some configuration options to something and you'd like to see how they get used.
 
