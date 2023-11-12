@@ -3,7 +3,7 @@
 import { css } from "@styled-system/css";
 import { useTheme } from "next-themes";
 import { MoonIcon, SunIcon } from "nextra/icons";
-import { Select } from "@/components/select";
+import { Menu } from "@/components/menu";
 import { useEffect, useState } from "react";
 
 type ThemeSwitchProps = {
@@ -29,17 +29,17 @@ export function ThemeSwitch({ className }: ThemeSwitchProps) {
   const IconToUse = mounted && resolvedTheme === "dark" ? MoonIcon : SunIcon;
 
   return (
-    <Select
+    <Menu
       className={className}
       title="Change theme"
-      options={[
+      items={[
         { value: "light", label: "Light" },
         { value: "dark", label: "Dark" },
         { value: "system", label: "System" },
       ]}
-      onChange={(option) => {
-        if (!option) return;
-        setTheme(option.value);
+      onChange={(value) => {
+        if (!value) return;
+        setTheme(value);
       }}
       selected={{
         value: theme,
