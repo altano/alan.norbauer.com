@@ -70,7 +70,7 @@ As an alternative, you can disable source maps right from the debugger without g
 
 ## Why is This a Thing?
 
-I'm pretty sure **source maps should not be enabled by default in developer tool debuggers**. Browsers break many critical features of their debuggers, by default, as soon as source maps are available, and break them in a way that is totally not obvious to the developer (since rendering `undefined` in a tooltip might just make it seem like the value really is `undefined` instead of the actual issue, which is that you are checking the right expression).
+I'm pretty sure **source maps should not be enabled by default in developer tool debuggers**. Browsers break many critical features of their debuggers, by default, as soon as source maps are available, and break them in a way that is totally not obvious to the developer (since rendering `undefined` in a tooltip might just make it seem like the value really is `undefined`).
 
 As for improving how source maps affect the experience of debugging: there is [a source map RFC](https://github.com/tc39/source-map-rfc/issues/12) at TC-39 to improve "post-hoc debuggability" with Source Maps v4.
 
