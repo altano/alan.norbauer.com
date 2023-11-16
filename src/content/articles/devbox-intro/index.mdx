@@ -1,0 +1,385 @@
+---
+title: "Upgrade your Development Environments with Devbox"
+date_created: "2023-11-16T09:40:01.878Z"
+description: "A gentle guide to creating isolated development environments"
+tags: ["devbox", "software", "nix"]
+---
+
+import { AiFillWindows, AiFillApple } from "react-icons/ai";
+import { FaLinux } from "react-icons/fa";
+import softwareInstallationDecisionFlow from "./software-installation-decision-flow.svg";
+import { MermaidDiagram } from "@/components/mermaidDiagram";
+
+> ⚠️ NOTE: This guide is macOS <AiFillApple style={{ display: "inline" }} size={25} /> and Linux <FaLinux style={{ display: "inline" }} size={25} /> only. The software mentioned is NOT natively supported on Windows <AiFillWindows style={{ display: "inline" }} size={25} /> and therefore can only be used in [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+
+## Intended Audience
+
+This seeks to be an approachable guide for developers who:
+
+- have experienced loading up an old project and it no longer builds/runs or
+- are curious about how to upgrade their setup from using one-off version managers like [nvm](https://github.com/nvm-sh/nvm) or
+- have heard about Nix but haven't tried it yet or
+- have tried to use Nix but found it to be unapproachable
+
+## Links
+
+Devbox's [official site](https://www.jetpack.io/devbox) and [getting started guide](https://www.jetpack.io/devbox/docs/quickstart/)
+
+## What is Devbox
+
+Devbox is a free and open source[^open-source] tool created by the company [jetpack.io](https://www.jetpack.io). According to [the official site](https://www.jetpack.io/devbox):
+
+> Devbox creates isolated, reproducible development environments that run anywhere. No Docker containers or Nix lang required.
+
+A "development environment" is the environment you do any kind of software development in, whether you're a data scientist using Python, a JavaScript-toting web developer, or a Rubyist wondering where all your friends have gone.
+
+"Isolated" means that you can have two projects, e.g. ~/src/projectA and ~/src/projectB, that have different development environments with different software packages without interfering with each other.
+
+"Reproducible" means that when you enter a Devbox shell, you will always get the same exact software packages as when you were last working on that project. And if you have collaborators, you'll all be using the same development environment.
+
+## What Problems Does Devbox Solve?
+
+### Development Environment Rot
+
+Have you ever had the experience of stepping back into an old project and nothing works anymore? You can't build, deploy, or do anything with it, even though everything worked the last time you were working on it. Development environments that use your system's software will eventually rot because of software drift. For example, you might install a newer version of `node` that is no longer backwards-compatible with the code in your project, or you might not have installed `sharp` when you setup your new laptop and your project depends on it.
+
+A Devbox project will work a decade from now just as well as it does today.
+
+### Project Isolation
+
+If you're working on five separate projects there's no reason they all need to use the same global version of every piece of software. Maybe one project uses Ruby 2 and another project uses Ruby 3. Should you have to upgrade all your projects in one go? Do you communicate to your collaborators that they need to update their systems and all their projects in one go? Is that even feasible?
+
+Devbox allows your projects to co-exist while using different versions of software.
+
+### Keeping Things Native and Local
+
+There are many solutions to having isolated, reproducible development environments. Two more popular solutions are remote developer boxes (usually powered by containers or VMs) and Docker Desktop.
+
+There are many downsides to having your development environment in a VM (which is what Docker Desktop uses on macOS and Windows), such as deciding how much memory to allocate to the VM, the performance hit of using a VM, the disconnect of having to mount your project files in the VM, the battery life (or even just power efficiency) hit of running a VM, etc.
+
+Remote development has so many headaches I'm not going to enumerate them.
+
+Devbox makes it so that you are running local, native software, you're using your regular file system, etc. There are no VMs or containers to get in the way and your mental model for where and how software is running can be extremely simple.
+
+### Share Your Development Environment with Your Collaborators
+
+Does your team maintain a wiki where you keep instructions on how to setup a development environment? Is it always out of date?
+
+Does your open source project give instructions on how to setup the software required to build and run your project?
+
+With Devbox, if you test a new version of a package and it works, all you have to do is commit the changes to `devbox.json` and `devbox.lock` to your project. If you push those changes to a shared repository, your collaborators that pull those files will start using the new version of the package you tested, without any discussion required. Everyone will stay in sync, automatically.
+
+## How Does It Work?
+
+You interact with Devbox through the CLI, searching for and installing packages. For example, to install the test `hello` program, you might run:
+
+```sh
+➜  devbox add hello
+Info: Adding package "hello@latest" to devbox.json
+...
+```
+
+This is NOT installing anything globally. It is saying "if I start a Devbox shell in this directory, `hello` should be available" (and defaults to the latest version). You can see that by trying to use the test `hello` program outside of the Devbox shell:
+
+```sh
+➜ devbox add hello
+Info: Adding package "hello@latest" to devbox.json
+...
+➜ hello
+zsh: command not found: hello
+➜ devbox shell
+Ensuring packages are installed.
+Starting a devbox shell...
+(devbox) ➜ hello
+Hello, world!
+```
+
+### What's Going on under the Covers?
+
+_**Highly optional section**: feel free to [skip](#getting-started-using-devbox)!_
+
+Adding packages to your Devbox project modifies two files:
+
+1. `devbox.json` - a human readable/editable manifest of what packages and configuration you have for the Devbox shell in that directory:
+
+   ```devbox.json
+   {
+     // focus (1:1)
+     "packages": ["hello@latest"],
+     /* ... */
+   }
+   ```
+
+2. `devbox.lock` - this is analogous to something like a `package-lock.json` file, where the exact version of the software you requested is stored away to be re-used later. This makes it so that even if you install a package with something like `devbox add nodejs@latest`, the exact version will be stored in `devbox.lock` and re-used later anytime you enter the Devbox shell, so you will still always get the same version.
+
+   ```json title="devbox.lock"
+   {
+     "lockfile_version": "1",
+     "packages": {
+       // focus (1:1)
+       "hello@latest": {
+         "last_modified": "2023-10-25T20:49:13Z",
+         // focus (1:1)
+         "resolved": "github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#hello",
+         "source": "devbox-search",
+         // focus(1:1)
+         "version": "2.12.1"
+         /* ... */
+       }
+     }
+   }
+   ```
+
+   The `packages` array in `devbox.json` maps to the same `packages` key in `devbox.lock`, in this case `hello@latest`. In the `devbox.lock` file it stores what precise package that resolved to, in this case: `github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#hello"`. That maps to a precise version of `hello` that you can find right on [GitHub](https://github.com/NixOS/nixpkgs/commit/75a52265bda7fd25e06e3a67dee3f0354e73243c).
+
+When you run `devbox shell`, Devbox will check your `devbox.json`, observe that you want `hello@latest`, find that in `devbox.lock`, lookup the exact version, download and build the package as necessary, and make it available in your shell. You can see the version of `hello` will match the version in your `devbox.lock`:
+
+```sh
+(devbox) ➜  hello --version
+# focus(1:1)
+hello (GNU Hello) 2.12.1
+```
+
+Both of these files should be committed to version control.
+
+And if you want to find out where the package lives:
+
+```sh
+➜ devbox shell
+Ensuring packages are installed.
+Starting a devbox shell...
+(devbox) ➜ which hello
+/Users/alan/src/devbox-article-sandbox/.devbox/nix/profile/default/bin/hello
+```
+
+Which is a hard-link into the Nix store:
+
+`/nix/store/2nsd0qwv17v6shhhmknyrpscjsa0p78r-hello-2.12.1/bin/hello`
+
+### Wait, What is Nix?
+
+Nix is a programming language (nixlang), an operating system (NixOS), and a package manager (nixpkg)[^nix-complexity].
+
+The package manager is [the largest in the world](https://repology.org/repositories/statistics/total) and, under the covers, powers all the software you are using with Devbox. Devbox exists to hide the complexity of Nix while exposing a small but very powerful set of ideas that are super useful.
+
+Nix is there under the covers, but you don't need to know anything about it at all. Devbox is not a leaky abstraction: you can use Devbox and never think about or understand a single aspect of Nix, ever.
+
+## Getting Started Using Devbox
+
+### Browser Playground
+
+Want to just mess around without committing to anything? The Devbox team has created a great [browser-based playground](https://www.jetpack.io/devbox/docs/devbox_cloud/#quickstart) for playing with Devbox which you can jump into [here](https://devbox.sh/new).
+
+### Installation and Initialization
+
+Install on your machine with:
+
+```sh
+curl -fsSL https://get.jetpack.io/devbox | bash
+```
+
+Initialize Devbox in an existing project:
+
+```sh
+cd ~/src/myproject # or use a new "devbox-testing" directory to experiment
+devbox init # creates starter devbox.json and devbox.lock files
+```
+
+Test that everything works:
+
+```sh
+devbox shell # Start your devbox shell to make "hello" available
+devbox add hello # Add the "hello" test package
+hello # test that the command runs, outputs "Hello, world!"
+exit # exit the devbox shell
+hello # should produce a "command not found" error
+```
+
+If you're in a repository, commit the Devbox artifacts to version control:
+
+```sh
+git add devbox.json devbox.lock
+git commit -m "Adding Devbox developer environment"
+```
+
+### Searching for and Installing Packages
+
+There are two ways to search for packages with Devbox. One is directly from the CLI:
+
+```sh
+(devbox) ➜ devbox search node
+Found 7+ results for "node":
+
+* nodejs  (21.1.0, 21.0.0, 20.9.0, 20.8.0, 20.7.0, 20.6.1, 20.5.1, 20.5.0, 20.4.0, 20.3.1)
+* nodenv  (1.4.1, 1.4.0)
+* nodehun  (3.0.2)
+* node2nix  (1.11.0, 1.10.0)
+* node-glob  (10.3.3)
+* node-manta  (5.4.1, 5.3.2)
+* nodejs-slim  (21.1.0, 21.0.0, 20.9.0, 20.8.0, 20.7.0, 20.6.1, 20.5.1, 20.5.0, 20.4.0, 20.3.1)
+
+Warning: Showing top 10 results and truncated versions. Use --show-all to show all.
+
+```
+
+The other is on the web. The Devbox team put together https://www.nixhub.io which makes searching for Nix packages as a Devbox user a little more intuitive[^devbox-nixhub].
+
+### Workflow Tips
+
+#### Making It Automatic with direnv
+
+Having to manually type `devbox shell` isn't a huge burden but making Devbox _totally automatic_ with direnv is a convenience I highly recommend.
+
+Imagine this: you run `git pull` and get updates to `devbox.json`. Without a single keystroke, you're now reliably using the same version of every software package as the person that merged the `devbox.json` updates, because Devbox automatically noticed Node.js had a new version in `devbox.json` and upgraded it for you.
+
+Using direnv is a simple two step process:
+
+1. Install direnv: https://direnv.net/#basic-installation
+2. In any Devbox project you want automatic shells, run `devbox generate direnv`.
+
+Now when you `cd` into your directory, your devbox shell will automatically activate!
+
+#### Making It Automatic in VSCode
+
+Devbox publishes [a great VSCode extension](https://marketplace.visualstudio.com/items?itemName=jetpack-io.devbox) that, among other things, makes the integrated terminal automatically use your Devbox shell. You can add this extension to [your recommended workspace extensions](https://tattoocoder.com/recommending-vscode-extensions-within-your-open-source-projects/) to make things more seamless for your collaborators.
+
+The extension is potentially redundant to using direnv, depending on your setup. I personally install both.
+
+You can read more about it in [the official docs](https://www.jetpack.io/devbox/docs/ide_configuration/vscode/).
+
+#### Committing the Version
+
+I _lightly_ recommend always specifying the package version when adding a package, so that `devbox.json` is self-documenting and you never have to cross-reference it with `devbox.lock` (which I personally _never_ open). What that looks like:
+
+```sh
+# ⚠️ okay
+devbox add git
+```
+
+```sh
+# ✅ better
+devbox search git
+devbox add git@2.42.0
+```
+
+If you don't specify the version, it will be set to `latest`. The version will be pinned either way[^latest-misunderstanding], but a package marked as `latest` will be upgradeable by running `devbox update`, and a package pinned to a specific version has to be manually updated. I always manually update my packages, I like seeing the versions right in `devbox.json`, and other people might be confused about what `latest` means like I was, so I always manually specify the versions when adding packages.
+
+#### Global Packages
+
+Devbox can be used as a global package manager, completely replacing traditional package managers like Homebrew for globally installed packages. That's not required: you can use Devbox for your projects and Homebrew for global packages, if you'd like. They work nicely side-by-side.
+
+If you use Devbox for global packages, you have two levels of "global" you can decide between:
+
+- Option 1: You want a set of packages to always be available in any Devbox shell, without having to explicitly add them. For example, if you don't want to have to `devbox add git` in every project, you can `devbox global add git` and it will be available in any Devbox shell (and _not_ available in a vanilla shell).
+- Option 2: Same as above, but you don't even want to have to explicitly enter a Devbox shell. In that case, use [`devbox global shellenv`](https://www.jetpack.io/devbox/docs/cli_reference/devbox_global_shellenv/) (e.g. put `eval "$(devbox global shellenv)"` in `~/.zshrc`). That will make `git` (or any other `devbox global add` packages) available in _any_ shell you start.
+
+My decision making process is:
+
+- If I need a package in a project, I install through Devbox. 98% of the packages I install are in a project (e.g. `devbox add nodejs`).
+- When I occasionally need a package outside of any projects, I install it with Devbox global (e.g. `devbox global add nodejs`). This is rare and to be used judiciously: my global list is currently only four packages: `git`, `difftastic`, `nodejs`, and `nodePackages.pnpm`. Note that I still add these packages in projects that need them. I only use the global versions as fallbacks when I'm outside a project.
+- When I need a package available universally, anywhere in my operating system, whether I started in a shell or not, I use Homebrew. For example, if some GUI application needs `git` (like Source Tree) and I can't be bothered to start that application from a shell, I just install `git` through Homebrew so I can not think about it. This is extremely rare.
+
+For the visually inclined:
+
+<MermaidDiagram
+  src={softwareInstallationDecisionFlow}
+  alt="Flow chart describing how I choose to install software, summarizing the text above"
+/>
+
+Read more about Devbox global packages on [the official docs](https://www.jetpack.io/devbox/docs/devbox_global/).
+
+#### Using in Collaborative Projects
+
+Devbox relies on two files: `devbox.json` and `devbox.lock`. You should decide what you want to do with these files:
+
+- If you're a solo developer, commit them.
+- If you collaborate with others and most of them want to use Devbox, commit them.
+- If you collaborate with many other people and they don't have any objections to committing configuration they don't need, commit them. If someone else doesn't have Devbox they can just ignore these files, and deal with the pain of manually installing software themselves. A Devbox project is [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) in action: it is invisible to those that want to ignore it, and very helpful to those that are prepared to use it.
+- If you collaborate with others and they don't want this "junk" in their repo (or you don't even want to ask for permission), don't commit them. You can either just leave them there (for one-off PRs to open source projects, for example), or you can add them to `.gitignore` (I haven't met anyone anally retentive enough to object to cluttering the `.gitignore`).
+
+The benefits of a team using Devbox should be obvious: if one person upgrades Node.js, fixes any related bugs, and commits the new tested version into `devbox.json`, no one else will have to repeat that work. Instead of updating your "dev machine setup guide" wiki page or posting "hey upgrade Node" in your team's Slack channel or whatever, everyone will just get the new version of Node.js automatically when they `git pull` the new `devbox.json`.
+
+## Comparison to Other Developer Environment Setups
+
+|                                           | [Devbox](https://www.jetpack.io/devbox) | [Devenv](https://devenv.sh) | [Nix](https://nixos.org/) | [Docker](https://www.docker.com/) | [Homebrew](https://brew.sh) / [Chocolatey](https://chocolatey.org) |
+| ----------------------------------------- | --------------------------------------- | --------------------------- | ------------------------- | --------------------------------- | ------------------------------------------------------------------ |
+| Per-project Isolation                     | ✅                                      | ✅                          | ❌                        | ✅                                | ❌                                                                 |
+| Use packages by semver[^package-semver]   | ✅                                      | ❌                          | ❌                        | ✅                                | ✅                                                                 |
+| Automatic Shell Activation (direnv)       | ✅                                      | ✅                          | ❌                        | ✅                                | n/a                                                                |
+| Does not depend on VM                     | ✅                                      | ✅                          | ✅                        | ❌                                | ✅                                                                 |
+| Reproducibility                           | ✅                                      | ✅                          | ✅                        | ⚠️ [^docker-reproducibility]      | ❌                                                                 |
+| Share config in version control           | ✅                                      | ✅                          | ✅                        | ✅                                | ❌                                                                 |
+| Easy to use                               | ✅                                      | ❌                          | ❌                        | ❌                                | ✅                                                                 |
+| Create Containers (share with production) | ✅                                      | ✅                          | ✅                        | ✅                                | ❌                                                                 |
+| Windows support                           | ❌ [^no-windows-support]                | ❌                          | ❌                        | ✅                                | ✅                                                                 |
+| Global packages                           | ⚠️ [^devbox-global-packages]            | ❌ (?)                      | ✅                        | ❌                                | ✅                                                                 |
+
+### Comparison to Homebrew/Chocolatey
+
+- ✅ With Devbox, per-project package isolation is easy. With Homebrew, everything is global.
+- ❌ Sometimes you just want a package, and you want it everywhere. For example: are you using a tool you didn't start from a Devbox shell, and it expects git to be available. It won't find it. Devbox doesn't excel at this.
+- ✅ Devbox, by virtue of using Nix, has more packages then any other package manager.
+- ✅ Devbox developer environments are more reproducible. Even the modified date of the package binary will be the same on your system and your collaborators!
+- ❌ I've seen new package versions be available in Homebrew more quickly than Devbox (e.g. [bun.sh](https://bun.sh)). That's not common and major packages like Node.js are available _very_ quickly with Devbox, so this has never been an issue for me, but it's something you can check on if it's important to you.
+
+### Comparison to Docker
+
+I've never liked the circuitousness of using Docker Desktop for my dev environment. It solves a lot of problems well but it seems like Devbox solves those problems much better, without having a layer of indirection through a virtual machine. I want to just `cd` into my project directory without having to bind mount my code into the container. I don't want to have to even _think_ about that layer of indirection.
+
+Which is all to say I'm not even going to really compare the two.
+
+### Comparison to Devenv
+
+[devenv](https://devenv.sh) solves the same problem as Devbox: creating per-project, isolated development environments. The biggest difference is that Devbox totally abstracts Nix away from you while devenv is a leakier (and therefore more powerful) abstraction that lets you use more of Nix by requiring that you use Nix (and know _how_ to use Nix). Instead of a very simple array of package names as strings, you [write a `devenv.nix` file using the Nix language](https://devenv.sh/basics/).
+
+The Devbox founder [said it well](https://lobste.rs/s/a1jo3a/devenv_0_6_generating_containers_instant#c_0ynyyw):
+
+> "Devbox is trying to give you the power of nix, but with a simplified interface that matches the simplicity of a package manager like yarn. If you want reproducible environments by simply specifying the list of packages you depend on, and not having to learn a new language, then Devbox is a great match."
+
+Note that you _can_ install packages from Nix flakes with Devbox, which gets you a ton of that power, but it's more of a [side feature](https://www.jetpack.io/devbox/docs/guides/using_flakes/) than part of the core of how it works. I've used a custom flake with Devbox exactly once, when I need to install the Mercurial package with the `hg-evolve` extension (which isn't available by default).
+
+Oh, and Devbox just gives you package semver so you don't have to think about Nix package names and how that maps to versions. If I want `nodejs@20.9.0` I don't want to think about which Nix package has that version of Node.js, which is another benefit over devenv.
+
+### Comparison to Nix
+
+If you're capable of using Nix to manage all the packages on your system, all shall love you and despair.
+
+## What Devbox is Bad At
+
+This is probably not a comprehensive list of problems _you_ will hit when using Devbox, but it includes all of the minor issues i've encountered:
+
+- When I _always_ need something available, anywhere on my system, whether in a Devbox shell or not, I use Homebrew. Example: `git`.
+- The absolute paths to packages with Devbox will vary by project, which can be annoying when you need a stable path to a binary that is always available. The relative path is stable, and the `DEVBOX_PACKAGE_DIR` environment variable is set to point to all the binaries, so this is unlikely to be an issue.
+- Devbox will hurt your shell startup time. It's something they've made a lot better since the first release, and it's good enough for me, but the cost is not zero.
+- Using direnv with Devbox is essential to the great experience, but direnv dumps a lot of noise to the console. [This is a direnv issue](https://github.com/jetpack-io/devbox/issues/1347) and can't be fixed by Devbox. Here's what entering the console for this website's project looks like for me:
+  ```sh
+  ➜  src cd alan.norbauer.com
+  direnv: loading ~/src/alan.norbauer.com/.envrc
+  direnv: using devbox
+  Ensuring packages are installed.
+  Ensuring packages are installed.
+  direnv: export +AR +AS +CC +CONFIG_SHELL +CXX +DEVBOX_CONFIG_DIR +DEVBOX_INIT_PATH +DEVBOX_NIX_ENV_PATH_9bde7310c0965a4fb5fd92fc95311eea5b47c497c43a22b6ffbf50463280ab89 +DEVBOX_PACKAGES_DIR +DEVBOX_PATH_STACK +DEVBOX_PROJECT_ROOT +DEVBOX_REFRESH_ALIAS_9bde7310c0965a4fb5fd92fc95311eea5b47c497c43a22b6ffbf50463280ab89 +DEVBOX_SYSTEM_BASH +DEVBOX_SYSTEM_SED +HOST_PATH +IN_NIX_SHELL +LAUNCHER_PATH +LAUNCHER_VERSION +LD +LD_DYLD_PATH +LD_LIBRARY_PATH +LIBRARY_PATH +MACOSX_DEPLOYMENT_TARGET +NIX_BINTOOLS +NIX_BINTOOLS_WRAPPER_TARGET_HOST_aarch64_apple_darwin +NIX_BUILD_CORES +NIX_CC +NIX_CC_WRAPPER_TARGET_HOST_aarch64_apple_darwin +NIX_CFLAGS_COMPILE +NIX_DONT_SET_RPATH +NIX_DONT_SET_RPATH_FOR_BUILD +NIX_ENFORCE_NO_NATIVE +NIX_HARDENING_ENABLE +NIX_IGNORE_LD_THROUGH_GCC +NIX_LDFLAGS +NIX_NO_SELF_RPATH +NIX_STORE +NM +NODE_PATH +PATH_LOCALE +RANLIB +SIZE +SOURCE_DATE_EPOCH +STRINGS +STRIP +XDG_DATA_DIRS +__DEVBOX_SHELLENV_HASH_9bde7310c0965a4fb5fd92fc95311eea5b47c497c43a22b6ffbf50463280ab89 +__ETC_PROFILE_NIX_SOURCED +__darwinAllowLocalNetworking +__impureHostDeps +__propagatedImpureHostDeps +__propagatedSandboxProfile +__sandboxProfile +__structuredAttrs +buildInputs +buildPhase +builder +cmakeFlags +configureFlags +depsBuildBuild +depsBuildBuildPropagated +depsBuildTarget +depsBuildTargetPropagated +depsHostHost +depsHostHostPropagated +depsTargetTarget +depsTargetTargetPropagated +doCheck +doInstallCheck +dontAddDisableDepTrack +mesonFlags +name +nativeBuildInputs +out +outputs +patches +phases +preferLocalBuild +propagatedBuildInputs +propagatedNativeBuildInputs +shell +shellHook +stdenv +strictDeps +system ~PATH
+  ➜  alan.norbauer.com git:(main) ✗
+  ```
+  (That's a lot more annoying with word wrap turned on, i.e. in most terminals)
+- Devbox hasn't hit 1.0 yet and is therefore not 100% mature and stable. I've [reported my share of issues](https://github.com/jetpack-io/devbox/issues?q=is%3Aissue+author%3Aaltano). That said, when I report an issue the dev team is super responsive and kind and it's been a very long time since I've had an issue. I consider it an indispensable and rock solid part of my toolchain and I don't hesitate to recommend using Devbox in production projects.
+
+## Further Reading
+
+Devbox is a pretty powerful tool and I've barely scratched the surface. You can read more about some advanced features:
+
+- [Devbox scripts](https://www.jetpack.io/devbox/docs/guides/scripts/)
+- [Devbox plugins](https://www.jetpack.io/devbox/docs/guides/plugins/)
+- [Devbox services](https://www.jetpack.io/devbox/docs/guides/services/)
+- [Installing packages from Nix flakes](https://www.jetpack.io/devbox/docs/guides/using_flakes/)
+- [Generating Docker containers](https://www.jetpack.io/devbox/docs/cli_reference/devbox_generate_dockerfile/)
+- [Using Devbox in GitHub CI/CD Actions](https://www.jetpack.io/devbox/docs/continuous_integration/github_action/)
+
+[^nix-complexity]: Nix starts being unapproachable the second you try to [explain the name](https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html). I'm sorry.
+[^docker-reproducibility]: Docker _can be_ pretty reproducible, and there are lots of guides on the internet about how to build reproducible Dockerfiles, but it doesn't by default encourage it. The `latest` tag, for example, behaves completely differently in a Dockerfile and Devbox. In Devbox, it means "the latest available right now, but take a snapshot of what that is and re-use it in the future." With Docker, it means "just #yolo grab whatever right now and feel free to grab something different in the future."
+[^devbox-global-packages]: See [Global Packages](#global-packages) for more information about the pros/cons of using Devbox for global packages.
+[^devbox-nixhub]: When using Devbox you want to just find a package and what (potentially old) versions are available. Package versioning and simplicity is not something the other Nix package search engines focus on. [This blog post](https://www.jetpack.io/blog/how-nixhub-searches-nixpkgs) explains in more detail.
+[^no-windows-support]: Devbox, and anything that uses Nix under the covers, cannnot run natively on Windows. It does of course support running in [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+[^latest-misunderstanding]: This was something that tripped me up. I thought seeing `@latest` in `devbox.json` meant the version wasn't locked-in, but [that isn't the case](https://github.com/jetpack-io/devbox/issues/1476).
+[^open-source]: jetpack.io is [committed to keeping devbox free and open source forever](https://lobste.rs/s/a1jo3a/devenv_0_6_generating_containers_instant#c_qvqc6m).
+[^package-semver]: For example, if you want a very specific version of Node.js, you want to be able to install it by just using the semver version. For example, if I go to https://nodejs.org/en and see the LTS version is 20.9.0, I want to be able to install it with `devbox add nodejs@20.9.0`
