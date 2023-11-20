@@ -1,11 +1,12 @@
 ---
 title: Upgrade your Development Environments with Devbox
 date_created: 2023-11-16T09:40:01.878Z
-date_updated: 2023-11-20T01:26:11.912Z
+date_updated: 2023-11-20T01:49:55.427Z
 description: A gentle guide to creating isolated development environments
 tags:
   - devbox
   - software
+  - development-environments
   - nix
 ---
 
@@ -307,13 +308,13 @@ The benefits of a team using Devbox should be obvious: if one person upgrades No
 
 |                                           | [Devbox](https://www.jetpack.io/devbox) | [Devenv](https://devenv.sh) | [Nix](https://nixos.org/) | [Docker](https://www.docker.com/) | [Homebrew](https://brew.sh) / [Chocolatey](https://chocolatey.org) |
 | ----------------------------------------- | --------------------------------------- | --------------------------- | ------------------------- | --------------------------------- | ------------------------------------------------------------------ |
-| Per-project Isolation                     | ✅                                      | ✅                          | ❌                        | ✅                                | ❌                                                                 |
+| Per-project Isolation                     | ✅                                      | ✅                          | ✅                        | ✅                                | ❌                                                                 |
 | Use packages by semver[^package-semver]   | ✅                                      | ❌                          | ❌                        | ✅                                | ✅                                                                 |
-| Automatic Shell Activation (direnv)       | ✅                                      | ✅                          | ❌                        | ✅                                | n/a                                                                |
+| Automatic Shell Activation (direnv)       | ✅                                      | ✅                          | ✅                        | ✅                                | n/a                                                                |
 | Does not depend on VM                     | ✅                                      | ✅                          | ✅                        | ❌                                | ✅                                                                 |
 | Reproducibility                           | ✅                                      | ✅                          | ✅                        | ⚠️ [^docker-reproducibility]      | ❌                                                                 |
 | Share config in version control           | ✅                                      | ✅                          | ✅                        | ✅                                | ❌                                                                 |
-| Easy to use                               | ✅                                      | ❌                          | ❌                        | ❌                                | ✅                                                                 |
+| Ease of use                               | ✅                                      | ❌                          | ❌                        | ❌                                | ✅                                                                 |
 | Create Containers (share with production) | ✅                                      | ✅                          | ✅                        | ✅                                | ❌                                                                 |
 | Windows support                           | ❌ [^no-windows-support]                | ❌                          | ❌                        | ✅                                | ✅                                                                 |
 | Global packages                           | ⚠️ [^devbox-global-packages]            | ❌ (?)                      | ✅                        | ❌                                | ✅                                                                 |
@@ -378,6 +379,10 @@ Devbox is a pretty powerful tool and I've barely scratched the surface. You can 
 - [Installing packages from Nix flakes](https://www.jetpack.io/devbox/docs/guides/using_flakes/)
 - [Generating Docker containers](https://www.jetpack.io/devbox/docs/cli_reference/devbox_generate_dockerfile/)
 - [Using Devbox in GitHub CI/CD Actions](https://www.jetpack.io/devbox/docs/continuous_integration/github_action/)
+
+## Errata
+
+- 2023-11-19: Tweaked Nix in comparison table to reflect that "Per-project Isolation" and "Automatic Shell Activation (direnv)" are both achievable.
 
 [^nix-complexity]: Nix starts being unapproachable the second you try to [explain the name](https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html). I'm sorry.
 [^docker-reproducibility]: Docker _can be_ pretty reproducible, and there are lots of guides on the internet about how to build reproducible Dockerfiles, but it doesn't by default encourage it. The `latest` tag, for example, behaves completely differently in a Dockerfile and Devbox. In Devbox, it means "the latest available right now, but take a snapshot of what that is and re-use it in the future." With Docker, it means "just #yolo grab whatever right now and feel free to grab something different in the future."
