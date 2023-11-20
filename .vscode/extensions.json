@@ -13,6 +13,7 @@
     "phoenisx.cssvar",
     "lakkannawalikar.css-converter",
     "unifiedjs.vscode-mdx",
-    "xyc.vscode-mdx-preview"
+    "xyc.vscode-mdx-preview",
+    "eliostruyf.vscode-front-matter"
   ]
 }

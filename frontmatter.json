@@ -1,11 +1,18 @@
 {
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.content.autoUpdateDate": true,
   "frontMatter.content.pageFolders": [
     {
       "path": "[[workspace]]/src/content/articles",
       "title": "Articles"
     }
   ],
+  "frontMatter.content.publicFolder": {
+    "path": "static",
+    "relative": true
+  },
+  "frontMatter.preview.host": "https://localhost:3000",
+  "frontMatter.website.host": "https://alan.norbauer.com",
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",
@@ -23,12 +30,14 @@
           "title": "date_created",
           "name": "date_created",
           "type": "datetime",
+          "isPublishDate": true,
           "required": true
         },
         {
           "title": "date_updated",
           "name": "date_updated",
           "type": "datetime",
+          "isModifiedDate": true,
           "required": false
         },
         {
@@ -48,6 +57,12 @@
           "name": "draft",
           "type": "datetime",
           "default": false
+        },
+        {
+          "title": "series",
+          "name": "series",
+          "type": "string",
+          "required": false
         }
       ]
     }

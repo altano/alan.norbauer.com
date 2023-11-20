@@ -1,9 +1,14 @@
 ---
-title: "Run zrepl on TrueNAS"
-date_created: "2022-02-18T05:42:00.231Z"
-description: "Run zrepl on TrueNAS in a way that survives reboots and OS updates"
-tags: ["homelab", "TrueNAS", "zrepl", "replication", "zfs"]
-series: "offsite backup of a zfs pool"
+title: Run zrepl on TrueNAS
+date_created: 2022-02-18T05:42:00.231Z
+description: Run zrepl on TrueNAS in a way that survives reboots and OS updates
+tags:
+  - homelab
+  - TrueNAS
+  - zrepl
+  - replication
+  - zfs
+series: offsite backup of a zfs pool
 ---
 
 TrueNAS mounts several root directories as temporary filesystems (tmpfs) that are erased on every reboot. This includes the zrepl service script located at `/usr/local/etc/rc.d/zrepl`. This guide demonstrates how to setup zrepl in a way that survives reboots and OS updates while preserving `service zrepl XXX` functionality.
