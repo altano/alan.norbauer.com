@@ -61,6 +61,9 @@ const nextConfig = {
     // mdxRs: false, // Currently incompatible with remark plugins
   },
   reactStrictMode: true,
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
 };
 
 export default withBundleAnalyzer(withMDX(nextConfig));
