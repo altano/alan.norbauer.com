@@ -5,17 +5,17 @@ export default async function getFonts(): Promise<Font[]> {
   // when deployed to vercel.
   const [interRegular, interMedium, interSemiBold, interBold] =
     await Promise.all([
-      fetch(`https://rsms.me/inter/font-files/Inter-Regular.woff`).then((res) =>
-        res.arrayBuffer()
-      ),
-      fetch(`https://rsms.me/inter/font-files/Inter-Medium.woff`).then((res) =>
-        res.arrayBuffer()
-      ),
-      fetch(`https://rsms.me/inter/font-files/Inter-SemiBold.woff`).then(
+      fetch(`https://alan.norbauer.com/fonts/inter/otf/Inter-Regular.otf`).then(
         (res) => res.arrayBuffer()
       ),
-      fetch(`https://rsms.me/inter/font-files/Inter-Bold.woff`).then((res) =>
-        res.arrayBuffer()
+      fetch(`https://alan.norbauer.com/fonts/inter/otf/Inter-Medium.otf`).then(
+        (res) => res.arrayBuffer()
+      ),
+      fetch(
+        `https://alan.norbauer.com/fonts/inter/otf/Inter-SemiBold.otf`
+      ).then((res) => res.arrayBuffer()),
+      fetch(`https://alan.norbauer.com/fonts/inter/otf/Inter-Bold.otf`).then(
+        (res) => res.arrayBuffer()
       ),
     ]);
 
