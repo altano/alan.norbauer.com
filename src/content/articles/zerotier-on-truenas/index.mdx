@@ -1,10 +1,13 @@
 ---
-title: "Run ZeroTier on TrueNAS"
-date_created: "2022-02-14T06:17:30.897Z"
-date_updated: "2022-02-21T02:04:52.769Z"
-description: "Run ZeroTier on TrueNAS in a way that survives reboots and OS updates"
-tags: ["homelab", "TrueNAS", "ZeroTier"]
-series: "offsite backup of a zfs pool"
+title: Run ZeroTier on TrueNAS
+date_created: 2022-02-14T06:17:30.897Z
+date_updated: 2022-02-21T02:04:52.769Z
+description: Run ZeroTier on TrueNAS in a way that survives reboots and OS updates
+tags:
+  - homelab
+  - TrueNAS
+  - ZeroTier
+series: offsite backup of a zfs pool
 ---
 
 TrueNAS mounts `/var` as a temporary filesystem (tmpfs) that is erased on every reboot. This includes the ZeroTier database located at `/var/db/zerotier-one`. This guide demonstrates how to setup ZeroTier in a way that survives reboots and OS updates while preserving `service zerotier XXX` functionality.

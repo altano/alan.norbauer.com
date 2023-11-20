@@ -1,9 +1,12 @@
 ---
-title: "Run Proxmox Backup Server on TrueNAS"
-date_created: "2021-08-16T19:56:43.675Z"
-date_updated: "2021-08-17T04:05:12.228Z"
-description: "Run Proxmox Backup Server (PBS) on a TrueNAS bhyve VM"
-tags: ["homelab", "TrueNAS", "Proxmox"]
+title: Run Proxmox Backup Server on TrueNAS
+date_created: 2021-08-16T19:56:43.675Z
+date_updated: 2021-08-17T04:05:12.228Z
+description: Run Proxmox Backup Server (PBS) on a TrueNAS bhyve VM
+tags:
+  - homelab
+  - TrueNAS
+  - Proxmox
 ---
 
 It's recommended that you run Proxmox Backup Server (PBS) on a device separate from your Proxmox cluster and NOT as a VM inside of Proxmox, the idea being that it creates bad dependencies that make restore harder if your cluster fails (which is the point of your backups). If you run TrueNAS for your storage side-by-side with Proxmox, it might make sense to make run your PBS server as a VM on TrueNAS, which is a little difficult but can easily be accomplished with the steps below.
