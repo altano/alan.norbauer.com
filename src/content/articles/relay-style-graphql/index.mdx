@@ -1,7 +1,7 @@
 ---
 title: Relay-style GraphQL
 date_created: 2023-07-31T10:52:57.159Z
-date_updated: 2023-10-21T01:54:28.096Z
+date_updated: 2024-02-10T07:34:25.661Z
 description: GraphQL best practices for 2023
 tags:
   - graphql
@@ -48,7 +48,7 @@ The open-source community has improved GraphQL, such as all the amazing work [Th
 
 While Meta's adoption of GraphQL on mobile was an immediate success, it did a much worse job than open-source at embracing its own technology on the web, where it took 10 years to bring it to facebook.com. There were several failed attempts, each failure resulting in a rethinking of the tech stack (e.g. Relay), until eventually succeeding with an approach that looks very different than both where it started and where most of the industry is today.
 
-The fruits of Meta's struggles, plus the lessons learned in open-source, are what I'm dubbing “Relay-style GraphQL.” Not everyone needs all the parts of Relay-style GraphQL, especially not the best-possible performance and backwards compatibility, and all the infrastructure and tooling complexity that entails, but most of the other advancements are extremely relevant to any application.
+The fruits of Meta's struggles, plus the lessons learned in open-source, are what I'm dubbing “Relay-style GraphQL.” Not everyone needs all the parts of Relay-style GraphQL, especially not the best-possible performance and backwards compatibility, and all the infrastructure and tooling complexity that entails. However, most of the other advancements are extremely relevant to any application.
 
 ## Highlights of Relay-style GraphQL
 
@@ -58,7 +58,7 @@ Relay-style GraphQL is an approach that combines many framework features, best p
 
 Fragment collocation means declaring GraphQL fragments directly in your components instead of separate files. Parent components spread their children's fragments into their fragment to be allowed to render their children.
 
-Apollo [supports a lesser form of collocated fragments](https://www.apollographql.com/blog/graphql/fragments/using-graphql-fragments-for-safer-cleaner-and-faster-code/) and [better collocated fragments](https://www.apollographql.com/docs/react/api/react/hooks-experimental/#usefragment) are currently in beta.
+Apollo [supports a lesser form of collocated fragments](https://www.apollographql.com/blog/graphql/fragments/using-graphql-fragments-for-safer-cleaner-and-faster-code/) and [better collocated fragments](https://www.apollographql.com/docs/react/api/react/hooks-experimental/#usefragment) is currently in beta.
 
 Two **critical** principles associated with good use of collocation of fragments are:
 
@@ -420,7 +420,7 @@ GraphQL APIs give the UI developer the power to query for whatever they want dir
 1. You're potentially sending down huge query documents to your clients only to have them turn around and send them back up to the server. This is a waste of bandwidth.
 2. Accepting arbitrarily complex queries from any client can be a serviceability and efficiency nightmare, and potentially a security risk[^persisted-query-security]. One way developers have dealt with this is by calculating query complexity and then rate-limiting the API. That approach only makes sense in certain circumstances.
 
-One solution to both of these problems is to use [persisted queries](https://relay.dev/docs/guides/persisted-queries/#the-persistconfig-option), which just means persisting your compiled queries somewhere the backend has access to, assigning them a unique ID, and then only sending those unique ID to your clients. Then your JS application need only send back that unique ID and the accompany query variables to the GraphQL server when executing a query. This gets rid of the bandwidth waste and also locks down queries to the ones your UI developers have written, not letting arbitrary actors send whatever queries they want from the JS console.
+One solution to both of these problems is to use [persisted queries](https://relay.dev/docs/guides/persisted-queries/#the-persistconfig-option). This involves persisting your compiled queries somewhere accessible to the backend and assigning them a unique ID. Subsequently, only the unique ID is sent to your clients. Then, your JS application needs only to send back that unique ID and the accompanying query variables to the GraphQL server when executing a query. This approach eliminates bandwidth waste and restricts queries to those written by your UI developers, preventing arbitrary actors from sending unauthorized queries through the JS console.
 
 ### React Suspense Support
 
