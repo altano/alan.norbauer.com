@@ -1,40 +1,39 @@
 "use client";
 
-import {
-  Tabs,
-  TabList,
-  TabTrigger,
-  TabContent,
-  TabIndicator,
-} from "@ark-ui/react";
+import { Tabs } from "@ark-ui/react";
 import React from "react";
 
 export function CodeTabsRoot(
-  props: Pick<React.ComponentProps<typeof Tabs>, "children" | "defaultValue">
+  props: Pick<
+    React.ComponentProps<typeof Tabs.Root>,
+    "children" | "defaultValue"
+  >
 ) {
-  return <Tabs {...props} />;
+  return <Tabs.Root {...props} />;
 }
 
 export function CodeTabsList({
   titles,
   children,
 }: {
-  children: React.ComponentProps<typeof TabTrigger>["children"][];
-  titles: React.ComponentProps<typeof TabTrigger>["value"][];
+  children: React.ComponentProps<typeof Tabs.Trigger>["children"][];
+  titles: React.ComponentProps<typeof Tabs.Trigger>["value"][];
 }) {
   const tabs = React.Children.toArray(children);
   return (
-    <TabList style={{ display: "flex" }}>
+    <Tabs.List style={{ display: "flex" }}>
       {titles.map((title, i) => (
-        <TabTrigger asChild key={title} value={title}>
+        <Tabs.Trigger asChild key={title} value={title}>
           {tabs[i]}
-        </TabTrigger>
+        </Tabs.Trigger>
       ))}
-      <TabIndicator />
-    </TabList>
+      <Tabs.Indicator />
+    </Tabs.List>
   );
 }
 
-export function CodeTabContent(props: React.ComponentProps<typeof TabContent>) {
-  return <TabContent {...props} />;
+export function CodeTabContent(
+  props: React.ComponentProps<typeof Tabs.Content>
+) {
+  return <Tabs.Content {...props} />;
 }
