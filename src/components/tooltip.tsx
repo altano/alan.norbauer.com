@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Portal,
-  Tooltip as ArkTooltip,
-  TooltipTrigger,
-  TooltipPositioner,
-  TooltipContent,
-} from "@ark-ui/react";
+import { Tooltip as ArkTooltip } from "@ark-ui/react";
 
 export function Tooltip({
   children,
@@ -16,13 +10,11 @@ export function Tooltip({
   label: string;
 }) {
   return (
-    <ArkTooltip>
-      <TooltipTrigger>{children}</TooltipTrigger>
-      <Portal>
-        <TooltipPositioner>
-          <TooltipContent>{label}</TooltipContent>
-        </TooltipPositioner>
-      </Portal>
-    </ArkTooltip>
+    <ArkTooltip.Root>
+      <ArkTooltip.Trigger>{children}</ArkTooltip.Trigger>
+      <ArkTooltip.Positioner>
+        <ArkTooltip.Content>{label}</ArkTooltip.Content>
+      </ArkTooltip.Positioner>
+    </ArkTooltip.Root>
   );
 }

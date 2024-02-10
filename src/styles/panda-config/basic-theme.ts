@@ -36,21 +36,21 @@ const theme: Theme = {
             base: "{colors.light}",
             _dark: "{colors.dark}",
           },
-          description: "Main Background",
+          // description: "Main Background",
         },
         highlight: {
           value: {
             base: "#fff8dc",
             _dark: "#FCEAA8",
           },
-          description: "A highlighted section or text",
+          // description: "A highlighted section or text",
         },
         card: {
           value: {
             base: "{colors.lightGray}",
             _dark: "{colors.draculaBackground}",
           },
-          description: "Card Background",
+          // description: "Card Background",
         },
         tag: {
           value: {
@@ -77,14 +77,14 @@ const theme: Theme = {
             base: "{colors.dark}",
             _dark: "{colors.offWhite}",
           },
-          description: "Main text color (e.g. body)",
+          // description: "Main text color (e.g. body)",
         },
         highlight: {
           value: {
             base: "{colors.dark}",
             _dark: "{colors.dark}",
           },
-          description: "A highlighted section or text",
+          // description: "A highlighted section or text",
         },
         button: {
           value: {
