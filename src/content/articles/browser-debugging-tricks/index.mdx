@@ -97,7 +97,7 @@ Pause based on computed CSS values, e.g. only pause execution when the document 
 ### Even Calls Only
 
 Only pause every other time the line is executed:
-`window.counter = window.counter || 0, window.counter % 2 === 0`
+`window.counter = (window.counter || 0) + 1, window.counter % 2 === 0`
 
 ### Break on Sample
 
