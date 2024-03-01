@@ -49,8 +49,7 @@ const withMDX = mdx({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // TODO Re-enable when dynamic open graph images are fixed: https://github.com/vercel/next.js/issues/51147
-  // output: "export",
+  output: "export",
 
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // images: {
