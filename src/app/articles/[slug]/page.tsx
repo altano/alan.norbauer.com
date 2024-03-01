@@ -23,7 +23,7 @@ export const dynamic = "error";
 
 export async function generateMetadata(
   { params }: ArticleProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const { slug } = params;
   const parentMetadata = await parent;
@@ -46,6 +46,7 @@ export async function generateMetadata(
       type: "article",
       authors: authors.map((a) => a.name).filter(notNullish),
       tags: keywords,
+      images: `/articles/${article.slug}/og.png`,
     },
   };
 }
