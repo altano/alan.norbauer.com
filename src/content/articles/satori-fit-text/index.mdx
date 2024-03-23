@@ -8,6 +8,7 @@ tags:
   - javascript
   - next.js
 draft: false
+date_updated: 2024-03-23T23:17:33.294Z
 ---
 
 import { SatoriFitTextBasicSandbox } from "./sandboxes/satori-fit-text/basic";
@@ -114,7 +115,7 @@ Check out [this codesandbox](https://codesandbox.io/p/sandbox/github/altano/npm-
 
 There are less roundabout solutions[^altano-textfit] if you're going to only fit text in a browser, but the library does technically work just fine there.
 
-NOTE: The sandbox below does _not_ work in Firefox. Satori can be made to work in Firefox but you'll have to setup an `Intl.Segmenter` polyfill first[^intl-segmenter], which I haven't bothered to do.
+NOTE: The sandbox below will NOT work in Firefox before version 126 (the `Intl.Segmenter` API was not yet implemented).
 
 <br />
 
@@ -122,4 +123,3 @@ NOTE: The sandbox below does _not_ work in Firefox. Satori can be made to work i
 
 [^altano-textfit]: [@altano/textfit](https://www.npmjs.com/package/@altano/textfit) doesn't require intermediate svg files and can more quickly fit text using only the DOM.
 [^satori-support]: [vercel/satori](https://github.com/vercel/satori) can currently "be used in browser, Node.js (>= 16), and Web Workers."
-[^intl-segmenter]: Using [intl-segmenter-polyfill](https://www.npmjs.com/package/intl-segmenter-polyfill) is [recommended by Satori's maintainers](https://github.com/vercel/satori/issues/14#issuecomment-1532644426).
