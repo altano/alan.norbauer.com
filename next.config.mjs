@@ -52,12 +52,9 @@ const nextConfig = {
   output: "export",
 
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
-  // images: {
-  //   // TODO Can we optimize images with export somehow? Check out next-optimized-images npm package
-  //   unoptimized: true,
-  // },
-  experimental: {
-    // mdxRs: false, // Currently incompatible with remark plugins
+  images: {
+    // TODO Can we optimize images with export somehow? Check out next-optimized-images npm package
+    unoptimized: true,
   },
   reactStrictMode: true,
   images: {

@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 const SandpackReact = dynamic(
   () => import("@codesandbox/sandpack-react").then((mod) => mod.Sandpack),
-  { ssr: false }
+  { ssr: false },
 );
 
 import { useTheme } from "next-themes";
@@ -91,18 +91,6 @@ export default function App() {
 }
         `.trim(),
         "/font.js": `
-const urlMap = {
-  100: "https://rsms.me/inter/font-files/Inter-Thin.woff",
-  200: "https://rsms.me/inter/font-files/Inter-ExtraLight.woff",
-  300: "https://rsms.me/inter/font-files/Inter-Light.woff",
-  400: "https://rsms.me/inter/font-files/Inter-Regular.woff",
-  500: "https://rsms.me/inter/font-files/Inter-Medium.woff",
-  600: "https://rsms.me/inter/font-files/Inter-SemiBold.woff",
-  700: "https://rsms.me/inter/font-files/Inter-Bold.woff",
-  800: "https://rsms.me/inter/font-files/Inter-ExtraBold.woff",
-  900: "https://rsms.me/inter/font-files/Inter-Black.woff",
-};
-
 const fontCache = new Map();
 
 export async function getInter(weight) {
@@ -113,11 +101,7 @@ export async function getInter(weight) {
     }
   }
 
-  const url = urlMap[weight];
-  if (url == null) {
-    throw new Error("Unexpected weight: " + weight);
-  }
-
+  const url = \`https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.17/files/inter-latin-$\{weight\}-normal.woff\`;
   const buffer = await fetch(url).then((res) => res.arrayBuffer());
   const font = {
     name: "Inter",
