@@ -1,7 +1,7 @@
 ---
 title: Relay-style GraphQL
 date_created: 2023-07-31T10:52:57.159Z
-date_updated: 2024-02-10T07:34:25.661Z
+date_updated: 2024-06-01T23:56:28.324Z
 description: GraphQL best practices for 2023
 tags:
   - graphql
@@ -106,7 +106,7 @@ function IssueSummary(props: {
         body
       }
     `,
-    props.issue
+    props.issue,
   );
 
   return (
@@ -281,7 +281,7 @@ You get the idea.
 
 If your collocated fragments abide by the second principle above:
 
-> "Component's must never share fragments."
+> "Components must never share fragments."
 
 they will benefit from much improved TypeScript typing.
 
