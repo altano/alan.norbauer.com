@@ -1,0 +1,13 @@
+---
+import { type CollectionEntry } from "astro:content";
+import OpenGraph from "@/components/OpenGraph.astro";
+import { getEntry } from "astro:content";
+
+type Props = CollectionEntry<"articles">;
+
+const article = Astro.props;
+const author = await getEntry(article.data.author);
+const subtitle = `by ${author.data.name}`;
+---
+
+<OpenGraph title={article.data.title} subtitle={subtitle} />

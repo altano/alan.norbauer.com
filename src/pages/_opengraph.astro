@@ -1,0 +1,9 @@
+---
+import OpenGraph from "@/components/OpenGraph.astro";
+import pkg from "@root/package.json";
+
+const host = new URL(pkg.homepage).host;
+const title = pkg.description;
+---
+
+<OpenGraph title={title} subtitle={host} />
