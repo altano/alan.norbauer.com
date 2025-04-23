@@ -1,0 +1,32 @@
+---
+import HomeLink from "@/components/HomeLink.astro";
+import Title from "@/components/Title.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  main {
+    min-width: 320px;
+    max-width: var(--breakpoints-md);
+    margin: auto;
+    @media (--sm-down-viewport) {
+      margin-inline: var(--spacing-2);
+    }
+  }
+
+  p {
+    font-size: 2rem;
+    margin-block: var(--spacing-10);
+  }
+</style>
+
+<BaseLayout type="website" title="Not here" description="404: Item not found">
+  <main>
+    <Title>Nothing exists here.</Title>
+    <p>
+      Go back to <HomeLink />
+    </p>
+  </main>
+</BaseLayout>
