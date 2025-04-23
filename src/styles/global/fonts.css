@@ -1,0 +1,9 @@
+@layer global {
+  :root {
+    --font-inter: "Inter Variable", "sans-serif";
+    --font-ibm-plex-mono: "IBM Plex Mono", "ui-monospace";
+    /* Plex Mono doesn't render ascii art correctly for some reason */
+    --font-ascii-diagram:
+      PT Mono, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
+  }
+}

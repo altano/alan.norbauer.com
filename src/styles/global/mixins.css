@@ -1,0 +1,5 @@
+@mixin card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-5);
+}

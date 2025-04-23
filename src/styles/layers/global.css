@@ -1,0 +1,105 @@
+@import "@/styles/custom-media-queries.css";
+
+@layer global {
+  :root {
+    /* Typography and colors */
+    font-family: var(--font-inter);
+    background: var(--bg);
+    color: var(--text);
+    transition:
+      color var(--durations-color-scheme),
+      background var(--durations-color-scheme);
+
+    /* Scrolling behavior */
+    scroll-padding-block-start: var(--spacing-3);
+    scroll-behavior: smooth;
+    @media (--reduced-motion) {
+      scroll-behavior: auto;
+    }
+
+    /* Text selection */
+    ::selection {
+      background: var(--bg-selection);
+      color: var(--text-selection);
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    /* Links */
+    a,
+    a:visited {
+      color: var(--text);
+      transition: color var(--durations-color-scheme);
+      text-decoration: var(--link-text-decoration, underline);
+    }
+
+    a:hover {
+      color: var(--accent-primary); /* TODO Revisit */
+    }
+
+    /* Headings */
+    h1 {
+      font-size: 6rem;
+      margin: 3rem 0 1.5rem 0;
+      font-weight: 800;
+      line-height: var(--line-height-tighter);
+    }
+    h2 {
+      font-size: 3rem;
+      margin: 3rem 0 1.5rem 0;
+      font-weight: 700;
+      line-height: var(--line-height-tight);
+    }
+    h3 {
+      font-size: 2rem;
+    }
+    h4 {
+      font-size: 1.5rem;
+    }
+    h5,
+    h6 {
+      font-size: 1.2rem;
+    }
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-block: 2rem 1rem;
+      font-weight: 600;
+      line-height: var(--line-height-tight);
+    }
+
+    :is(h1, h2, h3, h4, h5, h6) {
+      text-wrap: pretty; /* not supported everywhere yet, but there isn't a good fallback (balance isn't a good value for global css) */
+    }
+
+    /* Heading links */
+    :is(h1, h2, h3, h4, h5, h6) > a {
+      text-decoration: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    /* Paragraphs */
+    p:not(:first-child) {
+      margin-block-start: var(--spacing-5);
+    }
+
+    p:last-child {
+      margin-block-end: var(--spacing-2);
+    }
+
+    &[data-theme="dark"] :is(img, svg)[data-invertible] {
+      filter: invert(100%);
+      transition: filter var(--durations-color-scheme);
+    }
+
+    em {
+      font-style: italic;
+    }
+  }
+}

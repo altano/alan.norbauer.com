@@ -1,0 +1,24 @@
+/**
+   sm: 640-767px
+   md: 768-1023px
+   lg: 1024-1279px
+   xl: 1280-1535px
+  xxl: >= 1536px
+*/
+@custom-media --sm-viewport only screen and (640px <= width <= 767px);
+@custom-media --sm-down-viewport only screen and (max-width: 767px);
+@custom-media --sm-up-viewport only screen and (min-width: 640px);
+@custom-media --md-viewport only screen and (768px <= width <= 1023px);
+@custom-media --md-down-viewport only screen and (max-width: 1023px);
+@custom-media --md-up-viewport only screen and (min-width: 768px);
+@custom-media --lg-viewport only screen and (1024px <= width <= 1279px);
+@custom-media --lg-down-viewport only screen and (max-width: 1279px);
+@custom-media --lg-up-viewport only screen and (min-width: 1024px);
+@custom-media --xl-viewport only screen and (1280px <= width <= 1535px);
+@custom-media --xl-down-viewport only screen and (max-width: 1535px);
+@custom-media --xl-up-viewport only screen and (min-width: 1280px);
+@custom-media --xxl-viewport only screen and (min-width: 1535px);
+@custom-media --xxl-down-viewport only screen;
+@custom-media --xxl-up-viewport (--xxl-viewport);
+
+@custom-media --reduced-motion (prefers-reduced-motion: reduce);

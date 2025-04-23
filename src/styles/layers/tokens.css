@@ -1,0 +1,84 @@
+@import "../global/custom-media-queries.css";
+@import "./colors.css";
+
+@layer tokens {
+  :root {
+    --text: var(--color-dark);
+    --text-faded: var(--color-gray-400);
+    --text-tag: var(--color-dark);
+    --text-footer: var(--color-black);
+    --text-highlight: var(--color-dark);
+    --bg: var(--color-light);
+    --bg-tag: var(--color-gray-100);
+    --bg-card: var(--color-light-gray);
+    --bg-footer: var(--color-sunset-blvd);
+    --bg-highlight: #fff8dc;
+    --text-selection: var(--color-black);
+    --bg-selection: var(--color-electric-blue);
+    --accent-primary: var(--color-fuchsiaish);
+
+    &[data-theme="dark"] {
+      --text: var(--color-off-white);
+      --text-faded: var(--color-gray-600);
+      --text-tag: var(--color-off-white);
+      --text-footer: var(--color-off-white);
+      --text-highlight: var(--color-dark);
+      --bg-highlight: #fceaa8;
+      --bg: var(--color-dark);
+      --bg-tag: var(--color-dracula-background);
+      --bg-card: var(--color-dracula-background);
+      --bg-footer: var(--color-dracula-background);
+      --text-selection: var(--color-black);
+      --bg-selection: var(--color-seafoam);
+      --accent-primary: var(--color-seafoam);
+    }
+  }
+
+  :root {
+    --line-height-none: 0;
+    --line-height-tighter: 1;
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-loose: 2;
+  }
+
+  :root {
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.375rem;
+    --border-radius-lg: 0.5rem;
+  }
+
+  :root {
+    --durations-fastest: 50ms;
+    --durations-faster: 100ms;
+    --durations-fast: 150ms;
+    --durations-normal: 200ms;
+    --durations-slow: 300ms;
+    --durations-slower: 400ms;
+    --durations-slowest: 500ms;
+    --durations-color-scheme: var(--durations-fast);
+  }
+
+  :root {
+    --breakpoints-sm: 640px;
+    --breakpoints-md: 768px;
+    --breakpoints-lg: 1024px;
+    --breakpoints-xl: 1280px;
+    --breakpoints-2xl: 1536px;
+  }
+
+  :root {
+    --spacing-0: 0;
+    --spacing-half: 0.125rem;
+    --spacing-1: 0.25rem;
+    --spacing-2: 0.5rem;
+    --spacing-3: 0.75rem;
+    --spacing-4: 1rem;
+    --spacing-5: 1.25rem;
+    --spacing-6: 1.5rem;
+    --spacing-7: 1.75rem;
+    --spacing-8: 2rem;
+    --spacing-9: 2.25rem;
+    --spacing-10: 2.5rem;
+  }
+}
