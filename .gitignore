@@ -8,12 +8,13 @@
 # testing
 /coverage
 
-# next.js
-/.next/
-/out/
+# generated
+.astro/
+*.astro.tsx
+.frontmatter
 
-# production
-/build
+# astro build output
+dist/
 
 # misc
 .DS_Store
@@ -23,18 +24,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # local env files
 .env*.local
 
-# vercel
-.vercel
- 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
-
-# auto-generated
-.contentlayer
-.frontmatter
-styled-system

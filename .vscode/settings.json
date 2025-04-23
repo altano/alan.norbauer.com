@@ -1,4 +1,10 @@
+/** eslint-disable @typescript-eslint/no-unused-expressions */
 {
+  "files.readonlyInclude": {
+    ".astro/**": true,
+    ".devbox/**": true,
+    "dist/**": true
+  },
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
@@ -17,6 +23,7 @@
     "**/out": true
   },
   "editor.linkedEditing": true,
+  "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "stylelint.packageManager": "pnpm",
@@ -34,6 +41,13 @@
     "typescript",
     "typescriptreact"
   ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ],
   "typescript.updateImportsOnFileMove.enabled": "always",
   "frontMatter.dashboard.openOnStart": true,
   "todo-tree.filtering.excludeGlobs": ["**/node_modules/*/**"],
@@ -44,10 +58,10 @@
     "src/app/global.css"
   ],
   "editor.minimap.enabled": false,
+  "editor.rulers": [80],
   "[mdx]": {
     "editor.wordWrap": "on"
   },
   "cSpell.enabled": true,
-  "editor.rulers": [80],
   "cSpell.words": ["altano", "Codesandbox"]
 }
