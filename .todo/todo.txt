@@ -5,6 +5,7 @@ High Pri:
 
 Low pri:
 TODO: headings (e.g. on "development environment" tag page) are too wide +mobile-safari
+TODO: headings w/ bg (e.g. on tag page) clip descenders when wrapped +mobile-safari
 TODO: horizontal scrollbars on devbox and relay articles +mobile-safari
 TODO: playwright tests
 TODO: no trailing slash serves old content... wtf?
