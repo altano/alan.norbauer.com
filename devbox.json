@@ -1,9 +1,6 @@
 {
-  "packages": [
-    "difftastic@latest",
-    "git-branchless@latest",
-    "git@latest",
-    "nodePackages.pnpm@latest",
-    "nodejs@latest"
-  ]
+  "packages": ["difftastic@latest", "git@2.44.1", "nodejs@22.14.0"],
+  "env": {
+    "DEVBOX_COREPACK_ENABLED": "true"
+  }
 }
