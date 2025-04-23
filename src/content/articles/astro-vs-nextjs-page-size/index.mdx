@@ -1,0 +1,116 @@
+---
+title: "From Next.js to Astro: A Page Size Comparison"
+description: A comparison of page size after rebuilding this site in Astro
+date_created: 2025-04-23T05:09:29.939Z
+tags:
+  - ssg
+  - astro
+  - nextjs
+---
+
+import { Icon } from "astro-icon/components";
+import Chart1 from "./Next.js vs Astro - Homepage Bytes.svg";
+import Chart2 from "./Next.js vs Astro - Article Bytes.svg";
+
+This site now runs on [Astro](https://astro.build/), replacing [Next.js](https://nextjs.org/) as my static site generator. It's a direct port and so everything _should be_ the same.
+
+## Tech Stack, Before and After
+
+|                         | **Before**                                          | **After**                                                                                               |
+| ----------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **SSG**                 | [Next.js v14.2.4](https://nextjs.org/)              | [Astro 5.74](https://astro.build/)                                                                      |
+| **CSS**                 | [Panda CSS](https://panda-css.com/)                 | [Astro](https://docs.astro.build/en/guides/styling/) +<br /> [Lightning CSS](https://lightningcss.dev/) |
+| **Host**                | [Vercel](https://vercel.com/)                       | [Cloudflare Pages](https://pages.cloudflare.com/)                                                       |
+| **Syntax Highlighting** | [Codehike Bright](https://bright.codehike.org/)     | [Expressive Code](https://expressive-code.com/)                                                         |
+| **Scroll Spy**          | Hand-rolled, React                                  | Hand-rolled, Vanilla JS                                                                                 |
+| **Article Templating**  | [MDX](https://mdxjs.com/)                           | _unchanged_                                                                                             |
+| **Open Graph Cards**    | [Vercel's Satori](https://github.com/vercel/satori) | _unchanged_                                                                                             |
+
+## Size Difference
+
+Here's a recap of the page size difference between the two. Some notes:
+
+- All numbers are kB transferred over-the-wire as reported by Firefox.
+- For all JS numbers below, I've subtracted 987B from the Astro side because Cloudflare is injecting some kind of email obfuscation JS that I intend to disable.
+- I haven't really made any effort to optimize either version of the site. They're both bog standard "I'm using this thing" implementations.
+- The Next.js site was using the app router and React Server Components.
+- The site was configured for static output before and after.
+
+### Homepage Bytes
+
+257kB -> 91kB
+
+<div style="display: flex; justify-content: flex-start; flex-wrap: wrap;">
+  <span>
+
+|            | **Next.js** | **Astro** |
+| ---------- | ----------- | --------- |
+| **html**   | 10.6kB      | 14.05kB   |
+| **css**    | 11.32kB     | 3.74kB    |
+| **js**     | 168.31kB    | 1.75kB    |
+| **images** | 6.67kB      | 7.1kB     |
+| **fonts**  | 59.8kB      | 64.8kB    |
+
+  </span>
+  <span><Chart1 data-invertible alt="Chart showing same data as the table above" /></span>
+</div>
+
+### Article Bytes
+
+285kB -> 110kB
+
+<div style="display: flex; justify-content: flex-start; flex-wrap: wrap;">
+  <span>
+  
+|        | **Next.js** | **Astro**   |
+| ------ | ------- | ------- |
+| **html**   | 44.79kB | 27.85kB |
+| **css**    | 11.32kB | 11.06kB |
+| **js**     | 163.9kB | 4.65kB  |
+| **images** | 4.7kB   | 1.25kB  |
+| **fonts**  | 59.8kB  | 64.81kB |
+
+  </span>
+  <span><Chart2 data-invertible alt="Chart showing same data as the table above" /></span>
+</div>
+
+### Metrics
+
+#### pagespeed.web.dev
+
+|                              | **Next.js** | **Astro** |
+| ---------------------------- | ----------- | --------- |
+| **First Contentful Paint**   | 0.9s        | 0.9s      |
+| **Largest Contentful Paint** | 2.1s        | 1.2s      |
+| **Total Blocking Time**      | 30ms        | 0ms       |
+| **Cumulative Layout Shift**  | 0           | 0         |
+| **Speed Index**              | 2.2s        | 2.2s      |
+| **Performance**              | 99          | 100       |
+
+#### lighthouse-metrics.com - Next.js
+
+|                              | <Icon name="openmoji:flag-united-states" alt="Flag of USA" /> | <Icon name="openmoji:flag-united-states" alt="Flag of USA" /> | <Icon name="openmoji:flag-finland" alt="Flag of Finland" /> | <Icon name="openmoji:flag-germany" alt="Flag of Germany" /> | <Icon name="openmoji:flag-japan" alt="Flag of Japan" /> | <Icon name="openmoji:flag-australia" alt="Flag of Australia" /> |
+| ---------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------- |
+| **First Contentful Paint**   | 923ms                                                         | 910ms                                                         | 934ms                                                       | 914ms                                                       | 956ms                                                   | 914ms                                                           |
+| **Speed Index**              | 923ms                                                         | 910ms                                                         | 934ms                                                       | 914ms                                                       | 956ms                                                   | 999ms                                                           |
+| **Largest Contentful Paint** | 2.1s                                                          | 2.1s                                                          | 2s                                                          | 2.1s                                                        | 2.1s                                                    | 1.7s                                                            |
+| **Total Blocking Time**      | 90ms                                                          | 197ms                                                         | 390ms                                                       | 101ms                                                       | 201ms                                                   | 182ms                                                           |
+| **Cumulative Layout Shift**  | 0                                                             | 0.06                                                          | 0                                                           | 0.06                                                        | 0                                                       | 0                                                               |
+| **Performance**              | 99/100                                                        | 96/100                                                        | 90/100                                                      | 98/100                                                      | 96/100                                                  | 97/100                                                          |
+
+#### lighthouse-metrics.com - Astro
+
+|                              | <Icon name="openmoji:flag-united-states" alt="Flag of USA" /> | <Icon name="openmoji:flag-united-states" alt="Flag of USA" /> | <Icon name="openmoji:flag-finland" alt="Flag of Finland" /> | <Icon name="openmoji:flag-germany" alt="Flag of Germany" /> | <Icon name="openmoji:flag-japan" alt="Flag of Japan" /> | <Icon name="openmoji:flag-australia" alt="Flag of Australia" /> |
+| ---------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------- | --------------------------------------------------------------- |
+| **First Contentful Paint**   | 958ms                                                         | 977ms                                                         | 982ms                                                       | 978ms                                                       | 1.2s                                                    | 974ms                                                           |
+| **Speed Index**              | 958ms                                                         | 977ms                                                         | 1.1s                                                        | 978ms                                                       | 1.5s                                                    | 1.4s                                                            |
+| **Largest Contentful Paint** | 1.2s                                                          | 1.2s                                                          | 1.2s                                                        | 1.2s                                                        | 1.5s                                                    | 1.2s                                                            |
+| **Total Blocking Time**      | 0ms                                                           | 0ms                                                           | 0ms                                                         | 0ms                                                         | 0ms                                                     | 0ms                                                             |
+| **Cumulative Layout Shift**  | 0                                                             | 0                                                             | 0                                                           | 0                                                           | 0                                                       | 0                                                               |
+| **Performance**              | 100/100                                                       | 100/100                                                       | 100/100                                                     | 100/100                                                     | 100/100                                                 | 100/100                                                         |
+
+## In Conclusion
+
+If you statically generate your site with Astro you'll likely have a much smaller HTML and JS payload.
+
+Next.js was never a sensible choice (from a page size perspective) for a small, static, personal site. This comparison isn't meant to imply Next.js is bad or slow or bloated or anything. Next.js just was something I was playing with and I'm now playing with Astro.
