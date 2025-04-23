@@ -39,8 +39,8 @@ if (articles.length === 0) {
       min-width: 320px;
       max-width: var(--breakpoints-md);
       margin: auto;
-      @media (--sm-viewport) {
-        margin-inline: 2;
+      @media (--sm-down-viewport) {
+        margin-inline: var(--spacing-2);
       }
     }
   }

@@ -1,10 +1,10 @@
 // ----------------------------------------------------------------------------
 // Astro Site TODOs:
 
-
 High Pri:
 
 Low pri:
+TODO: headings (e.g. on "development environment" tag page) are too wide +mobile-safari
 TODO: horizontal scrollbars on devbox and relay articles +mobile-safari
 TODO: playwright tests
 TODO: no trailing slash serves old content... wtf?
@@ -14,7 +14,6 @@ TODO: go back to colocating images in src/pages dir
 TODO: article h1+h2 don't scale down at all (unlike Title and SectionHeading)
 TODO: figure out a way to abstract away "layer-style: card" we had with Panda CSS
 TODO: switch browser logos to experimental svg instead of Image
-
 
 // ----------------------------------------------------------------------------
 // Next.js Site TODOs:
