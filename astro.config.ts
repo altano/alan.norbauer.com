@@ -42,6 +42,7 @@ export default defineConfig({
       ],
     ],
   },
+  prefetch: true,
   integrations: [
     expressiveCode({
       plugins: [pluginLineNumbers()],
