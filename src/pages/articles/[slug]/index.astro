@@ -1,0 +1,360 @@
+---
+import { type CollectionEntry } from "astro:content";
+import Chrome from "@/components/browser-logos/Chrome.astro";
+import Firefox from "@/components/browser-logos/Firefox.astro";
+import Edge from "@/components/browser-logos/Edge.astro";
+import { Code } from "astro-expressive-code/components";
+import { getArticleMarkdownURL } from "@/content-utils/query/articles";
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
+import { getArticles } from "@/content-utils/query/articles";
+import DateTime from "@/components/article/DateTime.astro";
+import Tags from "@/components/article/Tags.astro";
+import TableOfContents from "@/components/article/TableOfContents.astro";
+import ArticleSeries from "@/components/article/ArticleSeries.astro";
+import Translation from "@/components/article/Translation.astro";
+import QuestionHeading from "@/components/article/QuestionHeading.astro";
+import QuestionBody from "@/components/article/QuestionBody.astro";
+import Answer from "@/components/article/Answer.astro";
+import { Icon } from "astro-icon/components";
+
+export async function getStaticPaths() {
+  const articles = await getArticles();
+  return articles.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<"articles">;
+
+const article = Astro.props;
+const { Content, headings } = await article.render();
+const { title, date_created, date_updated } = article.data;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer page {
+    h1 {
+      grid-area: title;
+      max-width: 100%;
+      font-size: 4rem;
+      margin-bottom: 0; /* handled by grid-row-gap instead */
+      @media (--lg-up-viewport) {
+        font-size: 4rem;
+      }
+    }
+
+    header {
+      font-size: 1rem;
+      grid-area: header;
+      @media (--md-down-viewport) {
+        display: "block";
+      }
+    }
+
+    div.metadata-sections {
+      margin-block-end: 4;
+    }
+
+    div.metadata-section {
+      color: var(--text);
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-5);
+      margin-block: var(--spacing-4);
+      font-size: 1rem;
+      line-height: normal;
+      display: flex;
+
+      @media (--lg-up-viewport) {
+        gap: var(--spacing-1);
+        color: var(--text-faded);
+        flex-direction: column;
+        align-items: flex-start;
+        margin-block-start: var(--spacing-8);
+      }
+
+      & a {
+        text-decoration: none;
+
+        &:not(:hover) {
+          color: inherit;
+        }
+      }
+
+      & svg {
+        /* account for some of these icons having padding */
+        .calendar & {
+          margin-left: -2px;
+        }
+        .tags & {
+          margin-left: -1px;
+        }
+        .source & {
+          margin-left: 0px;
+        }
+      }
+    }
+
+    span.tags {
+      margin-top: var(--spacing-1);
+    }
+
+    div.sticky-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      @media (--lg-up-viewport) {
+        flex-direction: column-reverse;
+        position: sticky;
+        align-self: start;
+        top: var(--spacing-3);
+      }
+    }
+
+    h2 {
+      @media (--md-down-viewport) {
+        margin-top: 0;
+      }
+      @media (--lg-up-viewport) {
+        margin: 0;
+        font-size: 1rem;
+        line-height: var(--line-height-loose);
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        text-decoration: none;
+      }
+    }
+  }
+</style>
+
+<style is:global>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer page {
+    article {
+      grid-area: article;
+      max-width: 100%;
+
+      /* For articles shorter than the viewport */
+      align-self: flex-start;
+
+      & .auto-link-toc-anchor {
+        color: var(--text);
+        &::after {
+          opacity: 0.1;
+
+          transition: opacity var(--durations-color-scheme);
+          content: "\00a0\0023"; /* non-breaking space followed by "#" */
+        }
+        &:hover {
+          &::after {
+            opacity: 1 !important;
+          }
+        }
+      }
+
+      & section.footnotes {
+        & > ol {
+          padding-left: 40px;
+          counter-reset: list-item 0;
+          list-style-type: decimal;
+          list-style-position: outside;
+        }
+
+        & :target {
+          color: var(--text-highlight);
+          background: var(--bg-highlight);
+          transition:
+            background var(--durations-slowest),
+            color var(--durations-slowest);
+          &::marker {
+            color: var(--text);
+          }
+          & a {
+            color: inherit;
+          }
+        }
+      }
+
+      & table {
+        /* TODO Need to factor this out somehow */
+        /* layer-style: card; */
+        background: var(--bg-card);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-5);
+
+        transition: background var(--durations-color-scheme);
+        margin-block: var(--spacing-10);
+        & th,
+        & td {
+          padding: var(--spacing-5);
+          @media (--lg-up-viewport) {
+            padding: var(--spacing-3);
+          }
+        }
+        & th {
+          font-size: 1.5rem;
+          text-align: left;
+        }
+        & td {
+          vertical-align: top;
+        }
+      }
+
+      & ul:not(:first-child),
+      & ol:not(:first-child) {
+        margin-block-start: var(--spacing-5);
+        margin-block-end: var(--spacing-2);
+      }
+      & li:not(:first-child) {
+        margin-block-start: var(--spacing-2);
+        margin-block-end: var(--spacing-1);
+      }
+
+      /* separate rule: workaround for https://github.com/parcel-bundler/lightningcss/issues/964 */
+      & blockquote {
+        /* TODO Need to factor this out somehow */
+        /* layer-style: card; */
+        background: var(--bg-card);
+        border-radius: var(--border-radius-md);
+        padding: var(--spacing-5);
+
+        transition: background var(--durations-color-scheme);
+        margin-block-end: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left-width: 5px;
+        border-left-color: var(--color-gray-400);
+
+        &:not(:first-child) {
+          margin-block-start: var(--spacing-5);
+        }
+
+        & p {
+          padding-left: var(--spacing-3);
+        }
+      }
+
+      @media (--lg-up-viewport) {
+        margin-inline: auto;
+      }
+
+      & ul {
+        list-style-type: circle;
+        padding-left: 40px;
+      }
+      & ol {
+        list-style-type: decimal;
+        padding-left: 40px;
+      }
+
+      & > img:not([data-no-style]),
+      & p > img:not([data-no-style]) {
+        &:not([data-invertible]) {
+          /* TODO Need to factor this out somehow */
+          /* layer-style: card; */
+          background: var(--bg-card);
+          border-radius: var(--border-radius-md);
+          transition: background var(--durations-color-scheme);
+
+          padding: var(--spacing-5);
+          @media (--lg-up-viewport) {
+            padding: var(--spacing-8);
+          }
+        }
+
+        &:not(:first-child) {
+          margin-block: var(--spacing-8);
+        }
+        @media (--lg-up-viewport) {
+          padding: var(--spacing-8);
+        }
+      }
+
+      &
+        :is(
+          [data-icon="ant-design:apple-filled"],
+          [data-icon="ant-design:linux-outlined"],
+          [data-icon="ant-design:windows-filled"]
+        ) {
+        display: inline;
+      }
+    }
+  }
+</style>
+
+<ArticleLayout {article}>
+  <h1>{title}</h1>
+  <header class="article-header">
+    <div class="sticky-wrapper">
+      <div class="metadata-sections">
+        <div class="metadata-section calendar">
+          <Icon
+            size={24}
+            name="ic:twotone-calendar-month"
+            aria-label="Icon for a calendar"
+          />
+          <span
+            >{
+              date_updated == null ? (
+                <>
+                  {`Published on `}
+                  <DateTime date={date_created} />
+                </>
+              ) : (
+                <>
+                  Last updated on <DateTime date={date_updated} />
+                  <br />
+                  Originally published on <DateTime date={date_created} />
+                </>
+              )
+            }</span
+          >
+        </div>
+        <div class="metadata-section tags">
+          <Icon
+            size={24}
+            name="mdi:tag-multiple-outline"
+            aria-label="Icon for a tag"
+          />
+          <span class="tags">
+            <Tags tags={article.data.tags} kind="navPill" />
+          </span>
+        </div>
+        <div class="metadata-section source">
+          <Icon size={24} name="bi:markdown" aria-label="The markdown logo" />
+          <a href={getArticleMarkdownURL(article)}>
+            View this article's source code
+          </a>
+        </div>
+      </div>
+      <nav>
+        <h2>Table of Contents</h2>
+        <TableOfContents {headings} depth={2} maxDepth={3} />
+      </nav>
+    </div>
+  </header>
+  <article>
+    <ArticleSeries article={article} />
+    <section>
+      <Content
+        components={{
+          /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+          Code,
+          Chrome,
+          Firefox,
+          Edge,
+          Translation,
+          QuestionHeading,
+          QuestionBody,
+          Answer,
+          /* eslint-enable @typescript-eslint/no-unsafe-assignment */
+        }}
+      />
+    </section>
+  </article>
+</ArticleLayout>

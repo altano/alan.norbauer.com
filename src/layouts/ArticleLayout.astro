@@ -1,0 +1,143 @@
+---
+import VisibleArticleSectionObserver from "@/components/article/VisibleArticleSectionObserver.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+import type { CollectionEntry } from "astro:content";
+import Bio from "@/components/Bio.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+
+type Props = {
+  article: CollectionEntry<"articles">;
+};
+
+const { article } = Astro.props;
+const { slug } = article;
+const { title, description } = article.data;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer layouts {
+    main {
+      /* Variables */
+      --gutter: 12px;
+
+      /* Misc */
+      display: grid;
+      width: 100%;
+      min-height: 100svh;
+
+      /* Typography */
+      font-size: 20px;
+
+      /* Grid */
+      grid-column-gap: 0;
+      grid-row-gap: 2rem;
+      grid-template-columns:
+        var(--gutter)
+        minmax(0, 1fr)
+        var(--gutter);
+
+      grid-template-rows:
+        min-content
+        min-content
+        auto
+        min-content;
+      grid-template-areas:
+        "...... title   ......"
+        "...... header  ......"
+        "...... article ......"
+        "footer footer  footer";
+
+      @media (--md-down-viewport) {
+        overflow-wrap: break-word;
+      }
+    }
+
+    @media (--lg-up-viewport) {
+      main {
+        /* Variables */
+        --article-width: min(
+          var(--breakpoints-md),
+          calc(
+            100% - var(--article-sidebar-width) -
+              (3 * var(--article-column-gap))
+          )
+        );
+        --article-sidebar-width: 300px;
+        --article-column-gap: 1rem;
+
+        /* Misc */
+        margin-inline: 0;
+
+        /* Grid */
+        grid-column-gap: var(--article-column-gap);
+        grid-template-columns:
+          1.9fr
+          var(--article-sidebar-width)
+          var(--article-width)
+          2fr;
+        grid-template-rows:
+          min-content
+          auto
+          min-content;
+
+        grid-template-areas:
+          "...... ...... title   ......"
+          "...... header article ......"
+          "footer footer footer  footer";
+      }
+    }
+
+    @media (--xl-up-viewport) {
+      main {
+        --article-sidebar-width: 350px;
+        --article-column-gap: 3rem;
+      }
+    }
+  }
+
+  footer {
+    grid-area: footer;
+    font-size: 0.8rem;
+    margin-block-start: 1rem;
+    padding: 1rem;
+    gap: var(--spacing-5);
+    background: var(--bg-footer);
+    color: var(--text-footer);
+    transition:
+      color var(--durations-color-scheme),
+      background var(--durations-color-scheme);
+
+    @media (--lg-up-viewport) {
+      margin-block-start: 2rem;
+      padding: 4rem;
+    }
+  }
+
+  div.page-footer-content {
+    margin: auto;
+    max-width: var(--breakpoints-xl);
+  }
+</style>
+
+<BaseLayout
+  {title}
+  {description}
+  slug={slug}
+  type="article"
+  opengraphImage="./opengraph.png"
+>
+  <VisibleArticleSectionObserver>
+    <main>
+      <slot />
+      <footer>
+        <div class="page-footer-content">
+          <Bio width="wide" font="small" />
+          <SiteFooter location="embedded" />
+        </div>
+      </footer>
+    </main>
+  </VisibleArticleSectionObserver>
+</BaseLayout>
