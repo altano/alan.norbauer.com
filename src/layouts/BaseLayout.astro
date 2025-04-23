@@ -1,0 +1,75 @@
+---
+import BaseHead from "@/components/BaseHead.astro";
+import ThemeSwitch from "@/components/ThemeSwitch.astro";
+import Themes from "astro-themes";
+
+type PageProps = {
+  type: "website";
+  children: unknown;
+  title: string;
+  description: string;
+  opengraphImage?: string;
+};
+
+type ArticleProps = {
+  type: "article";
+  children: unknown;
+  title: string;
+  description: string;
+  slug: string;
+  opengraphImage: string;
+};
+
+type Props = PageProps | ArticleProps;
+
+const { type, opengraphImage } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="css-transitions-only-after-page-load">
+  <head>
+    <style is:inline>
+      /* this is the only reliable way I can find of having some global CSS reliably render first in both dev and ssg builds */
+      @layer reset, colors, tokens, global, layouts, page, code, components, overrides;
+    </style>
+    <style is:inline>
+      /* no transitions on initial page load */
+      html.css-transitions-only-after-page-load {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -ms-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
+      }
+    </style>
+    <BaseHead
+      title={Astro.props.title}
+      description={Astro.props.description}
+      image={opengraphImage}
+      type={type}
+    />
+    <Themes defaultTheme="light" />
+  </head>
+
+  <body>
+    <slot />
+    <ThemeSwitch />
+    <script>
+      setTimeout(() => {
+        document.documentElement.classList.remove(
+          "css-transitions-only-after-page-load"
+        );
+      }, 1000);
+    </script>
+  </body>
+</html>
+
+<!-- Could maybe use https://docs.astro.build/en/reference/directives-reference/#definevars instead? -->
+<style is:global>
+  :root {
+    --global-font-body: var(--font-inter);
+    --global-font-mono:
+      var(--font-ibm-plex-mono), SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New";
+  }
+</style>

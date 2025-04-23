@@ -1,0 +1,57 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Bio from "@/components/Bio.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import ThemedBunny from "@/components/ThemedBunny.astro";
+import Title from "@/components/Title.astro";
+import { getAlan } from "@/content-utils/query/authors";
+import ArticleList from "@/components/article/ArticleList.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import ProjectList from "@/components/project/ProjectList.astro";
+import pkg from "@root/package.json";
+
+const author = await getAlan();
+const name = author.data.name;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer page {
+    main {
+      min-width: 320px;
+      max-width: var(--breakpoints-md);
+      font-size: 20px;
+      margin-block: 3rem;
+      container: main / inline-size;
+      margin-inline: var(--spacing-2);
+
+      @media (--md-up-viewport) {
+        margin-inline: auto;
+      }
+    }
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      
+      @media (--lg-up-viewport) {
+        flex-direction: row;
+      }
+    }
+</style>
+
+<BaseLayout title={name} type="website" description={pkg.description}>
+  <main>
+    <header>
+      <Title>{name}</Title>
+      <ThemedBunny />
+    </header>
+    <Bio width="narrow" font="normal" />
+    <SectionHeading>Writing</SectionHeading>
+    <ArticleList />
+    <SectionHeading>Projects</SectionHeading>
+    <ProjectList />
+    <SiteFooter location="standalone" />
+  </main>
+</BaseLayout>
