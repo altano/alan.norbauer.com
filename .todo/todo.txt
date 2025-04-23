@@ -5,6 +5,7 @@ TODO: playwright tests
 TODO: no trailing slash serves old content... wtf?
 TODO: make sure there's always room for theme switcher (e.g. at 784px wide, scrolled to bottom of article)
 TODO: view transitions
+TODO: go back to colocating images in src/pages dir
 x 2025-04-21 TODO: satori-fit-text sandbox doesn't work in preview
 x 2025-04-20 TODO: fix horiztonal scrollbar at 1070px width
 x 2025-04-20 TODO: Support article series
