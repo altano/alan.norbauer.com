@@ -1,0 +1,105 @@
+---
+import metadataJSON from "@/metadata/alanglow.json";
+import screenshot1 from "assets/images/projects/alanglow/screenshots/1-home.png";
+import screenshot2 from "assets/images/projects/alanglow/screenshots/2-address.png";
+import screenshot3 from "assets/images/projects/alanglow/screenshots/3-menu.png";
+import screenshot4 from "assets/images/projects/alanglow/screenshots/4-tree-style-tabs.jpg";
+import SiteFooter from "@/components/SiteFooter.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import Title from "@/components/Title.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+
+const { title, description } = metadataJSON;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer page {
+    main {
+      min-width: 320px;
+      max-width: var(--breakpoints-lg);
+      margin: auto;
+
+      container: body / normal;
+      min-width: 320px;
+      font-size: 20px;
+
+      @media (--md-down-viewport) {
+        margin-inline: var(--spacing-2);
+      }
+    }
+
+    nav {
+      font-size: 2rem;
+      display: flex;
+      justify-content: space-between;
+      margin-block: var(--spacing-8);
+    }
+
+    div.gallery {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--spacing-4);
+    }
+  }
+</style>
+
+<BaseLayout
+  type="website"
+  {title}
+  {description}
+  opengraphImage="./opengraph.png"
+>
+  <main>
+    <Title>{title}</Title>
+    <nav>
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/alanglow/">
+        Install Firefox Theme
+      </a>
+    </nav>
+    <SectionHeading>About</SectionHeading>
+    <section>{description}</section>
+
+    <SectionHeading>Screenshots</SectionHeading>
+    <div class="gallery">
+      <Image
+        densities={[1, 1.5, 2]}
+        width={500}
+        alt="home"
+        src={screenshot1}
+        loading="eager"
+      />
+      <Image
+        densities={[1, 1.5, 2]}
+        width={500}
+        alt="home"
+        src={screenshot2}
+        loading="eager"
+      />
+      <Image
+        densities={[1, 1.5, 2]}
+        width={500}
+        alt="home"
+        src={screenshot3}
+        loading="eager"
+      />
+      <Image
+        densities={[1, 1.5, 2]}
+        width={500}
+        alt="home"
+        src={screenshot4}
+        loading="eager"
+      />
+    </div>
+
+    <SectionHeading>More</SectionHeading>
+    <a href="https://github.com/altano/alanglow/">Source Code</a>
+    {" / "}
+    <a href="https://github.com/altano/alanglow/issues/">Feedback</a>
+
+    <SiteFooter location="standalone" />
+  </main>
+</BaseLayout>
