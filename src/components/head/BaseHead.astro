@@ -1,9 +1,10 @@
 ---
 // Has to go first so global <style>s are placed in <head> first.
-import "./GlobalStyles.astro";
+import GlobalStyles from "./GlobalStyles.astro";
+import FontPreloads from "./FontPreloads.astro";
 import { link } from "astro-typed-links/link";
 import OpenGraphMeta from "@altano/astro-opengraph/components/meta.astro";
-import { rssTitle } from "../pages/rss.xml";
+import { rssTitle } from "../../pages/rss.xml";
 import { getAlan } from "@/content-utils/query/authors";
 
 interface Props {
@@ -59,3 +60,6 @@ const pageTitle =
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<FontPreloads />
+<GlobalStyles />
