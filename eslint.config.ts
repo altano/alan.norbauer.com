@@ -93,7 +93,7 @@ export default tseslint.config(
   // Disable typechecked in .js files
   {
     // in js files ...
-    files: ["**/*.{js,mjs}"],
+    files: ["**/*.{js,mjs,json}"],
     // ... disable type-aware linting
     ...tseslint.configs.disableTypeChecked,
     // ... disable type-syntax-requiring rules
@@ -103,6 +103,14 @@ export default tseslint.config(
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/parameter-properties": "off",
+    },
+  },
+
+  // Disable irrelevant rules in .json files
+  {
+    files: ["*.json", "**/*.{json}"],
+    rules: {
+      "@typescript-eslint/no-unused-expressions": "off",
     },
   },
 

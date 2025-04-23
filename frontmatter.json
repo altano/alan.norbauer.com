@@ -1,30 +1,39 @@
 {
   "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.framework.id": "astro",
+  "frontMatter.preview.host": "http://localhost:4321",
+  "frontMatter.website.host": "https://alan.norbauer.com",
   "frontMatter.content.autoUpdateDate": true,
+  "frontMatter.content.": [],
   "frontMatter.content.pageFolders": [
     {
-      "path": "[[workspace]]/src/content/articles",
-      "title": "Articles"
+      "title": "Articles",
+      "path": "[[workspace]]/src/content/articles"
     }
   ],
-  "frontMatter.content.publicFolder": {
-    "path": "static",
+  "fontMatter.content.publicFolder": {
+    "path": "public",
     "relative": true
   },
-  "frontMatter.preview.host": "https://localhost:3000",
-  "frontMatter.website.host": "https://alan.norbauer.com",
+  "fontMatter.content.draftField": {
+    "name": "draft",
+    "type": "boolean"
+  },
   "frontMatter.taxonomy.contentTypes": [
     {
       "name": "default",
       "fileType": "mdx",
       "defaultFileName": "index",
-      "pageBundle": false,
+      "pageBundle": true,
+      "previewPath": "'articles",
+      "filePrefix": null,
+      "clearEmpty": true,
       "fields": [
         {
-          "title": "title",
-          "name": "title",
+          "title": "author",
+          "name": "author",
           "type": "string",
-          "required": true
+          "required": false
         },
         {
           "title": "date_created",
@@ -38,19 +47,13 @@
           "name": "date_updated",
           "type": "datetime",
           "isModifiedDate": true,
-          "required": false
+          "required": true
         },
         {
           "title": "description",
           "name": "description",
           "type": "string",
           "required": true
-        },
-        {
-          "title": "tags",
-          "name": "tags",
-          "type": "tags",
-          "default": []
         },
         {
           "title": "draft",
@@ -63,6 +66,18 @@
           "name": "series",
           "type": "string",
           "required": false
+        },
+        {
+          "title": "tags",
+          "name": "tags",
+          "type": "tags",
+          "default": []
+        },
+        {
+          "title": "title",
+          "name": "title",
+          "type": "string",
+          "required": true
         }
       ]
     }

@@ -1,37 +1,19 @@
 {
+  "extends": "astro/tsconfigs/strictest",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "ES2020",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "paths": {
-      "@styled-system/*": ["./styled-system/*"],
       "@/*": ["./src/*"],
-      "@root/*": ["./*"]
+      "@/content-utils/*": ["./src/content-utils/*"],
+      "@/assets/*": ["./assets/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@root/*": ["./*"],
+      "@/styles/*": ["./src/styles/global/*"]
     }
-  },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "./styled-system"
-  ],
-  "exclude": ["node_modules"]
+  }
 }
