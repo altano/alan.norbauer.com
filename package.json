@@ -12,13 +12,17 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "run-s build:astro check:*",
+    "build": "pnpm run --workspace-concurrency=1 '/^(build:astro|check:.*|test)$/'",
     "build:astro": "astro build",
     "check:astro": "astro check",
     "check:lint": "eslint 'src/**/*.{js,jsx,ts,tsx,astro}'",
     "check:mdx": "mdx-local-link-checker src/content src/content '**/zerotier-start.sh'",
+    "check:types:test": "tsc --project ./tests/tsconfig.json",
     "dev": "astro dev",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "NODE_ENV=production playwright test",
+    "test:dev": "NODE_ENV=development playwright test --ui",
+    "test:install": "playwright install --with-deps"
   },
   "dependencies": {
     "@altano/astro-opengraph": "0.1.0-alpha.4",
@@ -51,6 +55,7 @@
     "astro-icon": "^1.1.5",
     "astro-themes": "^0.2.5",
     "astro-typed-links": "^1.1.4",
+    "dotenv": "^16.5.0",
     "lightningcss": "^1.29.3",
     "mdx-local-link-checker": "^2.1.1",
     "nullthrows": "^1.1.1",
@@ -62,6 +67,8 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
     "@eslint/js": "^9.24.0",
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.14.1",
     "@typescript-eslint/parser": "^8.30.1",
     "browserslist": "^4.24.4",
     "eslint": "^9.24.0",
@@ -73,7 +80,6 @@
     "globals": "^16.0.0",
     "jiti": "^2.4.2",
     "linkedom": "^0.18.9",
-    "npm-run-all": "^4.1.5",
     "prettier-plugin-astro": "^0.14.1",
     "rehype": "^13.0.2",
     "rehype-autolink-headings": "^7.1.0",

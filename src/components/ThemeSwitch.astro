@@ -86,7 +86,11 @@ import { Icon } from "astro-icon/components";
   button.addEventListener("click", toggleTheme);
 </script>
 
-<button id="theme-switcher" aria-label="Toggle light/dark theme">
+<button
+  id="theme-switcher"
+  data-testid="theme-switcher"
+  aria-label="Toggle light/dark theme"
+>
   <Icon
     class="light"
     name="heroicons:sun-solid"
