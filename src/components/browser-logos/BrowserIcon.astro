@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  image: ImageMetadata;
+  name: "Chrome" | "Edge" | "Firefox";
+  size?: number;
+}
+
+const { name, image, size = 40 } = Astro.props;
+---
+
+<style>
+  @layer components {
+    img {
+      display: inline;
+      margin-right: var(--spacing-2);
+    }
+  }
+</style>
+
+<Image
+  densities={[1, 1.5, 2]}
+  data-no-style
+  src={image}
+  width={size}
+  height={size}
+  alt={name}
+/>
