@@ -56,7 +56,8 @@
     "nullthrows": "^1.1.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "sharp": "^0.34.1"
+    "sharp": "^0.34.1",
+    "short-unique-id": "^5.2.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
