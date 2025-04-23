@@ -1,0 +1,74 @@
+---
+import { getAlan } from "@/content-utils/query/authors";
+import type { CollectionEntry } from "astro:content";
+
+type Props =
+  | {
+      social: keyof CollectionEntry<"authors">["data"]["socials"];
+      size: number;
+      icon?: boolean | undefined;
+      rel?: string | undefined;
+      text?: string | undefined;
+      children?: unknown;
+      id: string;
+    }
+  | {
+      alt: string;
+      size: number;
+      icon?: boolean | undefined;
+      href: string;
+      rel?: string | undefined;
+      text?: string | undefined;
+      children?: unknown;
+      id: string;
+    };
+
+const { text, size, rel, icon = true, id } = Astro.props;
+const alan = await getAlan();
+
+const href =
+  "social" in Astro.props
+    ? alan.data.socials[Astro.props.social].link
+    : Astro.props.href;
+const label =
+  "social" in Astro.props
+    ? `Link to ${alan.data.socials[Astro.props.social].handle} at ${alan.data.socials[Astro.props.social].name}`
+    : Astro.props.alt;
+---
+
+<style
+  define:vars={{
+    size: `${size}px`,
+    gap: size < 22 ? "2px" : "calc(var(--size) / 3)",
+  }}
+>
+  @import "@/styles/custom-media-queries.css"; /* https://github.com/parcel-bundler/lightningcss/issues/402#issuecomment-2804416090 */
+
+  @layer components {
+    span.icon {
+      width: var(--size);
+      height: var(--size);
+      line-height: var(--line-height-tighter);
+    }
+
+    a {
+      gap: var(--gap);
+      word-break: break-all;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+</style>
+
+{
+  /**
+   * Make sure the html continues to be rendered last in this file.
+   * See https://github.com/withastro/compiler/issues/1068
+   */
+}
+
+<a href={href} aria-label={label} id={id} rel={rel}>
+  {icon && <span class="icon">{<slot aria-labelledby={id} />}</span>}{
+    text ? <span>{text}</span> : null
+  }
+</a>

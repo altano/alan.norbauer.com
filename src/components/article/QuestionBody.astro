@@ -1,0 +1,17 @@
+---
+import InnerHtmlOfChild from "./InnerHtmlOfChild.astro";
+
+export type Props = {
+  children: unknown;
+};
+---
+
+<style>
+  @layer components {
+    p {
+      margin-top: 0;
+    }
+  }
+</style>
+
+<p>&hellip; <InnerHtmlOfChild><slot /></InnerHtmlOfChild></p>

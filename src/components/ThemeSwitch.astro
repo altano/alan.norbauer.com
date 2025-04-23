@@ -1,0 +1,102 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<style>
+  @layer components {
+    button {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      cursor: pointer;
+      border-radius: var(--border-radius-sm);
+      padding: 5px;
+      background: var(--bg-card);
+
+      &:hover {
+        background: var(--bg-selection);
+        transition: background var(--durations-color-scheme);
+      }
+    }
+
+    html[data-theme="light"] {
+      .dark {
+        display: none;
+      }
+      .light {
+        display: block;
+      }
+    }
+
+    html[data-theme="dark"] {
+      .dark {
+        display: block;
+      }
+      .light {
+        display: none;
+      }
+    }
+  }
+</style>
+
+<script>
+  type ResolvedTheme = "dark" | "light";
+  // https://github.com/alex-grover/astro-themes/issues/41
+  // type UnderlyingTheme = "system" | ResolvedTheme;
+
+  function getResolvedTheme(): ResolvedTheme {
+    const theme =
+      document.documentElement.attributes.getNamedItem("data-theme")?.value;
+
+    if (theme !== "light" && theme !== "dark") {
+      throw new Error(`Unexpected theme: ${theme}`);
+    }
+    return theme;
+  }
+
+  function toggleTheme() {
+    updateTheme(getResolvedTheme() === "light" ? "dark" : "light");
+  }
+
+  function updateTheme(theme: string) {
+    switch (theme) {
+      case "system":
+        document.dispatchEvent(new CustomEvent("set-theme", { detail: null }));
+        break;
+      case "dark":
+      case "light":
+        document.dispatchEvent(new CustomEvent("set-theme", { detail: theme }));
+        break;
+      default:
+        throw new Error(`Unexpected theme value: ${theme}`);
+    }
+  }
+
+  function assertIsButtonElement(
+    element: unknown
+  ): asserts element is HTMLButtonElement {
+    if (!(element instanceof HTMLButtonElement)) {
+      throw new Error(`Expected HTMLButtonElement`);
+    }
+  }
+
+  // react to user selecting different option
+  const button = document.getElementById("theme-switcher");
+  assertIsButtonElement(button);
+  button.addEventListener("click", toggleTheme);
+</script>
+
+<button id="theme-switcher" aria-label="Toggle light/dark theme">
+  <Icon
+    class="light"
+    name="heroicons:sun-solid"
+    size={16}
+    aria-labelledby="theme-switcher"
+  />
+  <Icon
+    class="dark"
+    name="heroicons:moon-solid"
+    size={16}
+    aria-labelledby="theme-switcher"
+  />
+</button>

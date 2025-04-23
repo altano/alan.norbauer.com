@@ -1,0 +1,19 @@
+---
+const year = new Date().getFullYear();
+const copyright = `© ${year}`;
+---
+
+<style>
+  @layer components {
+    span {
+      flex-grow: 1; /* first child of the footer */
+    }
+  }
+</style>
+
+<span>
+  {copyright} &bull; built with <a href="https://astro.build/">Astro</a> &bull; fonts
+  by <a href="https://rsms.me/inter/">Andersson</a> and <a
+    href="https://www.ibm.com/plex/">Abbink</a
+  >
+</span>

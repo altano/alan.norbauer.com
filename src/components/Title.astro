@@ -1,0 +1,26 @@
+---
+export type Props = { children: unknown };
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    h1 {
+      line-height: var(--line-height-tighter);
+      font-weight: 800;
+      flex-grow: 1;
+      margin-block: 3rem;
+      font-size: clamp(3rem, 19vw, 6rem);
+
+      @media (--md-viewport) {
+        font-size: 6rem;
+      }
+      @media (--lg-up-viewport) {
+        font-size: 9rem;
+      }
+    }
+  }
+</style>
+
+<h1><slot /></h1>

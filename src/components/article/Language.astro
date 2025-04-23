@@ -1,0 +1,20 @@
+---
+export type LanguageCode = "en-US" | "ko";
+
+export type Props = {
+  language: LanguageCode;
+};
+
+function languageToText(language: LanguageCode): string {
+  switch (language) {
+    case "en-US":
+      return "🇺🇸 English";
+    case "ko":
+      return "🇰🇷 한국인 (Korean)";
+  }
+}
+
+const text = languageToText(Astro.props.language);
+---
+
+<>{text}</>

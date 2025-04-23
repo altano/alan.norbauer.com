@@ -1,0 +1,37 @@
+---
+import { type Article, getArticleURL } from "@/content-utils/query/articles";
+import Card from "../Card.astro";
+import ListHeading from "../ListHeading.astro";
+import Description from "../Description.astro";
+import Tags from "./Tags.astro";
+
+export type Props = {
+  article: Article;
+  tagToOmit?: string | undefined;
+};
+
+const { article, tagToOmit } = Astro.props;
+
+const tags =
+  tagToOmit == null
+    ? article.data.tags
+    : // Don't render the tag page's tag in the article card. Tis redundant.
+      article.data.tags.filter((t) => t !== tagToOmit);
+---
+
+<style>
+  @layer components {
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+</style>
+
+<Card>
+  <a href={getArticleURL(article)}>
+    <ListHeading>{article.data.title}</ListHeading>
+  </a>
+  <Description>{article.data.description}</Description>
+  <Tags tags={tags} kind="pill" />
+</Card>

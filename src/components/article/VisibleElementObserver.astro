@@ -1,0 +1,53 @@
+---
+export type Props = {
+  selector: string;
+  children: unknown;
+};
+
+const { selector } = Astro.props;
+---
+
+<script>
+  const roots = document.querySelectorAll(".visible-element-observer-root");
+  if (roots.length === 0) {
+    throw new Error(
+      `Couldn't find any elements to observe. Will not notify on visible elements.`
+    );
+  }
+
+  roots.forEach((root) => {
+    const selector = root.getAttribute("data-selector");
+    if (selector == null) {
+      throw new Error(
+        `Couldn't find data-selector on observed element. Will not notify on visible elements.`
+      );
+    }
+
+    function notify(item: Element, isIntersecting: boolean) {
+      document.documentElement.dispatchEvent(
+        new CustomEvent("visible-element-change", {
+          detail: { item, isIntersecting },
+        })
+      );
+    }
+
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((e) => notify(e.target, e.isIntersecting));
+    };
+
+    const observer = new IntersectionObserver(handleIntersect);
+
+    function observeMatchedElements(root: Element, selector: string) {
+      const matchedElements = root.querySelectorAll(selector) ?? [];
+      return Array.from(matchedElements).forEach((e) => observer.observe(e));
+    }
+
+    observeMatchedElements(root, selector);
+
+    // TODO Register a mutation observer on `observed`
+  });
+</script>
+
+<div class="visible-element-observer-root" data-selector={selector}>
+  <slot />
+</div>

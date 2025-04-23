@@ -1,0 +1,40 @@
+---
+import Attribution from "./Attribution.astro";
+import Footer from "./Footer.astro";
+import ContactLink from "./social/ContactLink.astro";
+import HomeLink from "./HomeLink.astro";
+import MastodonLink from "./social/MastodonLink.astro";
+import FeedLink from "./social/FeedLink.astro";
+
+export type Props = {
+  location?: "standalone" | "embedded" | undefined;
+};
+
+const { location } = Astro.props;
+---
+
+<style>
+  @layer components {
+    span {
+      gap: 0.25rem;
+      display: inline-flex;
+    }
+
+    span.outer {
+      align-items: center;
+    }
+  }
+</style>
+
+<Footer location={location}>
+  <Attribution />
+  <span class="outer">
+    <HomeLink /> &bull;{" "}
+    <span class="inner">
+      <MastodonLink />
+      <ContactLink />
+      &bull;
+      <FeedLink />
+    </span>
+  </span>
+</Footer>

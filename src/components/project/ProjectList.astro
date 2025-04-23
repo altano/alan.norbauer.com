@@ -1,0 +1,97 @@
+---
+import { Image } from "astro:assets";
+import Card from "../Card.astro";
+import Cards from "../Cards.astro";
+import Project from "./Project.astro";
+
+import htmlCdnifyLogo from "assets/images/projects/html_cdnify_logo.png";
+import bookcisionLogo from "assets/images/projects/bookcision_logo.png";
+import handlebarsLogo from "assets/images/projects/handlebars_logo.png";
+import FirefoxLogo from "assets/images/browser-logos/firefox.svg";
+import alanglowMetadata from "@/metadata/alanglow.json";
+import { link } from "astro-typed-links/link";
+---
+
+<style>
+  @layer components {
+    img {
+      height: 100%;
+
+      &.bookcision {
+        color: transparent;
+      }
+
+      &.handlebars {
+        padding: 5px;
+        background: #868686;
+        border-radius: 7px;
+      }
+    }
+  }
+</style>
+
+<Cards>
+  <Card>
+    <Project
+      href="https://norbauer.com/bookcision"
+      title="Bookcision"
+      tagline="Kindle notes/highlights exporter"
+    >
+      <Image
+        class="bookcision"
+        quality={100}
+        width={50}
+        height={50}
+        densities={[1, 1.5, 2]}
+        src={bookcisionLogo}
+        alt="Bookcision logo"
+        slot="image"
+      />
+    </Project>
+  </Card>
+  <Card class="html-cdnify">
+    <Project
+      href="https://www.npmjs.com/package/@altano/html-cdnify"
+      title="html-cdnify"
+      tagline="Transform relative URLs in HTML markup"
+    >
+      <Image
+        height={50}
+        densities={[1, 1.5, 2]}
+        src={htmlCdnifyLogo}
+        alt="logo for html-cdnify package"
+        slot="image"
+      /></Project
+    >
+  </Card>
+  <Card class="handlebars">
+    <Project
+      href="https://www.npmjs.com/package/handlebars-loader"
+      title="handlebars-loader"
+      tagline="A handlebars template loader for webpack"
+    >
+      <Image
+        class="handlebars"
+        width={50}
+        height={50}
+        densities={[1, 1.5, 2]}
+        src={handlebarsLogo}
+        alt="logo for handlebars-loader package"
+        slot="image"
+      /></Project
+    >
+  </Card>
+  <Card class="alanglow-firefox-theme">
+    <Project
+      href={link("/projects/alanglow")}
+      title="Alanglow"
+      tagline={alanglowMetadata.description}
+      ><FirefoxLogo
+        aria-label="Firefox logo of a fox encircling the earth"
+        width={50}
+        height={50}
+        slot="image"
+      /></Project
+    >
+  </Card>
+</Cards>

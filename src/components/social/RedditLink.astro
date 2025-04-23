@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon/components";
+import SocialIcon from "@/components/social/SocialIcon.astro";
+import { getUiUID } from "@/utilities/ui-uid";
+
+export type Props = {
+  text?: string | undefined;
+  size?: number | undefined;
+  icon?: false | undefined;
+};
+
+const { size = 21, ...otherOptions } = Astro.props;
+const id = getUiUID();
+---
+
+<SocialIcon {id} {size} {...otherOptions} social="reddit">
+  <Icon size={size} name="ant-design:reddit-outlined" aria-labelledby={id} />
+</SocialIcon>

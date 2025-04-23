@@ -1,0 +1,23 @@
+---
+import { parseHTML } from "linkedom";
+
+export type Props = {
+  children: unknown;
+};
+
+function unwrap(html: string) {
+  const { document } = parseHTML(html);
+  if (document.documentElement) {
+    // There is an element to unwrap, so return the nodes inside it
+    return document.documentElement.innerHTML;
+  }
+  // There was nothing to unwrap (maybe just a text node?). Return original html.
+  return html;
+}
+
+const html = await Astro.slots.render("default");
+const output = unwrap(html);
+---
+
+{/* eslint-disable-next-line astro/no-set-html-directive */}
+<Fragment set:html={output} />

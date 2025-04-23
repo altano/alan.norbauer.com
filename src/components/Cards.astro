@@ -1,0 +1,22 @@
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      list-style-type: none;
+      margin-block: 0.5rem;
+
+      @media (--md-up-viewport) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 4rem;
+        row-gap: 1rem;
+      }
+    }
+  }
+</style>
+
+<ul><slot /></ul>

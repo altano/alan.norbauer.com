@@ -1,0 +1,90 @@
+---
+import type { MarkdownHeading } from "astro";
+
+export type Props = {
+  headings: MarkdownHeading[];
+  depth?: number | undefined;
+  maxDepth?: number | undefined;
+};
+
+const {
+  headings,
+  maxDepth = Number.POSITIVE_INFINITY,
+  depth = 1,
+} = Astro.props;
+const currentDepthHeadings = headings.filter((it) => it.depth === depth);
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    a {
+      text-decoration: none;
+      &:not(:hover) {
+        color: inherit;
+      }
+    }
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      @media (--md-down-viewport) {
+        list-style-position: inside;
+        list-style-type: square;
+      }
+    }
+    li {
+      padding: var(--spacing-half);
+      @media (--md-down-viewport) {
+        &:not([aria-level="0"]) {
+          padding-left: var(--spacing-4);
+        }
+      }
+      @media (--lg-up-viewport) {
+        padding-left: var(--spacing-5);
+        color: var(--text-faded);
+        transition: color var(--durations-color-scheme);
+        &:not([aria-level="0"]) {
+          padding-left: var(--spacing-5);
+        }
+        &[aria-current="true"] {
+          color: var(--text);
+        }
+        nav:hover & {
+          color: var(--text);
+        }
+      }
+    }
+  }
+</style>
+
+<nav class="table-of-contents">
+  <ul>
+    {
+      currentDepthHeadings.map((it, idx) => {
+        const nextHeading = currentDepthHeadings[idx + 1];
+        const subHeadings = headings.slice(
+          headings.indexOf(it) + 1,
+          nextHeading ? headings.indexOf(nextHeading) : undefined
+        );
+        const hasSubHeadings = subHeadings.length > 0;
+        const shouldRenderSubHeadings = maxDepth >= it.depth && hasSubHeadings;
+
+        return (
+          <li aria-level={depth} aria-current={false /* TODO */}>
+            {it.slug ? <a href={`#${it.slug}`}>{it.text}</a> : it.text}
+            {shouldRenderSubHeadings ? (
+              <Astro.self
+                {...Astro.props}
+                headings={subHeadings}
+                depth={it.depth + 1}
+              />
+            ) : null}
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>

@@ -1,0 +1,18 @@
+---
+import SocialIcon from "@/components/social/SocialIcon.astro";
+import { Icon } from "astro-icon/components";
+import { getUiUID } from "@/utilities/ui-uid";
+
+export type Props = {
+  text?: string | undefined;
+  size?: number | undefined;
+  icon?: false | undefined;
+};
+
+const { size = 19, ...otherOptions } = Astro.props;
+const id = getUiUID();
+---
+
+<SocialIcon {id} {size} {...otherOptions} social="github">
+  <Icon size={size} name="fa6-brands:github" aria-labelledby={id} />
+</SocialIcon>

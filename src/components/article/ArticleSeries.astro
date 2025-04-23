@@ -1,0 +1,60 @@
+---
+import {
+  getOtherArticlesInSeries,
+  getArticleURL,
+} from "@/content-utils/query/articles";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+
+export type Props = {
+  article: CollectionEntry<"articles">;
+};
+
+const { article } = Astro.props;
+const series =
+  article.data.series == null ? null : await getEntry(article.data.series);
+const otherArticlesInSeries = await getOtherArticlesInSeries(article);
+---
+
+<style>
+  @layer components {
+    div {
+      /* TODO Need to factor this out somehow */
+      /* layer-style: card; */
+      background: var(--bg-card);
+      border-radius: var(--border-radius-md);
+      padding: var(--spacing-5);
+
+      /* transition: "background var(--durations-color-scheme)", */
+
+      margin-block-end: var(--spacing-5);
+      font-style: italic;
+    }
+
+    ol {
+      margin-block-start: var(--spacing-3);
+    }
+  }
+</style>
+
+{
+  series && otherArticlesInSeries.length ? (
+    <div>
+      This article is part of a series on {series.data.name}. Other articles in
+      the series:
+      <ol>
+        {otherArticlesInSeries.map((seriesArticle) => (
+          <li>
+            {article.slug === seriesArticle.slug ? (
+              <b>{seriesArticle.data.title} &lt;== you are here</b>
+            ) : (
+              <a href={getArticleURL(seriesArticle)}>
+                {seriesArticle.data.title}
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  ) : null
+}

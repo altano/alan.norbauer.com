@@ -1,0 +1,23 @@
+---
+import { getArticles, getArticlesByTag } from "@/content-utils/query/articles";
+import ArticleCard from "./ArticleCard.astro";
+import Cards from "../Cards.astro";
+
+export type Props = { tag?: string };
+const { tag } = Astro.props;
+
+const articles = tag ? await getArticlesByTag(tag) : await getArticles();
+---
+
+<style>
+  @layer components {
+    a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+</style>
+
+<Cards>
+  {articles.map((article) => <ArticleCard article={article} tagToOmit={tag} />)}
+</Cards>

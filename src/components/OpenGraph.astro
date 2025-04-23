@@ -1,0 +1,108 @@
+---
+import {
+  findLargestUsableInterSize,
+  getOpenGraphConfig,
+} from "@/utilities/opengraph";
+
+interface Props {
+  title: string;
+  subtitle?: string | null;
+}
+
+const { title, subtitle } = Astro.props;
+
+const openGraphConfig = await getOpenGraphConfig();
+const { width, height } = openGraphConfig.imageOptions;
+const footerHeight = 137;
+const padding = 32;
+const lineHeight = 1;
+
+const titleFontWeight = 700;
+const titleFontSize = await findLargestUsableInterSize({
+  text: title,
+  interWeight: titleFontWeight,
+  maxWidth: width - padding - padding,
+  maxHeight: height - padding - padding - footerHeight,
+  lineHeight,
+});
+
+const subtitleFontWeight = 600; /* SemiBold */
+const subtitleFontSize =
+  subtitle == null
+    ? 0
+    : await findLargestUsableInterSize({
+        text: subtitle,
+        interWeight: subtitleFontWeight,
+        maxWidth: width - padding - padding,
+        maxHeight: footerHeight - padding - padding,
+        lineHeight,
+      });
+---
+
+<html lang="en">
+  <head>
+    <!-- 
+    not used in rendering the opengraph image, only used when debugging the
+    html endpoint in dev mode 
+    -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fontsource-variable/inter@5.2.5/index.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body style={{ margin: 0, padding: 0 }}>
+    <main
+      style={{
+        fontFamily: "Inter",
+        lineHeight,
+        background: "white",
+        color: "black",
+        width: `${width}px`,
+        height: `${height}px`,
+        display: "flex",
+        flexDirection: "column",
+        margin: 0,
+        boxSizing: "border-box",
+      }}
+    >
+      <h1
+        style={{
+          // textBox: "cap alphabetic", not supported in Satori atm
+          textWrap: "balance",
+          lineHeight,
+          flex: 1,
+          padding: `${padding}px`,
+          boxSizing: "border-box",
+          margin: 0,
+          fontSize: `${titleFontSize}px`,
+          fontWeight: titleFontWeight,
+        }}
+      >
+        {title}
+      </h1>
+      {
+        subtitle && (
+          <footer
+            style={{
+              // textBox: "cap alphabetic", not supported in Satori atm
+              lineHeight,
+              display: "flex",
+              alignItems: "center",
+              background: "#FCDED9",
+              flexShrink: 0,
+              flexGrow: 0,
+              padding: `${padding}px`,
+              boxSizing: "border-box",
+              margin: 0,
+              height: `${footerHeight}px`,
+              fontSize: `${subtitleFontSize}px`,
+              fontWeight: subtitleFontWeight,
+            }}
+          >
+            {subtitle}
+          </footer>
+        )
+      }
+    </main>
+  </body>
+</html>

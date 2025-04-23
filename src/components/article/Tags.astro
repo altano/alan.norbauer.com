@@ -1,0 +1,53 @@
+---
+import Tag from "./Tag.astro";
+import type { Props as TagProps } from "./Tag.astro";
+import { link } from "astro-typed-links/link";
+
+interface Props {
+  tags: string[];
+  kind: TagProps["kind"];
+}
+
+const {
+  tags,
+  // TODO What on earth is the problem here
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  kind,
+} = Astro.props;
+---
+
+<style>
+  @layer components {
+    ul {
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-right: 0.5rem;
+      list-style-type: none;
+    }
+    a {
+      padding: 0.25rem;
+      text-decoration: none;
+    }
+  }
+</style>
+
+{
+  tags.length === 0 ? null : (
+    <ul>
+      {tags.map((tag) => (
+        <Tag
+          kind={
+            // TODO What on earth is the problem here
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            kind
+          }
+        >
+          <a href={link(`/tags/[tag]`, { params: { tag } })}>{tag}</a>
+        </Tag>
+      ))}
+    </ul>
+  )
+}

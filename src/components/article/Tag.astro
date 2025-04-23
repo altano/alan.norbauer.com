@@ -1,0 +1,63 @@
+---
+export type Props = {
+  kind: "pill" | "inline" | "navPill";
+};
+
+const { kind } = Astro.props;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    li {
+      /* TODO Need to factor this out somehow */
+      /* layer-style: card; */
+      background: var(--bg-card);
+      border-radius: var(--border-radius-md);
+      padding: var(--spacing-5);
+
+      color: var(--text-tag);
+      background: var(--bg-tag);
+      border-radius: var(--border-radius-sm);
+      transition:
+        color var(--durations-color-scheme),
+        background var(--durations-color-scheme);
+      padding: var(--spacing-half);
+      list-style-type: none;
+      font-size: 14px;
+      overflow-wrap: initial;
+
+      &.pill {
+        margin-right: var(--spacing-half);
+      }
+
+      &.inline {
+        display: inline;
+        font-size: inherit;
+        padding-inline: var(--spacing-3);
+      }
+
+      &.navPill {
+        margin-right: var(--spacing-half);
+      }
+    }
+  }
+</style>
+
+<style is:global>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    @media (--lg-up-viewport) {
+      li.tag.navPill {
+        color: var(--text-faded);
+        & > a:not(:hover) {
+          color: inherit;
+        }
+      }
+    }
+  }
+</style>
+
+<li class:list={["tag", kind]}><slot /></li>

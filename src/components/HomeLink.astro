@@ -1,0 +1,8 @@
+---
+import { link } from "astro-typed-links/link";
+import pkg from "@root/package.json";
+
+export const host = new URL(pkg.homepage).host;
+---
+
+<a href={link("/")}>{host}</a>

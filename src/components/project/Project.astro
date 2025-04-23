@@ -1,0 +1,45 @@
+---
+import Description from "../Description.astro";
+import ListHeading from "../ListHeading.astro";
+import ProjectIcon from "./ProjectIcon.astro";
+
+export type Props = {
+  href: string;
+  title: string;
+  tagline: string;
+  children?: unknown;
+};
+
+const { href, title, tagline } = Astro.props;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    a {
+      display: flex;
+      align-items: start;
+      text-decoration: none;
+      @media (--sm-viewport) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    span.wrapper {
+      display: flex;
+      flex-grow: 1;
+      flex-basis: min-content;
+      flex-direction: column;
+    }
+  }
+</style>
+
+<a {href} {title}>
+  <span class="wrapper">
+    <ListHeading>{title}</ListHeading>
+    <Description>{tagline}</Description>
+  </span><ProjectIcon
+    >{Astro.slots.has("image") ? <slot name="image" /> : null}</ProjectIcon
+  ></a
+>

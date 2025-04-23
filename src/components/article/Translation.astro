@@ -1,0 +1,38 @@
+---
+import type { LanguageCode } from "./Language.astro";
+import Language from "./Language.astro";
+
+export type Props = {
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+  language: LanguageCode;
+  link: string;
+  attributionName: string;
+  attributionLink: string;
+};
+
+const { language, link, attributionName, attributionLink } = Astro.props;
+---
+
+<style>
+  @layer components {
+    a.language {
+      font-weight: 700;
+    }
+    p.card {
+      /* TODO Need to factor this out somehow */
+      /* layer-style: card; */
+      background: var(--bg-card);
+      border-radius: var(--border-radius-md);
+      padding: var(--spacing-5);
+
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<p class="card">
+  {/* eslint-disable @typescript-eslint/no-unsafe-assignment */}
+  <a href={link} class="language"><Language language={language} /></a>{" "}
+  translation available (courtesy of{" "}
+  <a href={attributionLink}>{attributionName}</a>)
+</p>

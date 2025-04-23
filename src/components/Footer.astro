@@ -1,0 +1,41 @@
+---
+export type Props = {
+  location?: "standalone" | "embedded" | undefined;
+  children: unknown;
+};
+
+const { location = "standalone" } = Astro.props;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    footer {
+      display: flex;
+      padding-block-start: 0.5rem;
+      transition: border-color var(--durations-color-cheme);
+      flex-direction: row;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      gap: 1rem;
+
+      &.standalone {
+        margin-block: 3rem 1.5rem;
+        border-top: 0.5px solid;
+        border-color: text;
+      }
+
+      &.embedded {
+        border-top: 0.5px solid;
+        border-color: var(--text);
+        margin-block-start: 1rem;
+        @media (--lg-up-viewport) {
+          margin-block-start: 3rem;
+        }
+      }
+    }
+  }
+</style>
+
+<footer class:list={[location]}><slot /></footer>

@@ -1,0 +1,16 @@
+---
+export type Props = {
+  children: unknown;
+};
+---
+
+<!-- lightningcss + :global() don't play nice, use is:global for article css -->
+<style is:global>
+  @layer components {
+    article .question-heading :is(h1, h2, h3, h4, h5, h6) {
+      margin-bottom: 0;
+    }
+  }
+</style>
+
+<div class="question-heading"><slot /></div>

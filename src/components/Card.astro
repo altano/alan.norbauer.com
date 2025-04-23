@@ -1,0 +1,24 @@
+---
+export type Props = { class?: string | undefined };
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    li {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-block-start: 1rem;
+      margin-block-end: 2.5rem;
+      border-radius: var(--border-radius-md);
+
+      @media (--md-up-viewport) {
+        width: calc(50% - 2rem);
+      }
+    }
+  }
+</style>
+
+<li><slot /></li>
