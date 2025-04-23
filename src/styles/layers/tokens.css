@@ -4,11 +4,13 @@
 @layer tokens {
   :root {
     --text: var(--color-dark);
+    --text-card: var(--color-dark);
     --text-faded: var(--color-gray-400);
     --text-tag: var(--color-dark);
     --text-footer: var(--color-black);
     --text-highlight: var(--color-dark);
     --bg: var(--color-light);
+    --bg-card: var(--color-gray-100);
     --bg-tag: var(--color-gray-100);
     --bg-card: var(--color-light-gray);
     --bg-footer: var(--color-sunset-blvd);
@@ -19,15 +21,17 @@
 
     &[data-theme="dark"] {
       --text: var(--color-off-white);
+      --text-card: var(--color-off-white);
       --text-faded: var(--color-gray-600);
       --text-tag: var(--color-off-white);
       --text-footer: var(--color-off-white);
       --text-highlight: var(--color-dark);
-      --bg-highlight: #fceaa8;
       --bg: var(--color-dark);
+      --bg-card: var(--color-dracula-background);
       --bg-tag: var(--color-dracula-background);
       --bg-card: var(--color-dracula-background);
       --bg-footer: var(--color-dracula-background);
+      --bg-highlight: #fceaa8;
       --text-selection: var(--color-black);
       --bg-selection: var(--color-seafoam);
       --accent-primary: var(--color-seafoam);

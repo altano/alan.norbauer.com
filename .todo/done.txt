@@ -40,3 +40,17 @@ x 2022-02-20 https://alan.norbauer.com/zerotier-on-truenas/scripts/zerotier-star
 x 2022-03-07 zeronsd +articles
 x 2022-03-07 zrepl on truenas +articles
 x 2022-03-07 font size of code blocks is huge +safari +mobile
+x 2025-04-22 TODO: fix theme switcher wrong color +mobile-safari
+x 2025-04-22 TODO: fix theme switcher bg getting stuck on press +mobile-safari
+x 2025-04-22 TODO: FOUC when navigating
+x 2025-04-21 TODO: satori-fit-text sandbox doesn't work in preview
+x 2025-04-20 TODO: fix horiztonal scrollbar at 1070px width
+x 2025-04-20 TODO: Support article series
+x 2025-04-20 TODO: fix satori-fit-text article (w/ codesandbox)
+x 2025-04-20 TODO: fix binary diagrams in zerotier-rule-groups
+x 2025-04-20 TODO: Investigate `pnpm i` deprecation warnings:
+x 2025-04-20 WARN  deprecated remark-mdx-images@3.0.0: Use rehype-mdx-import-media instead
+x 2025-04-18 WARN  deprecated shikiji@0.10.2: Deprecated, use shiki instead
+x 2025-04-18 WARN  deprecated remark-footnotes@5.0.0: Deprecated: use `remark-gfm`
+x 2023-07-31 make toc only go 2-levels deep
+x 2023-07-31 fix browser icons in browser debugging article

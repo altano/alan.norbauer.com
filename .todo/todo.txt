@@ -3,8 +3,6 @@
 
 
 High Pri:
-TODO: fix theme switcher wrong color +mobile-safari
-TODO: fix theme switcher bg getting stuck on press +mobile-safari
 
 Low pri:
 TODO: horizontal scrollbars on devbox and relay articles +mobile-safari
@@ -17,26 +15,14 @@ TODO: article h1+h2 don't scale down at all (unlike Title and SectionHeading)
 TODO: figure out a way to abstract away "layer-style: card" we had with Panda CSS
 TODO: switch browser logos to experimental svg instead of Image
 
-x 2025-04-22 TODO: FOUC when navigating
-x 2025-04-21 TODO: satori-fit-text sandbox doesn't work in preview
-x 2025-04-20 TODO: fix horiztonal scrollbar at 1070px width
-x 2025-04-20 TODO: Support article series
-x 2025-04-20 TODO: fix satori-fit-text article (w/ codesandbox)
-x 2025-04-20 TODO: fix binary diagrams in zerotier-rule-groups
-x 2025-04-20 TODO: Investigate `pnpm i` deprecation warnings:
-x 2025-04-20 WARN  deprecated remark-mdx-images@3.0.0: Use rehype-mdx-import-media instead
-x 2025-04-18 WARN  deprecated shikiji@0.10.2: Deprecated, use shiki instead
-x 2025-04-18 WARN  deprecated remark-footnotes@5.0.0: Deprecated: use `remark-gfm`
 
 // ----------------------------------------------------------------------------
 // Next.js Site TODOs:
 
 relay article:
 change "focus" tab to toggle. add toggle to other code examples
-x 2023-07-31 make toc only go 2-levels deep
 consider making TOC scroll spy less nerdy 
 
-x 2023-07-31 fix browser icons in browser debugging article
 
 zrepl on nixos +articles
 zrepl to zfs.rent +articles

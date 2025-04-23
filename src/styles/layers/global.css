@@ -101,5 +101,14 @@
     em {
       font-style: italic;
     }
+
+    /* set default styles for buttons or mobile safari will make them blue */
+    button {
+      background: var(--bg-card);
+      color: var(--text-card);
+      transition:
+        color var(--durations-color-scheme),
+        background var(--durations-color-scheme);
+    }
   }
 }

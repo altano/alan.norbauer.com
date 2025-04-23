@@ -13,9 +13,16 @@ import { Icon } from "astro-icon/components";
       padding: 5px;
       background: var(--bg-card);
 
-      &:hover {
-        background: var(--bg-selection);
-        transition: background var(--durations-color-scheme);
+      /**
+       * Without this media query the button gets stuck after you tap it on 
+       * touch devices that don't support true hover. So don't have this affect
+       * there.
+       */
+      @media (hover: hover) {
+        &:hover {
+          background: var(--bg-selection);
+          transition: background var(--durations-color-scheme);
+        }
       }
     }
 
