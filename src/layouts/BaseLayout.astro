@@ -26,21 +26,15 @@ const { type, opengraphImage } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="css-transitions-only-after-page-load">
+<html lang="en">
   <head>
     <style is:inline>
-      /* this is the only reliable way I can find of having some global CSS reliably render first in both dev and ssg builds */
+      /**
+       * this is the only reliable way I can find of having some global CSS 
+       * reliably render first in both dev and ssg builds. Consider moving this
+       * somewhere more sensible (and processed by Astro) in the future.
+       */
       @layer reset, colors, tokens, global, layouts, page, code, components, overrides;
-    </style>
-    <style is:inline>
-      /* no transitions on initial page load */
-      html.css-transitions-only-after-page-load {
-        -webkit-transition: none !important;
-        -moz-transition: none !important;
-        -ms-transition: none !important;
-        -o-transition: none !important;
-        transition: none !important;
-      }
     </style>
     <BaseHead
       title={Astro.props.title}
@@ -54,13 +48,6 @@ const { type, opengraphImage } = Astro.props;
   <body>
     <slot />
     <ThemeSwitch />
-    <script>
-      setTimeout(() => {
-        document.documentElement.classList.remove(
-          "css-transitions-only-after-page-load"
-        );
-      }, 1000);
-    </script>
   </body>
 </html>
 

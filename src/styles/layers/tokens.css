@@ -56,7 +56,14 @@
     --durations-slow: 300ms;
     --durations-slower: 400ms;
     --durations-slowest: 500ms;
-    --durations-color-scheme: var(--durations-fast);
+
+    /* no transitions initially */
+    --durations-color-scheme: 0;
+
+    &[data-theme] {
+      /* enable transitions once we've added the appropriate class */
+      --durations-color-scheme: var(--durations-fast);
+    }
   }
 
   :root {

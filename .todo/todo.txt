@@ -1,6 +1,13 @@
 // ----------------------------------------------------------------------------
 // Astro Site TODOs:
 
+
+High Pri:
+TODO: fix theme switcher wrong color +mobile-safari
+TODO: fix theme switcher bg getting stuck on press +mobile-safari
+
+Low pri:
+TODO: horizontal scrollbars on devbox and relay articles +mobile-safari
 TODO: playwright tests
 TODO: no trailing slash serves old content... wtf?
 TODO: make sure there's always room for theme switcher (e.g. at 784px wide, scrolled to bottom of article)
@@ -9,6 +16,8 @@ TODO: go back to colocating images in src/pages dir
 TODO: article h1+h2 don't scale down at all (unlike Title and SectionHeading)
 TODO: figure out a way to abstract away "layer-style: card" we had with Panda CSS
 TODO: switch browser logos to experimental svg instead of Image
+
+x 2025-04-22 TODO: FOUC when navigating
 x 2025-04-21 TODO: satori-fit-text sandbox doesn't work in preview
 x 2025-04-20 TODO: fix horiztonal scrollbar at 1070px width
 x 2025-04-20 TODO: Support article series

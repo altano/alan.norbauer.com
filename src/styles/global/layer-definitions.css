@@ -1,8 +1,0 @@
-/**
- * needs to come before all other style tags (incl. astro-inlined styles), so
- * stick here 
- *
- * This is duplicated in BaseHead because Astro refuses to render it before
- * anything else, so keep this in sync with that version.
- */
-@layer reset, colors, tokens, global, layouts, page, code, components, overrides;

@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  astro-themes:
+    hash: iktenkk4jfzudcrpgcjlgwehwm
+    path: patches/astro-themes.patch
+
 importers:
 
   .:
@@ -94,7 +99,7 @@ importers:
         version: 1.1.5
       astro-themes:
         specifier: ^0.2.5
-        version: 0.2.5(astro@5.7.4(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+        version: 0.2.5(patch_hash=iktenkk4jfzudcrpgcjlgwehwm)(astro@5.7.4(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
       astro-typed-links:
         specifier: ^1.1.4
         version: 1.1.4(astro@5.7.4(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
@@ -6050,7 +6055,7 @@ snapshots:
       - debug
       - supports-color
 
-  astro-themes@0.2.5(astro@5.7.4(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)):
+  astro-themes@0.2.5(patch_hash=iktenkk4jfzudcrpgcjlgwehwm)(astro@5.7.4(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)):
     dependencies:
       astro: 5.7.4(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
 
