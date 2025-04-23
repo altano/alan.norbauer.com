@@ -1,0 +1,140 @@
+---
+import ThreadsLink from "@/components/social/ThreadsLink.astro";
+import GithubLink from "@/components/social/GithubLink.astro";
+import EmailLink from "@/components/social/EmailLink.astro";
+import MastodonLink from "@/components/social/MastodonLink.astro";
+import FeedLink from "@/components/social/FeedLink.astro";
+import TwitterLink from "@/components/social/TwitterLink.astro";
+import InstagramLink from "@/components/social/InstagramLink.astro";
+import RedditLink from "@/components/social/RedditLink.astro";
+import LobstersLink from "@/components/social/LobstersLink.astro";
+import HackerNewsLink from "@/components/social/HackerNewsLink.astro";
+import FacebookLink from "@/components/social/FacebookLink.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getAlan } from "@/content-utils/query/authors";
+import SectionHeading from "@/components/SectionHeading.astro";
+import Title from "@/components/Title.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import BlueSkyLink from "@/components/social/BlueSkyLink.astro";
+
+const alan = await getAlan();
+const size = 52;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer page {
+    div.sections {
+      columns: 1;
+
+      @media (--xl-up-viewport) {
+        columns: 2;
+      }
+    }
+
+    main {
+      min-width: 320px;
+      max-width: var(--breakpoints-lg);
+      margin: auto;
+      padding-block: 1rem;
+      font-size: 1.125rem;
+      margin-inline: var(--spacing-2);
+
+      @media (--md-viewport) {
+        font-size: 1.125rem;
+      }
+      @media (--lg-up-viewport) {
+        font-size: 1.5rem;
+      }
+
+      @media (--xl-up-viewport) {
+        margin-inline: auto;
+      }
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+
+      &.inactive {
+        opacity: 0.25;
+      }
+    }
+  }
+</style>
+
+<BaseLayout
+  type="website"
+  title="Contact"
+  description={`How to contact ${alan.data.name}`}
+>
+  <main>
+    <Title>Alan on the Internet</Title>
+    <div class="sections">
+      <SectionHeading>Boomer Shit</SectionHeading>
+      <section>
+        <EmailLink
+          size={size}
+          text={`E-mail – ${alan.data.socials.email.handle}`}
+        />
+        <FeedLink {size} text="This Site's RSS Feed" />
+      </section>
+
+      <SectionHeading>Programming</SectionHeading>
+      <section>
+        <LobstersLink
+          {size}
+          text={`Lobste.rs – ${alan.data.socials.lobsters.handle}`}
+        />
+        <MastodonLink
+          {size}
+          text={`Mastodon – ${alan.data.socials.mastodon.handle}`}
+        />
+        <GithubLink
+          {size}
+          text={`GitHub – ${alan.data.socials.github.handle}`}
+        />
+        <BlueSkyLink
+          {size}
+          text={`Bluesky – ${alan.data.socials.bluesky.handle}`}
+        />
+      </section>
+
+      <SectionHeading>Social</SectionHeading>
+      <section>
+        <ThreadsLink
+          {size}
+          text={`Threads – ${alan.data.socials.threads.handle}`}
+        />
+        <InstagramLink
+          {size}
+          text={`Instagram – ${alan.data.socials.instagram.handle}`}
+        />
+      </section>
+
+      <SectionHeading>Inactive</SectionHeading>
+      <section class="inactive">
+        <RedditLink
+          {size}
+          text={`Reddit – ${alan.data.socials.reddit.handle}`}
+        />
+        <HackerNewsLink
+          {size}
+          text={`Hacker News – ${alan.data.socials.hackernews.handle}`}
+        />
+        <FacebookLink
+          {size}
+          text={`Facebook – ${alan.data.socials.facebook.handle}`}
+        />
+        <TwitterLink
+          {size}
+          text={`Twitter – ${alan.data.socials.twitter.handle}`}
+        />
+      </section>
+    </div>
+
+    <SiteFooter location="standalone" />
+  </main>
+</BaseLayout>
