@@ -55,7 +55,7 @@ export function getArticleURL(article: Article): string {
 }
 
 export function getArticleCanonicalURL(article: Article): string {
-  return new URL(`/articles/${article.slug}`, site).toString();
+  return new URL(`/articles/${article.slug}/`, site).toString();
 }
 
 export function getArticleMarkdownURL(article: Article): string {
