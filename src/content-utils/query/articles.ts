@@ -55,6 +55,8 @@ export function getArticleURL(article: Article): string {
 }
 
 export function getArticleCanonicalURL(article: Article): string {
+  // The canonical URL has always had a trailing slash so let's not break it.
+  // Would mess up RSS readers (since this is a unique id there)
   return new URL(`/articles/${article.slug}/`, site).toString();
 }
 

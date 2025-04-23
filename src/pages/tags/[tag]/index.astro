@@ -1,0 +1,63 @@
+---
+import ArticleList from "@/components/article/ArticleList.astro";
+import Tag from "@/components/article/Tag.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
+import Title from "@/components/Title.astro";
+import { getArticles, getArticlesByTag } from "@/content-utils/query/articles";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import pkg from "@root/package.json";
+
+export async function getStaticPaths() {
+  const allTags = new Set<string>();
+  const articles = await getArticles();
+
+  for (const article of articles) {
+    for (const tag of article.data.tags) {
+      allTags.add(tag);
+    }
+  }
+
+  return Array.from(allTags).map((tag) => ({
+    params: { tag },
+  }));
+}
+
+const { tag } = Astro.params;
+const articles = await getArticlesByTag(tag);
+
+if (articles.length === 0) {
+  throw new Error(`No articles for tag "${tag}"`);
+}
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer page {
+    main {
+      min-width: 320px;
+      max-width: var(--breakpoints-md);
+      margin: auto;
+      @media (--sm-viewport) {
+        margin-inline: 2;
+      }
+    }
+  }
+</style>
+
+<BaseLayout
+  type="website"
+  title={tag}
+  description={pkg.description}
+  opengraphImage="./opengraph.png"
+>
+  <main>
+    <Title>
+      <Tag kind="inline">{tag}</Tag> stuff
+    </Title>
+    <SectionHeading>Writing</SectionHeading>
+    <ArticleList tag={tag} />
+    <SiteFooter location="standalone" />
+  </main>
+</BaseLayout>
