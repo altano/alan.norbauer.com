@@ -14,6 +14,7 @@ import {
 } from "lightningcss";
 import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import react from "@astrojs/react";
 
 // mixins are buggy: https://github.com/parcel-bundler/lightningcss/issues/964
@@ -43,6 +44,7 @@ export default defineConfig({
   },
   integrations: [
     expressiveCode({
+      plugins: [pluginLineNumbers()],
       cascadeLayer: "code",
       themes: [
         await import("./src/styles/code-themes/firefox-light-customized.json"),
@@ -58,6 +60,14 @@ export default defineConfig({
       defaultProps: {
         // code blocks look better with scrolling rather than wrapping, I think
         wrap: false,
+        showLineNumbers: true,
+        overridesByLang: {
+          // turn off line numbers by default for a few languages, plus
+          // everything documented as being in a terminal frame at
+          // https://expressive-code.com/key-features/frames/#terminal-frames
+          "ascii,text,ansi,bash,bat,batch,cmd,console,powershell,ps,ps1,psd1,psm1,sh,shell,shellscript,shellsession,zsh":
+            { showLineNumbers: false },
+        },
       },
       styleOverrides: {
         // borderWidth: "0", // This hides the active tab bottom border, can't use

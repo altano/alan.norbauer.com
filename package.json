@@ -28,6 +28,7 @@
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.0",
     "@codesandbox/sandpack-react": "^2.20.0",
+    "@expressive-code/plugin-line-numbers": "^0.41.1",
     "@fontsource-variable/inter": "^5.2.5",
     "@fontsource/ibm-plex-mono": "^5.2.5",
     "@fontsource/inter": "^5.2.5",
