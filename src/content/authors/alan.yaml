@@ -1,0 +1,51 @@
+name: Alan Norbauer
+url: https://alan.norbauer.com
+socials:
+  bluesky:
+    name: Bluesky
+    handle: "@alan.norbauer.com"
+    link: https://bsky.app/profile/alan.norbauer.com
+  email:
+    name: E-mail
+    handle: alan@norbauer.com
+    link: "mailto:alan@norbauer.com?subject=Hey%20Nerd"
+  facebook:
+    name: Facebook
+    handle: alan.norbauer
+    link: https://facebook.com/alan.norbauer
+  github:
+    name: GitHub
+    handle: altano
+    link: https://www.github.com/altano
+  hackernews:
+    name: Hacker News
+    handle: altano
+    link: https://news.ycombinator.com/user?id=altano
+  instagram:
+    name: Instagram
+    handle: alan.norbauer
+    link: https://www.instagram.com/alan.norbauer
+  lobsters:
+    name: Lobste.rs
+    handle: altano
+    link: https://lobste.rs/~altano
+  mastodon:
+    name: Mastodon
+    handle: "@alannorbauer"
+    link: https://indieweb.social/@alannorbauer
+  reddit:
+    name: Reddit
+    handle: altano
+    link: https://www.reddit.com/user/altano
+  rss:
+    name: RSS
+    handle: Alan Norbauer
+    link: https://alan.norbauer.com/rss.xml
+  threads:
+    name: Threads
+    handle: "@alan.norbauer"
+    link: https://www.threads.net/@alan.norbauer
+  twitter:
+    name: Twitter
+    handle: "@alannorbauer"
+    link: https://twitter.com/@alannorbauer

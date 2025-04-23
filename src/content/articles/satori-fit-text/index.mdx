@@ -1,6 +1,7 @@
 ---
 title: Fitting Text, Anywhere
 date_created: 2023-09-06T10:44:40.951Z
+date_updated: 2024-03-23T23:17:33.294Z
 description: How to fit text to fill a container, in the browser or on a server
 tags:
   - typography
@@ -8,7 +9,6 @@ tags:
   - javascript
   - next.js
 draft: false
-date_updated: 2024-03-23T23:17:33.294Z
 ---
 
 import { SatoriFitTextBasicSandbox } from "./sandboxes/satori-fit-text/basic";
@@ -119,7 +119,8 @@ NOTE: The sandbox below will NOT work in Firefox before version 126 (the `Intl.S
 
 <br />
 
-<SatoriFitTextBasicSandbox />
+<SatoriFitTextBasicSandbox client:only="react" />
 
 [^altano-textfit]: [@altano/textfit](https://www.npmjs.com/package/@altano/textfit) doesn't require intermediate svg files and can more quickly fit text using only the DOM.
+
 [^satori-support]: [vercel/satori](https://github.com/vercel/satori) can currently "be used in browser, Node.js (>= 16), and Web Workers."

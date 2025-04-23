@@ -35,27 +35,27 @@ Figure out what version of `zrepl` you're going to need. The `zrepl` version mus
 
 Backup the configs we're going to edit (rebooting would reset our edits to these config files so you can skip this if you'd like):
 
-```
+```sh
 $ cp /usr/local/etc/pkg/repos/local.conf /usr/local/etc/pkg/repos/local.conf.orig
 $ cp /usr/local/etc/pkg/repos/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf.orig
 ```
 
 Disable the TrueNAS package repo:
 
-```
+```sh
 $ sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
 ```
 
 #### Check FreeBSD Stable for our Package
 
-```
+```sh
 $ sed -i .orig 's/enabled: no/enabled: yes/' /usr/local/etc/pkg/repos/FreeBSD.conf
 $ pkg search zrepl
 ```
 
 This will output the version in stable, e.g. on TrueNAS 12.0-U7 we get:
 
-```
+```sh
 $ pkg search zrepl
 zrepl-0.4.0_4                  ZFS dataset replication tool
 ```
@@ -64,7 +64,7 @@ If that version is what you want, skip to [the installation step below](#install
 
 #### Check FreeBSD Quarterly for our Package
 
-```
+```sh
 $ sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
 $ cp /etc/pkg/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf
 $ pkg update
@@ -75,7 +75,7 @@ If that version is what you want, skip to [the installation step below](#install
 
 #### Check FreeBSD Latest for our Package
 
-```
+```sh
 $ sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
 $ cp /etc/pkg/FreeBSD.conf /usr/local/etc/pkg/repos/FreeBSD.conf
 $ sed -i .quarterly 's/quarterly/latest/' /usr/local/etc/pkg/repos/FreeBSD.conf
@@ -89,20 +89,20 @@ If that version is what you want, head to [the installation step below](#install
 
 Now that we have repo with the `zrepl` package matching the version we want, installation is simple:
 
-```
+```sh
 $ pkg install -y zrepl
 ```
 
 Validate that `zrepl` is on your path:
 
-```
+```sh
 $ which zrepl
 /usr/local/bin/zrepl
 ```
 
 And the service is available (albeit not running):
 
-```
+```sh
 $ service zrepl onestatus
 zrepl is not running.
 ```
@@ -113,7 +113,7 @@ If we were to reboot now, the service would be erased. Let's address that.
 
 We need storage that won't be erased on reboot/upgrade. Navigate to `Storage` -> `Pools` and create a dataset called `zrepl`, e.g. `tank/zrepl` mounted at `/mnt/tank/zrepl`. You can put this somewhere else if you like, as long as it's on a storage pool. It might look like this:
 
-```
+```sh
 $ zfs list
 NAME                                                    USED  AVAIL     REFER  MOUNTPOINT
 ...
@@ -126,13 +126,13 @@ tank/zrepl                                               96K  27.8G       96K  /
 
 The zrepl service rc script located at `/usr/local/etc/rc.d/zrepl` will get erased on reboot. To fix this, we copy it to our dataset:
 
-```
+```sh
 $ cp /usr/local/etc/rc.d/zrepl /mnt/tank/zrepl/zrepl.rc.d
 ```
 
 ### Create your job yml
 
-```
+```sh
 # Move the default job file to your storage pool
 $ mv /usr/local/etc/zrepl/zrepl.yml /mnt/tank/zrepl/zrepl.yml
 ```
@@ -150,7 +150,7 @@ We now need a startup script that performs the following actions on TrueNAS boot
 
 To accomplish this, use [my zrepl-start.sh script](https://alan.norbauer.com/articles/zrepl-on-truenas/scripts/zrepl-start.sh):
 
-```
+```sh
 $ curl https://alan.norbauer.com/articles/zrepl-on-truenas/scripts/zrepl-start.sh -o /mnt/tank/zrepl/zrepl-start.sh
 $ chmod +x /mnt/tank/zrepl/zrepl-start.sh
 ```
@@ -189,7 +189,7 @@ service zrepl start
 
 Validate that your zrepl dataset now looks like this:
 
-```
+```sh
 $ ls -1 /mnt/tank/zrepl/
 zrepl-start.sh
 zrepl.rc.d

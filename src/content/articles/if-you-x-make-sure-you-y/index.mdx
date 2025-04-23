@@ -346,6 +346,7 @@ The guardians of JS have considered it a [fundamental design principle](https://
 One consequence of this is the seemingly-bizarre unhandled-Promise-rejection API[^promiserejection]. Another is that, given the lack of destructors and finalizers[^weakref], we CANNOT build APIs using RAII in JS. But remember that the goal isn't to use RAII: it's to meet our criteria for building "make-sure-you-Y-safe" APIs, and RAII is just one means to that end. If we're inspired by the ideas behind RAII and respect what problem it is solving, we can come up with equally effective solutions.
 
 [^promiserejection]: Two events are fired: (1) "unhandledrejection" when a Promise is rejected but there is no handler for that rejection, and (2) "rejectionhandled" when a Promise's rejection ends up getting handled. The much simpler and obvious API would be to fire an event whenever a Promise is rejected and garbage collected if no handler ever handled the rejection. This would definitively signal a bug because it's only after the Promise is garbage collected that we know it will never have its rejection handled. We can't have this simpler API because it would leak information about when a Promise was garbage collected, and we can't have that.
+
 [^weakref]: WeakRef is actually [a Stage 3 proposal](https://github.com/tc39/proposal-weakrefs#finalizers)
 
 ### File Manipulation

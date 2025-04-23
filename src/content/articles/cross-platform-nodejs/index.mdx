@@ -48,7 +48,7 @@ instead of
 ```
 
 1. Make sure the path is something any shell can understand. If your path is to a bash shell script it obviously won't work on Windows. This is why node modules have a ".cmd" version of executables side-by-side with a bash script. Each shell will do the right thing.
-   ![.cmd version of executables, side-by-side with bash version](cmd-version-of-executables.png)
+   ![.cmd version of executables, side-by-side with bash version](./cmd-version-of-executables.png)
 1. Don't leak the hard-coded path as data. If the path will ever be passed to another module, returned to the user, etc, then use the Node.js path APIs to build it instead so that the path conforms to what a path should look like on that platform.
 1. And if you're a Windows dev, use forward slashes. They'll work everywhere while backslashes won't.
 
@@ -61,6 +61,7 @@ The [upath](https://www.npmjs.com/package/upath) package is a drop-in replacemen
 I don't want to deal with the complexity of [grunt](http://gruntjs.com/) and [gulp](http://gulpjs.com/) when I'm only performing simple tasks, so using the [package.json "scripts" section](https://docs.npmjs.com/cli/run-script) as a simple task runner is appealing[^2]. For example, the package.json[^3] for this site is:
 
 [^2]: See ["Running scripts with npm"](https://www.jayway.com/2014/03/28/running-scripts-with-npm/) and ["How to Use npm as a Build Tool"](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/)
+
 [^3]: Don't ask why I have a staging environment for such a simple site. I guess I was having fun experimenting with Azure's [deployment slots](https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/).
 
 ```json
@@ -141,7 +142,7 @@ This runs webpack with the production NODE_ENV and doesn't dirty your shell sess
 
 The default option in [Git for Windows](https://git-scm.com/download/win) is to set the git config option [`core.autocrlf`](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#Formatting-and-Whitespace) to `true`.
 
-![Git for Windows line endings settings](git-for-windows.png)
+![Git for Windows line endings settings](./git-for-windows.png)
 
 I've seen this be an issue multiple times with test fixtures. The output of some module will only contain line-feed characters and it is compared to the contents of a file on disk. If that file was created by git on a Windows machine, it'll have crlf newlines instead of just lf and the test will fail, e.g.:
 

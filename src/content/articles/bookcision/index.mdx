@@ -11,7 +11,7 @@ When I wrote the [Bookcision bookmarklet](http://www.norbauer.com/bookcision/) t
 
 Bookcision is [open source](https://bitbucket.org/altano/bookcision/src) so feel free to follow along.
 
-![Bookcision](installation_demonstration_download.png)
+![Bookcision](./installation_demonstration_download.png)
 
 ## What is Bookcision
 
@@ -26,7 +26,7 @@ When highlights are created on any Kindle device, they are synced up to Amazon's
 ### Clicking the bookmarklet
 
 A bookmarklet is just a piece of JavaScript that you can execute on any website by clicking on a bookmark, usually created by someone other than the author of the website, with the intent of adding functionality. On the [Bookcision site](http://www.norbauer.com/bookcision/) there are instructions on how to install the bookmarklet. This entails dragging a large image to one's bookmark bar:
-![Instructions](installation_demonstration_drag_to_bar.png)
+![Instructions](./installation_demonstration_drag_to_bar.png)
 
 The image is wrapped in an anchor tag with the following href:
 
@@ -57,7 +57,7 @@ function addScript(codeURL) {
   document.body.appendChild(scriptElement);
 }
 addScript(
-  "//norbauercdn.blob.core.windows.net/bookcision/latest/bookcision.js"
+  "//norbauercdn.blob.core.windows.net/bookcision/latest/bookcision.js",
 );
 ```
 
@@ -74,7 +74,7 @@ This can be minified to:
 
 To craft a URL that executes JS code, create a URL of the form:
 
-```
+```text
 javascript:<code>
 ```
 
@@ -107,7 +107,7 @@ When bookcision's JS bundle is executed, the code that gets executed is determin
 
 [Gruntfile.js:75](https://bitbucket.org/altano/bookcision/src/07e78f60ae6cf326ea8f51cc8877998b200f794d/Gruntfile.js?at=tip&fileviewer=file-view-default#Gruntfile.js-75)
 
-```Gruntfile.js
+```js title="Gruntfile.js"
 webpack: {
   options: {
   context: __dirname,
@@ -133,7 +133,7 @@ The host page contains useful data embedded in the HTML and is easy to get at, e
 
 The core data we're after, the user's highlights and notes for the book they are looking at, is a little more difficult to get. Initially we were using the same undocumented REST APIs that the page itself was using to populate the data, but Amazon changed these internal APIs frequently and there was a long stretch of time where they just didn't even work. The only reliable place I could find this data was on another HTML page, one Amazon even stopped linking to for many months (further vindicating the existence of Bookcision).
 
-![Link to page containing highlight data](highlights_link.png)
+![Link to page containing highlight data](./highlights_link.png)
 
 Since we're running in a browser, which is basically one big HTML-parser with an address bar, I could have loaded the page with the relevant HTML in a hidden iframe and then traversed the DOM to find the data. Everything was in the same origin (kindle.amazon.com) so that probably would have worked, but I had been itching for an excuse to play with an HTML parser. The thought of bundling a pure-JS HTML parser into the JS you run on a website is a strange concept, but one that turned out to work really well. I settled on using [htmlparser2](https://www.npmjs.com/package/htmlparser2) from npm, which could be webpacked into our bookmarklet and run in the browser just as well as it does natively in Node.js. Sound crazy? That's because it is.
 
@@ -151,7 +151,7 @@ To get the notes and highlights:
 1. As the HTML is streaming back to the client, parse it using [htmlparser2](https://www.npmjs.com/package/htmlparser2).
 1. Use [cornet](https://www.npmjs.com/package/cornet) to register event handlers on the streaming HTML parser. It takes a CSS selector and then emits events as DOM elements matching those selectors are parsed. This is abstracted away in [bookcision/src/lib/scrape.js](https://bitbucket.org/altano/bookcision/src/07e78f60ae6cf326ea8f51cc8877998b200f794d/src/lib/scrape.js?at=default&fileviewer=file-view-default):
 
-   ```scrape.js
+   ```js title="scrape.js"
    function scrape(url, setupHook) {
      var cornet = new Cornet();
 
@@ -171,7 +171,7 @@ To get the notes and highlights:
              status +
              ' ("' +
              http.STATUS_CODES[status] +
-             '")'
+             '")',
          );
          req.emit("error", err);
        }
@@ -199,7 +199,7 @@ The test code is a pretty straightforward [mocha](https://www.npmjs.com/package/
 
 [httpInterception.js](https://bitbucket.org/altano/bookcision/src/07e78f60ae6cf326ea8f51cc8877998b200f794d/test/httpInterception.js?at=tip&fileviewer=file-view-default):
 
-```httpInterception.js
+```js title="httpInterception.js"
 mitm.on("request", function(req, res) {
   var highlightsFile;
   var shouldSucceed = true;
@@ -235,7 +235,7 @@ By [bundling Google Analytics](https://bitbucket.org/altano/bookcision/src/07e78
 You should never ship code to users without having a way of getting telemetry about what errors they are hitting. For this I'm utilizing the excellent [Rollbar service](https://rollbar.com/) to capture any unhandled exceptions. Relevant code [here](https://bitbucket.org/altano/bookcision/src/07e78f60ae6cf326ea8f51cc8877998b200f794d/src/lib/rollbar.js?at=default&fileviewer=file-view-default). Rollbar wasn't very webpack friendly back then but their team was responsive and made a version that was, so thanks to them for getting that done for me.
 
 Bookcision's Rollbar dashboard
-![Rollbar Dashboard](rollbar.png)
+![Rollbar Dashboard](./rollbar.png)
 
 There's some noise to contend with since Rollbar will capture exceptions from any JS code on the page once the user initiates the bookmarklet, not just ones generated by the bookmarklet's code, but this hasn't been an issue.
 
@@ -245,7 +245,7 @@ The integration was dead simple. The hardest part was creating [the deploy step]
 
 With Bookcision you can download your notes and highlights as a file in plain-text, JSON, or XML.
 
-![File save feature](save.png)
+![File save feature](./save.png)
 
 This would be easy to achieve if there were a server component: the server would download the notes and highlights for the user and serve them up as a file that I could link to. With a content-disposition of "attachment", the user would be prompted to save the file, and we'd be done.
 

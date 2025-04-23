@@ -8,8 +8,8 @@ tags:
   - zerotier
 ---
 
-import zerotierRulesNetworkPartition from "./zerotier-rules-network-partition.excalidraw.svg";
-import zerotierRulesMultipleNetworksExcalidraw from "./zerotier-rules-multiple-networks.excalidraw.svg";
+import ZerotierRulesNetworkPartition from "./zerotier-rules-network-partition.excalidraw.svg";
+import ZerotierRulesMultipleNetworksExcalidraw from "./zerotier-rules-multiple-networks.excalidraw.svg";
 
 An in-depth how-to on partitioning your ZeroTier network using rules.
 
@@ -17,8 +17,7 @@ An in-depth how-to on partitioning your ZeroTier network using rules.
 
 With ZeroTier the recommended way to partition nodes (that shouldn't talk to each other) is to put them on separate ZeroTier networks[^tailscale-comparison]. It would look like this:
 
-<Image
-  src={zerotierRulesNetworkPartition}
+<ZerotierRulesNetworkPartition
   data-invertible
   width="100%"
   height="100%"
@@ -29,8 +28,7 @@ This approach is foolproof because it doesn't require any rules, and is absolute
 
 It's possible to have one node on several networks. For example you can have a hub-and-spoke topology where one node talks to all other nodes, but all other nodes cannot talk to each other:
 
-<Image
-  src={zerotierRulesMultipleNetworksExcalidraw}
+<ZerotierRulesMultipleNetworksExcalidraw
   data-invertible
   width="100%"
   height="100%"
@@ -63,7 +61,7 @@ Using ZeroTier rules it is possible to have the same kind of topology with a sin
 
 In [ZeroTier Central](https://my.zerotier.com) you'll see a section called "Flow Rules." On the left you see the rules in ZeroTier's Domain Specific Language and on the right you see a preview of the JSON representation (which you can ignore):
 
-![Flow Rules](flow-rules.png)
+![Flow Rules](./flow-rules.png)
 
 At the time of writing the default rules are:
 
@@ -99,29 +97,29 @@ tag group
 
 Tags are 32-bit unsigned integers associated to your node (or, according to [the docs](https://docs.zerotier.com/zerotier/rules#33tagsaname3_3a), "32-bit numeric key-value pair credentials"). Everything above helps ZeroTier Central render a GUI for editing the value. For example, with the rules above we get this in ZeroTier Central's Tags Matrix:
 
-![Rules and Resulting Tag Matrix](rules-and-resulting-tag-matrix.excalidraw.png)
+![Rules and Resulting Tag Matrix](./rules-and-resulting-tag-matrix.excalidraw.png)
 
 And this flag editor which you can see by clicking the wrench icon next to any node in the `Members` section:
 
-![Node Flag Editor](node-flag-editor.excalidraw.png)
+![Node Flag Editor](./node-flag-editor.excalidraw.png)
 
 You can use any `id` you want as long as it is unique across all tags in your rules.
 
 The `id` and `default` lines are relevant to the rules engine but `flag` and `enum` fields are actually invisible to the rules engine and only serve to help render the GUI editor for the fields. In the end, each node gets an integer value for the `group` tag:
 
-![What is used in the Tags Matrix](tags-matrix-what-is-used.excalidraw.png)
+![What is used in the Tags Matrix](./tags-matrix-what-is-used.excalidraw.png)
 
 Now when you check a flag, the tag value will change:
 
-![Checked Flag](checked-flag.excalidraw.png)
+![Checked Flag](./checked-flag.excalidraw.png)
 
 And if you check TWO flags, the tag value will capture that:
 
-![Checked Flags](checked-flags.excalidraw.png)
+![Checked Flags](./checked-flags.excalidraw.png)
 
 The tag value is conceptually NOT `2 + 4 = 6` but rather a bitwise OR: `2 | 4 = 6`. What does that mean? Well, we take the decimal values of the flags and [convert to binary](https://www.google.com/search?q=2+in+binary):
 
-```binary
+```ascii
  ┌───────┐
  │0|0|1|0│ 2 (media)
  └───────┘
@@ -132,7 +130,7 @@ The tag value is conceptually NOT `2 + 4 = 6` but rather a bitwise OR: `2 | 4 = 
 
 Then line up the columns. Any column that has a `1` in it in _either_ position keeps the `1`. Every other column is a `0`:
 
-```binary
+```ascii
  ┌─┬─┬─┬─┐
  │0│0│1│0│ 2 (media)
  │0│1│0│0│ 4 (productivity)
@@ -197,7 +195,7 @@ It's like `drop` but can be overridden by a capability.
 
 An AND operation is like the OR we did above, except that we only keep `1` when _both_ values in the column are `1`. For example, if Alice is in the `media` and `gaming` groups and Bob is in the `productivity` group:
 
-```binary
+```ascii
  ┌─┬─┬─┬─┐
  │0│1│1│0│ Alice = 6 (media | gaming)
  │0│0│0│1│ Bob = 1 (productivity)
@@ -210,7 +208,7 @@ An AND operation is like the OR we did above, except that we only keep `1` when 
 
 The result of `6 & 1 = 0` would cause us to break and block the traffic. But if we add Bob to the `media` group:
 
-```binary
+```ascii
  ┌─┬─┬─┬─┐
  │0│1│1│0│ Alice = 6 (media | gaming)
  │0│0│1│1│ Bob = 3 (media | productivity)
@@ -267,17 +265,17 @@ If you want a node to belong to all groups, we _could_ just check all the group 
 
 `enum`, unlike `flag`, gives you a dropdown to choose from:
 
-![enum example](choice-tag.excalidraw.png)
+![enum example](./choice-tag.excalidraw.png)
 
 Any enum value that is selected will totally overwrite any flags that are checked. The result is that we can create an enum dropdown value that means "all flags I could possibly define." In bitwise logic speak that would be:
 
 ```
-all group flags = flag 0 | flag 1 | flag 2 | flag 3 | flag 4 | ... | flag 30
+all group flags = flag 0 | flag 1 | flag 2 | flag 3 | ... | flag 30
 ```
 
 Which is:
 
-```binary
+```ascii
 ┌────────────────────────────────────────────┐
 │00000000000000000000000000000000000000000001│
 │00000000000000000000000000000000000000000010│
@@ -318,7 +316,7 @@ tag group
 
 And the UI for making an all-groups node looks like this:
 
-![All Groups Enum Example](allgroups-example.png)
+![All Groups Enum Example](./allgroups-example.png)
 
 Now, even if new flags are added in the future, Alice will continue to be able to communicate with any group.
 
@@ -375,6 +373,9 @@ accept;
 ```
 
 [^tailscale-comparison]: This is in stark contrast to Tailscale where you can only connect to one network with one account and then everything has to be managed with ACLs. Tailscale's approach has its upsides (e.g. ACLs are _way_ easier than ZeroTier rules) and it's downsides (e.g. you can't use work and personal Tailscale accounts on the same node, ACLs can't cross organizations, etc).
+
 [^zero-trust]: https://en.wikipedia.org/wiki/Zero_trust_security_model
+
 [^version-control]: I recommend editing your rules in a version-controlled repository elsewhere and pasting it into the ZeroTier Central UI to make changes. This gives you a backup of your rules in addition to the versioning.
+
 [^why-u31]: You might be wondering: "why use 2^31 instead of 2^32 since the latter would allow us to have 32 flags instead of 31?" The answer to that is simple: ZeroNS cannot parse enum values greater than the max 32-bit integer value because it cannot understand that enum values are UNSIGNED integers: https://github.com/zerotier/zeronsd/issues/126. By dropping the enum value to `2^31` we gain ZeroNS compatibility.

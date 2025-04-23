@@ -31,7 +31,7 @@ Jot down your ZeroTier network ID from [ZeroTier Central](https://my.zerotier.co
 
 Figure out what your ZeroTier network interface name will be. [As of ZeroTier v1.2.6](https://github.com/zerotier/ZeroTierOne/blob/master/RELEASE-NOTES.md#2018-04-17----version-126), ZeroTier on Linux will use a deterministically generated interface name based on your network address, so you can get the interface name your NixOS host will from any other Linux host on your ZeroTier network:
 
-```
+```sh
 $ ip -oneline -family link a | grep zt
 ```
 
@@ -117,7 +117,7 @@ You have two options for how to poke holes in your firewall. Pick one and add it
 
 - Make sure the ZeroTier service is running on the host: `systemctl status zerotierone`
 - Try to connect to your new machine over ZeroTier, e.g. over ssh. I add an entry like this to my `~/.ssh/config`:
-  ```text title="~/.ssh/config"
+  ```ssh-config title="~/.ssh/config"
   host <alias-for-your-new-machine>
       Hostname <zerotier-ip>
       ...

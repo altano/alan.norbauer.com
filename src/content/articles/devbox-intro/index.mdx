@@ -10,12 +10,12 @@ tags:
   - nix
 ---
 
-import { AiFillWindows, AiFillApple } from "react-icons/ai";
-import { FaLinux } from "react-icons/fa";
-import softwareInstallationDecisionFlow from "./software-installation-decision-flow.svg";
-import { MermaidDiagram } from "@/components/mermaidDiagram";
+import SoftwareInstallationDecisionFlowLight from "./software-installation-decision-flow-light.svg";
+import SoftwareInstallationDecisionFlowDark from "./software-installation-decision-flow-dark.svg";
+import MermaidDiagram from "@/components/article/MermaidDiagram.astro";
+import { Icon } from "astro-icon/components";
 
-> ⚠️ NOTE: This guide is macOS <AiFillApple style={{ display: "inline" }} size={25} /> and Linux <FaLinux style={{ display: "inline" }} size={25} /> only. The software mentioned is NOT natively supported on Windows <AiFillWindows style={{ display: "inline" }} size={25} /> and therefore can only be used in [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+> ⚠️ NOTE: This guide is macOS and Linux only (✅<Icon class="inline" name="ant-design:apple-filled" size={25} /><Icon name="ant-design:linux-outlined" size={25} />). The software mentioned is NOT natively supported on Windows (❌<Icon name="ant-design:windows-filled" size={25} />) but can be used in [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ## Intended Audience
 
@@ -107,27 +107,23 @@ Adding packages to your Devbox project modifies two files:
 
 1. `devbox.json` - a human readable/editable manifest of what packages and configuration you have for the Devbox shell in that directory:
 
-   ```devbox.json
+   ```json title=devbox.json {2}
    {
-     // focus (1:1)
-     "packages": ["hello@latest"],
+     "packages": ["hello@latest"]
      /* ... */
    }
    ```
 
 2. `devbox.lock` - this is analogous to something like a `package-lock.json` file, where the exact version of the software you requested is stored away to be re-used later. This makes it so that even if you install a package with something like `devbox add nodejs@latest`, the exact version will be stored in `devbox.lock` and re-used later anytime you enter the Devbox shell, so you will still always get the same version.
 
-   ```json title="devbox.lock"
+   ```json title="devbox.lock" {3, 5, 7}
    {
      "lockfile_version": "1",
      "packages": {
-       // focus (1:1)
        "hello@latest": {
          "last_modified": "2023-10-25T20:49:13Z",
-         // focus (1:1)
          "resolved": "github:NixOS/nixpkgs/75a52265bda7fd25e06e3a67dee3f0354e73243c#hello",
          "source": "devbox-search",
-         // focus(1:1)
          "version": "2.12.1"
          /* ... */
        }
@@ -141,7 +137,6 @@ When you run `devbox shell`, Devbox will check your `devbox.json`, observe that 
 
 ```sh
 (devbox) ➜  hello --version
-# focus(1:1)
 hello (GNU Hello) 2.12.1
 ```
 
@@ -224,7 +219,6 @@ Found 7+ results for "node":
 * nodejs-slim  (21.1.0, 21.0.0, 20.9.0, 20.8.0, 20.7.0, 20.6.1, 20.5.1, 20.5.0, 20.4.0, 20.3.1)
 
 Warning: Showing top 10 results and truncated versions. Use --show-all to show all.
-
 ```
 
 The other is on the web. The Devbox team put together https://www.nixhub.io which makes searching for Nix packages as a Devbox user a little more intuitive[^devbox-nixhub].
@@ -286,10 +280,18 @@ My decision making process is:
 
 For the visually inclined:
 
-<MermaidDiagram
-  src={softwareInstallationDecisionFlow}
-  alt="Flow chart describing how I choose to install software, summarizing the text above"
-/>
+<MermaidDiagram alt="Flow chart describing how I choose to install software, summarizing the text above">
+  <SoftwareInstallationDecisionFlowLight
+    style="background-color: var(--bg); max-width: 100%"
+    width="600px"
+    slot="light"
+  />
+  <SoftwareInstallationDecisionFlowDark
+    style="background-color: var(--bg); max-width: 100%"
+    width="600px"
+    slot="dark"
+  />
+</MermaidDiagram>
 
 Read more about Devbox global packages on [the official docs](https://www.jetpack.io/devbox/docs/devbox_global/).
 
@@ -385,10 +387,17 @@ Devbox is a pretty powerful tool and I've barely scratched the surface. You can 
 - 2023-11-19: Tweaked Nix in comparison table to reflect that "Per-project Isolation" and "Automatic Shell Activation (direnv)" are both achievable.
 
 [^nix-complexity]: Nix starts being unapproachable the second you try to [explain the name](https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html). I'm sorry.
+
 [^docker-reproducibility]: Docker _can be_ pretty reproducible, and there are lots of guides on the internet about how to build reproducible Dockerfiles, but it doesn't by default encourage it. The `latest` tag, for example, behaves completely differently in a Dockerfile and Devbox. In Devbox, it means "the latest available right now, but take a snapshot of what that is and re-use it in the future." With Docker, it means "just #yolo grab whatever right now and feel free to grab something different in the future."
+
 [^devbox-global-packages]: See [Global Packages](#global-packages) for more information about the pros/cons of using Devbox for global packages.
+
 [^devbox-nixhub]: When using Devbox you want to just find a package and what (potentially old) versions are available. Package versioning and simplicity is not something the other Nix package search engines focus on. [This blog post](https://www.jetpack.io/blog/how-nixhub-searches-nixpkgs) explains in more detail.
+
 [^no-windows-support]: Devbox, and anything that uses Nix under the covers, cannnot run natively on Windows. It does of course support running in [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
+
 [^latest-misunderstanding]: This was something that tripped me up. I thought seeing `@latest` in `devbox.json` meant the version wasn't locked-in, but [that isn't the case](https://github.com/jetpack-io/devbox/issues/1476).
+
 [^open-source]: jetpack.io is [committed to keeping devbox free and open source forever](https://lobste.rs/s/a1jo3a/devenv_0_6_generating_containers_instant#c_qvqc6m).
+
 [^package-semver]: For example, if you want a very specific version of Node.js, you want to be able to install it by just using the semver version. For example, if I go to https://nodejs.org/en and see the LTS version is 20.9.0, I want to be able to install it with `devbox add nodejs@20.9.0`

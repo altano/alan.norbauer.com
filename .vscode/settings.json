@@ -62,6 +62,5 @@
   "[mdx]": {
     "editor.wordWrap": "on"
   },
-  "cSpell.enabled": true,
-  "cSpell.words": ["altano", "Codesandbox"]
+  "cSpell.enabled": true
 }

@@ -9,10 +9,12 @@
     "```[^`]+```"
   ],
   "words": [
+    "altano",
     "Backblaze's",
     "backplane",
     "bhyve",
     "codebases",
+    "Codesandbox",
     "configcheck",
     "datacenter",
     "deallocate",
@@ -48,6 +50,7 @@
     "Rosewill",
     "Rubyist",
     "runtimes",
+    "Sandpack",
     "SATA",
     "Sliger",
     "sysrc",

@@ -29,7 +29,7 @@ Without DNS we connect to ZeroTier nodes by IP address. This isn't too annoying 
 
 With everything in place, any ZeroTier client configured with "Allow DNS Configuration" will send DNS queries that end in your domain name (e.g. `*.myzerotiernetwork.com`) to the ZeroNS server. Other DNS queries (e.g. `google.com`) will continue going to wherever you normally send DNS queries, e.g. your ISP or a Pi-hole or whatever. It'll look like this:
 
-![ZeroNS Routing](zerons-diagram.excalidraw.png)
+![ZeroNS Routing](./zerons-diagram.excalidraw.png)
 
 This per-interface DNS resolution works automatically on Windows and macOS. The [project's readme](https://github.com/zerotier/zeronsd#per-interface-dns-resolution) has some guidance on how you might get this to work on Linux clients.
 
@@ -112,7 +112,7 @@ I opted for manual installation of ZeroNS in an Alpine Linux VM on my Proxmox ho
   - https://my.zerotier.com should now have `Search Domain = myzerotiernetwork.com` and `SERVERS = <zeronsd's ZT IP>`
   - If there are no errors, `ctrl-c`
 - Setup init.d service (use your domain and ZT network ID)
-  ```
+  ```sh
   /root/.cargo/bin/zeronsd supervise -t /root/.token -w -d myzerotiernetwork.com af78bf94364e2035
   rc-update add zeronsd-af78bf94364e2035
   rc-service zeronsd-af78bf94364e2035 start
@@ -137,7 +137,7 @@ And you're done! Commands to note for future use:
   - `cargo install zeronsd`
 - To upgrade zerotier
   - upgrade alpine:
-    ```
+    ```sh
     nano /etc/apk/repositories` and update version (e.g. "v3.15" or "latest-stable")
     apk update
     apk add --upgrade apk-tools
@@ -150,10 +150,9 @@ And you're done! Commands to note for future use:
     `apk add --upgrade zerotier-one`
 - To see why something might not be working, stop the service and run on the CLI with verbose logging:
 
-  ```
+  ```sh
   rc-service zeronsd-af78bf94364e2035 stop
   /root/.cargo/bin/zeronsd start -vvv --token /root/.token --wildcard --domain myzerotiernetwork.com -v af78bf94364e2035
-
   ```
 
 ## Client Configuration
@@ -188,7 +187,7 @@ If you haven't customized your ZeroTier flow rules, you can skip this section. I
   You'll want to include those rules before any other rules that might deny dns traffic.
 
 - Make sure to check the flag for your ZeroNS node:
-  ![Tag settings for ZeroNS node](is-dns-server.png)
+  ![Tag settings for ZeroNS node](./is-dns-server.png)
 
 ## Alternatives to ZeroNS
 
@@ -227,7 +226,7 @@ Speaking of Tailscale, I'm jealous of [the automatic TLS certificates](https://t
 
 One of 1Password's great features is that it let's you add multiple addresses for a single entry. I add 3 addresses for all my ZeroTier nodes: (1) `xxx.myzerotiernetwork.com`, (2) the ZeroTier IP, and (3) the local LAN IP. For example, the entry for my Proxmox server looks like this:
 
-![How you might add 1Password entries](Proxmox-1Password.png)
+![How you might add 1Password entries](./Proxmox-1Password.png)
 
 This makes it so that if, for whatever reason, DNS resolution stops working, I can still easily find and login to my Proxmox server. The LAN IP is helpful for when I need to go entirely around ZeroTier while I'm on my LAN (only valid for nodes that listen on the LAN IP, which only a subset of my nodes do).
 

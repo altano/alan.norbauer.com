@@ -34,7 +34,7 @@ In this case I'm installing it on TrueNAS as one piece of my "secure, offsite ba
 
 Install on TrueNAS (using FreeBSD packages):
 
-```
+```sh
 sed -i .orig 's/enabled: yes/enabled: no/' /usr/local/etc/pkg/repos/local.conf
 sed -i .orig 's/enabled: no/enabled: yes/' /usr/local/etc/pkg/repos/FreeBSD.conf
 pkg update
@@ -47,7 +47,7 @@ Do _not_ reboot yet.
 
 Start the service
 
-```
+```sh
 $ service zerotier onestatus
 zerotier is not running.
 $ service zerotier onestart
@@ -56,7 +56,7 @@ Starting zerotier.
 
 Validate the database was created
 
-```
+```sh
 $ ls -1 /var/db/zerotier-one
 authtoken.secret
 controller.d
@@ -72,14 +72,14 @@ zerotier-one.port
 Navigate to `Storage` -> `Pools` and create a dataset called `zerotier`, e.g. `tank/zerotier` mounted at `/mnt/tank/zerotier`. You can put this somewhere else if you like, as long as it's on a storage pool.
 Move your db to the dataset:
 
-```
+```sh
 mkdir -p /mnt/tank/zerotier/db/
 mv /var/db/zerotier-one/* /mnt/tank/zerotier/db/
 ```
 
 Mount the dataset dir as the db where zerotier will look for it:
 
-```
+```sh
 $ /sbin/mount_nullfs /mnt/tank/zerotier/db/ /var/db/zerotier-one
 $ ls -1 /var/db/zerotier-one
 authtoken.secret
@@ -102,7 +102,7 @@ zerotier-one.port
 
 The ZeroTier service rc script located at `/usr/local/etc/rc.d/zerotier` will get erased on reboot, just like the `/var/db/zerotier-one/` directory. To fix this, we copy it to our dataset:
 
-```
+```sh
 cp /usr/local/etc/rc.d/zerotier /mnt/tank/zerotier/zerotier.rc.d
 ```
 
@@ -115,9 +115,9 @@ We now need a startup script that performs the following actions on TrueNAS boot
 - Re-enable the rc service (using `sysrc`)
 - Start the rc service
 
-To accomplish this, use [my zerotier-start.sh script](https://alan.norbauer.com/articles/zerotier-on-truenas/scripts/zerotier-start.sh):
+To accomplish this, use [my zerotier-start.sh script](/articles/zerotier-on-truenas/scripts/zerotier-start.sh):
 
-```
+```sh
 curl https://alan.norbauer.com/articles/zerotier-on-truenas/scripts/zerotier-start.sh -o /mnt/tank/zerotier/zerotier-start.sh
 chmod +x /mnt/tank/zerotier/zerotier-start.sh
 ```
@@ -170,7 +170,7 @@ service zerotier start
 
 Validate that your zerotier dataset now looks like this:
 
-```
+```sh
 $ ls -1 /mnt/tank/zerotier
 db
 zerotier-start.sh

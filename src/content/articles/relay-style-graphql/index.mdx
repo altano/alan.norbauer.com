@@ -1,7 +1,7 @@
 ---
 title: Relay-style GraphQL
 date_created: 2023-07-31T10:52:57.159Z
-date_updated: 2024-06-01T23:56:28.324Z
+date_updated: 2025-04-22T02:40:26.599Z
 description: GraphQL best practices for 2023
 tags:
   - graphql
@@ -54,52 +54,26 @@ The fruits of Meta's struggles, plus the lessons learned in open-source, are wha
 
 Relay-style GraphQL is an approach that combines many framework features, best practices, and a different mindset. I'd like to highlight a few of them:
 
-### Fragment Collocation
+### Fragment Colocation
 
-Fragment collocation means declaring GraphQL fragments directly in your components instead of separate files. Parent components spread their children's fragments into their fragment to be allowed to render their children.
+Fragment colocation means declaring GraphQL fragments directly in your components instead of separate files. Parent components spread their children's fragments into their fragment to be allowed to render their children.
 
-Apollo [supports a lesser form of collocated fragments](https://www.apollographql.com/blog/graphql/fragments/using-graphql-fragments-for-safer-cleaner-and-faster-code/) and [better collocated fragments](https://www.apollographql.com/docs/react/api/react/hooks-experimental/#usefragment) is currently in beta.
+Apollo [supports a lesser form of colocated fragments](https://www.apollographql.com/blog/graphql/fragments/using-graphql-fragments-for-safer-cleaner-and-faster-code/) and [better colocated fragments](https://www.apollographql.com/docs/react/api/react/hooks-experimental/#usefragment) is currently in beta.
 
-Two **critical** principles associated with good use of collocation of fragments are:
+Two **critical** principles associated with good use of colocation of fragments are:
 
 - Your component must never receive GraphQL-sourced data in its props: it should only have access to what it declares in its fragment(s).
 - Components must never share fragments. Relay enforces that a fragment is prefixed with the component name.
 
 #### An example Relay component
 
-<Code>
-
-```issueSummary.tsx
+```tsx title=issueSummary.tsx {2-3} {6-12}
 function IssueSummary(props: {
+  // The issue, passed down from IssueSummary's parent
   issue: IssueSummaryFragment$key;
 }) {
   const issue = useFragment(
-    graphql`
-      fragment IssueSummaryFragment on Issue {
-        title
-        body
-      }
-    `,
-    props.issue
-  );
-
-  return (
-    <li>
-      <h1>{issue.title}</h1>
-      <div>{issue.body}</div>
-    </li>
-  );
-}
-```
-
-```tsx
-// title (Focus Fragment)
-function IssueSummary(props: {
-  // focus(1:1)
-  issue: IssueSummaryFragment$key;
-}) {
-  // focus(1:9)
-  const issue = useFragment(
+    // The component's graphql fragment
     graphql`
       fragment IssueSummaryFragment on Issue {
         title
@@ -118,26 +92,25 @@ function IssueSummary(props: {
 }
 ```
 
-</Code>
+The parent component would then spread that child's fragment in its fragment and render the child component:
 
-The parent component would then spread that fragment in its fragment and render the child component:
-
-```issues.tsx
+```tsx title=issues.tsx {11-12} {25-26}
 function Issues(props: {
+  // Data received from Issue's parent
   repository: IssuesFragment$key | null;
 }) {
-  // focus(7:7)
   const data = useFragment(
     graphql`
       fragment IssuesFragment on Repository {
         issues(first: 1) {
           nodes {
             __id
+            # Spread the child's fragment
             ...IssueSummaryFragment
         }
       }
     `,
-    props.repository
+    props.repository,
   );
 
   return (
@@ -146,36 +119,29 @@ function Issues(props: {
         if (issue == null) {
           return null;
         }
-        // focus(1:1)
+        /* ... and then render the child */
         return <IssueSummary key={issue.__id} issue={issue} />;
       })}
     </ul>
   );
 }
-
 ```
 
 A top-level component will make a query and (either directly or transitively) spread all the fragments of all its descendent components:
 
-```mainView.tsx
-function MainView(props: {
-  queryRef: PreloadedQuery<MainViewQuery>;
-}) {
-  const data = usePreloadedQuery(
-    // focus(8:8)
-    graphql`
-      query MainViewQuery($owner: String!, $name: String!) {
-        repository(owner: $owner, name: $name) {
-          owner {
-            login
-          }
-          name
-          ...IssuesFragment
+```tsx title=mainView.tsx {9}
+function MainView() {
+  const data = useLazyLoadQuery(graphql`
+    query MainViewQuery($owner: String!, $name: String!) {
+      repository(owner: $owner, name: $name) {
+        owner {
+          login
         }
+        name
+        ...IssuesFragment
       }
-    `,
-    props.queryRef
-  );
+    }
+  `);
 
   // ...
 }
@@ -183,7 +149,7 @@ function MainView(props: {
 
 The result is the same as if you had manually written this top-level query into a `MainViewQuery.graphql` file, like so:
 
-```MainViewQuery.graphql
+```graphql title=MainViewQuery.graphql
 query MainViewQuery($owner: String!, $name: String!) {
   repository(owner: $owner, name: $name) {
     owner {
@@ -206,7 +172,7 @@ query MainViewQuery($owner: String!, $name: String!) {
 }
 ```
 
-But, instead of writing this query by hand, a Relay-style GraphQL library will _compile_ your collocated fragments into the same query, giving you many benefits:
+But, instead of writing this query by hand, a Relay-style GraphQL library will _compile_ your colocated fragments into the same query, giving you many benefits:
 
 #### Benefit #1: Preventing over-fetching
 
@@ -216,7 +182,7 @@ REST APIs can theoretically fetch exactly the data your UI needs, or they can ha
 
 GraphQL improved on this by allowing the UI author to always request exactly what data they are looking for, in theory always achieving perfect data-fetching efficiency and never over-fetching. The problem arises when you share GraphQL queries/fragments across multiple components: static analysis can't tell you when a field in a `.graphql` file is unused and therefore safe to remove[^over-fetching-static-analysis].
 
-Fragment collocation in Relay-style GraphQL solves this problem: if you remove a field from the component's fragment, or if you just remove the component, and no other component references that field, it will be removed from your query without any action on your part. Relay implements tooling to facilitate all this:
+Fragment colocation in Relay-style GraphQL solves this problem: if you remove a field from the component's fragment, or if you just remove the component, and no other component references that field, it will be removed from your query without any action on your part. Relay implements tooling to facilitate all this:
 
 - **Data Masking**: Your component can only see what it puts in its fragment. Your component gets a key via its props but that key isn't usable until fed through something like `useFragment`, and the data returned by `useFragment` only contains the data defined in the component's fragment.
 - **Lint rules** that prevent you from doing anything that might result in bad data fetching/passing practices, e.g. adding a field to your fragment only to pass it into a child component, spreading fragments that you don't use directly, etc.
@@ -227,31 +193,31 @@ Fragment collocation in Relay-style GraphQL solves this problem: if you remove a
 
 Relay-style GraphQL code doesn't have bugs where components need data that was never queried.
 
-Without fragment collocation it's possible to write a React component that doesn't _always_ get the data it depends on. For example, let's say you have a component that takes a `User` object that has `firstName` and `lastName` fields. Your component knows that these fields are nullable and has appropriate `null` checking, but it can't guarantee that all the queries that use your component include both fields. This can lead to bugs at runtime where your component unexpectedly returns `null`. UI rarely even logs this error case.
+Without fragment colocation it's possible to write a React component that doesn't _always_ get the data it depends on. For example, let's say you have a component that takes a `User` object that has `firstName` and `lastName` fields. Your component knows that these fields are nullable and has appropriate `null` checking, but it can't guarantee that all the queries that use your component include both fields. This can lead to bugs at runtime where your component unexpectedly returns `null`. UI rarely even logs this error case.
 
-With fragment collocation you can be guaranteed that all the data your component needs will always be queried, because you can't render the component without querying. The fields may still end up being `null`, but not because of bugs in your GraphQL code.
+With fragment colocation you can be guaranteed that all the data your component needs will always be queried, because you can't render the component without querying. The fields may still end up being `null`, but not because of bugs in your GraphQL code.
 
 #### Benefit #3: Your components are easier to reason about
 
-If your collocated fragments abide by the first principle above:
+If your colocated fragments abide by the first principle above:
 
 > "Your component must never receive GraphQL-sourced data in its props: it should only have access to what it declares in its fragment(s)"
 
-they will be much easier to reason about. This is my personal favorite benefit of collocated fragments, and of Relay-style GraphQL in general.
+they will be much easier to reason about. This is my personal favorite benefit of colocated fragments, and of Relay-style GraphQL in general.
 
 For example, take this standard React component that gets GraphQL data from a prop:
 
-```issueTitle-legacy.tsx
-function IssueTitle(props: { issue: { title: string|null } }) {
+```tsx title=issueTitle-legacy.tsx
+function IssueTitle(props: { issue: { title: string | null } }) {
   return <li>{props.issue.title}</li>;
 }
 ```
 
 This component seems very simple but if you need any information about where this title comes from in order to render the component, you'll have to search elsewhere. Want to use another field in your render? You'll have to add a prop and then go find where the data is sourced so you can add the field there.
 
-Compare it to a GraphQL component with a collocated fragment:
+Compare it to a GraphQL component with a colocated fragment:
 
-```issueTitle.tsx
+```tsx title=issueTitle.tsx
 function IssueTitle(props: { issue: IssueTitleFragment$key }) {
   const issue = useFragment(
     graphql`
@@ -259,7 +225,7 @@ function IssueTitle(props: { issue: IssueTitleFragment$key }) {
         title
       }
     `,
-    props.issue
+    props.issue,
   );
   return <p>{issue.title}</p>;
 }
@@ -279,7 +245,7 @@ You get the idea.
 
 #### Benefit #4: Improved TypeScript types
 
-If your collocated fragments abide by the second principle above:
+If your colocated fragments abide by the second principle above:
 
 > "Components must never share fragments."
 
@@ -301,7 +267,7 @@ Having a custom TypeScript type for each fragment gives you other developer expe
 
 By separating your GraphQL into fragments you're also setting yourself up to easily re-fetch just the data your component needs instead of the entire query. Relay, for example, [makes it trivial](https://relay.dev/docs/guided-tour/refetching/refreshing-fragments/#using-userefetchablefragment) to upgrade a fragment to a re-fetchable fragment, auto-generating a function that, when called, will send a query for just the data in your fragment.
 
-Without collocated fragments you have to choose between:
+Without colocated fragments you have to choose between:
 
 - Re-fetching your entire query or
 - Manually writing a function that re-fetches just what you want and manually mutating the local cache to reflect the re-fetched data.
@@ -314,7 +280,7 @@ Bonus: having globally unique IDs for items in the graph means that re-fetching 
 
 I have a component in my application that renders data at two stages: once when previewing it, and again after it's saved. During the preview stage, not all the fields are available on the backend (despite having the same type), such as the `id` field. This probably should have been modeled in the schema differently, but let's set that aside. I handled this by adding an `@skip` condition to the fields that weren't available during preview, but the only place to put the `@skip` variable is in a query variable with a default parameter. It ended up looking like this:
 
-```garbage.graphql
+```graphql title=garbage.graphql
 query PreviewItemQuery($isForPreview: Boolean = true) {
   ...ItemFragment
 }
@@ -336,21 +302,19 @@ It was also error prone because it was a **_runtime_** error to add this query v
 
 How can we do better? For starters, use a GraphQL framework that does enough static analysis to treat the above as a compiler error. But even better: use fragment arguments! Fragment arguments are basically just function arguments for your GraphQL fragments. Here's what a [fragment argument definition](https://relay.dev/docs/api-reference/graphql-and-directives/#argumentdefinitions) looks like in Relay:
 
-```previewItem.tsx
-function PreviewItem(props: {
-  item: PreviewItemFragment$key;
-}) {
+```tsx title=previewItem.tsx {5} {"1": 6} {7} {"2": 8}
+function PreviewItem(props: { item: PreviewItemFragment$key }) {
   const item = useFragment(
-    // focus(2:6)
     graphql`
-      fragment PreviewItemFragment on Item @argumentDefinitions(
-        isForPreview: { type: "Boolean!" }
-      ) {
+      fragment PreviewItemFragment on Item
+      # define the argument
+      @argumentDefinitions(isForPreview: { type: "Boolean!" }) {
+        # use it
         id @skip(if: $isForPreview)
         title
       }
     `,
-    props.item
+    props.item,
   );
 
   // ...
@@ -359,19 +323,19 @@ function PreviewItem(props: {
 
 Which then enforces, at compile time, that this argument is passed to every spread of the fragment:
 
-```preview.tsx
+```tsx title=preview.tsx
 ...PreviewItemFragment @arguments(isForPreview: true)
 ```
 
-And by being right next to the collocated fragment when defined, used, and invoked you never have to guess why the argument exists or how it is used.
+And by being right next to the colocated fragment when defined, used, and invoked you never have to guess why the argument exists or how it is used.
 
 #### Benefit #7: Better GraphQL APIs
 
-Collocated fragments encourage you to build simple GraphQL APIs that are tailored to your UI components. It pushes you to move data complexity up to the backend, where it (often) belongs.
+Colocated fragments encourage you to build simple GraphQL APIs that are tailored to your UI components. It pushes you to move data complexity up to the backend, where it (often) belongs.
 
 #### Benefits Summary
 
-**If you only absorb one thing, make it this:** switching from hand-written GraphQL queries (whether you break them up into fragments or not) to GraphQL fragments collocated with your React components has many downstream benefits that instantly spoil you and make it impossible to go back.
+**If you only absorb one thing, make it this:** switching from hand-written GraphQL queries (whether you break them up into fragments or not) to GraphQL fragments colocated with your React components has many downstream benefits that instantly spoil you and make it impossible to go back.
 
 ### Data Fetching
 
@@ -436,12 +400,9 @@ GraphQL allows you to define non-nullable fields at the schema level, but it is 
 
 That said, the bar inside your _component_ is not nearly as high. It is reasonable when writing a component to say “if I don't have this field, I might as well not render anything.” Relay has an [`@required` directive](https://relay.dev/docs/next/guides/required-directive/) that allows you to replace code like this:
 
-```issueSummary.tsx
-function IssueSummary(props: {
-  issue: IssueSummaryFragment$key;
-}) {
+```tsx title=issueSummary.tsx {4-9} {14-21}
+function IssueSummary(props: { issue: IssueSummaryFragment$key }) {
   const issue = useFragment(
-    // focus(2:7)
     graphql`
       fragment IssueSummaryFragment on Issue {
         title
@@ -450,10 +411,9 @@ function IssueSummary(props: {
         createdAt
       }
     `,
-    props.issue
+    props.issue,
   );
 
-  // focus(1:8)
   if (
     issue.title == null ||
     issue.body == null ||
@@ -476,12 +436,9 @@ function IssueSummary(props: {
 
 with code like this:
 
-```issueSummary.tsx
-function IssueSummary(props: {
-  issue: IssueSummaryFragment$key;
-}) {
+```tsx title=issueSummary.tsx {4-9} {14-16}
+function IssueSummary(props: { issue: IssueSummaryFragment$key }) {
   const issue = useFragment(
-    // focus(2:7)
     graphql`
       fragment IssueSummaryFragment on Issue {
         title @required(action: LOG)
@@ -490,10 +447,9 @@ function IssueSummary(props: {
         createdAt @required(action: LOG)
       }
     `,
-    props.issue
+    props.issue,
   );
 
-  // focus(1:3)
   if (issue == null) {
     return null;
   }
@@ -513,8 +469,8 @@ That might not be a huge number of characters saved but:
 
 - You're no longer keeping two lists of fields in sync.
 - Your TypeScript types are immediately what you want: either the entire issue is null, or you have all the fields you require as non-nullable.
-- The Relay version logs to your telemetry endpoint when a field is unexpectedly `null` instead of the code on the left which just silently ignores it.
-- `@required` supports other behavior, such as throwing an exception if a field is `null`, for when that makes sense. These exceptions are thrown at a single choke point with structured data about the fragment/field that eroded, making them easy to setup global monitoring for regressions. That makes these errors highly actionable in a way that you might not get with ad-hoc error logging.
+- The Relay version logs to your telemetry endpoint when a field is unexpectedly `null` unlike the non-Relay example which just silently ignores it.
+- `@required` supports other behavior, such as throwing an exception (`@required(action: THROW)`) if a field is `null`, for when that makes sense. These exceptions are thrown at a single choke point with structured data about the fragment/field that eroded, making it easy to setup global monitoring for regressions. That makes these errors highly actionable in a way that you might not get with ad-hoc error logging. And for your UI, you can catch them with a React error boundary and render a fallback.
 - You can use `@required` to bubble a `null` field up through the component hierarchy in a way that doesn't work with just returning `null`.
 - Etc.
 
@@ -545,7 +501,7 @@ Hopefully by this point I've made the case that Relay-style GraphQL is a fundame
 
 </QuestionHeading>
 <QuestionBody>
-  I'm already using collocated fragments with Apollo, I never share fragments between components, I'm using graphql-code-generator to generate types for every fragment, and I type all of my input props using the generated fragment type?
+  I'm already using colocated fragments with Apollo, I never share fragments between components, I'm using graphql-code-generator to generate types for every fragment, and I type all of my input props using the generated fragment type?
 </QuestionBody>
 
 <Answer>
@@ -587,7 +543,7 @@ Hopefully by this point I've made the case that Relay-style GraphQL is a fundame
 
 <QuestionHeading>
 
-### Q: Do collocated fragments ever result in conflicts &hellip;
+### Q: Do colocated fragments ever result in conflicts &hellip;
 
 </QuestionHeading>
 
@@ -622,11 +578,19 @@ Hopefully by this point I've made the case that Relay-style GraphQL is a fundame
 </Answer>
 
 [^guildwork]: The Guild is [working on](https://the-guild.dev/blog/unleash-the-power-of-fragments-with-graphql-codegen) bringing these ideas to other libraries.
+
 [^over-fetching-static-analysis]: _Static_ analysis has a hard time with this because GraphQL has abstract types for many fields, and those references could theoretically be tracked across your codebase, but the leaf fields are always primitive types (like `string` and `number`) and tracking references to primitive values across an entire codebase, across all code boundaries, is not a problem anyone has solved (to my knowledge). That said, _runtime_ analysis using JS `Proxy` can be used to detect what fields go unused with some level of accuracy. [Reddit Engineering wrote about it here](https://www.reddit.com/r/RedditEng/comments/x0rasj/identifying_unused_fields_in_graphql/). Runtime analysis is better than nothing, but strictly worse than just getting it exactly right at compile time.
+
 [^relay-store]: Relay's cache is [a normalized, in-memory object graph](https://relay.dev/docs/principles-and-architecture/runtime-architecture/#data-model).
+
 [^data-in-props]: Too many of my Relay nerd friends cringed at this line because it's not true. You actually receive the key to the data in the props, which can be used to lookup the data in the Relay store.
+
 [^relay-compiler]: Don't worry, Relay's compiler [is written in Rust](https://relay.dev/blog/2021/12/08/introducing-the-new-relay-compiler/).
+
 [^refetchable-fetch-policy]: It might be neat if [`useRefetchableFragment`](https://relay.dev/docs/api-reference/use-refetchable-fragment/) took a `refetchPolicy` argument. Maybe?
+
 [^shopify]: For example, here is [Shopify's order retrieval API](https://shopify.dev/docs/api/admin-rest/2023-07/resources/order#get-orders?status=any). They went to pains to add a `fields` parameter so you can specify a comma-delimited list of fields to fetch. But, some of the fields, like `client_details`, have fields nested below it. You can't filter those. So even when a REST API goes out of its way to add some level of filtering, it still isn't going to make it possible to arbitrarily filter perfectly, because then the API's ergonomics increasingly suffer (and at some point you're just reinventing an ad-hoc GraphQL endpoint). Back when REST APIs were all that there was, in my experience internal/private REST APIs rarely even had a "fields" parameter and over-fetching was extremely prevalent.
+
 [^persisted-query-security]: By locking down your API to exactly what your UI needs you're engaging in "defense in depth" security. This shouldn't be your main mechanism for hiding sensitive/private data that you don't want clients to see, but not letting users make arbitrary queries against your backend is a reasonable security precaution.
+
 [^unused-query-variable]: My GraphQL server rejects queries with unused query variables.

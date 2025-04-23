@@ -7,7 +7,7 @@ tags:
   - javascript
 ---
 
-import pkg from "@root/package.json";
+import BasicEmailLink from "@/components/BasicEmailLink.astro";
 
 Anytime you open the Chrome or Firefox dev tools to debug JavaScript code, you should disable JavaScript source maps. This is the first thing I do when I open developer tools on a new machine.
 
@@ -62,7 +62,7 @@ The easiest and fastest way to toggle CSS or JS source maps in the Chrome develo
 
 ### Firefox <Firefox />
 
-There is no similar shortcut for Firefox[^feature-request] but you can toggle source maps on/off from the developer tools settings. Note that you might need to refresh the page for the change to take effect. I believe this toggles both JS and CSS source maps (<a href={`mailto:${pkg.author.email}?subject=Firefox%20Source%20Maps`}>e-mail me</a> if you know for sure):
+There is no similar shortcut for Firefox[^feature-request] but you can toggle source maps on/off from the developer tools settings. Note that you might need to refresh the page for the change to take effect. I believe this toggles both JS and CSS source maps (<BasicEmailLink subject="Firefox Source Maps">e-mail me</BasicEmailLink> if you know for sure):
 
 ![Screenshot of Firefox settings showing option to toggle source maps](./disable-source-maps-firefox.png)
 
