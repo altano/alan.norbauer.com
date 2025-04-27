@@ -34,7 +34,14 @@ const currentDepthHeadings = headings.filter((it) => it.depth === depth);
         list-style-position: inside;
         list-style-type: square;
       }
+
+      &:hover {
+        li {
+          color: var(--text);
+        }
+      }
     }
+
     li {
       padding: var(--spacing-half);
       @media (--md-down-viewport) {
@@ -52,39 +59,34 @@ const currentDepthHeadings = headings.filter((it) => it.depth === depth);
         &[aria-current="true"] {
           color: var(--text);
         }
-        nav:hover & {
-          color: var(--text);
-        }
       }
     }
   }
 </style>
 
-<nav class="table-of-contents">
-  <ul>
-    {
-      currentDepthHeadings.map((it, idx) => {
-        const nextHeading = currentDepthHeadings[idx + 1];
-        const subHeadings = headings.slice(
-          headings.indexOf(it) + 1,
-          nextHeading ? headings.indexOf(nextHeading) : undefined
-        );
-        const hasSubHeadings = subHeadings.length > 0;
-        const shouldRenderSubHeadings = maxDepth >= it.depth && hasSubHeadings;
+<ul class="table-of-contents">
+  {
+    currentDepthHeadings.map((it, idx) => {
+      const nextHeading = currentDepthHeadings[idx + 1];
+      const subHeadings = headings.slice(
+        headings.indexOf(it) + 1,
+        nextHeading ? headings.indexOf(nextHeading) : undefined
+      );
+      const hasSubHeadings = subHeadings.length > 0;
+      const shouldRenderSubHeadings = maxDepth >= it.depth && hasSubHeadings;
 
-        return (
-          <li aria-level={depth} aria-current={false /* TODO */}>
-            {it.slug ? <a href={`#${it.slug}`}>{it.text}</a> : it.text}
-            {shouldRenderSubHeadings ? (
-              <Astro.self
-                {...Astro.props}
-                headings={subHeadings}
-                depth={it.depth + 1}
-              />
-            ) : null}
-          </li>
-        );
-      })
-    }
-  </ul>
-</nav>
+      return (
+        <li aria-level={depth} aria-current={false /* TODO */}>
+          {it.slug ? <a href={`#${it.slug}`}>{it.text}</a> : it.text}
+          {shouldRenderSubHeadings ? (
+            <Astro.self
+              {...Astro.props}
+              headings={subHeadings}
+              depth={it.depth + 1}
+            />
+          ) : null}
+        </li>
+      );
+    })
+  }
+</ul>

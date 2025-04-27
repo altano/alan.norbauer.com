@@ -19,7 +19,7 @@ import VisibleElementObserver from "./VisibleElementObserver.astro";
       }
       const id = heading.getAttribute("id");
       const listItem = document.querySelector(
-        `nav.table-of-contents li:has(> a[href="#${id}"]`
+        `.table-of-contents li:has(> a[href="#${id}"]`
       );
       if (listItem == null) {
         // section visibility changed but with no matching link for id
