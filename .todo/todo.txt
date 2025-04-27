@@ -2,7 +2,7 @@
 // Astro Site TODOs:
 
 High Pri:
-TODO: webp animations aren't looping +bug
+x 2025-04-26 TODO: webp animations aren't looping +bug
 
 Low pri:
 TODO: move scroll spy out to an npm package and publish +refactor

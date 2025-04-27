@@ -1,7 +1,7 @@
 ---
 title: 67 Weird Debugging Tricks Your Browser Doesn't Want You to Know
 date_created: 2018-08-02T06:28:29.868Z
-date_updated: 2020-05-06T06:13:41.020Z
+date_updated: 2025-04-27T06:11:28.744Z
 description: Advanced browser parlor tricks
 tags:
   - javascript
@@ -20,7 +20,7 @@ By using expressions that have side effects in places you wouldn't expect, we ca
 
 For example, we can `console.log` in breakpoints. Logpoints are breakpoints that log to the console without pausing execution. While Microsoft Edge has had logpoints built-in for a while and Chrome just added them in v73, Firefox does not. But, we can use conditional breakpoints to simulate them in any browser.
 
-![Conditional Breakpoint - console.log](./conditional-breakpoint-console-log.gif)
+![Conditional Breakpoint - console.log](/articles/browser-debugging-tricks/conditional-breakpoint-console-log.gif)
 
 Use `console.count` instead of `console.log` if you also want a running count of how many times the line is executed.
 
@@ -41,7 +41,7 @@ And then add your watch expression, e.g. to record a snapshot of the DOM: `(wind
 
 Let's say you have a function that shows a loading spinner and a function that hides it, but somewhere in your code you're calling the show method without a matching hide call. How can you find the source of the unpaired show call? Use `console.trace` in a conditional breakpoint in the show method, run your code, find the last stack trace for the show method and click the caller to go to the code:
 
-![console.trace in conditional breakpoint](./console-trace-find-stack.gif)
+![console.trace in conditional breakpoint](/articles/browser-debugging-tricks/console-trace-find-stack.gif)
 
 ### Changing Program Behavior
 
@@ -49,13 +49,13 @@ By using expressions that have side effects on program behavior, we can change p
 
 For example, you can override the param to the `getPerson` function, `id`. Since `id=1` evaluates to true, this conditional breakpoint would pause the debugger. To prevent that, append `, false` to the expression.
 
-![Conditional Breakpoint - parameter override](./conditional-breakpoint-parameter-override.gif)
+![Conditional Breakpoint - parameter override](/articles/browser-debugging-tricks/conditional-breakpoint-parameter-override.gif)
 
 ### Quick and Dirty Performance Profiling
 
 You shouldn't muddy your performance profiling with things like conditional breakpoint evaluation time, but if you want a quick and dirty measurement of how long something takes to run, you can use the console timing API in conditional breakpoints. In your starting point set a breakpoint with the condition `console.time('label')` and at the end point set a breakpoint with the condition `console.timeEnd('label')`. Everytime the thing you're measuring runs, the browser will log to the console how long it takes.
 
-![Conditional Breakpoint - performance profile](./console-time-performance-profile.gif)
+![Conditional Breakpoint - performance profile](/articles/browser-debugging-tricks/console-time-performance-profile.gif)
 
 ### Using Function Arity
 
@@ -65,13 +65,13 @@ Only pause when the current function is called with 3 arguments: `arguments.call
 
 Useful when you have an overloaded function that has optional parameters.
 
-![Conditional Breakpoint - argument length](./conditional-breakpoint-argument-length.gif)
+![Conditional Breakpoint - argument length](/articles/browser-debugging-tricks/conditional-breakpoint-argument-length.gif)
 
 #### Break on Function Arity Mismatch
 
 Only pause when the current function is called with the wrong number of arguments: `(arguments.callee.length) != arguments.length`
 
-![Conditional Breakpoint - arity check](./conditional-breakpoint-arity-check.gif)
+![Conditional Breakpoint - arity check](/articles/browser-debugging-tricks/conditional-breakpoint-arity-check.gif)
 
 Useful when finding bugs in function call sites.
 
@@ -258,11 +258,11 @@ When in the DOM inspector press ctrl+\ (Chrome/Windows) to pause JS execution at
 
 Let's say you want to inspect a DOM element that only conditionally appears. Inspecting said element requires moving your mouse to it, but when you try to, it disappears:
 
-![Elusive element](./elusive-element.gif)
+![Elusive element](/articles/browser-debugging-tricks/elusive-element.gif)
 
 To inspect the element you can paste this into your console: `setTimeout(function() { debugger; }, 5000);`. This gives you 5 seconds to trigger the UI, and then once the 5 second timer is up, JS execution will pause and nothing will make your element disappear. You are free to move your mouse to the dev tools without losing the element:
 
-![Elusive element - inspected](./elusive-element-inspected.gif)
+![Elusive element - inspected](/articles/browser-debugging-tricks/elusive-element-inspected.gif)
 
 While JS execution is paused you can inspect the element, edit its CSS, execute commands in the JS console, etc.
 
@@ -309,7 +309,7 @@ setInterval(() => {
 })();
 ```
 
-![Monitor focused element](./monitor-focus.gif)
+![Monitor focused element](/articles/browser-debugging-tricks/monitor-focus.gif)
 
 ### Find Bold Elements
 
@@ -355,4 +355,4 @@ Debug all events for selected element: `monitorEvents($0)`
 
 Debug specific events for selected element: `monitorEvents($0, ["control", "key"])`
 
-![monitorEvents](./monitorEvents.gif)
+![monitorEvents](/articles/browser-debugging-tricks/monitorEvents.gif)
