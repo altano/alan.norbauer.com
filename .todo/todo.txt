@@ -18,7 +18,7 @@ TODO: no trailing slash serves old content... wtf? +bug
 TODO: make sure there's always room for theme switcher (e.g. at 784px wide, scrolled to bottom of article) +bug
 TODO: view transitions +bug
 TODO: go back to colocating images in src/pages dir +bug
-TODO: article h1+h2 don't scale down at all (unlike Title and SectionHeading) +bug
+x 2025-04-27 TODO: article h1+h2 don't scale down at all (unlike Title and SectionHeading) +bug
 TODO: figure out a way to abstract away "layer-style: card" we had with Panda CSS +bug
 TODO: switch browser logos to experimental svg instead of Image +bug
 

@@ -36,16 +36,6 @@ const { title, date_created, date_updated } = article.data;
   @import "@/styles/custom-media-queries.css";
 
   @layer page {
-    h1 {
-      grid-area: title;
-      max-width: 100%;
-      font-size: 4rem;
-      margin-bottom: 0; /* handled by grid-row-gap instead */
-      @media (--lg-up-viewport) {
-        font-size: 4rem;
-      }
-    }
-
     header {
       font-size: 1rem;
       grid-area: header;
@@ -114,10 +104,17 @@ const { title, date_created, date_updated } = article.data;
       }
     }
 
-    h2 {
+    h1 {
+      grid-area: title;
+      max-width: 100%;
+      margin-bottom: 0; /* handled by grid-row-gap instead */
+    }
+
+    nav h2 {
       @media (--md-down-viewport) {
         margin-top: 0;
       }
+
       @media (--lg-up-viewport) {
         margin: 0;
         font-size: 1rem;
