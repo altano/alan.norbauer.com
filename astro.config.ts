@@ -3,6 +3,8 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pkg from "./package.json";
 import rehypeSlug from "rehype-slug";
+// @ts-expect-error package has no types
+import rehypeWrap from "rehype-wrap-all";
 import remarkSectionize from "remark-sectionize";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import openGraph from "@altano/astro-opengraph";
@@ -38,6 +40,13 @@ export default defineConfig({
           properties: {
             className: "auto-link-toc-anchor",
           },
+        },
+      ],
+      [
+        rehypeWrap,
+        {
+          selector: "table",
+          wrapper: "div.markdown-table-wrapper",
         },
       ],
     ],

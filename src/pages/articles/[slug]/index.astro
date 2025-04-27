@@ -180,6 +180,18 @@ const { title, date_created, date_updated } = article.data;
         }
       }
 
+      & .markdown-table-wrapper {
+        margin-block: var(--spacing-5);
+        @media (--md-up-viewport) {
+          margin-block: var(--spacing-7);
+        }
+        @media (--lg-up-viewport) {
+          margin-block: var(--spacing-10);
+        }
+        max-width: 100%;
+        overflow-x: scroll;
+      }
+
       & table {
         /* TODO Need to factor this out somehow */
         /* layer-style: card; */
@@ -188,12 +200,23 @@ const { title, date_created, date_updated } = article.data;
         padding: var(--spacing-5);
 
         transition: background var(--durations-color-scheme);
-        margin-block: var(--spacing-10);
+
         & th,
         & td {
-          padding: var(--spacing-5);
-          @media (--lg-up-viewport) {
+          padding: var(--spacing-1) var(--spacing-3);
+          font-size: 16px;
+          border-bottom: var(--border-table);
+
+          @media (--sm-up-viewport) {
+            padding: var(--spacing-2) var(--spacing-3);
+          }
+          @media (--md-up-viewport) {
+            font-size: 20px;
+            border: none;
             padding: var(--spacing-3);
+          }
+          @media (--lg-up-viewport) {
+            padding: var(--spacing-4);
           }
         }
         & th {

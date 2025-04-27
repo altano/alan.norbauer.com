@@ -15,6 +15,7 @@
     --bg-card: var(--color-light-gray);
     --bg-footer: var(--color-sunset-blvd);
     --bg-highlight: #fff8dc;
+    --border-table: solid var(--color-gray-300) 1px;
     --text-selection: var(--color-black);
     --bg-selection: var(--color-electric-blue);
     --accent-primary: var(--color-fuchsiaish);
@@ -32,6 +33,7 @@
       --bg-card: var(--color-dracula-background);
       --bg-footer: var(--color-dracula-background);
       --bg-highlight: #fceaa8;
+      --border-table: solid var(--color-gray-700) 1px;
       --text-selection: var(--color-black);
       --bg-selection: var(--color-seafoam);
       --accent-primary: var(--color-seafoam);

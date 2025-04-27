@@ -1,7 +1,7 @@
 ---
 title: Relay-style GraphQL
 date_created: 2023-07-31T10:52:57.159Z
-date_updated: 2025-04-27T06:07:52.374Z
+date_updated: 2025-04-27T07:33:12.303Z
 description: GraphQL best practices for 2023
 tags:
   - graphql
@@ -29,9 +29,14 @@ Relay does not have a monopoly on these ideas [^guildwork] and you can get prett
 
 Here's a comparison of the high-level goals we had back in 2015 vs. the ones Relay-style GraphQL is trying to solve today:
 
-| **GraphQL in 2015**                                                                                                                                                                                                                                                                                  | **Relay-style GraphQL**                                                                                                                                                                                                                                                                              |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <ul><li>A declarative language for querying data </li><li>More flexible than REST, but BE is more exposed </li><li>Prevents some over-fetching </li><li>Performance is ????????????</li><li>Brings back schemas and type safety (that REST took away)</li><li>Better developer experience </li></ul> | <ul><li>UI components can declare their data dependencies </li><li>Safer, faster, and more locked-down than REST </li><li>Never under or over-fetches </li><li>Best-possible performance </li><li>Even better type safety, molded to your components</li><li>Amazing developer experience </li></ul> |
+| **GraphQL in 2015**                                       | **Relay-style GraphQL**                            |
+| --------------------------------------------------------- | -------------------------------------------------- |
+| A declarative language for querying data                  | UI components can declare their data dependencies  |
+| More flexible than REST, but BE is more exposed           | Safer, faster, and more locked-down than REST      |
+| Prevents some over-fetching                               | Never under or over-fetches                        |
+| Performance is ????????????                               | Best-possible performance                          |
+| Brings back schemas and type safety (that REST took away) | Even better type safety, molded to your components |
+| Better developer experience                               | Amazing developer experience                       |
 
 We'll talk about how you might achieve those goals, but first &hellip;
 

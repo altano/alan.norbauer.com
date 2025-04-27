@@ -5,10 +5,11 @@ High Pri:
 x 2025-04-26 TODO: webp animations aren't looping +bug
 
 Low pri:
+TODO: Font-size overhaul: move font-size up to :root, add tokens for various font sizes
 TODO: move scroll spy out to an npm package and publish +refactor
 TODO: investigate on-demand rendering mermaid diagrams right out of the mdx +enhancement
 TODO: investigate switching to astro's experimental fonts but using local fonts +enhancement
-TODO: article tables have way too much margin on mobile +bug
+x 2025-04-27 TODO: article tables have way too much margin on mobile +bug
 TODO: headings (e.g. on "development environment" tag page) are too wide +mobile-safari +bug
 TODO: headings w/ bg (e.g. on tag page) clip descenders when wrapped +mobile-safari +bug
 TODO: horizontal scrollbars on devbox and relay articles +mobile-safari +bug
