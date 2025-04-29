@@ -12,7 +12,8 @@
     "lakkannawalikar.css-converter",
     "unifiedjs.vscode-mdx",
     "xyc.vscode-mdx-preview",
-    "eliostruyf.vscode-front-matter"
+    "eliostruyf.vscode-front-matter",
+    "bpruitt-goddard.mermaid-markdown-syntax-highlighting"
   ],
   "unwantedRecommendations": []
 }

@@ -2,28 +2,16 @@
 // Astro Site TODOs:
 
 High Pri:
-TODO: devbox article flowchart (below "For the visually inclined") has a shadow root trick for theming that doesn't work on mobile safari, wording is messed up +mobile-safari
-x 2025-04-26 TODO: webp animations aren't looping +bug
 
 Low pri:
-TODO: "RSS feed." period is on next line on iphone pro 16
 TODO: Firefox in e2e consistently scrolls above the "Never Pause Here" heading, not all the way to it. why?
 TODO: Google SRP: no favicon, previews are clipped on sides
-TODO: responsive margin-block on things like article metadata sections
 TODO: Font-size overhaul: move font-size up to :root, add tokens for various font sizes
 TODO: move scroll spy out to an npm package and publish +refactor
-TODO: investigate on-demand rendering mermaid diagrams right out of the mdx (`rehype-mermaidjs`?) +enhancement
 TODO: investigate switching to astro's experimental fonts but using local fonts +enhancement
-x 2025-04-27 TODO: article tables have way too much margin on mobile +bug
-x 2025-04-29 TODO: headings (e.g. on "development environment" tag page) are too wide +mobile-safari +bug
-x 2025-04-29 TODO: headings w/ bg (e.g. on tag page) clip descenders when wrapped +mobile-safari +bug
-x 2025-04-29 TODO: horizontal scrollbars on devbox and relay articles +mobile-safari +bug
-x 2025-04-29 TODO: playwright tests +bug
-x 2025-04-29 TODO: no trailing slash serves old content... wtf? +bug
 TODO: make sure there's always room for theme switcher (e.g. at 784px wide, scrolled to bottom of article) +bug
 TODO: view transitions +bug
 TODO: go back to colocating images in src/pages dir +bug
-x 2025-04-27 TODO: article h1+h2 don't scale down at all (unlike Title and SectionHeading) +bug
 TODO: figure out a way to abstract away "layer-style: card" we had with Panda CSS +bug
 TODO: switch browser logos to experimental svg instead of Image +bug
 

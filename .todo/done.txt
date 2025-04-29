@@ -54,3 +54,15 @@ x 2025-04-18 WARN  deprecated shikiji@0.10.2: Deprecated, use shiki instead
 x 2025-04-18 WARN  deprecated remark-footnotes@5.0.0: Deprecated: use `remark-gfm`
 x 2023-07-31 make toc only go 2-levels deep
 x 2023-07-31 fix browser icons in browser debugging article
+x 2025-04-29 TODO: devbox article flowchart (below "For the visually inclined") has a shadow root trick for theming that doesn't work on mobile safari, wording is messed up +mobile-safari
+x 2025-04-26 TODO: webp animations aren't looping +bug
+x 2025-04-29 TODO: "RSS feed." period is on next line on iphone pro 16
+x 2025-04-29 TODO: investigate on-demand rendering mermaid diagrams right out of the mdx (`rehype-mermaidjs`?) +enhancement
+x 2025-04-27 TODO: article tables have way too much margin on mobile +bug
+x 2025-04-29 TODO: headings (e.g. on "development environment" tag page) are too wide +mobile-safari +bug
+x 2025-04-29 TODO: headings w/ bg (e.g. on tag page) clip descenders when wrapped +mobile-safari +bug
+x 2025-04-29 TODO: horizontal scrollbars on devbox and relay articles +mobile-safari +bug
+x 2025-04-29 TODO: playwright tests +bug
+x 2025-04-29 TODO: no trailing slash serves old content... wtf? +bug
+x 2025-04-27 TODO: article h1+h2 don't scale down at all (unlike Title and SectionHeading) +bug
+x 2025-04-29 TODO: responsive margin-block on things like article metadata sections

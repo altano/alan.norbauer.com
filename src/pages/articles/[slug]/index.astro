@@ -58,6 +58,12 @@ const { title, date_created, date_updated } = article.data;
       line-height: normal;
       display: flex;
 
+      @media (--md-down-viewport) {
+        &:first-of-type {
+          margin-block-start: 0;
+        }
+      }
+
       @media (--lg-up-viewport) {
         gap: var(--spacing-1);
         color: var(--text-faded);

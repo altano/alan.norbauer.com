@@ -1,4 +1,5 @@
 ---
+import PeriodWrapper from "./PeriodWrapper.astro";
 import ContactLink from "./social/ContactLink.astro";
 import EmailLink from "./social/EmailLink.astro";
 import FeedLink from "./social/FeedLink.astro";
@@ -49,7 +50,9 @@ const { width, font } = Astro.props;
     opinions of his employer.
   </p>
   <p>
-    You can subscribe to this site's <FeedLink icon={false} text="RSS feed" />.
+    You can subscribe to this site's <PeriodWrapper
+      ><FeedLink icon={false} text="RSS feed" /></PeriodWrapper
+    >
     You reach Alan by{" "}
     <EmailLink icon={false} text="e-mail" /> or through <ContactLink
       icon={false}
