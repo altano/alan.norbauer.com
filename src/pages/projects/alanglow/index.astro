@@ -5,10 +5,11 @@ import screenshot2 from "assets/images/projects/alanglow/screenshots/2-address.p
 import screenshot3 from "assets/images/projects/alanglow/screenshots/3-menu.png";
 import screenshot4 from "assets/images/projects/alanglow/screenshots/4-tree-style-tabs.jpg";
 import SiteFooter from "@/components/SiteFooter.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
-import Title from "@/components/Title.astro";
+import SectionHeading from "@/components/heading/SectionHeading.astro";
+import PageTitle from "@/components/heading/PageTitle.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
+import Main from "@/components/Main.astro";
 
 const { title, description } = metadataJSON;
 ---
@@ -17,20 +18,6 @@ const { title, description } = metadataJSON;
   @import "@/styles/custom-media-queries.css";
 
   @layer page {
-    main {
-      min-width: 320px;
-      max-width: var(--breakpoints-lg);
-      margin: auto;
-
-      container: body / normal;
-      min-width: 320px;
-      font-size: 20px;
-
-      @media (--md-down-viewport) {
-        margin-inline: var(--spacing-2);
-      }
-    }
-
     nav {
       font-size: 2rem;
       display: flex;
@@ -39,10 +26,16 @@ const { title, description } = metadataJSON;
     }
 
     div.gallery {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      display: grid;
       gap: var(--spacing-4);
+
+      @media (--sm-up-viewport) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      img {
+        width: 100%;
+      }
     }
   }
 </style>
@@ -53,8 +46,8 @@ const { title, description } = metadataJSON;
   {description}
   opengraphImage="./opengraph.png"
 >
-  <main>
-    <Title>{title}</Title>
+  <Main size="large">
+    <PageTitle>{title}</PageTitle>
     <nav>
       <a href="https://addons.mozilla.org/en-US/firefox/addon/alanglow/">
         Install Firefox Theme
@@ -101,5 +94,5 @@ const { title, description } = metadataJSON;
     <a href="https://github.com/altano/alanglow/issues/">Feedback</a>
 
     <SiteFooter location="standalone" />
-  </main>
+  </Main>
 </BaseLayout>

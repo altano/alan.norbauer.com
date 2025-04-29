@@ -7,21 +7,12 @@ export type Props = { children: unknown };
 
   @layer components {
     h2 {
+      /* Font */
       font-weight: 600;
 
-      margin-block-start: 4rem;
+      /* Margin */
       &:first-child {
         margin-block-start: 0;
-      }
-
-      margin-block-end: 2rem;
-
-      font-size: clamp(1.5rem, 12vw, 3rem);
-      @media (--md-viewport) {
-        font-size: 3rem;
-      }
-      @media (--lg-up-viewport) {
-        font-size: 4rem;
       }
     }
   }

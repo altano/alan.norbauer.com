@@ -50,7 +50,7 @@
 
   :root {
     --border-radius-sm: 0.25rem;
-    --border-radius-md: 0.375rem;
+    --border-radius-lg: 0.375rem;
     --border-radius-lg: 0.5rem;
   }
 
@@ -73,11 +73,11 @@
   }
 
   :root {
+    --breakpoints-tiny: 320px;
     --breakpoints-sm: 640px;
     --breakpoints-md: 768px;
     --breakpoints-lg: 1024px;
     --breakpoints-xl: 1280px;
-    --breakpoints-2xl: 1536px;
   }
 
   :root {
@@ -93,5 +93,7 @@
     --spacing-8: 2rem;
     --spacing-9: 2.25rem;
     --spacing-10: 2.5rem;
+    --spacing-11: 2.75rem;
+    --spacing-12: 3rem;
   }
 }

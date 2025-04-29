@@ -104,8 +104,8 @@ export default tseslint.config(
   {
     // in js files ...
     files: ["**/*.{js,mjs,json}"],
-    // ... disable type-aware linting
     ...tseslint.configs.disableTypeChecked,
+    // ... disable type-aware linting
     // ... disable type-syntax-requiring rules
     rules: {
       ...tseslint.configs.disableTypeChecked.rules,
@@ -118,7 +118,7 @@ export default tseslint.config(
 
   // Disable irrelevant rules in .json files
   {
-    files: ["*.json", "**/*.{json}"],
+    files: ["*.json", "**/*.json"],
     rules: {
       "@typescript-eslint/no-unused-expressions": "off",
     },

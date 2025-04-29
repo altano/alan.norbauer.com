@@ -1,0 +1,44 @@
+---
+export type Props = { children: unknown };
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    h1 {
+      line-height: var(--line-height-tighter);
+      font-weight: 800;
+      flex-grow: 1;
+      margin-block-start: 0;
+
+      /* When title/bunny side-by-side */
+      @media (--lg-up-viewport) {
+        /* when supported, lines up bunny and text better */
+        text-box: cap alphabetic;
+
+        /**
+        * when not supported, just fudge it by moving the text up with negative 
+        * margin, to meet the bunny
+        */
+        @supports not (text-box: cap alphabetic) {
+          margin-block-start: -20px;
+        }
+      }
+
+      /* Font size */
+      font-size: clamp(3rem, 19vw, 6rem);
+      @media (--sm-viewport) {
+        font-size: 7rem;
+      }
+      @media (--md-viewport) {
+        font-size: 8rem;
+      }
+      @media (--lg-up-viewport) {
+        font-size: 9rem;
+      }
+    }
+  }
+</style>
+
+<h1><slot /></h1>

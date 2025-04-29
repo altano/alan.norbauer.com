@@ -1,14 +1,15 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Bio from "@/components/Bio.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
+import SectionHeading from "@/components/heading/SectionHeading.astro";
 import ThemedBunny from "@/components/ThemedBunny.astro";
-import Title from "@/components/Title.astro";
+import HomepageTitle from "@/components/heading/HomepageTitle.astro";
 import { getAlan } from "@/content-utils/query/authors";
 import ArticleList from "@/components/article/ArticleList.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
 import ProjectList from "@/components/project/ProjectList.astro";
 import pkg from "@root/package.json";
+import Main from "@/components/Main.astro";
 
 const author = await getAlan();
 const name = author.data.name;
@@ -18,33 +19,30 @@ const name = author.data.name;
   @import "@/styles/custom-media-queries.css";
 
   @layer page {
-    main {
-      min-width: 320px;
-      max-width: var(--breakpoints-md);
-      font-size: 20px;
-      margin-block: 3rem;
-      container: main / inline-size;
-      margin-inline: var(--spacing-2);
-
-      @media (--md-up-viewport) {
-        margin-inline: auto;
-      }
-    }
     header {
       display: flex;
       flex-direction: column;
+      gap: var(--spacing-10);
       align-items: flex-start;
-      
+
+      margin-block: 4rem 2rem;
+      @media (--sm-up-viewport) {
+        gap: var(--spacing-12);
+        margin-block: 6rem 3rem;
+      }
+
       @media (--lg-up-viewport) {
+        gap: 0;
         flex-direction: row;
       }
     }
+  }
 </style>
 
 <BaseLayout title={name} type="website" description={pkg.description}>
-  <main>
+  <Main size="medium">
     <header>
-      <Title>{name}</Title>
+      <HomepageTitle>{name}</HomepageTitle>
       <ThemedBunny />
     </header>
     <Bio width="narrow" font="normal" />
@@ -53,5 +51,5 @@ const name = author.data.name;
     <SectionHeading>Projects</SectionHeading>
     <ProjectList />
     <SiteFooter location="standalone" />
-  </main>
+  </Main>
 </BaseLayout>

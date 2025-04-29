@@ -61,5 +61,6 @@
   "[mdx]": {
     "editor.wordWrap": "on"
   },
-  "cSpell.enabled": true
+  "cSpell.enabled": true,
+  "gitlens.codeLens.enabled": false
 }

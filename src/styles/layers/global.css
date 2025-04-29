@@ -25,6 +25,12 @@
 
     body {
       min-height: 100vh;
+
+      /**
+       * Prevent margin collapse between the body and its first/last children,
+       * which would could result in the body being larger than 100vh.
+       */
+      padding-block: 0.05px;
     }
 
     /* Links */
@@ -41,34 +47,53 @@
 
     /* Headings */
     h1 {
-      font-size: 6rem;
-      margin: 3rem 0 1.5rem 0;
+      margin-top: 3rem;
+      font-size: 2.5rem;
+      @media (--sm-up-viewport) {
+        font-size: 4rem;
+      }
       font-weight: 800;
       line-height: var(--line-height-tighter);
     }
+    /* Section headings and Table of Contents heading */
     h2 {
-      font-size: 3rem;
-      margin: 3rem 0 1.5rem 0;
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      @media (--sm-up-viewport) {
+        font-size: 3rem;
+      }
       font-weight: 700;
       line-height: var(--line-height-tight);
     }
     h3 {
-      font-size: 2rem;
+      font-size: 1.25rem;
+      @media (--sm-up-viewport) {
+        font-size: 1.5rem;
+      }
     }
     h4 {
-      font-size: 1.5rem;
+      font-size: 1.25rem; /* don't go lower than 1.25rem or 20px, since body text is 20px */
+      @media (--sm-up-viewport) {
+        font-size: 1.2rem;
+      }
     }
     h5,
     h6 {
-      font-size: 1.2rem;
+      font-size: 1.25rem; /* don't go lower than 1.25rem or 20px, since body text is 20px */
+      @media (--sm-up-viewport) {
+        font-size: 1rem;
+      }
     }
     h3,
     h4,
     h5,
     h6 {
-      margin-block: 2rem 1rem;
       font-weight: 600;
       line-height: var(--line-height-tight);
+    }
+
+    :is(h2, h3, h4, h5, h6) {
+      margin-block: 1.5rem 1rem;
     }
 
     :is(h1, h2, h3, h4, h5, h6) {

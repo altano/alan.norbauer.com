@@ -11,13 +11,21 @@ export type Props = { children: unknown };
       font-weight: 800;
       flex-grow: 1;
       margin-block: 3rem;
-      font-size: clamp(3rem, 19vw, 6rem);
 
+      /* Font size */
+      font-size: 2.5rem;
+      @media (--sm-viewport) {
+        font-size: 4rem;
+      }
       @media (--md-viewport) {
         font-size: 6rem;
       }
       @media (--lg-up-viewport) {
-        font-size: 9rem;
+        /**
+         * Unlike HomepageTitle with its fixed text, some of our page titles 
+         * are too big to make the font any larger than this
+         */
+        font-size: 7rem;
       }
     }
   }

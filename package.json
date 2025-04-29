@@ -12,7 +12,7 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "pnpm run --workspace-concurrency=1 '/^(build:astro|check:.*|test)$/'",
+    "build": "pnpm run build:astro && pnpm run '/^(check:.*|test)$/'",
     "build:astro": "astro build",
     "check:astro": "astro check",
     "check:lint": "eslint 'src/**/*.{js,jsx,ts,tsx,astro}'",

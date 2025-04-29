@@ -5,15 +5,21 @@
     ul {
       display: flex;
       flex-direction: column;
-      padding: 0;
       list-style-type: none;
+      padding: 0;
       margin-block: 0.5rem;
+      column-gap: 1rlh;
+      row-gap: 1.5rlh;
+
+      @media (--sm-viewport) {
+        row-gap: 2rem;
+      }
 
       @media (--md-up-viewport) {
         flex-direction: row;
         flex-wrap: wrap;
-        column-gap: 4rem;
-        row-gap: 1rem;
+        column-gap: 2rem;
+        row-gap: 2rem;
       }
     }
   }

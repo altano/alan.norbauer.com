@@ -1,10 +1,13 @@
 /**
+ tiny: 320-639px   (<320px is not supported)
    sm: 640-767px
    md: 768-1023px
    lg: 1024-1279px
-   xl: 1280-1535px
-  xxl: >= 1536px
+   xl: >=1280px
 */
+@custom-media --tiny-viewport only screen and (320px <= width <= 639px);
+@custom-media --tiny-down-viewport only screen and (max-width: 639px);
+@custom-media --tiny-up-viewport only screen and (min-width: 320px);
 @custom-media --sm-viewport only screen and (640px <= width <= 767px);
 @custom-media --sm-down-viewport only screen and (max-width: 767px);
 @custom-media --sm-up-viewport only screen and (min-width: 640px);
@@ -14,11 +17,8 @@
 @custom-media --lg-viewport only screen and (1024px <= width <= 1279px);
 @custom-media --lg-down-viewport only screen and (max-width: 1279px);
 @custom-media --lg-up-viewport only screen and (min-width: 1024px);
-@custom-media --xl-viewport only screen and (1280px <= width <= 1535px);
-@custom-media --xl-down-viewport only screen and (max-width: 1535px);
-@custom-media --xl-up-viewport only screen and (min-width: 1280px);
-@custom-media --xxl-viewport only screen and (min-width: 1535px);
-@custom-media --xxl-down-viewport only screen;
-@custom-media --xxl-up-viewport (--xxl-viewport);
+@custom-media --xl-viewport only screen and (min-width: 1280px);
+@custom-media --xl-down-viewport only screen;
+@custom-media --xl-up-viewport (--xl-viewport);
 
 @custom-media --reduced-motion (prefers-reduced-motion: reduce);

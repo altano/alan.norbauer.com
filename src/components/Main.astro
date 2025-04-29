@@ -1,0 +1,91 @@
+---
+export type Props = {
+  size: "small" | "medium" | "large";
+};
+
+const { size } = Astro.props;
+---
+
+<style>
+  @import "@/styles/custom-media-queries.css";
+
+  @layer components {
+    main {
+      min-width: var(--page-min-width);
+      max-width: var(--page-max-width);
+      margin-inline: var(--page-gutter);
+      font-size: 20px;
+      container: main / inline-size;
+
+      --page-gutter: var(--spacing-2);
+      --page-scrollbar-width: 15px;
+      --page-min-width: calc(
+        var(--breakpoints-tiny) - var(--page-scrollbar-width) -
+          (2 * var(--page-gutter))
+      );
+      --page-max-width-before-gutter: min(
+        var(--page-target-width),
+        var(--breakpoints-sm)
+      );
+      --page-max-width: calc(
+        var(--page-max-width-before-gutter) - (2 * var(--page-gutter))
+      );
+
+      @media (--sm-up-viewport) {
+        --page-gutter: var(--spacing-5);
+      }
+
+      @media (--tiny-viewport) {
+        --page-max-width-before-gutter: min(
+          var(--page-target-width),
+          var(--breakpoints-sm)
+        );
+      }
+
+      @media (--sm-viewport) {
+        --page-max-width-before-gutter: min(
+          var(--page-target-width),
+          var(--breakpoints-md)
+        );
+      }
+
+      @media (--md-viewport) {
+        --page-max-width-before-gutter: min(
+          var(--page-target-width),
+          var(--breakpoints-lg)
+        );
+      }
+
+      @media (--lg-up-viewport) {
+        --page-max-width-before-gutter: min(
+          var(--page-target-width),
+          var(--breakpoints-xl)
+        );
+      }
+
+      /* Size / width */
+      &.small {
+        --page-target-width: var(--breakpoints-sm);
+        @media (--sm-up-viewport) {
+          margin-inline: auto;
+        }
+      }
+
+      &.medium {
+        --page-target-width: var(--breakpoints-md);
+        @media (--md-up-viewport) {
+          margin-inline: auto;
+        }
+      }
+
+      &.large {
+        --page-target-width: var(--breakpoints-lg);
+        @media (--lg-up-viewport) {
+          margin-inline: auto;
+        }
+      }
+    }
+  }
+</style>
+
+<main class={size}><slot /></main>

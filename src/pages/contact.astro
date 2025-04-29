@@ -12,10 +12,11 @@ import HackerNewsLink from "@/components/social/HackerNewsLink.astro";
 import FacebookLink from "@/components/social/FacebookLink.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getAlan } from "@/content-utils/query/authors";
-import SectionHeading from "@/components/SectionHeading.astro";
-import Title from "@/components/Title.astro";
+import SectionHeading from "@/components/heading/SectionHeading.astro";
+import PageTitle from "@/components/heading/PageTitle.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
 import BlueSkyLink from "@/components/social/BlueSkyLink.astro";
+import Main from "@/components/Main.astro";
 
 const alan = await getAlan();
 const size = 52;
@@ -28,28 +29,8 @@ const size = 52;
     div.sections {
       columns: 1;
 
-      @media (--xl-up-viewport) {
+      @media (--md-up-viewport) {
         columns: 2;
-      }
-    }
-
-    main {
-      min-width: 320px;
-      max-width: var(--breakpoints-lg);
-      margin: auto;
-      padding-block: 1rem;
-      font-size: 1.125rem;
-      margin-inline: var(--spacing-2);
-
-      @media (--md-viewport) {
-        font-size: 1.125rem;
-      }
-      @media (--lg-up-viewport) {
-        font-size: 1.5rem;
-      }
-
-      @media (--xl-up-viewport) {
-        margin-inline: auto;
       }
     }
 
@@ -70,8 +51,8 @@ const size = 52;
   title="Contact"
   description={`How to contact ${alan.data.name}`}
 >
-  <main>
-    <Title>Alan on the Internet</Title>
+  <Main size="large">
+    <PageTitle>Alan on the Internet</PageTitle>
     <div class="sections">
       <SectionHeading>Boomer Shit</SectionHeading>
       <section>
@@ -136,5 +117,5 @@ const size = 52;
     </div>
 
     <SiteFooter location="standalone" />
-  </main>
+  </Main>
 </BaseLayout>

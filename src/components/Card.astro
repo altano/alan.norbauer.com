@@ -10,12 +10,12 @@ export type Props = { class?: string | undefined };
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      margin-block-start: 1rem;
-      margin-block-end: 2.5rem;
       border-radius: var(--border-radius-md);
 
-      @media (--md-up-viewport) {
-        width: calc(50% - 2rem);
+      &:not(:only-of-type) {
+        @media (--md-up-viewport) {
+          width: calc(50% - 2rem);
+        }
       }
     }
   }

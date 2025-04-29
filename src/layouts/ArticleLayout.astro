@@ -122,52 +122,6 @@ const { title, description } = article.data;
   }
 </style>
 
-<style is:global>
-  @import "@/styles/custom-media-queries.css";
-
-  @layer layouts {
-    main {
-      /* Article title */
-      h1 {
-        font-size: 4rem; /* a little smaller than global */
-        @media (--sm-down-viewport) {
-          font-size: 3rem;
-        }
-      }
-    }
-    article h2,
-    nav h2 {
-      /* Section headings and Table of Contents heading */
-      font-size: 3rem;
-      @media (--sm-down-viewport) {
-        font-size: 2rem;
-      }
-    }
-    article {
-      /* Section headings */
-      h3 {
-        font-size: 2rem;
-        @media (--sm-down-viewport) {
-          font-size: 1.5rem;
-        }
-      }
-      h4 {
-        font-size: 1.5rem;
-        @media (--sm-down-viewport) {
-          font-size: 1.2rem;
-        }
-      }
-      h5,
-      h6 {
-        font-size: 1.2rem;
-        @media (--sm-down-viewport) {
-          font-size: 1rem;
-        }
-      }
-    }
-  }
-</style>
-
 <BaseLayout
   {title}
   {description}

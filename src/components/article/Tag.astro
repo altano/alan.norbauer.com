@@ -1,6 +1,6 @@
 ---
 export type Props = {
-  kind: "pill" | "inline" | "navPill";
+  kind: "pill" | "inline" | "navPill" | "title";
 };
 
 const { kind } = Astro.props;
@@ -13,9 +13,12 @@ const { kind } = Astro.props;
     li {
       /* TODO Need to factor this out somehow */
       /* layer-style: card; */
-      background: var(--bg-card);
+      /* background: var(--bg-card); */
       border-radius: var(--border-radius-md);
       padding: var(--spacing-5);
+
+      /* background clips descenders if we go any tighter */
+      line-height: var(--line-height-tight);
 
       color: var(--text-tag);
       background: var(--bg-tag);
@@ -32,9 +35,13 @@ const { kind } = Astro.props;
         margin-right: var(--spacing-half);
       }
 
-      &.inline {
+      &.inline,
+      &.title {
         display: inline;
         font-size: inherit;
+      }
+
+      &.inline {
         padding-inline: var(--spacing-3);
       }
 

@@ -1,12 +1,13 @@
 ---
 import ArticleList from "@/components/article/ArticleList.astro";
 import Tag from "@/components/article/Tag.astro";
-import SectionHeading from "@/components/SectionHeading.astro";
+import SectionHeading from "@/components/heading/SectionHeading.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
-import Title from "@/components/Title.astro";
+import PageTitle from "@/components/heading/PageTitle.astro";
 import { getArticles, getArticlesByTag } from "@/content-utils/query/articles";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import pkg from "@root/package.json";
+import Main from "@/components/Main.astro";
 
 export async function getStaticPaths() {
   const allTags = new Set<string>();
@@ -31,33 +32,18 @@ if (articles.length === 0) {
 }
 ---
 
-<style>
-  @import "@/styles/custom-media-queries.css";
-
-  @layer page {
-    main {
-      min-width: 320px;
-      max-width: var(--breakpoints-md);
-      margin: auto;
-      @media (--sm-down-viewport) {
-        margin-inline: var(--spacing-2);
-      }
-    }
-  }
-</style>
-
 <BaseLayout
   type="website"
   title={tag}
   description={pkg.description}
   opengraphImage="./opengraph.png"
 >
-  <main>
-    <Title>
-      <Tag kind="inline">{tag}</Tag> stuff
-    </Title>
+  <Main size="medium">
+    <PageTitle>
+      <Tag kind="title">{tag}</Tag>
+    </PageTitle>
     <SectionHeading>Writing</SectionHeading>
     <ArticleList tag={tag} />
     <SiteFooter location="standalone" />
-  </main>
+  </Main>
 </BaseLayout>
