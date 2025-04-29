@@ -59,35 +59,44 @@ export default defineConfig({
   projects: [
     {
       name: "Desktop Chrome",
-      use: { ...devices["Desktop Chrome"], isMobile: false },
+      use: { ...devices["Desktop Chrome"] },
     },
-
     {
       name: "Desktop Firefox",
-      use: { ...devices["Desktop Firefox"], isMobile: false },
+      use: { ...devices["Desktop Firefox"] },
     },
-
     {
-      name: "Desktop Safari",
-      use: { ...devices["Desktop Safari"], isMobile: false },
+      name: "Desktop Safari" /* HiDPI testing (deviceScaleFactor=2)  */,
+      use: { ...devices["Desktop Safari"] },
     },
 
     /* Test against mobile viewports. */
     {
       name: "Mobile Chrome - Pixel 5",
-      use: { ...devices["Pixel 5"], isMobile: true },
+      use: { ...devices["Pixel 5"] },
     },
     {
-      name: "Mobile Safari - iPhone 12",
-      use: { ...devices["iPhone 12"], isMobile: true },
-    },
-    {
-      name: "Mobile Safari - iPhone 15 Pro",
-      use: { ...devices["iPhone 15 Pro"], isMobile: true },
+      name: "Mobile Safari - iPhone SE" /* Tiny, 320px wide */,
+      use: { ...devices["iPhone SE"] },
     },
     {
       name: "Mobile Safari - iPhone 15 Pro Max",
-      use: { ...devices["iPhone 15 Pro Max"], isMobile: true },
+      use: { ...devices["iPhone 15 Pro Max"] },
+    },
+
+    /* Throw in some tablets */
+    {
+      name: "Webkit - Kindle Fire HDX",
+      use: { ...devices["Kindle Fire HDX"] },
+    },
+    {
+      name: "Mobile Safari - iPad Mini",
+      use: { ...devices["iPad Mini"] },
+    },
+    {
+      /* Has 1024px width which will test the low end of lg viewport */
+      name: "Mobile Safari - PlayBook landscape",
+      use: { ...devices["Blackberry PlayBook landscape"] },
     },
 
     /* Test against branded browsers. */

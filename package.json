@@ -20,8 +20,8 @@
     "check:types:test": "tsc --project ./tests/tsconfig.json",
     "dev": "astro dev",
     "preview": "astro preview",
-    "test": "NODE_ENV=production playwright test",
-    "test:dev": "NODE_ENV=development playwright test --ui",
+    "test": "playwright test",
+    "test:dev": "playwright test --ui",
     "test:install": "playwright install --with-deps"
   },
   "dependencies": {

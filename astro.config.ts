@@ -28,6 +28,10 @@ export default defineConfig({
     process.env.NODE_ENV === "development"
       ? "http://localhost:4321"
       : pkg.homepage,
+  devToolbar: {
+    // Disable in production and testing
+    enabled: process.env.NODE_ENV === "development",
+  },
   markdown: {
     syntaxHighlight: false, // handle with expressive-code instead
     remarkPlugins: [remarkSectionize],

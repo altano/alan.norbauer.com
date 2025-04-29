@@ -6,6 +6,7 @@ TODO: devbox article flowchart (below "For the visually inclined") has a shadow 
 x 2025-04-26 TODO: webp animations aren't looping +bug
 
 Low pri:
+TODO: "RSS feed." period is on next line on iphone pro 16
 TODO: Firefox in e2e consistently scrolls above the "Never Pause Here" heading, not all the way to it. why?
 TODO: Google SRP: no favicon, previews are clipped on sides
 TODO: responsive margin-block on things like article metadata sections
@@ -17,7 +18,7 @@ x 2025-04-27 TODO: article tables have way too much margin on mobile +bug
 x 2025-04-29 TODO: headings (e.g. on "development environment" tag page) are too wide +mobile-safari +bug
 x 2025-04-29 TODO: headings w/ bg (e.g. on tag page) clip descenders when wrapped +mobile-safari +bug
 x 2025-04-29 TODO: horizontal scrollbars on devbox and relay articles +mobile-safari +bug
-TODO: playwright tests +bug
+x 2025-04-29 TODO: playwright tests +bug
 x 2025-04-29 TODO: no trailing slash serves old content... wtf? +bug
 TODO: make sure there's always room for theme switcher (e.g. at 784px wide, scrolled to bottom of article) +bug
 TODO: view transitions +bug

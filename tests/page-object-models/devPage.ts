@@ -1,5 +1,5 @@
 import { type Locator, type Page } from "@playwright/test";
-import { expect } from "../fixtures.js";
+import { expect } from "../fixtures/fixtures.js";
 
 export class DevPage {
   readonly themeSwitcher: Locator;
@@ -24,5 +24,21 @@ export class DevPage {
 
   async goto(url: string = ""): ReturnType<typeof this.page.goto> {
     return this.page.goto(url);
+  }
+
+  async goto404(): ReturnType<typeof this.page.goto> {
+    const result = await this.goto("/not-a-real-route");
+    await expect(
+      this.page.getByRole("heading", { name: "Nothing exists here." }),
+    ).toBeVisible();
+    return result;
+  }
+
+  async assertNotXScrollable(): Promise<void> {
+    await expect(this.page.locator("html")).not.toHaveHorizontalScrollbar();
+  }
+
+  async assertNotYScrollable(): Promise<void> {
+    await expect(this.page.locator("html")).not.toHaveVerticalScrollbar();
   }
 }

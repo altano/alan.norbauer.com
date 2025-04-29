@@ -36,4 +36,10 @@ test.describe("homepage", () => {
     await expect(page.locator(":root")).toHaveCSS("background-color", white);
     await expect(page.locator(":root")).toHaveCSS("color", draculaBG);
   });
+
+  test("has no scrollbars", async ({ page }) => {
+    const devPage = new DevPage(page);
+    await devPage.goto();
+    await devPage.assertNotXScrollable();
+  });
 });
