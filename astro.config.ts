@@ -5,6 +5,7 @@ import pkg from "./package.json";
 import rehypeSlug from "rehype-slug";
 // @ts-expect-error package has no types
 import rehypeWrap from "rehype-wrap-all";
+import rehypeMermaid from "rehype-mermaid";
 import remarkSectionize from "remark-sectionize";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import openGraph from "@altano/astro-opengraph";
@@ -51,6 +52,17 @@ export default defineConfig({
         {
           selector: "table",
           wrapper: "div.markdown-table-wrapper",
+        },
+      ],
+      [
+        rehypeMermaid,
+        {
+          strategy: "img-svg",
+          // dark: true, // only responds to prefer-color-scheme
+          mermaidConfig: {
+            fontFamily: "Helvetica",
+            theme: "neutral", // just use a neutral theme instead
+          },
         },
       ],
     ],
