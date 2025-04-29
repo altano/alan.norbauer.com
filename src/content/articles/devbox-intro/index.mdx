@@ -1,7 +1,7 @@
 ---
 title: Upgrade your Development Environments with Devbox
 date_created: 2023-11-16T09:40:01.878Z
-date_updated: 2025-04-29T11:21:36.330Z
+date_updated: 2023-11-20T01:49:55.427Z
 description: A gentle guide to creating isolated development environments
 tags:
   - devbox
@@ -10,6 +10,9 @@ tags:
   - nix
 ---
 
+import SoftwareInstallationDecisionFlowLight from "./software-installation-decision-flow-light.svg";
+import SoftwareInstallationDecisionFlowDark from "./software-installation-decision-flow-dark.svg";
+import MermaidDiagram from "@/components/article/MermaidDiagram.astro";
 import { Icon } from "astro-icon/components";
 
 > ⚠️ NOTE: This guide is macOS and Linux only (✅<Icon class="inline" name="ant-design:apple-filled" size={25} /><Icon name="ant-design:linux-outlined" size={25} />). The software mentioned is NOT natively supported on Windows (❌<Icon name="ant-design:windows-filled" size={25} />) but can be used in [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
@@ -277,14 +280,18 @@ My decision making process is:
 
 For the visually inclined:
 
-```mermaid alt="Flow chart describing how I choose to install software, summarizing the text above"
-flowchart TD
-    R[I need a software package. Where am I starting it?] -->|" In a shell (or in an app I started from a shell) "| UD(Use Devbox)
-    R --> |" Outside of a shell "| UH("Use Homebrew")
-    UD --> P{{Is this for a project?}}
-    P --> |No| UDG("Use #96;devbox global#96;")
-    P --> |Yes| UDR("Use #96;devbox#96;")
-```
+<MermaidDiagram alt="Flow chart describing how I choose to install software, summarizing the text above">
+  <SoftwareInstallationDecisionFlowLight
+    style="background-color: var(--bg); max-width: 100%"
+    width="600px"
+    slot="light"
+  />
+  <SoftwareInstallationDecisionFlowDark
+    style="background-color: var(--bg); max-width: 100%"
+    width="600px"
+    slot="dark"
+  />
+</MermaidDiagram>
 
 Read more about Devbox global packages on [the official docs](https://www.jetpack.io/devbox/docs/devbox_global/).
 

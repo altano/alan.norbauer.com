@@ -1,0 +1,6 @@
+flowchart TD
+    R[I need a software package. Where am I starting it?] -->|" In a shell (or in an app I started from a shell) "| UD(Use Devbox)
+    R --> |Outside of a shell| UH("Use Homebrew")
+    UD --> P{{Is this for a project?}}
+    P --> |No| UDG("Use #96;devbox global#96;")
+    P --> |Yes| UDR("Use #96;devbox#96;")

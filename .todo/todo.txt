@@ -2,6 +2,7 @@
 // Astro Site TODOs:
 
 High Pri:
+TODO: devbox article flowchart (below "For the visually inclined") has a shadow root trick for theming that doesn't work on mobile safari, wording is messed up +mobile-safari
 
 Low pri:
 TODO: Firefox in e2e consistently scrolls above the "Never Pause Here" heading, not all the way to it. why?
