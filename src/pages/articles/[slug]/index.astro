@@ -242,10 +242,17 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
         }
       }
 
-      & ul:not(:first-child),
-      & ol:not(:first-child) {
+      /* lists */
+      & ul,
+      & ol {
         margin-block-start: var(--spacing-5);
         margin-block-end: var(--spacing-2);
+        &:first-child,
+        ul > li > &,
+        ol > li > & {
+          /* Nested lists and lists that appear first in their container don't need as much top-margin */
+          margin-block-start: var(--spacing-2);
+        }
       }
       & li:not(:first-child) {
         margin-block-start: var(--spacing-2);
