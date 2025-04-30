@@ -16,6 +16,7 @@ import QuestionHeading from "@/components/article/QuestionHeading.astro";
 import QuestionBody from "@/components/article/QuestionBody.astro";
 import Answer from "@/components/article/Answer.astro";
 import { Icon } from "astro-icon/components";
+import { shouldShowTableOfContents } from "@/utilities/table-of-contents.js";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -30,6 +31,7 @@ type Props = CollectionEntry<"articles">;
 const article = Astro.props;
 const { Content, headings } = await article.render();
 const { title, date_created, date_updated } = article.data;
+const shouldShowTOC = shouldShowTableOfContents(headings);
 ---
 
 <style>
@@ -45,7 +47,18 @@ const { title, date_created, date_updated } = article.data;
     }
 
     div.metadata-sections {
-      margin-block-end: var(--spacing-4);
+      display: grid;
+      gap: var(--spacing-4);
+
+      @media (--md-down-viewport) {
+        &:has(+ nav) {
+          margin-block-end: var(--spacing-8);
+        }
+      }
+
+      @media (--lg-up-viewport) {
+        gap: var(--spacing-8);
+      }
     }
 
     div.metadata-section {
@@ -53,23 +66,15 @@ const { title, date_created, date_updated } = article.data;
       flex-direction: row;
       align-items: center;
       gap: var(--spacing-5);
-      margin-block: var(--spacing-4);
       font-size: 1rem;
       line-height: normal;
       display: flex;
-
-      @media (--md-down-viewport) {
-        &:first-of-type {
-          margin-block-start: 0;
-        }
-      }
 
       @media (--lg-up-viewport) {
         gap: var(--spacing-1);
         color: var(--text-faded);
         flex-direction: column;
         align-items: flex-start;
-        margin-block-start: var(--spacing-8);
       }
 
       & a {
@@ -116,19 +121,25 @@ const { title, date_created, date_updated } = article.data;
       margin-bottom: 0; /* handled by grid-row-gap instead */
     }
 
-    nav h2 {
-      @media (--md-down-viewport) {
-        margin-top: 0;
+    nav {
+      @media (--lg-up-viewport) {
+        margin-block-end: var(--spacing-8);
       }
 
-      @media (--lg-up-viewport) {
-        margin: 0;
-        font-size: 1rem;
-        line-height: var(--line-height-loose);
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 1rem;
-        text-decoration: none;
+      h2 {
+        @media (--md-down-viewport) {
+          margin-top: 0;
+        }
+
+        @media (--lg-up-viewport) {
+          margin: 0;
+          font-size: 1rem;
+          line-height: var(--line-height-loose);
+          font-weight: 700;
+          text-transform: uppercase;
+          margin-bottom: 1rem;
+          text-decoration: none;
+        }
       }
     }
   }
@@ -358,10 +369,14 @@ const { title, date_created, date_updated } = article.data;
           </a>
         </div>
       </div>
-      <nav>
-        <h2>Table of Contents</h2>
-        <TableOfContents {headings} depth={2} maxDepth={3} />
-      </nav>
+      {
+        shouldShowTOC && (
+          <nav>
+            <h2>Table of Contents</h2>
+            <TableOfContents {headings} depth={2} maxDepth={3} />
+          </nav>
+        )
+      }
     </div>
   </header>
   <article>
