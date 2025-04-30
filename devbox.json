@@ -1,5 +1,10 @@
 {
-  "packages": ["difftastic@latest", "git@2.44.1", "nodejs@22.14.0"],
+  "packages": [
+    "difftastic@latest",
+    "git@2.44.1",
+    "nodejs@22.14.0",
+    "ffmpeg@latest"
+  ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true"
   }

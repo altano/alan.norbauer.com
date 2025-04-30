@@ -1,0 +1,103 @@
+---
+draft: false
+tags:
+  - web
+  - html
+  - css
+title: Against Horizontal Scroll, More
+description: More tools to fight unwanted horizontal scrolling
+date_created: 2025-04-30T03:30:58.591Z
+---
+
+import { Image } from "astro:assets";
+
+Over on lobste.rs I saw that [Alex (aka matklad)](https://matklad.github.io/about.html) [posted](https://lobste.rs/s/afvexw/against_horizontal_scroll) his great post, [Against Horizontal Scroll](https://matklad.github.io/2025/04/22/horizontal-scroll.html). I _just_ fought this on [my site rewrite](/articles/astro-vs-nextjs-page-size) so here are some tips I can add:
+
+## Viewport Units (e.g. `vw`)
+
+Be careful when using `vh`/`vw`, including their `svh`/`svw` counterparts[^dynamic-viewport-units]. These units do not account for scrollbars, so a simple `body { width: 100vw }` will result in a body that is wider than the viewport as soon as your content is tall enough to have a vertical scrollbar.
+
+Test on devices with scrollbars turned on or you might miss horizontal scrolling _caused by_ the existence of a vertical scrollbar. And you might miss nested vertical scrollbars.
+
+If you use `body { min-height: 100vh; }`, e.g. if you have a footer and always want it pushed to the bottom of your grid layout, you need to account for margin-collapse between the body and its first child or last child. If the first child has top margin or the last child has bottom margin, your body will be >100vh. You can either:
+
+- make sure the children don't have top/bottom margin
+- add `body { padding-block: 0.05px; }`, since padding stops this margin-collapse
+- make your body a `flex` or `grid` container, which also stops margin collapse
+
+## Box sizing
+
+Wherever you use padding/border either account for it in your width calculations or use `box-sizing: border-box` to let css figure it out for you. This doesn't handle margin though. More details over at [CSS-Tricks](https://css-tricks.com/box-sizing/#aa-present-day-box-sizing), of course.
+
+## Unconstrained Markdown Content
+
+If you generate your content from markdown and aren't always setting widths on everything as a result, make sure you handle that. I would:
+
+- Set a max width on media, either globally or constrained to your markdown-generated content:
+  ```css title=global.css
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+  ```
+- Wrap `<table>`s in a wrapping div, and constrain the wrapping div. It's trivial to do this with a Rehype plugin, e.g. on this site I [configured Astro](https://github.com/altano/alan.norbauer.com/blob/7fccc7f82e1d542da82a1e00a660dc3e32623e8c/astro.config.ts#L49-L55) to use [`rehype-wrap-all`](https://github.com/florentb/rehype-wrap-all):
+
+  ```ts title=astro.config.ts
+  import rehypeWrap from "rehype-wrap-all";
+  export default defineConfig({
+    // ...
+    markdown: {
+      // ...
+      rehypePlugins: [
+        // ...
+        [
+          rehypeWrap,
+          {
+            selector: "table",
+            wrapper: "div.markdown-table-wrapper",
+          },
+        ],
+      ],
+    },
+  });
+  ```
+
+  And I constrained `.markdown-table-wrapper` like so:
+
+  ```css title=global.css
+  .markdown-table-wrapper {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  ```
+
+  Which looks like this:
+
+  ![Video showing a horizontally-scrolling table that is too wide to fit on the page](/articles/against-horizontal-scroll/table-scrolling.avif)
+
+# Grid
+
+Grid layouts can be super simple ways of skipping a lot of math. For example, you can make a 2-column grid (`grid-template-columns: 1fr 1fr`) and then give it any gap you want, and the columns will just fill in the remaining space. If you used block items with margins, you (might) have to keep track of the margin when figuring out your max width.
+
+# End-to-End Testing
+
+Lastly, if you're _really_ silly, you can add Playwright testing into the mix. Just add a bunch of devices into the test matrix[^playwright-devices], visit various places in your site, and, using [a custom matcher](https://github.com/altano/alan.norbauer.com/blob/7fccc7f82e1d542da82a1e00a660dc3e32623e8c/tests/fixtures/fixtures.ts#L16-L24), assert the page doesn't have a horizontal scrollbar, e.g.:
+
+```ts title=article.spec.ts
+import { test, expect } from "../fixtures/fixtures.js";
+
+test.describe("homepage", () => {
+  test("has no scrollbars", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("html")).not.toHaveHorizontalScrollbar();
+  });
+});
+```
+
+EDIT: While writing this article I tweaked a style that I thought was totally harmless and it caused horizontal scroll on exactly one page on my whole site, and my tests caught it. Maybe testing this isn't so silly.
+
+[^playwright-devices]: The narrowest devices in Playwright's device catalog are 320px wide, so use either "iPhone SE" or "Galaxy S9+" in your config. Ideally you'd have a device for each of the upper and lower bounds of all your media queries but [I just yolo'd it and you can copy me](https://github.com/altano/alan.norbauer.com/blob/7fccc7f82e1d542da82a1e00a660dc3e32623e8c/playwright.config.ts#L59-L100).
+
+[^dynamic-viewport-units]: More details at [The Large, Small, and Dynamic Viewports](https://www.bram.us/2021/07/08/the-large-small-and-dynamic-viewports/)
