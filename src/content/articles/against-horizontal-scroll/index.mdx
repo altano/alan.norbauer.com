@@ -4,20 +4,23 @@ tags:
   - web
   - html
   - css
-title: Against Horizontal Scroll, More
+title: Against Horizontal Scroll (Even More)
 description: More tools to fight unwanted horizontal scrolling
 date_created: 2025-04-30T03:30:58.591Z
 ---
 
 import { Image } from "astro:assets";
+import enableScrollbarsMacOS from "./enable-scrollbars-macos.png";
 
-Over on lobste.rs I saw that [Alex (aka matklad)](https://matklad.github.io/about.html) [posted](https://lobste.rs/s/afvexw/against_horizontal_scroll) his great post, [Against Horizontal Scroll](https://matklad.github.io/2025/04/22/horizontal-scroll.html). I _just_ fought this on [my site rewrite](/articles/astro-vs-nextjs-page-size) so here are some tips I can add:
+Over on lobste.rs I saw that [Alex (aka matklad)](https://matklad.github.io/about.html) [posted](https://lobste.rs/s/afvexw/against_horizontal_scroll) his great post, [Against Horizontal Scroll](https://matklad.github.io/2025/04/22/horizontal-scroll.html). I _just_ fought this on [my site rewrite](/articles/astro-vs-nextjs-page-size) so here are some tips I can add.
 
 ## Viewport Units (e.g. `vw`)
 
 Be careful when using `vh`/`vw`, including their `svh`/`svw` counterparts[^dynamic-viewport-units]. These units do not account for scrollbars, so a simple `body { width: 100vw }` will result in a body that is wider than the viewport as soon as your content is tall enough to have a vertical scrollbar.
 
-Test on devices with scrollbars turned on or you might miss horizontal scrolling _caused by_ the existence of a vertical scrollbar. And you might miss nested vertical scrollbars.
+Speaking of scrollbars: test on devices with scrollbars turned on or you might miss horizontal scrolling _caused by_ the existence of a vertical scrollbar. And you might miss nested vertical scrollbars. If you develop on a MacBook with a trackpad, for example, you do not have scrollbars enabled:
+
+![Screenshot of macOS System Preferences showing how to enable scrollbars](./enable-scrollbars-macos.png)
 
 If you use `body { min-height: 100vh; }`, e.g. if you have a footer and always want it pushed to the bottom of your grid layout, you need to account for margin-collapse between the body and its first child or last child. If the first child has top margin or the last child has bottom margin, your body will be >100vh. You can either:
 
@@ -79,7 +82,7 @@ If you generate your content from markdown and aren't always setting widths on e
 
 # Grid
 
-Grid layouts can be super simple ways of skipping a lot of math. For example, you can make a 2-column grid (`grid-template-columns: 1fr 1fr`) and then give it any gap you want, and the columns will just fill in the remaining space. If you used block items with margins, you (might) have to keep track of the margin when figuring out your max width.
+Grid layouts can be super simple ways of skipping a lot of math. For example, you can make a 2-column grid (`grid-template-columns: 1fr 1fr`) and then give it any gap you want, and the columns will just fill in the remaining space. If you used block items with margins, you (might) have to keep track of the margin when figuring out your max width. Using grid will make it easier to stay in bounds by default.
 
 # End-to-End Testing
 
