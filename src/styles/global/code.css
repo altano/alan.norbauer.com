@@ -3,9 +3,9 @@
 @layer code {
   code {
     /* expressive-code applies a font size for it's code blocks (see
-    `expressiveCode` in astro config). Set it for other code, like inline code
-    in mdx */
-    font-size: 16px;
+    `expressiveCode` in astro config). For other code, e.g. inline in a heading,
+    inherit instead. */
+    font-size: inherit;
   }
 }
 
