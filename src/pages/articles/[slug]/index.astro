@@ -18,6 +18,7 @@ import Answer from "@/components/article/Answer.astro";
 import { Icon } from "astro-icon/components";
 import { shouldShowTableOfContents } from "@/utilities/table-of-contents.js";
 import { Image, Picture } from "astro:assets";
+import IconRow from "@/components/IconRow.astro";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -401,6 +402,7 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
           QuestionHeading,
           QuestionBody,
           Answer,
+          IconRow,
           // astro-expressive-code
           Code,
           // Astro
