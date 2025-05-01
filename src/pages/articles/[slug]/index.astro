@@ -17,6 +17,7 @@ import QuestionBody from "@/components/article/QuestionBody.astro";
 import Answer from "@/components/article/Answer.astro";
 import { Icon } from "astro-icon/components";
 import { shouldShowTableOfContents } from "@/utilities/table-of-contents.js";
+import { Image, Picture } from "astro:assets";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
@@ -392,7 +393,7 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
       <Content
         components={{
           /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-          Code,
+          // Custom
           Chrome,
           Firefox,
           Edge,
@@ -400,6 +401,11 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
           QuestionHeading,
           QuestionBody,
           Answer,
+          // astro-expressive-code
+          Code,
+          // Astro
+          Image,
+          Picture,
           /* eslint-enable @typescript-eslint/no-unsafe-assignment */
         }}
       />
