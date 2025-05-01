@@ -77,12 +77,6 @@ importers:
       '@iconify-json/solar':
         specifier: ^1.2.2
         version: 1.2.2
-      '@types/react':
-        specifier: ^19.1.2
-        version: 19.1.2
-      '@types/react-dom':
-        specifier: ^19.1.2
-        version: 19.1.2(@types/react@19.1.2)
       astro:
         specifier: ^5.7.10
         version: 5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
@@ -128,7 +122,13 @@ importers:
       short-unique-id:
         specifier: ^5.2.2
         version: 5.2.2
+      zx:
+        specifier: ^8.5.3
+        version: 8.5.3
     devDependencies:
+      '@altano/tiny-async-pool':
+        specifier: ^3.0.2
+        version: 3.0.2
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.5.3)(typescript@5.8.3)
@@ -138,9 +138,18 @@ importers:
       '@playwright/test':
         specifier: ^1.51.0
         version: 1.52.0
+      '@types/fs-extra':
+        specifier: ^11.0.4
+        version: 11.0.4
       '@types/node':
         specifier: ^22.14.1
         version: 22.14.1
+      '@types/react':
+        specifier: ^19.1.2
+        version: 19.1.2
+      '@types/react-dom':
+        specifier: ^19.1.2
+        version: 19.1.2(@types/react@19.1.2)
       '@typescript-eslint/parser':
         specifier: ^8.30.1
         version: 8.30.1(eslint@9.24.0(jiti@2.4.2))(typescript@5.8.3)
@@ -209,6 +218,9 @@ packages:
 
   '@altano/satori-fit-text@1.0.2':
     resolution: {integrity: sha512-JO7C3s+Soz2zvEMH6IcSVmcXzHwGPseOIMPHdQfEMESJErRlmuVBJLKtZoLu81HzHPFp6Ncf0FaOBoYtNMBRIA==}
+
+  '@altano/tiny-async-pool@3.0.2':
+    resolution: {integrity: sha512-2o6xLSggxkOyLKDezXSgrmQE3dntbmvkRDEcVSN2EmcojYBBTyrjrgDvc7RE9ILgcHvL4dobIrJHmzb/Y8y93Q==}
 
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
@@ -1206,6 +1218,9 @@ packages:
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
 
+  '@types/fs-extra@11.0.4':
+    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
+
   '@types/hast@2.3.10':
     resolution: {integrity: sha512-McWspRw8xx8J9HurkVBfYj0xKoE25tOFlHGdx4MJ5xORQrMGZNqJhVQWaIbm6Oyla5kYOXtDiopzKRJzEOkwJw==}
 
@@ -1214,6 +1229,9 @@ packages:
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
+
+  '@types/jsonfile@6.1.4':
+    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
   '@types/mdast@3.0.15':
     resolution: {integrity: sha512-LnwD+mUEfxWMa1QpDraczIn6k0Ee3SMicuYSSzS6ZYl2gKS09EClnJYGd8Du6rfc5r/GZEk5o1mRb8TaTj03sQ==}
@@ -4469,6 +4487,11 @@ packages:
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
+  zx@8.5.3:
+    resolution: {integrity: sha512-TsGLAt8Ngr4wDXLZmN9BT+6FWVLFbqdQ0qpXkV3tIfH7F+MgN/WUeSY7W4nNqAntjWunmnRaznpyxtJRPhCbUQ==}
+    engines: {node: '>= 12.17.0'}
+    hasBin: true
+
 snapshots:
 
   '@altano/astro-opengraph@0.1.0-alpha.4(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(preact@10.26.5)':
@@ -4489,6 +4512,8 @@ snapshots:
       svgdom: 0.1.21
     transitivePeerDependencies:
       - supports-color
+
+  '@altano/tiny-async-pool@3.0.2': {}
 
   '@ampproject/remapping@2.3.0':
     dependencies:
@@ -5637,6 +5662,11 @@ snapshots:
 
   '@types/estree@1.0.7': {}
 
+  '@types/fs-extra@11.0.4':
+    dependencies:
+      '@types/jsonfile': 6.1.4
+      '@types/node': 22.14.1
+
   '@types/hast@2.3.10':
     dependencies:
       '@types/unist': 2.0.11
@@ -5646,6 +5676,10 @@ snapshots:
       '@types/unist': 3.0.3
 
   '@types/json-schema@7.0.15': {}
+
+  '@types/jsonfile@6.1.4':
+    dependencies:
+      '@types/node': 22.14.1
 
   '@types/mdast@3.0.15':
     dependencies:
@@ -9814,3 +9848,5 @@ snapshots:
   zwitch@1.0.5: {}
 
   zwitch@2.0.4: {}
+
+  zx@8.5.3: {}

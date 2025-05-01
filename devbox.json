@@ -3,7 +3,8 @@
     "difftastic@latest",
     "git@2.44.1",
     "nodejs@22.14.0",
-    "ffmpeg@latest"
+    "ffmpeg@latest",
+    "libavif@latest"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true"

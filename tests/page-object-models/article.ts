@@ -74,7 +74,10 @@ export class ArticleDevPage extends DevPage {
       : `article--${this.slug}.png`;
     await expect(this.page).toHaveScreenshot(screenshotPrefix, {
       // Mask out gifs which, because they are auto-playing, introduce flakiness
-      mask: [this.page.locator(`img[src$=".gif"]`)],
+      mask: [
+        this.page.locator(`img[src$=".gif"]`),
+        this.page.locator(`img[src$=".avif"]`),
+      ],
     });
   }
 }

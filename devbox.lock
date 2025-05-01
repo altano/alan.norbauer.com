@@ -272,6 +272,54 @@
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
       "resolved": "github:NixOS/nixpkgs/b0b4b5f8f621bfe213b8b21694bab52ecfcbf30b?lastModified=1744032190&narHash=sha256-KSlfrncSkcu1YE%2BuuJ%2FPTURsSlThoGkRqiGDVdbiE%2Fk%3D"
     },
+    "libavif@latest": {
+      "last_modified": "2025-03-11T17:52:14Z",
+      "resolved": "github:NixOS/nixpkgs/0d534853a55b5d02a4ababa1d71921ce8f0aee4c#libavif",
+      "source": "devbox-search",
+      "version": "1.1.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wdzd7f7rq37qc1bfwfg3al8k3w9b9hpy-libavif-1.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wdzd7f7rq37qc1bfwfg3al8k3w9b9hpy-libavif-1.1.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/fylwsgvhvnznb98r85z9ch2f8rbld2l0-libavif-1.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/fylwsgvhvnznb98r85z9ch2f8rbld2l0-libavif-1.1.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/j6bxi2r6iprzqicbpd660cvy1aphk1kj-libavif-1.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/j6bxi2r6iprzqicbpd660cvy1aphk1kj-libavif-1.1.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/rpm2ypblkbgyszbib89p6nrwzxdscjr0-libavif-1.1.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/rpm2ypblkbgyszbib89p6nrwzxdscjr0-libavif-1.1.1"
+        }
+      }
+    },
     "nodejs@22.14.0": {
       "last_modified": "2025-03-23T14:04:58Z",
       "plugin_version": "0.0.2",

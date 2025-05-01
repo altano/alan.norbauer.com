@@ -13,7 +13,7 @@ TODO: move scroll spy out to an npm package and publish +refactor
 TODO: investigate switching to astro's experimental fonts but using local fonts +enhancement
 TODO: make sure there's always room for theme switcher (e.g. at 784px wide, scrolled to bottom of article) +bug
 TODO: view transitions +bug
-TODO: go back to colocating images in src/pages dir +bug
+TODO: go back to colocating images in src/pages dir +enhancement
 TODO: figure out a way to abstract away "layer-style: card" we had with Panda CSS +bug
 TODO: switch browser logos to experimental svg instead of Image +bug
 
