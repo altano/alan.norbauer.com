@@ -5,7 +5,7 @@ High Pri:
 TODO: devbox article flowchart (below "For the visually inclined") has a shadow root trick for theming that doesn't work on mobile safari, wording is messed up +mobile-safari
 
 Low pri:
-TODO: Only clicked footnotes should have the yellow bg color. The "Footnotes" heading itself shouldn't get it when you click on that item in the TOC.
+x 2025-05-01 TODO: Only clicked footnotes should have the yellow bg color. The "Footnotes" heading itself shouldn't get it when you click on that item in the TOC.
 TODO: Firefox in e2e consistently scrolls above the "Never Pause Here" heading, not all the way to it. why?
 TODO: Google SRP: no favicon, previews are clipped on sides
 TODO: Font-size overhaul: move font-size up to :root, add tokens for various font sizes
