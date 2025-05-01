@@ -87,7 +87,7 @@ export default defineConfig({
         // borderWidth: "0", // This hides the active tab bottom border, can't use
         borderColor: "transparent", // make the border transparent instead
         focusBorder: "transparent",
-        uiFontFamily: "var(--font-inter)",
+        uiFontFamily: "var(--font-ibm-plex-mono)",
         uiFontSize: "16px",
         codeFontFamily: "var(--font-ibm-plex-mono)",
         codeFontSize: "16px", // don't use rem, it looks like it gets applied twice (so 0.8rem is computed as 20*.8*.8=12.8 sintead of 16)
