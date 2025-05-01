@@ -58,21 +58,21 @@ They also assume you've already connected your TrueNAS storage to your Proxmox C
     - Update the configuration of the old interface to the new one. Replace the values below with your interface name, IP address, and gateway:
 
       ```text title="/etc/network/interfaces"
-        auto lo
-        iface lo inet loopback
+      auto lo
+      iface lo inet loopback
 
-        auto enp0s4
-        iface enp0s4 inet static
-                address 192.168.0.19/24
-                gateway 192.168.0.1
+      auto enp0s4
+      iface enp0s4 inet static
+              address 192.168.0.19/24
+              gateway 192.168.0.1
       ```
 
       - Save
       - `ifup enp0s4`
 
     - Verify using `ip a` that the correct interface now has the IP you specified:
-      ```text
-      # ip a
+      ```sh
+      $ ip a
       1: lo: ...
       2: enp0s4: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
           link/ether f6:00:3d:2f:87:ca brd ff:ff:ff:ff:ff:ff
