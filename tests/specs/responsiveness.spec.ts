@@ -8,14 +8,14 @@ test.describe("responsiveness", () => {
     await expect(page).toHaveScreenshot();
   });
 
-  test("project", async ({ page }) => {
-    await page.goto("/projects/alanglow/");
+  test("homepage - project list", async ({ page }) => {
+    await page.goto("/#projects");
+    await expect(page.getByRole("heading", { name: "Projects" })).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
 
-  test("project list", async ({ page }) => {
-    await page.goto("/");
-    await page.getByRole("heading", { name: "Projects" }).click();
+  test("project", async ({ page }) => {
+    await page.goto("/projects/alanglow/");
     await expect(page).toHaveScreenshot();
   });
 

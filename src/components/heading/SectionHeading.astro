@@ -1,5 +1,8 @@
 ---
-export type Props = { children: unknown };
+export type Props = {
+  id?: string;
+  children: unknown;
+};
 ---
 
 <style>
@@ -17,4 +20,4 @@ export type Props = { children: unknown };
   }
 </style>
 
-<h2><slot /></h2>
+<h2 id={Astro.props.id}><slot /></h2>
