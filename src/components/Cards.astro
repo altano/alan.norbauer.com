@@ -3,23 +3,15 @@
 
   @layer components {
     ul {
-      display: flex;
-      flex-direction: column;
-      list-style-type: none;
+      display: grid;
+      grid-template-columns: 1fr;
       padding: 0;
       margin-block: 0.5rem;
-      column-gap: 1rlh;
-      row-gap: 1.5rlh;
-
-      @media (--sm-viewport) {
-        row-gap: 2rem;
-      }
+      row-gap: var(--spacing-9);
 
       @media (--md-up-viewport) {
-        flex-direction: row;
-        flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr;
         column-gap: 2rem;
-        row-gap: 2rem;
       }
     }
   }

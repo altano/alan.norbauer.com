@@ -20,36 +20,54 @@ const name = author.data.name;
 
   @layer page {
     header {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: var(--spacing-10);
       align-items: flex-start;
 
-      margin-block: 4rem 2rem;
+      margin-block-start: 4rem;
       @media (--sm-up-viewport) {
         gap: var(--spacing-12);
-        margin-block: 6rem 3rem;
+        margin-block-start: 6rem;
       }
 
       @media (--lg-up-viewport) {
-        gap: 0;
-        flex-direction: row;
+        margin-block-end: 1rem;
+
+        .bun {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
       }
+    }
+
+    div.sections {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-10);
     }
   }
 </style>
 
 <BaseLayout title={name} type="website" description={pkg.description}>
   <Main size="medium">
-    <header>
-      <HomepageTitle>{name}</HomepageTitle>
-      <ThemedBunny />
-    </header>
-    <Bio width="narrow" font="normal" />
-    <SectionHeading>Writing</SectionHeading>
-    <ArticleList />
-    <SectionHeading>Projects</SectionHeading>
-    <ProjectList />
+    <div class="sections">
+      <header>
+        <HomepageTitle>{name}</HomepageTitle>
+        <span class="bun"><ThemedBunny /></span>
+      </header>
+      <Bio width="narrow" font="normal" />
+      <section>
+        <SectionHeading>Writing</SectionHeading>
+        <ArticleList />
+      </section>
+      <section>
+        <SectionHeading>Projects</SectionHeading>
+        <ProjectList />
+      </section>
+    </div>
     <SiteFooter location="standalone" />
   </Main>
 </BaseLayout>

@@ -10,12 +10,13 @@ export type Props = { class?: string | undefined };
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
-      border-radius: var(--border-radius-md);
 
-      &:not(:only-of-type) {
-        @media (--md-up-viewport) {
-          width: calc(50% - 2rem);
-        }
+      &:only-of-type {
+        /** 
+         * When we're the only list item (not in the row, but in the entire 
+         * list) then take up the whole column 
+         */
+        grid-column: 1 / span 2;
       }
     }
   }

@@ -13,6 +13,12 @@ test.describe("responsiveness", () => {
     await expect(page).toHaveScreenshot();
   });
 
+  test("project list", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("heading", { name: "Projects" }).click();
+    await expect(page).toHaveScreenshot();
+  });
+
   test("tag w/ one article", async ({ page }) => {
     await page.goto("/tags/development-environments/");
     // if this starts failing because we have more than one article for this

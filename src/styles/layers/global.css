@@ -93,7 +93,7 @@
     }
 
     :is(h2, h3, h4, h5, h6) {
-      margin-block: 1.5rem 1rem;
+      margin-block: var(--spacing-6) var(--spacing-4);
     }
 
     :is(h1, h2, h3, h4, h5, h6) {
