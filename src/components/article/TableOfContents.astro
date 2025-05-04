@@ -45,15 +45,14 @@ const currentDepthHeadings = headings.filter((it) => it.depth === depth);
     li {
       padding: var(--spacing-half);
       @media (--md-down-viewport) {
-        &:not([aria-level="0"]) {
+        &:not([aria-level="1"]) {
           padding-left: var(--spacing-4);
         }
       }
       @media (--lg-up-viewport) {
-        padding-left: var(--spacing-5);
         color: var(--text-faded);
         transition: color var(--durations-color-scheme);
-        &:not([aria-level="0"]) {
+        &:not([aria-level="1"]) {
           padding-left: var(--spacing-5);
         }
         &[aria-current="true"] {
@@ -76,7 +75,7 @@ const currentDepthHeadings = headings.filter((it) => it.depth === depth);
       const shouldRenderSubHeadings = maxDepth >= it.depth && hasSubHeadings;
 
       return (
-        <li aria-level={depth} aria-current={false /* TODO */}>
+        <li aria-level={depth - 1} aria-current={false}>
           {it.slug ? <a href={`#${it.slug}`}>{it.text}</a> : it.text}
           {shouldRenderSubHeadings ? (
             <Astro.self
