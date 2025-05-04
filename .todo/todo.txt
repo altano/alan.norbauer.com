@@ -16,6 +16,7 @@ TODO: view transitions +bug
 TODO: go back to colocating images in src/pages dir +enhancement
 TODO: figure out a way to abstract away "layer-style: card" we had with Panda CSS +bug
 TODO: switch browser logos to experimental svg instead of Image +bug
+TODO: manually craft @font-face css for Inter: most of the ones from the npm pkg aren't used +enhancement
 
 // ----------------------------------------------------------------------------
 // Next.js Site TODOs:

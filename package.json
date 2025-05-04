@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@altano/astro-opengraph": "0.1.0-alpha.4",
+    "@altano/astro-prettier-response": "^0.0.2",
     "@altano/satori-fit-text": "^1.0.2",
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/react": "^4.2.7",
@@ -59,6 +60,7 @@
     "lightningcss": "^1.29.3",
     "mdx-local-link-checker": "^2.1.1",
     "nullthrows": "^1.1.1",
+    "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "rehype-wrap-all": "^1.1.0",

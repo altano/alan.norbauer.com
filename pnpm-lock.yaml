@@ -11,6 +11,9 @@ importers:
       '@altano/astro-opengraph':
         specifier: 0.1.0-alpha.4
         version: 0.1.0-alpha.4(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(preact@10.26.5)
+      '@altano/astro-prettier-response':
+        specifier: ^0.0.2
+        version: 0.0.2(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier@3.5.3)
       '@altano/satori-fit-text':
         specifier: ^1.0.2
         version: 1.0.2
@@ -107,6 +110,9 @@ importers:
       nullthrows:
         specifier: ^1.1.1
         version: 1.1.1
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       react:
         specifier: ^19.1.0
         version: 19.1.0
@@ -212,6 +218,12 @@ packages:
     peerDependencies:
       astro: 5.x.x
       preact: '>=10'
+
+  '@altano/astro-prettier-response@0.0.2':
+    resolution: {integrity: sha512-m9n9Xo6oz3/4slRKlgvo/LPnyM14RQf7JaHFFtrXN9yQcH562nZ6zfyQy/CN/gCIxrY5rfm85JARjZ1d3sO30w==}
+    peerDependencies:
+      astro: 5.x.x
+      prettier: 3.x.x
 
   '@altano/repository-tools@0.1.1':
     resolution: {integrity: sha512-5vbUs2A98CC3g1AlOBdkBE0BMukkLjLIsMHAtuxg6Pt9dQXxYWdLKOf66v6c/vIqtNcgTMv0oGtddLdMuH9X6w==}
@@ -964,6 +976,19 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@inox-tools/modular-station@0.4.2':
+    resolution: {integrity: sha512-o9tt6BhPJ5Of+b/xKjMqfqMCETa6KAyxREcl9y45UmaALEU5xwV6ZwpuO4VDsRoKnG0HB6PgRSPnXU1IdwSIeQ==}
+    peerDependencies:
+      astro: ^5
+
+  '@inox-tools/runtime-logger@0.4.2':
+    resolution: {integrity: sha512-7Py4nZmYJw94XQEuHh6R8HxFruxKPWuz909Y076nu6y4pt/U7XYH6lXsZSrroKyNOW40CoWjquTbACGiGADmpA==}
+    peerDependencies:
+      astro: ^5
+
+  '@inox-tools/utils@0.3.1':
+    resolution: {integrity: sha512-2ppd/FyGpkRrDpEriLupyBDbw4nYO/3peQlIR905i+cI0XeUQkJ9zgfYaVB/rE59d6yJ3dQbZe1B9sk23oHgpg==}
+
   '@jridgewell/gen-mapping@0.3.8':
     resolution: {integrity: sha512-imAbBGkb+ebQyxKgzv5Hu2nmROxoDOXHh80evxdoXNOrvAnVx7zimzc1Oo5h9RlfV4vPXaE2iM5pOFbvOCClWA==}
     engines: {node: '>=6.0.0'}
@@ -1038,6 +1063,11 @@ packages:
     resolution: {integrity: sha512-uh6W7sb55hl7D6vsAeA+V2p5JnlAqzhqFyF0VcJkKZXkgnFcVG9PziERRHQfPLfNGx1C292a4JqbWzhR8L4R1g==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@prettier/plugin-xml@3.4.1':
+    resolution: {integrity: sha512-Uf/6/+9ez6z/IvZErgobZ2G9n1ybxF5BhCd7eMcKqfoWuOzzNUxBipNo3QAP8kRC1VD18TIo84no7LhqtyDcTg==}
+    peerDependencies:
+      prettier: ^3.0.0
 
   '@react-hook/intersection-observer@3.1.2':
     resolution: {integrity: sha512-mWU3BMkmmzyYMSuhO9wu3eJVP21N8TcgYm9bZnTrMwuM818bEk+0NRM3hP+c/TqA9Ln5C7qE53p1H0QMtzYdvQ==}
@@ -1365,6 +1395,9 @@ packages:
   '@vscode/l10n@0.0.18':
     resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
 
+  '@xml-tools/parser@1.0.11':
+    resolution: {integrity: sha512-aKqQ077XnR+oQtHJlrAflaZaL7qZsulWc/i/ZEooar5JiWj1eLt0+Wg28cpa+XLney107wXqneC+oG1IZvxkTA==}
+
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -1443,6 +1476,10 @@ packages:
   ast-types-flow@0.0.8:
     resolution: {integrity: sha512-OH/2E5Fg20h2aPrbe+QL8JZQFko0YZaF+j4mnQ7BGhfavO7OpSLa8a0y9sBwomHdSbkhTS8TQNayBfnW5DwbvQ==}
 
+  ast-types@0.16.1:
+    resolution: {integrity: sha512-6t10qk83GOG8p0vKmaCr8eiilZwO171AvbROMtvvNiwrTly62t+7XkA8RdIIVbpMhCASAsxgAzdRSwh6nw/5Dg==}
+    engines: {node: '>=4'}
+
   astring@1.9.0:
     resolution: {integrity: sha512-LElXdjswlqjWrPpJFg1Fx4wpkOCxj1TDHlSV4PlaRxHGWko024xICaa97ZkMfs6DRKlCguiAI+rbXv5GWwXIkg==}
     hasBin: true
@@ -1461,6 +1498,11 @@ packages:
 
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
+
+  astro-integration-kit@0.18.0:
+    resolution: {integrity: sha512-Z0QW5IQjosuKQDEGYYkvUX6EhEtrmE4/oViqWz23QveV8U7AuyFsTdg00WRNPevWZl/5a4lLUeDpv4bCRynRRg==}
+    peerDependencies:
+      astro: ^4.12.0 || ^5.0.0
 
   astro-themes@0.2.6:
     resolution: {integrity: sha512-rw/tB2967Ile85siw5J+L7VKBVYIb1qcUVceYleJpZQx1Ef9cdgZ5DNyvukkcpEBggc+274erubeVk0dF6qwmw==}
@@ -1643,6 +1685,9 @@ packages:
   cheerio@1.0.0:
     resolution: {integrity: sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==}
     engines: {node: '>=18.17'}
+
+  chevrotain@7.1.1:
+    resolution: {integrity: sha512-wy3mC1x4ye+O+QkEinVJkPf5u2vsrDIYW9G7ZuwFl6v/Yu0LwUuT2POsb+NUWApebyxfkQq6+yDfRExbnI5rcw==}
 
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
@@ -2130,6 +2175,11 @@ packages:
   espree@9.6.1:
     resolution: {integrity: sha512-oruZaFkjorTpF32kDSI5/75ViwGeZginGGy2NoOSg3Q9bnwlnmDm4HLnkl0RE3n+njDXR037aY1+x58Z/zFdwQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  esprima@4.0.1:
+    resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
+    engines: {node: '>=4'}
+    hasBin: true
 
   esquery@1.6.0:
     resolution: {integrity: sha512-ca9pw9fomFcKPvFLXhBKUK90ZvGibiGOvRJNbjljY7s7uq/5YO4BOzcYtJqExdx99rF6aAcnRxHmcUHcz6sQsg==}
@@ -3129,8 +3179,16 @@ packages:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
     engines: {node: '>= 0.6'}
 
+  mime-db@1.54.0:
+    resolution: {integrity: sha512-aU5EJuIN2WDemCcAp2vFBfp/m4EAhWJnUNSSw0ixs7/kXbd6Pg64EmwJkNdFhB8aWt1sH2CTXrLxo/iAGV3oPQ==}
+    engines: {node: '>= 0.6'}
+
   mime-types@2.1.35:
     resolution: {integrity: sha512-ZDY+bPm5zTTF+YpCrAU9nK0UgICYPT0QtT1NZWFv4s++TNkcgVaT0g6+4R2uI4MjQjzysHB1zxuWL50hzaeXiw==}
+    engines: {node: '>= 0.6'}
+
+  mime-types@3.0.1:
+    resolution: {integrity: sha512-xRc4oEhT6eaBpU1XF7AjpOFD+xQmXNB5OVKwp4tqCuBpHLS/ZbBDrc07mYTDqVMg6PfxUjjNp85O6Cd2Z/5HWA==}
     engines: {node: '>= 0.6'}
 
   minimatch@3.1.2:
@@ -3493,6 +3551,10 @@ packages:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
 
+  recast@0.23.11:
+    resolution: {integrity: sha512-YTUo+Flmw4ZXiWfQKGcwwc11KnoRAYgzAE2E7mXKCjSviTKShtxBsN6YUUBB2gtaBzKzeKunxhUwNHQuRryhWA==}
+    engines: {node: '>= 4'}
+
   recma-build-jsx@1.0.0:
     resolution: {integrity: sha512-8GtdyqaBcDfva+GUKDr3nev3VpKAhup1+RvkMvUxURHpW7QyIvk9F5wz7Vzo06CEMSilw6uArgRqhpiUcWp8ew==}
 
@@ -3517,6 +3579,9 @@ packages:
 
   regex@6.0.1:
     resolution: {integrity: sha512-uorlqlzAKjKQZ5P+kTJr3eeJGSVroLKoHmquUj4zHWuR+hEyNqlXsSKlYYF5F4NI6nl7tWCs0apKJ0lmfsXAPA==}
+
+  regexp-to-ast@0.5.0:
+    resolution: {integrity: sha512-tlbJqcMHnPKI9zSrystikWKwHkBqu2a/Sgw01h3zFjvYrMxEDYHzzoMZnUrbIfpTFEsoRnnviOXNCzFiSc54Qw==}
 
   regexp.prototype.flags@1.5.4:
     resolution: {integrity: sha512-dYqgNSZbDwkaJ2ceRd9ojCGjBq+mOm9LmtXnAnEGyHhN/5R7iDW2TRw3h+o/jCFxus3P2LfWIIiwowAjANm7IA==}
@@ -3769,6 +3834,10 @@ packages:
     resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==}
     engines: {node: '>=0.10.0'}
 
+  source-map@0.6.1:
+    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
+    engines: {node: '>=0.10.0'}
+
   source-map@0.7.4:
     resolution: {integrity: sha512-l3BikUxvPOcn5E74dZiq5BGsTb5yEwhaTSzccU6t4sDOH8NWJCstKO5QT2CvtFoK6F0saL7p9xHAqHOlCPJygA==}
     engines: {node: '>= 8'}
@@ -3877,6 +3946,9 @@ packages:
 
   tiny-inflate@1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
+
+  tiny-invariant@1.3.3:
+    resolution: {integrity: sha512-+FbBPE1o9QAYvviau/qC5SE3caw21q3xkvWKBtja5vgqOWIHHJ3ioaq1VPfn/Szqctz2bU/oYeKd9/z5BL+PVg==}
 
   tinyexec@0.3.2:
     resolution: {integrity: sha512-KQQR9yN7R5+OSwaK0XQoj22pwHoTlgYqmUscPYoknOoWCWfj/5/ABTMRi69FrKU5ffPVh5QcFikpWJI/P1ocHA==}
@@ -4501,6 +4573,18 @@ snapshots:
       preact: 10.26.5
       satori: 0.12.2
       satori-html: 0.3.2
+
+  '@altano/astro-prettier-response@0.0.2(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))(prettier@3.5.3)':
+    dependencies:
+      '@inox-tools/runtime-logger': 0.4.2(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+      astro: 5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+      astro-integration-kit: 0.18.0(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+      mime-types: 3.0.1
+      prettier: 3.5.3
+    optionalDependencies:
+      '@prettier/plugin-xml': 3.4.1(prettier@3.5.3)
+    transitivePeerDependencies:
+      - supports-color
 
   '@altano/repository-tools@0.1.1': {}
 
@@ -5380,6 +5464,26 @@ snapshots:
   '@img/sharp-win32-x64@0.34.1':
     optional: true
 
+  '@inox-tools/modular-station@0.4.2(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))':
+    dependencies:
+      '@inox-tools/utils': 0.3.1
+      astro: 5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+      astro-integration-kit: 0.18.0(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+      debug: 4.4.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@inox-tools/runtime-logger@0.4.2(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))':
+    dependencies:
+      '@inox-tools/modular-station': 0.4.2(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+      '@inox-tools/utils': 0.3.1
+      astro: 5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+      astro-integration-kit: 0.18.0(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1))
+    transitivePeerDependencies:
+      - supports-color
+
+  '@inox-tools/utils@0.3.1': {}
+
   '@jridgewell/gen-mapping@0.3.8':
     dependencies:
       '@jridgewell/set-array': 1.2.1
@@ -5504,6 +5608,12 @@ snapshots:
   '@playwright/test@1.52.0':
     dependencies:
       playwright: 1.52.0
+
+  '@prettier/plugin-xml@3.4.1(prettier@3.5.3)':
+    dependencies:
+      '@xml-tools/parser': 1.0.11
+      prettier: 3.5.3
+    optional: true
 
   '@react-hook/intersection-observer@3.1.2(react@19.1.0)':
     dependencies:
@@ -5873,6 +5983,11 @@ snapshots:
 
   '@vscode/l10n@0.0.18': {}
 
+  '@xml-tools/parser@1.0.11':
+    dependencies:
+      chevrotain: 7.1.1
+    optional: true
+
   acorn-jsx@5.3.2(acorn@8.14.1):
     dependencies:
       acorn: 8.14.1
@@ -5962,6 +6077,10 @@ snapshots:
 
   ast-types-flow@0.0.8: {}
 
+  ast-types@0.16.1:
+    dependencies:
+      tslib: 2.8.1
+
   astring@1.9.0: {}
 
   astro-color-scheme@1.1.5: {}
@@ -5996,6 +6115,12 @@ snapshots:
     transitivePeerDependencies:
       - debug
       - supports-color
+
+  astro-integration-kit@0.18.0(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)):
+    dependencies:
+      astro: 5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)
+      pathe: 1.1.2
+      recast: 0.23.11
 
   astro-themes@0.2.6(astro@5.7.10(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.39.0)(typescript@5.8.3)(yaml@2.7.1)):
     dependencies:
@@ -6274,6 +6399,11 @@ snapshots:
       parse5-parser-stream: 7.1.2
       undici: 6.21.2
       whatwg-mimetype: 4.0.0
+
+  chevrotain@7.1.1:
+    dependencies:
+      regexp-to-ast: 0.5.0
+    optional: true
 
   chokidar@4.0.3:
     dependencies:
@@ -6854,6 +6984,8 @@ snapshots:
       acorn: 8.14.1
       acorn-jsx: 5.3.2(acorn@8.14.1)
       eslint-visitor-keys: 3.4.3
+
+  esprima@4.0.1: {}
 
   esquery@1.6.0:
     dependencies:
@@ -8248,9 +8380,15 @@ snapshots:
 
   mime-db@1.52.0: {}
 
+  mime-db@1.54.0: {}
+
   mime-types@2.1.35:
     dependencies:
       mime-db: 1.52.0
+
+  mime-types@3.0.1:
+    dependencies:
+      mime-db: 1.54.0
 
   minimatch@3.1.2:
     dependencies:
@@ -8603,6 +8741,14 @@ snapshots:
 
   readdirp@4.1.2: {}
 
+  recast@0.23.11:
+    dependencies:
+      ast-types: 0.16.1
+      esprima: 4.0.1
+      source-map: 0.6.1
+      tiny-invariant: 1.3.3
+      tslib: 2.8.1
+
   recma-build-jsx@1.0.0:
     dependencies:
       '@types/estree': 1.0.7
@@ -8653,6 +8799,9 @@ snapshots:
   regex@6.0.1:
     dependencies:
       regex-utilities: 2.3.0
+
+  regexp-to-ast@0.5.0:
+    optional: true
 
   regexp.prototype.flags@1.5.4:
     dependencies:
@@ -9107,6 +9256,8 @@ snapshots:
 
   source-map@0.5.7: {}
 
+  source-map@0.6.1: {}
+
   source-map@0.7.4: {}
 
   space-separated-tokens@1.1.5: {}
@@ -9241,6 +9392,8 @@ snapshots:
       yallist: 4.0.0
 
   tiny-inflate@1.0.3: {}
+
+  tiny-invariant@1.3.3: {}
 
   tinyexec@0.3.2: {}
 

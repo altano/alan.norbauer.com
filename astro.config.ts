@@ -18,6 +18,7 @@ import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import react from "@astrojs/react";
+import prettierResponse from "@altano/astro-prettier-response";
 
 // mixins are buggy: https://github.com/parcel-bundler/lightningcss/issues/964
 // const mixins = new Map<ParsedComponent["value"], unknown>();
@@ -127,6 +128,7 @@ export default defineConfig({
     }),
     typedLinks(),
     react(),
+    prettierResponse(),
   ],
   experimental: {
     preserveScriptOrder: true,
@@ -169,9 +171,6 @@ export default defineConfig({
         //   },
         // },
       },
-    },
-    build: {
-      cssMinify: "lightningcss",
     },
   },
 });
