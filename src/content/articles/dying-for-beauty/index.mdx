@@ -7,6 +7,7 @@ tags:
 title: Dying for Beauty
 description: Make your html/js/css beautiful
 date_created: 2025-05-02T03:05:52.983Z
+date_updated: 2025-05-04T08:48:30.710Z
 ---
 
 import sophia from "./sophia.jpeg";
@@ -209,6 +210,8 @@ With a 95% confidence level we get:
 | **Parse HTML** | pretty ✨  | 14.1 ±0.215 (±1.52%) |
 
 So there's _maybe_ a 0.03ms parsing performance hit. That's obviously totally negligible, but I'm testing on extremely fast hardware. Does that get worse or stay the same on slower hardware? I don't know.
+
+EDIT: [Chris](https://www.chrisswithinbank.net/) from the Astro team had a neat idea in Discord: use the CPU throttling in Chrome to see if it helps detect a performance issue. I was able to detect a pretty consistent ~13% jump in Parse HTML time by slowing down CPU by the Chrome-recommended 4x factor (73.25 to 82.48ms). Unfortunately (fortunately?) I still can't detect an overall performance hit b/c the load times are erratic by more than that 9ms, and they also dwarf the 9ms, even on localhost with ~no network latency.
 
 ## Conclusion
 
