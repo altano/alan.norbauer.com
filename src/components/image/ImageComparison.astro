@@ -1,0 +1,74 @@
+---
+export type Props = {
+  width: number | string;
+  height: number | string;
+  beforeLabel?: string;
+  afterLabel?: string;
+};
+
+const {
+  width,
+  height,
+  beforeLabel = "before 🤮",
+  afterLabel = "after ✨",
+} = Astro.props;
+---
+
+<style
+  define:vars={{
+    width: typeof width === "string" ? width : `${width}px`,
+    height: typeof height === "string" ? height : `${height}px`,
+  }}
+>
+  @layer components {
+    div.wrapper {
+      container: wrapper / inline-size;
+      max-width: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+
+    div.image-comparison {
+      display: flex;
+      width: max(600px, var(--width));
+      height: var(--height);
+
+      figure {
+        scroll-snap-align: start;
+        position: relative;
+        overflow: hidden;
+        width: 50%;
+
+        :global(img) {
+          max-width: unset;
+        }
+
+        figcaption {
+          font-size: 1rem;
+          background: var(--bg-card);
+          color: var(--text-card);
+          border-radius: var(--border-radius-md);
+          padding: var(--spacing-2);
+
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          margin: 1rem;
+        }
+      }
+    }
+  }
+</style>
+
+<div class="wrapper">
+  <div class="image-comparison">
+    <figure class="before" data-no-style>
+      <slot name="before" />
+      <figcaption>{beforeLabel}</figcaption>
+    </figure>
+    <figure class="after" data-no-style>
+      <slot name="after" />
+      <figcaption>{afterLabel}</figcaption>
+    </figure>
+  </div>
+</div>

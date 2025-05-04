@@ -298,8 +298,24 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
         padding-left: 40px;
       }
 
+      figure:not([data-no-style]) {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2);
+
+        figcaption {
+          font-size: 1rem;
+          font-style: italic;
+          color: var(--color-gray-400);
+          a {
+            color: inherit;
+          }
+        }
+      }
+
+      & figure:not([data-no-style]),
       & > img:not([data-no-style]),
-      & p > img:not([data-no-style]) {
+      & :not(blockquote, figure) > p > img:not([data-no-style]) {
         &:not([data-invertible]) {
           /* TODO Need to factor this out somehow */
           /* layer-style: card; */
@@ -402,9 +418,11 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
           QuestionHeading,
           QuestionBody,
           Answer,
-          IconRow,
           // astro-expressive-code
           Code,
+          // Icons
+          Icon,
+          IconRow,
           // Astro
           Image,
           Picture,
