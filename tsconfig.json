@@ -13,7 +13,8 @@
       "@/components/*": ["./src/components/*"],
       "@/pages/*": ["./src/pages/*"],
       "@root/*": ["./*"],
-      "@/styles/*": ["./src/styles/global/*"]
+      "@/styles/*": ["./src/styles/global/*"],
+      "@/scripts/*": ["./src/scripts/*"]
     }
   }
 }
