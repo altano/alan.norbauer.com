@@ -13,7 +13,7 @@ import VisibleElementObserver from "./VisibleElementObserver.astro";
       }
       const isAdding = evt.detail?.isIntersecting === true;
       // only a section's first, direct-descendant heading is relevant
-      const heading = section.querySelector("& > :is(h1, h2, h3, h4, h5)");
+      const heading = section.querySelector("& > :is(h1, h2, h3, h4, h5, h6)");
       if (heading == null) {
         return;
       }

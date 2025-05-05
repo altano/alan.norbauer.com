@@ -21,7 +21,8 @@ export async function getArticles(): Promise<Article[]> {
   const sortedArticles = [...allArticles].sort(articleDateDescending);
 
   if (
-    process.env.NODE_ENV === "development" ||
+    (process.env.NODE_ENV === "development" &&
+      process.env.SHOW_DRAFTS !== "false") ||
     process.env.SHOW_DRAFTS === "true"
   ) {
     allArticles.forEach((a) => {
