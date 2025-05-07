@@ -25,12 +25,15 @@
 
     body {
       min-height: 100vh;
+      margin-trim: block;
 
-      /**
-       * Prevent margin collapse between the body and its first/last children,
-       * which would could result in the body being larger than 100vh.
-       */
-      padding-block: 0.05px;
+      @supports not (margin-trim: block) {
+        /**
+         * Prevent margin collapse between the body and its first/last children,
+         * which would could result in the body being larger than 100vh.
+         */
+        padding-block: 0.05px;
+      }
     }
 
     /* Links */
