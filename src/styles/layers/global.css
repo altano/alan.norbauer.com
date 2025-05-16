@@ -43,6 +43,7 @@
 
     a:hover {
       color: var(--accent-primary); /* TODO Revisit */
+      transition: none; /* When a person hovers a link it should change color instantly */
     }
 
     /* Headings */
