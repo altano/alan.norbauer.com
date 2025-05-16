@@ -1,53 +1,31 @@
 ---
 import LightBunny from "assets/images/bunny-carrot-hole/bunny-light.svg";
 import DarkBunny from "assets/images/bunny-carrot-hole/bunny-dark.svg";
-import { Image } from "astro:assets";
 ---
 
-<Image
-  class="light"
-  densities={[1, 1.5, 2]}
-  src={LightBunny}
-  alt="A stupid bunny"
-  width={64}
-  height={64}
-  decoding="sync"
-  loading="eager"
-/>
-<Image
+<LightBunny class="light" aria-label="A stupid bunny" width={64} height={64} />
+<DarkBunny
+  fill="white"
   class="dark"
-  densities={[1, 1.5, 2]}
-  src={DarkBunny}
-  alt="A stupid, sleeping bunny"
+  aria-label="A stupid, sleeping bunny"
   width={64}
   height={64}
-  decoding="sync"
-  loading="eager"
 />
 
 <style>
   @import "@/styles/custom-media-queries.css";
 
   @layer components {
-    html[data-theme="dark"] {
-      img {
-        &.light {
-          display: none;
-        }
-        &.dark {
-          filter: invert(100%);
-        }
-      }
+    :global(svg path) {
+      fill: var(--text);
     }
 
-    html[data-theme="light"] {
-      img {
-        &.light {
-        }
-        &.dark {
-          display: none;
-        }
-      }
+    html[data-theme="light"] .dark {
+      display: none;
+    }
+
+    html[data-theme="dark"] .light {
+      display: none;
     }
   }
 </style>

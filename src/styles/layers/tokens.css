@@ -3,41 +3,34 @@
 
 @layer tokens {
   :root {
-    --text: var(--color-dark);
-    --text-card: var(--color-dark);
-    --text-faded: var(--color-gray-400);
-    --text-tag: var(--color-dark);
-    --text-footer: var(--color-black);
-    --text-highlight: var(--color-dark);
-    --bg: var(--color-light);
-    --bg-card: var(--color-gray-100);
-    --bg-tag: var(--color-gray-100);
-    --bg-card: var(--color-light-gray);
-    --bg-footer: var(--color-sunset-blvd);
-    --bg-highlight: #fff8dc;
-    --border-table: solid var(--color-gray-300) 1px;
-    --text-selection: var(--color-black);
-    --bg-selection: var(--color-electric-blue);
-    --accent-primary: var(--color-fuchsiaish);
-
-    &[data-theme="dark"] {
-      --text: var(--color-off-white);
-      --text-card: var(--color-off-white);
-      --text-faded: var(--color-gray-600);
-      --text-tag: var(--color-off-white);
-      --text-footer: var(--color-off-white);
-      --text-highlight: var(--color-dark);
-      --bg: var(--color-dark);
-      --bg-card: var(--color-dracula-background);
-      --bg-tag: var(--color-dracula-background);
-      --bg-card: var(--color-dracula-background);
-      --bg-footer: var(--color-dracula-background);
-      --bg-highlight: #fceaa8;
-      --border-table: solid var(--color-gray-700) 1px;
-      --text-selection: var(--color-black);
-      --bg-selection: var(--color-seafoam);
-      --accent-primary: var(--color-seafoam);
-    }
+    --text: light-dark(var(--color-dark), var(--color-off-white));
+    --text-card: light-dark(var(--color-dark), var(--color-off-white));
+    --text-faded: light-dark(var(--color-gray-400), var(--color-gray-600));
+    --text-tag: light-dark(var(--color-dark), var(--color-off-white));
+    --text-footer: light-dark(var(--color-black), var(--color-off-white));
+    --text-highlight: light-dark(var(--color-dark), var(--color-dark));
+    --bg: light-dark(var(--color-light), var(--color-dark));
+    --bg-card: light-dark(
+      var(--color-gray-100),
+      var(--color-dracula-background)
+    );
+    --bg-tag: light-dark(
+      var(--color-gray-100),
+      var(--color-dracula-background)
+    );
+    --bg-footer: light-dark(
+      var(--color-sunset-blvd),
+      var(--color-dracula-background)
+    );
+    --bg-highlight: light-dark(#fff8dc, #fceaa8);
+    --border-table: solid
+      light-dark(var(--color-gray-300), var(--color-gray-700)) 1px;
+    --text-selection: light-dark(var(--color-black), var(--color-black));
+    --bg-selection: light-dark(
+      var(--color-electric-blue),
+      var(--color-seafoam)
+    );
+    --accent-primary: light-dark(var(--color-fuchsiaish), var(--color-seafoam));
   }
 
   :root {

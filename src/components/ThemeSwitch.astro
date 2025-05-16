@@ -27,22 +27,12 @@ import { Icon } from "astro-icon/components";
       }
     }
 
-    html[data-theme="light"] {
-      .dark {
-        display: none;
-      }
-      .light {
-        display: block;
-      }
+    html[data-theme="light"] .dark {
+      display: none;
     }
 
-    html[data-theme="dark"] {
-      .dark {
-        display: block;
-      }
-      .light {
-        display: none;
-      }
+    html[data-theme="dark"] .light {
+      display: none;
     }
   }
 </style>
