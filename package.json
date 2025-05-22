@@ -50,7 +50,7 @@
     "@iconify-json/ri": "^1.2.5",
     "@iconify-json/simple-icons": "^1.2.32",
     "@iconify-json/solar": "^1.2.2",
-    "astro": "^5.7.10",
+    "astro": "^5.7.14",
     "astro-color-scheme": "^1.1.5",
     "astro-expressive-code": "^0.41.1",
     "astro-icon": "^1.1.5",
