@@ -47,23 +47,17 @@ const { kind } = Astro.props;
       &.navPill {
         margin-right: var(--spacing-half);
       }
-    }
-  }
-</style>
 
-<style is:global>
-  @import "@/styles/custom-media-queries.css";
-
-  @layer components {
-    @media (--lg-up-viewport) {
-      li.tag.navPill {
-        color: var(--text-faded);
-        & > a:not(:hover) {
-          color: inherit;
+      @media (--lg-up-viewport) {
+        &.navPill {
+          color: var(--text-faded);
+          & > :global(a:not(:hover)) {
+            color: inherit;
+          }
         }
       }
     }
   }
 </style>
 
-<li class:list={["tag", kind]}><slot /></li>
+<li class={kind}><slot /></li>
