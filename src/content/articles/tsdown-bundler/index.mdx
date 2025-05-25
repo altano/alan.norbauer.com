@@ -1,0 +1,121 @@
+---
+draft: false
+tags:
+  - web
+  - javascript
+title: Switching from tsup to tsdown
+description: Notes on switching to the tsdown bundler for my npm packages
+date_created: 2025-05-25T17:00:56.671Z
+---
+
+## About tsdown
+
+[tsdown](https://tsdown.dev/) is a new bundler from [the `void(0)` folks](https://voidzero.dev/), the new company formed out of the Vite/Vitest/Rolldown/Oxc ecosystem.
+
+tsdown aims to be:
+
+- "blazing fast"
+- simple (if you want lots of config, or aren't bundling a library, go use Rolldown/Vite), and to be lightning fast.
+- easy to migrate to from existing bundlers (mainly, but not exclusively, tsup)
+
+If you couldn't tell from the name, it is inspired by [tsup](https://tsup.egoist.dev/), and is a batteries-included library bundler. It sits on top of Rolldown, which is the Rollup-inspired bundler at the heart of the next version of Vite. So you probably want Vite+Rolldown if you are building an app, and tsdown if you are building a library.
+
+I have an abandoned comparison of all the new, fast Rust bundlers that I'll never finish because most of them are missing things that were important to me (like TypeScript support) and I found the comparison pointless. tsdown (and Rolldown), like everything from the Vite folks, delivers exactly the right set of features, so its the only one I'm going to write about.
+
+## Why You Should Use tsdown
+
+### Probably not for Performance
+
+_Application_ authors are often bundling a lot of code, so they are more likely to benefit from new bundlers like Rolldown.
+
+_Library_ authors who are building one huge library can also benefit from the much faster compilation/type-generation[^benchmarks], but I believe most people are building smaller libraries that are unlikely to benefit from any Rust bundler's headline feature of faster performance.
+
+### Probably not for Monorepo Performance
+
+What about monorepos with a lot of small libraries? The huge performance gains of tsdown (or any of the new Rust bundlers) aren't interesting in monorepos of small libraries either since Node.js startup costs are high, especially when invoked through npm scripts[^startup-costs]. The next performance frontier for JS tooling will require rethinking how we build monorepos and invoke build tools within them.
+
+Some numbers: I have [a small monorepo of 26 npm packages](https://github.com/altano/npm-packages) with each package being fairly small (&lt;10 files each). 14 of these packages are built with `tsup` today. I use `tsup` for the transpilation (ts -> js) and `tsc` for the type-generation (`tsup` is slower than `tsc` at type generation, but very fast to build and generally just bad at it).
+
+My build times, as measured with `hyperfine --warmup 1 "pnpm exec turbo build --force"`, are:
+
+| Build Tool | Time (seconds)    |
+| ---------- | ----------------- |
+| tsup + tsc | 7.014 s ± 0.098 s |
+| tsdown     | 3.583 s ± 0.042 s |
+
+That's a 49% improvement in build times, which is obviously great, but that's not really a game-changing improvement in the context of CI times.
+
+In short: unless you're building A LOT of code in ONE library, with long build times measured in the tens or hundreds of seconds, you shouldn't look to a new bundler for build performance gains.
+
+### What Is Actually Interesting
+
+Here are the things that, to me, really differentiate `tsdown` from `tsup`:
+
+#### esm-first
+
+`tsup` and older build tools are cjs-first, but theoretically support esm. That esm support sometimes has holes, such as [not emitting file extensions in esm output](https://github.com/egoist/tsup/issues/953), and then you're either fiddling with plugins or tweaking your tsconfig to fix it.
+
+`tsdown` is esm-first and does everything you'd expect, out of the box.
+
+#### Next Generation Type-Generation
+
+The correct, modern way of generating TypeScript types is to:
+
+- use `--isolated-declarations` (which shipped in [TS 5.5](https://devblogs.microsoft.com/typescript/announcing-typescript-5-5/#isolated-declarations))
+- use a build tool that is `--isolated-declarations` aware and has built-in support for quickly generating types
+
+`tsup` has experimental support[^tsup-dts-experimental] for type-generation using `@microsoft/api-extractor`, which I believe will use `--isolated-declarations` in your tsconfig.json, but I'm not sure.
+
+With `--isolated-declarations`, `tsc` is actually much faster at generating types than `tsup` is, and `tsdown` is even faster.
+
+Most importantly for my monorepo: I like being able to use a single tool to generate all of my package output without having to juggle `tsup` and `tsc`.
+
+#### Top-tier Ecosystem + Support
+
+`tsup` is a pretty well maintained library and I have no complaints. It isn't abandoned and there are no glaring bugs being unaddressed by abandoned PRs (afaik). That said, tools in the Vite ecosystem tend to have better support than any other packages/libraries/frameworks I have ever used, and tend to integrate with each other well. These folks are brilliant and productive on a whole other level.
+
+Fun fact: `tsup`'s second highest contributor, [Kevin Deng or 三咲智子](https://github.com/sxzz), is the primary contributor to `tsdown`.
+
+## How Easy Is Migration?
+
+Really easy! Here's everything I did to migrate from `tsup` to `tsdown` in my monorepo:
+
+1. Enable `"isolatedDeclarations": true` in your tsconfig
+1. Fix any errors caused by enabling this[^my-isolated-decl-pr]. That means typing the exports of every file, even if they can be inferred. For these I used VS Code's auto-fixer to infer the type, and I believe this worked for everything.
+1. For `zod` types, the inferred type is huge and has to be kept in sync with the zod schema. That's just a cost of having isolated declarations while using runtime type systems. [Example here](https://github.com/altano/npm-packages/pull/214/files#diff-b3fa6f8b6b2a13aefbb8d203f3fdd97d77af52515495b2ee0d9e83c64e04c7e4).
+1. Migrate your tsup config to tsdown, e.g. `pnpm dlx tsdown migrate ./tsup.config.node.ts`
+1. Consolidate .js + .d.ts build scripts:
+
+   ```diff
+   -    "build": "tsup --config build-config/tsup.config.node.ts",
+   -    "build:types": "tsc --project tsconfig.declarations.json",
+   +    "build": "tsdown --config ../build-config/tsdown.config.node.ts",
+   ```
+
+   Note that `tsdown` requires an explicit relative path to the config while `tsup` just figures it out for you
+
+1. If you use the `onSuccess` hook to run a script to build types, just remove it
+1. For Node.js libraries where you don't bundle the code[^bundling], you'll have to switch from `tsup`'s `bundle: false` to `tsdown`'s `unbundle: true`.
+1. The most important step: validation. Compare the `tsup` and `tsdown` output and make sure it's correct, as best you can. Make sure you have automated tests that exercise the transpiled files (i.e. if you use vitest you should have one test that tests the package exports and doesn't just import ts files directly). [Here's an example from my repo](https://github.com/altano/npm-packages/blob/ce11a549ac22b1af259288a8504b3e7f18483752/packages/astro-prettier-response/tests/unit/exports.spec.ts#L2-L3). Consider using `are-the-types-wrong` validation[^attw] in CI if you aren't already.
+1. Lastly, consider publishing major versions of your packages, especially if you can't manually verify every line of bundler output. This is a really tricky decision and you'll have to decide what's right for your package. If you _can_ manually verify all the output, this is probably unnecessary, but you want to avoid shipping a patch version that has some subtle backwards-incompatibility due to the bundler change.
+
+## How Mature is tsdown?
+
+I only found a couple of bugs:
+
+1. https://github.com/rolldown/tsdown/issues/198 - this is a minor bug with having a shared configuration. It was impossible to miss and was fixed quickly.
+1. https://github.com/rolldown/tsdown/issues/256 - this is a critical bug that causes incorrect output. Without proper testing in place you could possibly miss it, but the bug is not subtle and the simplest of tests _that exercise the actual package output in the dist directory_ will always catch this. The team published a fix to npm in ~2 days.
+
+So, I guess it depends on your risk tolerance and how much automated testing you have in place. For my barely-used, well-tested packages that make up my little garden: it's mature enough. You might want to wait for the 1.0 🤷🏽‍♀️.
+
+[^benchmarks]: https://gugustinette.github.io/bundler-benchmark/
+
+[^startup-costs]: On my machine, the most minimal Node.js script runs in ~32ms and ~146ms when invoked through an npm script.
+
+[^tsup-dts-experimental]: `--experimental-dts`, https://tsup.egoist.dev/#generate-declaration-file
+
+[^my-isolated-decl-pr]: Here's the PR where I enabled isolated declarations in my monorepo and fixed all the errors: https://github.com/altano/npm-packages/pull/214/files
+
+[^bundling]: If you're sure your users will use your library with a bundler of their own, and not directly import it into a browser, You probably shouldn't be bundling your libraries that target the browser either.
+
+[^attw]: Instructions [here](https://github.com/arethetypeswrong/arethetypeswrong.github.io/tree/main/packages/cli). Example [here](https://github.com/altano/npm-packages/blob/ce11a549ac22b1af259288a8504b3e7f18483752/packages/assets/package.json#L11).
