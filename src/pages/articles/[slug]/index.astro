@@ -135,6 +135,12 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
 
         @media (--lg-up-viewport) {
           margin: 0;
+          /**
+           * Move down a smidge to be better aligned with the article starting
+           * text, which is not capitalized and therefore bottom-heavy.
+           */
+          margin-block-start: var(--spacing-1);
+
           font-size: 1rem;
           line-height: var(--line-height-loose);
           font-weight: 700;
@@ -346,6 +352,16 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
         display: inline;
       }
     }
+
+    @media (--lg-up-viewport) {
+      article > div > section:first-child > h2::before {
+        content: "THIS ARTICLE STARTS WITH A HEADING. ADD LEADING TEXT INSTEAD OR THE TYPOGRAPHY WILL SUCK.";
+        font-size: 2rem;
+        color: var(--text-selection);
+        background-color: var(--bg-selection);
+        display: block;
+      }
+    }
   }
 </style>
 
@@ -406,7 +422,7 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
   </header>
   <article>
     <ArticleSeries article={article} />
-    <section>
+    <div>
       <Content
         components={{
           /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -429,6 +445,6 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
           /* eslint-enable @typescript-eslint/no-unsafe-assignment */
         }}
       />
-    </section>
+    </div>
   </article>
 </ArticleLayout>
