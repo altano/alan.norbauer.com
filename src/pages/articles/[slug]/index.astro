@@ -34,6 +34,17 @@ const article = Astro.props;
 const { Content, headings } = await article.render();
 const { title, date_created, date_updated } = article.data;
 const shouldShowTOC = shouldShowTableOfContents(headings);
+
+// Fail when an article starts with a heading and has no preamble (starting
+// text). The only reason I'm doing this is that the styling when starting with
+// a heading isn't great, and it's hard to make it look good visually because
+// the "TABLE OF CONTENTS" text is then poorly aligned with the bottom-heavy and
+// large H2.
+if (article.body) {
+  if (/^#+ /.test(article.body)) {
+    throw new Error(`Article starts with a heading. Add a preamble.`);
+  }
+}
 ---
 
 <style>
@@ -344,16 +355,6 @@ const shouldShowTOC = shouldShowTableOfContents(headings);
           [data-icon="ant-design:windows-filled"]
         ) {
         display: inline;
-      }
-    }
-
-    @media (--lg-up-viewport) {
-      article > div > section:first-child > h2::before {
-        content: "THIS ARTICLE STARTS WITH A HEADING. ADD LEADING TEXT INSTEAD OR THE TYPOGRAPHY WILL SUCK.";
-        font-size: 2rem;
-        color: var(--text-selection);
-        background-color: var(--bg-selection);
-        display: block;
       }
     }
   }
