@@ -6,6 +6,7 @@ tags:
 title: Switching from tsup to tsdown
 description: Notes on switching to the tsdown bundler for my npm packages
 date_created: 2025-05-25T17:00:56.671Z
+date_updated: 2025-06-23T22:44:01.870Z
 ---
 
 [tsdown](https://tsdown.dev/) is a new bundler from [the `void(0)` folks](https://voidzero.dev/), the new company formed out of the Vite/Vitest/Rolldown/Oxc ecosystem.
@@ -81,10 +82,13 @@ Fun fact: `tsup`'s second highest contributor, [Kevin Deng or 三咲智子](http
 Really easy! Here's everything I did to migrate from `tsup` to `tsdown` in my monorepo:
 
 1. Enable `"isolatedDeclarations": true` in your tsconfig
-1. Fix any errors caused by enabling this[^my-isolated-decl-pr]. That means typing the exports of every file, even if they can be inferred. For these I used VS Code's auto-fixer to infer the type, and I believe this worked for everything.
-1. For `zod` types, the inferred type is huge and has to be kept in sync with the zod schema. That's just a cost of having isolated declarations while using runtime type systems. [Example here](https://github.com/altano/npm-packages/pull/214/files#diff-b3fa6f8b6b2a13aefbb8d203f3fdd97d77af52515495b2ee0d9e83c64e04c7e4).
+   1. Fix any resulting errors[^my-isolated-decl-pr]. That means typing the exports of every file, even if they can be inferred. For these I used VS Code's auto-fixer to infer the type, and I believe this worked for everything.
+   1. For `zod` types, the inferred type is huge and has to be kept in sync with the zod schema. That's just a cost of having isolated declarations while using runtime type systems. [Example here](https://github.com/altano/npm-packages/pull/214/files#diff-b3fa6f8b6b2a13aefbb8d203f3fdd97d77af52515495b2ee0d9e83c64e04c7e4).
 1. Migrate your tsup config to tsdown, e.g. `pnpm dlx tsdown migrate ./tsup.config.node.ts`
-1. Consolidate .js + .d.ts build scripts:
+1. If you use tsup's `onSuccess` hook to run a script to build types
+
+   1. Remove the hook from the tsdown config
+   1. Remove the script that builds the types from your package.json:
 
    ```diff
    -    "build": "tsup --config build-config/tsup.config.node.ts",
@@ -92,9 +96,7 @@ Really easy! Here's everything I did to migrate from `tsup` to `tsdown` in my mo
    +    "build": "tsdown --config ../build-config/tsdown.config.node.ts",
    ```
 
-   Note that `tsdown` requires an explicit relative path to the config while `tsup` just figures it out for you
-
-1. If you use the `onSuccess` hook to run a script to build types, just remove it
+1. If you reference a shared config in your package.json script: `tsdown` requires an explicit relative path to the config while `tsup` just figures it out for you (see above for example).
 1. For Node.js libraries where you don't bundle the code[^bundling], you'll have to switch from `tsup`'s `bundle: false` to `tsdown`'s `unbundle: true`.
 1. The most important step: validation. Compare the `tsup` and `tsdown` output and make sure it's correct, as best you can. Make sure you have automated tests that exercise the transpiled files (i.e. if you use vitest you should have one test that tests the package exports and doesn't just import ts files directly). [Here's an example from my repo](https://github.com/altano/npm-packages/blob/ce11a549ac22b1af259288a8504b3e7f18483752/packages/astro-prettier-response/tests/unit/exports.spec.ts#L2-L3). Consider using `are-the-types-wrong` validation[^attw] in CI if you aren't already.
 1. Lastly, consider publishing major versions of your packages, especially if you can't manually verify every line of bundler output. This is a really tricky decision and you'll have to decide what's right for your package. If you _can_ manually verify all the output, this is probably unnecessary, but you want to avoid shipping a patch version that has some subtle backwards-incompatibility due to the bundler change.
