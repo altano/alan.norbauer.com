@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@altano/astro-opengraph':
-        specifier: 0.1.0-alpha.4
-        version: 0.1.0-alpha.4(astro@5.7.14(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.7.1))(preact@10.26.5)
+        specifier: 0.1.0
+        version: 0.1.0(astro@5.7.14(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.7.1))(preact@10.26.5)
       '@altano/astro-prettier-response':
         specifier: ^0.0.2
         version: 0.0.2(astro@5.7.14(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.7.1))(prettier@3.5.3)
@@ -213,8 +213,8 @@ importers:
 
 packages:
 
-  '@altano/astro-opengraph@0.1.0-alpha.4':
-    resolution: {integrity: sha512-QFwtvhE7zxGw/fWJjw856iL7jTR5bNFzF/0fPvTUmSnR7mI6Y8Dac1s6MKTKLe/pxaNEjCoeOeOHK8/1RPiFpg==}
+  '@altano/astro-opengraph@0.1.0':
+    resolution: {integrity: sha512-dskzUP16BThwLZ9HFjwD8sShupCRfvNTq5jwg6t5ZB17YjkhkduoHq77+lnyAF2MCR0xq1mPjq3sLgb9u1r7YA==}
     peerDependencies:
       astro: 5.x.x
       preact: '>=10'
@@ -4946,7 +4946,7 @@ packages:
 
 snapshots:
 
-  '@altano/astro-opengraph@0.1.0-alpha.4(astro@5.7.14(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.7.1))(preact@10.26.5)':
+  '@altano/astro-opengraph@0.1.0(astro@5.7.14(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.7.1))(preact@10.26.5)':
     dependencies:
       astro: 5.7.14(@types/node@22.14.1)(jiti@2.4.2)(lightningcss@1.29.3)(rollup@4.41.0)(typescript@5.8.3)(yaml@2.7.1)
       he: 1.2.0

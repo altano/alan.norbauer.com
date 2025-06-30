@@ -26,7 +26,7 @@
     "test:install": "playwright install --with-deps"
   },
   "dependencies": {
-    "@altano/astro-opengraph": "0.1.0-alpha.4",
+    "@altano/astro-opengraph": "0.1.0",
     "@altano/astro-prettier-response": "^0.0.2",
     "@altano/satori-fit-text": "^1.0.2",
     "@astrojs/mdx": "^4.2.6",
