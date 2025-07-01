@@ -28,6 +28,7 @@
   "dependencies": {
     "@altano/astro-opengraph": "0.1.0",
     "@altano/astro-prettier-response": "^0.0.2",
+    "@altano/astro-table-of-contents": "^0.1.0",
     "@altano/satori-fit-text": "^1.0.2",
     "@astrojs/mdx": "^4.2.6",
     "@astrojs/react": "^4.2.7",

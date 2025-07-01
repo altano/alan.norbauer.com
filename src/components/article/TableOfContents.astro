@@ -1,31 +1,28 @@
 ---
-import type { MarkdownHeading } from "astro";
+import TableOfContentsWithScrollSpy from "@altano/astro-table-of-contents/TableOfContentsWithScrollSpy.astro";
+import type { ComponentProps } from "astro/types";
 
-export type Props = {
-  headings: MarkdownHeading[];
-  depth?: number | undefined;
-  maxDepth?: number | undefined;
-};
-
-const {
-  headings,
-  maxDepth = Number.POSITIVE_INFINITY,
-  depth = 1,
-} = Astro.props;
-const currentDepthHeadings = headings.filter((it) => it.depth === depth);
+export type Props = ComponentProps<typeof TableOfContentsWithScrollSpy>;
 ---
 
-<style>
+{
+  /**
+   * `is:global` is required for now because of this Astro bug:
+   * https://github.com/withastro/astro/issues/14032
+   */
+}
+<style is:global>
   @import "@/styles/custom-media-queries.css";
 
   @layer components {
-    a {
-      text-decoration: none;
-      &:not(:hover) {
-        color: inherit;
+    .table-of-contents {
+      a {
+        text-decoration: none;
+        &:not(:hover) {
+          color: inherit;
+        }
       }
-    }
-    ul {
+
       list-style-type: none;
       margin: 0;
       padding: 0;
@@ -40,52 +37,27 @@ const currentDepthHeadings = headings.filter((it) => it.depth === depth);
           color: var(--text);
         }
       }
-    }
 
-    li {
-      padding: var(--spacing-half);
-      @media (--md-down-viewport) {
-        &:not([aria-level="1"]) {
-          padding-left: var(--spacing-4);
+      li {
+        padding: var(--spacing-half);
+        @media (--md-down-viewport) {
+          &:not([aria-level="1"]) {
+            padding-left: var(--spacing-4);
+          }
         }
-      }
-      @media (--lg-up-viewport) {
-        color: var(--text-faded);
-        transition: color var(--durations-color-scheme);
-        &:not([aria-level="1"]) {
-          padding-left: var(--spacing-5);
-        }
-        &[aria-current="true"] {
-          color: var(--text);
+        @media (--lg-up-viewport) {
+          color: var(--text-faded);
+          transition: color var(--durations-color-scheme);
+          &:not([aria-level="1"]) {
+            padding-left: var(--spacing-5);
+          }
+          &:has(> a[aria-current="true"]) {
+            color: var(--text);
+          }
         }
       }
     }
   }
 </style>
 
-<ul class="table-of-contents">
-  {
-    currentDepthHeadings.map((it, idx) => {
-      const nextHeading = currentDepthHeadings[idx + 1];
-      const subHeadings = headings.slice(
-        headings.indexOf(it) + 1,
-        nextHeading ? headings.indexOf(nextHeading) : undefined
-      );
-      const hasSubHeadings = subHeadings.length > 0;
-      const shouldRenderSubHeadings = maxDepth >= it.depth && hasSubHeadings;
-
-      return (
-        <li aria-level={depth - 1} aria-current={false}>
-          {it.slug ? <a href={`#${it.slug}`}>{it.text}</a> : it.text}
-          {shouldRenderSubHeadings ? (
-            <Astro.self
-              {...Astro.props}
-              headings={subHeadings}
-              depth={it.depth + 1}
-            />
-          ) : null}
-        </li>
-      );
-    })
-  }
-</ul>
+<TableOfContentsWithScrollSpy {...Astro.props} class="table-of-contents" />

@@ -1,5 +1,5 @@
 ---
-import VisibleArticleSectionObserver from "@/components/article/VisibleArticleSectionObserver.astro";
+import ArticleSectionVisibilityObserver from "@altano/astro-table-of-contents/ArticleSectionVisibilityObserver.astro";
 import BaseLayout from "./BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import Bio from "@/components/Bio.astro";
@@ -156,7 +156,7 @@ const { title, description } = article.data;
   type="article"
   opengraphImage="./opengraph.png"
 >
-  <VisibleArticleSectionObserver>
+  <ArticleSectionVisibilityObserver>
     <main>
       <slot />
       <section class="writing">
@@ -174,5 +174,5 @@ const { title, description } = article.data;
         </div>
       </footer>
     </main>
-  </VisibleArticleSectionObserver>
+  </ArticleSectionVisibilityObserver>
 </BaseLayout>
