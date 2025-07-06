@@ -216,11 +216,7 @@ if (article.body) {
       }
 
       & table {
-        /* TODO Need to factor this out somehow */
-        /* layer-style: card; */
-        background: var(--bg-card);
-        border-radius: var(--border-radius-md);
-        padding: var(--spacing-5);
+        @mixin card;
 
         transition: background var(--durations-color-scheme);
 
@@ -270,11 +266,7 @@ if (article.body) {
 
       /* separate rule: workaround for https://github.com/parcel-bundler/lightningcss/issues/964 */
       & blockquote {
-        /* TODO Need to factor this out somehow */
-        /* layer-style: card; */
-        background: var(--bg-card);
-        border-radius: var(--border-radius-md);
-        padding: var(--spacing-5);
+        @mixin card;
 
         transition: background var(--durations-color-scheme);
         margin-block-end: 0;
@@ -324,13 +316,10 @@ if (article.body) {
       & > img:not([data-no-style]),
       & :not(blockquote, figure) > p > img:not([data-no-style]) {
         &:not([data-invertible]) {
-          /* TODO Need to factor this out somehow */
-          /* layer-style: card; */
-          background: var(--bg-card);
-          border-radius: var(--border-radius-md);
+          @mixin card;
+
           transition: background var(--durations-color-scheme);
 
-          padding: var(--spacing-5);
           @media (--lg-up-viewport) {
             padding: var(--spacing-8);
           }

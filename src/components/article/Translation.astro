@@ -19,11 +19,7 @@ const { language, link, attributionName, attributionLink } = Astro.props;
       font-weight: 700;
     }
     p.card {
-      /* TODO Need to factor this out somehow */
-      /* layer-style: card; */
-      background: var(--bg-card);
-      border-radius: var(--border-radius-md);
-      padding: var(--spacing-5);
+      @mixin card;
 
       font-size: 1rem;
     }

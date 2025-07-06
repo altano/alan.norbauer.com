@@ -44,12 +44,12 @@ const {
         }
 
         figcaption {
-          font-size: 1rem;
-          background: var(--bg-card);
-          color: var(--text-card);
-          border-radius: var(--border-radius-md);
-          padding: var(--spacing-2);
+          @mixin card;
 
+          font-size: 1rem;
+          color: var(--text-card);
+          border: var(--border-table);
+          padding: var(--spacing-2);
           position: absolute;
           right: 0;
           bottom: 0;
