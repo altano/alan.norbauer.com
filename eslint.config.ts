@@ -8,7 +8,10 @@ import { globalIgnores } from "eslint/config";
 import globals from "globals";
 
 export default tseslint.config(
-  globalIgnores(["src/content/articles/browser-debugging-tricks/_scratch/"]),
+  globalIgnores([
+    "src/content/articles/browser-debugging-tricks/_scratch/",
+    "postcss.config.cjs",
+  ]),
   eslint.configs.recommended,
 
   // astro

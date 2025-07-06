@@ -9,19 +9,11 @@ import remarkSectionize from "remark-sectionize";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import openGraph from "@altano/astro-opengraph";
 import typedLinks from "astro-typed-links";
-import browserslist from "browserslist";
-import {
-  browserslistToTargets,
-  // type ParsedComponent
-} from "lightningcss";
 import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import react from "@astrojs/react";
 import prettierResponse from "@altano/astro-prettier-response";
-
-// mixins are buggy: https://github.com/parcel-bundler/lightningcss/issues/964
-// const mixins = new Map<ParsedComponent["value"], unknown>();
 
 // https://astro.build/config
 export default defineConfig({
@@ -132,45 +124,5 @@ export default defineConfig({
   ],
   experimental: {
     preserveScriptOrder: true,
-  },
-  vite: {
-    css: {
-      transformer: "lightningcss",
-      lightningcss: {
-        // TODO: Consider disabling this and only allowing as-is CSS w/o transpilation
-        targets: browserslistToTargets(
-          // https://browserslist.dev/?q=Pj0gMC4yNSUgYW5kIGxhc3QgMSB5ZWFyIGFuZCBub3QgZGVhZA%3D%3D
-          browserslist(">= 0.25% and last 1 year and not dead"),
-        ),
-        drafts: {
-          // https://lightningcss.dev/transpilation.html#custom-media-queries
-          customMedia: true,
-        },
-        // mixins are buggy: https://github.com/parcel-bundler/lightningcss/issues/964
-        // // TODO Move these out to a plugin
-        // customAtRules: {
-        //   mixin: {
-        //     prelude: "<custom-ident>",
-        //     body: "style-block",
-        //   },
-        //   apply: {
-        //     prelude: "<custom-ident>",
-        //   },
-        // },
-        // visitor: {
-        //   Rule: {
-        //     custom: {
-        //       mixin(rule) {
-        //         mixins.set(rule.prelude.value, rule.body.value);
-        //         return [];
-        //       },
-        //       apply(rule) {
-        //         return mixins.get(rule.prelude.value);
-        //       },
-        //     },
-        //   },
-        // },
-      },
-    },
   },
 });
