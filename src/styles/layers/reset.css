@@ -22,7 +22,6 @@
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
       "Noto Color Emoji";
 
-    /* TODO Revisit, does lightningcss handle prefixing for us */
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-tab-size: 4;

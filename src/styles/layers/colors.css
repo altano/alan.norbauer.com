@@ -1,5 +1,3 @@
-@import "@/styles/custom-media-queries.css";
-
 @layer colors {
   :root {
     --color-seafoam: #00ffcc;

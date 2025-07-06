@@ -5,15 +5,7 @@ import type { ComponentProps } from "astro/types";
 export type Props = ComponentProps<typeof TableOfContentsWithScrollSpy>;
 ---
 
-{
-  /**
-   * `is:global` is required for now because of this Astro bug:
-   * https://github.com/withastro/astro/issues/14032
-   */
-}
-<style is:global>
-  @import "@/styles/custom-media-queries.css";
-
+<style>
   @layer components {
     .table-of-contents {
       a {

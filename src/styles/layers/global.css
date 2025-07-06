@@ -1,5 +1,3 @@
-@import "@/styles/custom-media-queries.css";
-
 @layer global {
   :root {
     /* Typography and colors */

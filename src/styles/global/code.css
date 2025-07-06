@@ -1,5 +1,3 @@
-@import "@/styles/custom-media-queries.css";
-
 @layer code {
   code {
     /* expressive-code applies a font size for it's code blocks (see
