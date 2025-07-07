@@ -1,22 +1,29 @@
-type ResolvedTheme = "dark" | "light";
-// https://github.com/alex-grover/astro-themes/issues/41
-// type UnderlyingTheme = "system" | ResolvedTheme;
+import { z } from "astro/zod";
+
+const ResolvedThemeSchema = z.union([z.literal("dark"), z.literal("light")]);
+type ResolvedTheme = z.infer<typeof ResolvedThemeSchema>;
+
+const ThemePreferenceSchema = z.union([ResolvedThemeSchema, z.literal("")]);
+type ThemePreference = z.infer<typeof ThemePreferenceSchema>;
 
 export function getResolvedTheme(): ResolvedTheme {
   const theme =
     document.documentElement.attributes.getNamedItem("data-theme")?.value;
+  return ResolvedThemeSchema.parse(theme);
+}
 
-  if (theme !== "light" && theme !== "dark") {
-    throw new Error(`Unexpected theme: ${theme}`);
-  }
-  return theme;
+export function getThemePreference(): ThemePreference {
+  const theme = document.documentElement.attributes.getNamedItem(
+    "data-theme-preference",
+  )?.value;
+  return ThemePreferenceSchema.parse(theme);
 }
 
 export function toggleTheme() {
   updateTheme(getResolvedTheme() === "light" ? "dark" : "light");
 }
 
-function updateTheme(theme: string) {
+export function updateTheme(theme: "system" | "dark" | "light") {
   switch (theme) {
     case "system":
       document.dispatchEvent(new CustomEvent("set-theme", { detail: null }));
@@ -26,6 +33,6 @@ function updateTheme(theme: string) {
       document.dispatchEvent(new CustomEvent("set-theme", { detail: theme }));
       break;
     default:
-      throw new Error(`Unexpected theme value: ${theme}`);
+      theme satisfies never;
   }
 }

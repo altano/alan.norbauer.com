@@ -38,26 +38,56 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-  import { toggleTheme } from "@/scripts/theme.js";
+  import { toggleTheme, updateTheme } from "@/scripts/theme.js";
+  import type { Theme } from "astro-themes";
 
-  function assertIsButtonElement(
-    element: unknown
-  ): asserts element is HTMLButtonElement {
-    if (!(element instanceof HTMLButtonElement)) {
-      throw new Error(`Expected HTMLButtonElement`);
+  function getButtonLabel(preference: Theme | null): string {
+    switch (preference) {
+      case null:
+        return "automatic/system";
+      case "dark":
+      case "light":
+        return preference;
+      default:
+        preference satisfies never; // Ensure exhaustive check
+        throw new Error(`Unexpected theme preference: ${preference}`);
     }
   }
 
+  // If the system color scheme changes (while this page is loaded), switch
+  // back to the system color scheme (i.e. unset the current theme preference
+  // and remove it from local storage).
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", () => {
+      updateTheme("system");
+    });
+
   // react to user selecting different theme option
-  const button = document.getElementById("theme-switcher");
-  assertIsButtonElement(button);
+  const element = document.getElementById("theme-switcher");
+  if (element == null || !(element instanceof HTMLButtonElement)) {
+    throw new Error("Theme switcher button not found");
+  }
+  const button: HTMLButtonElement = element;
   button.addEventListener("click", toggleTheme);
+  // react to the theme changing
+  document.addEventListener("set-theme", ({ detail }) => {
+    button.setAttribute("aria-label", getButtonLabel(detail));
+  });
 </script>
 
+{
+  /**
+   * Follows aria-label guidance at
+   * https://web.dev/articles/building/a-theme-switch-component#the_button
+   */
+}
 <button
   id="theme-switcher"
   data-testid="theme-switcher"
-  aria-label="Toggle light/dark theme"
+  title="Toggles light/dark theme"
+  aria-label="automatic/system"
+  aria-live="polite"
 >
   <Icon
     class="light"
