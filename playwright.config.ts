@@ -1,7 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import nullthrows from "nullthrows";
-
-const isCI = process.env.ci;
+import isCI from "is-ci";
 
 /**
  * Read environment variables from file.
@@ -10,6 +9,7 @@ const isCI = process.env.ci;
 import dotenv from "dotenv";
 import path from "path";
 dotenv.config({
+  quiet: true,
   path: path.resolve(
     import.meta.dirname,
     isCI ? ".env.test-ci" : ".env.test-dev",

@@ -12,8 +12,9 @@
   "type": "module",
   "scripts": {
     "astro": "astro",
-    "build": "pnpm run convert:images && pnpm run build:astro && pnpm run '/^(check:.*|test)$/'",
+    "build": "pnpm run convert:images && pnpm run build:astro && pnpm run check && pnpm test:ci",
     "build:astro": "astro build",
+    "check": "pnpm run '/^(check:.*)$/'",
     "check:astro": "astro check",
     "check:lint": "eslint 'src/**/*.{js,jsx,ts,tsx,astro}'",
     "check:mdx": "mdx-local-link-checker src/content src/content '**/zerotier-start.sh|/articles/**/*.gif|/articles/**/*.avif'",
@@ -22,6 +23,7 @@
     "dev": "astro dev",
     "preview": "astro preview",
     "test": "playwright test",
+    "test:ci": "CI=1 pnpm playwright test --forbid-only --reporter=dot",
     "test:dev": "playwright test --ui",
     "test:install": "playwright install --with-deps"
   },
@@ -87,6 +89,7 @@
     "eslint-plugin-package-json": "^0.43.2",
     "eslint-plugin-prettier": "^5.5.1",
     "globals": "^16.3.0",
+    "is-ci": "^4.1.0",
     "jiti": "^2.4.2",
     "linkedom": "^0.18.11",
     "postcss-custom-media": "^11.0.6",
