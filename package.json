@@ -30,7 +30,7 @@
   "dependencies": {
     "@altano/astro-opengraph": "0.1.1",
     "@altano/astro-prettier-response": "^1.0.1",
-    "@altano/astro-table-of-contents": "^0.1.2",
+    "@altano/astro-table-of-contents": "^0.1.3",
     "@altano/satori-fit-text": "^2.0.1",
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/react": "^4.3.0",
@@ -59,7 +59,7 @@
     "astro-icon": "^1.1.5",
     "astro-themes": "^0.2.7",
     "astro-typed-links": "^1.1.4",
-    "dotenv": "^17.0.1",
+    "dotenv": "^17.1.0",
     "mdx-local-link-checker": "^2.1.1",
     "nullthrows": "^1.1.1",
     "prettier": "^3.6.2",
