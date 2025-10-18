@@ -1,0 +1,34 @@
+---
+draft: false
+tags:
+  - appliances
+  - rocco
+  - data
+title: Rocco Fridge Power Consumption
+description: Power consumption data on Instagram's favorite drink fridge
+date_created: 2025-10-18T20:46:38.395Z
+---
+
+Behold: power consumption data on Instagram's favorite drink fridge, the [Rocco "Super Smart Fridge."](https://roccofridge.com/products/the-super-smart-fridge)
+
+## Mostly Empty
+
+I measured an average of 25.3 W of power usage during a 24-hour period (or ~18 kWh/month). The fridge was mostly empty and opened a handful of times. The power usage varies on a pretty consistent ~37 minute cycle, fluctuating between ~11 W and ~35 W:
+
+![Graph of the (empty) fridge's steady-state power usage over 24 hours](./steady-state-empty-over-time.png)
+
+## Filled with Drinks
+
+When loading an empty fridge with drinks, the average went up to 49.2 W over a 10-hour period:
+
+![Graph of the fridge's loaded-up power usage over 10 hours](./under-load-over-time.png)
+
+After 10 hours the fridge returned to a lower 27.7 W of average power usage, 2.4 W higher than the empty fridge, with a slightly different looking cycle:
+
+![Graph of the (full) fridge's steady-state power usage over 12 hours](./steady-state-full-over-time.png)
+
+This surprised me. I thought a fridge full of drinks would use less power than an empty fridge.
+
+## Method
+
+All this power data was collected by a Sonoff S31 Smart Plug, flashed with Tasmota (from CloudFree which [sells them pre-flashed](https://cloudfree.shop/product/sonoff-s31/)). I pipe all my power consumption data to InfluxDB (running inside Home Assistant) and graph it with Grafana.
