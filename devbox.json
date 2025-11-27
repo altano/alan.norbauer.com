@@ -1,8 +1,8 @@
 {
   "packages": [
     "difftastic@latest",
-    "git@2.44.1",
-    "nodejs@22.14.0",
+    "git@latest",
+    "nodejs@24.11.1",
     "ffmpeg@latest",
     "libavif@latest",
     "claude-code@latest"
