@@ -4,7 +4,8 @@
     "git@2.44.1",
     "nodejs@22.14.0",
     "ffmpeg@latest",
-    "libavif@latest"
+    "libavif@latest",
+    "claude-code@latest"
   ],
   "env": {
     "DEVBOX_COREPACK_ENABLED": "true"

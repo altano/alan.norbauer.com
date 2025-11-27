@@ -1,6 +1,54 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "claude-code@latest": {
+      "last_modified": "2025-11-23T21:50:36Z",
+      "resolved": "github:NixOS/nixpkgs/ee09932cedcef15aaf476f9343d1dea2cb77e261#claude-code",
+      "source": "devbox-search",
+      "version": "2.0.50",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/pm2kgjvn7h9p8mh0b0wz3lr3fkfh618p-claude-code-2.0.50",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/pm2kgjvn7h9p8mh0b0wz3lr3fkfh618p-claude-code-2.0.50"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/p1zsrlkynidcyaw0b178i75h944qf3qc-claude-code-2.0.50",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/p1zsrlkynidcyaw0b178i75h944qf3qc-claude-code-2.0.50"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lnzkjf61jy8p9k7ilx8v6cwd5i3hc4kk-claude-code-2.0.50",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lnzkjf61jy8p9k7ilx8v6cwd5i3hc4kk-claude-code-2.0.50"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/fpf7ymzasxlnxlj211vqnv818xhqf1ni-claude-code-2.0.50",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/fpf7ymzasxlnxlj211vqnv818xhqf1ni-claude-code-2.0.50"
+        }
+      }
+    },
     "difftastic@latest": {
       "last_modified": "2025-03-11T17:52:14Z",
       "resolved": "github:NixOS/nixpkgs/0d534853a55b5d02a4ababa1d71921ce8f0aee4c#difftastic",
@@ -273,50 +321,66 @@
       "resolved": "github:NixOS/nixpkgs/b0b4b5f8f621bfe213b8b21694bab52ecfcbf30b?lastModified=1744032190&narHash=sha256-KSlfrncSkcu1YE%2BuuJ%2FPTURsSlThoGkRqiGDVdbiE%2Fk%3D"
     },
     "libavif@latest": {
-      "last_modified": "2025-03-11T17:52:14Z",
-      "resolved": "github:NixOS/nixpkgs/0d534853a55b5d02a4ababa1d71921ce8f0aee4c#libavif",
+      "last_modified": "2025-11-23T21:50:36Z",
+      "resolved": "github:NixOS/nixpkgs/ee09932cedcef15aaf476f9343d1dea2cb77e261#libavif",
       "source": "devbox-search",
-      "version": "1.1.1",
+      "version": "1.3.0",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/wdzd7f7rq37qc1bfwfg3al8k3w9b9hpy-libavif-1.1.1",
+              "path": "/nix/store/6g9k7f8i4s2p2xvzyplm88g2ka3x09km-libavif-1.3.0",
               "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/86ggfkhjbrahwc11n5qxqr50mw0c4iyc-libavif-1.3.0-dev"
             }
           ],
-          "store_path": "/nix/store/wdzd7f7rq37qc1bfwfg3al8k3w9b9hpy-libavif-1.1.1"
+          "store_path": "/nix/store/6g9k7f8i4s2p2xvzyplm88g2ka3x09km-libavif-1.3.0"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/fylwsgvhvnznb98r85z9ch2f8rbld2l0-libavif-1.1.1",
+              "path": "/nix/store/snp3h1nys8cdjn7bxlahsy3mgz7pniz1-libavif-1.3.0",
               "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/dv3wj34pygc8s5imklcqfifp92l9dsih-libavif-1.3.0-dev"
             }
           ],
-          "store_path": "/nix/store/fylwsgvhvnznb98r85z9ch2f8rbld2l0-libavif-1.1.1"
+          "store_path": "/nix/store/snp3h1nys8cdjn7bxlahsy3mgz7pniz1-libavif-1.3.0"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/j6bxi2r6iprzqicbpd660cvy1aphk1kj-libavif-1.1.1",
+              "path": "/nix/store/676fpdkhlmvzgplrqvvqqwsi0h7wipjc-libavif-1.3.0",
               "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/k554xvg77k6m8lr6xhhbqw59376z2nnm-libavif-1.3.0-dev"
             }
           ],
-          "store_path": "/nix/store/j6bxi2r6iprzqicbpd660cvy1aphk1kj-libavif-1.1.1"
+          "store_path": "/nix/store/676fpdkhlmvzgplrqvvqqwsi0h7wipjc-libavif-1.3.0"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/rpm2ypblkbgyszbib89p6nrwzxdscjr0-libavif-1.1.1",
+              "path": "/nix/store/cdppaa2izwlwcddcghshd58n0armz0cd-libavif-1.3.0",
               "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/ihz5hyf7wznkpmvhlvj3qdy6r0rqfrrh-libavif-1.3.0-dev"
             }
           ],
-          "store_path": "/nix/store/rpm2ypblkbgyszbib89p6nrwzxdscjr0-libavif-1.1.1"
+          "store_path": "/nix/store/cdppaa2izwlwcddcghshd58n0armz0cd-libavif-1.3.0"
         }
       }
     },
