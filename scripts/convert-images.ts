@@ -121,12 +121,32 @@ async function doConversion(source: string, dest: string): Promise<void> {
   console.log(chalk.green(`Finished converting ${source} to ${dest}`));
 }
 
+async function needsConversion(source: string, dest: string): Promise<boolean> {
+  try {
+    const [sourceStat, destStat] = await Promise.all([
+      fs.stat(source),
+      fs.stat(dest),
+    ]);
+    // Only convert if source is newer than dest
+    return sourceStat.mtime > destStat.mtime;
+  } catch {
+    // If dest doesn't exist or any error, we need to convert
+    return true;
+  }
+}
+
 await spinner("Converting images...", async () => {
   await doWork(os.cpus().length, animations, async (animation) => {
     const source = animation;
     const dest = getOutputFilenameFromInput(animation);
-    console.log(chalk.blue(`Converting ${source} to ${dest}`));
     assertPathInPublicDir(dest);
+
+    if (!(await needsConversion(source, dest))) {
+      console.log(chalk.gray(`Skipping ${source} (already up-to-date)`));
+      return;
+    }
+
+    console.log(chalk.blue(`Converting ${source} to ${dest}`));
     await doConversion(source, dest);
   });
 });
