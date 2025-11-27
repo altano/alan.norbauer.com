@@ -83,22 +83,14 @@ const size = 52;
 
       <SectionHeading>Social</SectionHeading>
       <section>
-        <ThreadsLink
+        <RedditLink
           {size}
-          text={`Threads – ${alan.data.socials.threads.handle}`}
-        />
-        <InstagramLink
-          {size}
-          text={`Instagram – ${alan.data.socials.instagram.handle}`}
+          text={`Reddit – ${alan.data.socials.reddit.handle}`}
         />
       </section>
 
       <SectionHeading>Inactive</SectionHeading>
       <section class="inactive">
-        <RedditLink
-          {size}
-          text={`Reddit – ${alan.data.socials.reddit.handle}`}
-        />
         <HackerNewsLink
           {size}
           text={`Hacker News – ${alan.data.socials.hackernews.handle}`}
@@ -110,6 +102,14 @@ const size = 52;
         <TwitterLink
           {size}
           text={`Twitter – ${alan.data.socials.twitter.handle}`}
+        />
+        <ThreadsLink
+          {size}
+          text={`Threads – ${alan.data.socials.threads.handle}`}
+        />
+        <InstagramLink
+          {size}
+          text={`Instagram – ${alan.data.socials.instagram.handle}`}
         />
       </section>
     </div>
