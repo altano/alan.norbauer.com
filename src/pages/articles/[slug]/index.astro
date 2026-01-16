@@ -19,6 +19,7 @@ import { Icon } from "astro-icon/components";
 import { shouldShowTableOfContents } from "@/utilities/table-of-contents.js";
 import { Image, Picture } from "astro:assets";
 import IconRow from "@/components/IconRow.astro";
+import Callout from "@/components/article/Callout.astro";
 import { getEntries } from "astro:content";
 import Authors from "@/components/article/Authors.astro";
 
@@ -427,6 +428,7 @@ if (article.body) {
         components={{
           /* eslint-disable @typescript-eslint/no-unsafe-assignment */
           // Custom
+          Callout,
           Chrome,
           Firefox,
           Edge,

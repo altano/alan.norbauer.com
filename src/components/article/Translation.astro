@@ -1,4 +1,5 @@
 ---
+import Callout from "./Callout.astro";
 import type { LanguageCode } from "./Language.astro";
 import Language from "./Language.astro";
 
@@ -18,17 +19,12 @@ const { language, link, attributionName, attributionLink } = Astro.props;
     a.language {
       font-weight: 700;
     }
-    p.card {
-      @mixin card;
-
-      font-size: 1rem;
-    }
   }
 </style>
 
-<p class="card">
+<Callout>
   {/* eslint-disable @typescript-eslint/no-unsafe-assignment */}
   <a href={link} class="language"><Language language={language} /></a>{" "}
   translation available (courtesy of{" "}
   <a href={attributionLink}>{attributionName}</a>)
-</p>
+</Callout>

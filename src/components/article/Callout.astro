@@ -1,0 +1,19 @@
+---
+export type Props = {
+  children: unknown;
+};
+---
+
+<style>
+  @layer components {
+    p.callout {
+      @mixin card;
+
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<p class="callout">
+  <slot />
+</p>

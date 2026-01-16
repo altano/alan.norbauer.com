@@ -12,6 +12,9 @@ authors:
   - adam
 ---
 
+{/* prettier-ignore */}
+<Callout>⚠️ This article was originally published in 2005 at [dubi.org/ajax-polling](https://web.archive.org/web/20061129151134/http://dubi.org/ajax-polling). The content is extremely outdated and is preserved here for nostalgic purposes only.</Callout>
+
 Yes we know that there have been a lot of AJAX tutorials as of late, but we thought we would share some of our experiences and try to explain some things that other tutorials might have left out.
 
 We found that while other tutorials cover the very basic methods for using xmlhttprequest, they failed to explain how to use them in a practical manner, especially in applications that need to poll the server in quick succession. When we started work on Ramble, an open source AJAX chat client, we ran into a lot of these problems. After a lot of trial and error, we've come up with a good way to do quick successive requests and deal with all of the issues surrounding cross-browser compatibility.
