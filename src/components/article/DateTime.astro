@@ -8,5 +8,5 @@ const date = typeof dateOrStr === "string" ? new Date(dateOrStr) : dateOrStr;
 ---
 
 <time datetime={date.toISOString()}>
-  {date.toLocaleDateString()}
+  {date.toLocaleDateString("en-CA")}
 </time>
