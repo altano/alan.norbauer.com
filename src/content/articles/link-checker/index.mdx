@@ -1,0 +1,99 @@
+---
+draft: false
+tags:
+  - php
+  - web
+title: Link Checker
+description: Command-line tool to check link validity on web pages
+date_created: 2005-05-13T07:41:41Z
+---
+
+Takes a URL on the command line and outputs a list of contained links and their validity:
+
+```php
+<?php
+/*
+  Takes a URL on the command line and parses it for links and URLs
+  Outputs the status of every link and URL as either OK or BROKEN
+*/
+
+function error( $str ) {
+  fwrite(STDERR, $str);
+  exit(1);
+}
+
+function test_url( $url ) {
+  fwrite(STDOUT, "        Checking \"$url\": ");
+  $handle = @fopen($url, 'r');
+  if ($handle) {
+    fwrite(STDOUT, "OK\n");
+    fclose($handle);
+  }
+  else {
+    fwrite(STDOUT, "*BROKEN*\n");
+  }
+}
+
+if ($argc != 2) {
+  error("syntax: url_tester.php url\n");
+}
+
+$url = $argv[1];
+/* prefix with http:// */
+$url = preg_replace("/^www\./","http://www.",$url);
+fwrite(STDOUT, "Testing $url for broken links:\n");
+$file_contents = @file_get_contents($url);
+
+if (!$file_contents) {
+  error("Error reading from $url.  Try again later");
+}
+
+/* finds all anchor (<a href=) links and ends when they hit a quote */
+$url_pattern = "!<a href=(?:\")?([^\" >]+)!i";
+preg_match_all($url_pattern, $file_contents, $url_list, PREG_PATTERN_ORDER);
+fwrite(STDOUT, "    ANCHOR (<a href=) URLS\n");
+foreach($url_list[1] as $link) {
+  if (preg_match("!^(http://|www.)!i", $link)) {
+    /* prefix with http:// */
+    $link = preg_replace("/^www\./","http://www.",$link);
+    test_url($link);
+  }
+  else {
+    if (preg_match("!/$!",$url) and $link[0] == '/' ) {
+      test_url($url . substr($link,1));
+    }
+    else if (preg_match("!/$!",$url) xor $link[0] == '/' ) {
+      test_url($url . $link);
+    }
+    else {
+      echo $url, '---', $link;
+      test_url($url . $link);
+    }
+  }
+}
+
+/* finds a URL in the source, and ends it when it hits a quote or space */
+$url_pattern = "!http://(?:[^/\" >:]*)(?::(?:[0-9]*))?(?:/[^ >\"]*)?!i";
+preg_match_all($url_pattern, $file_contents, $url_list, PREG_PATTERN_ORDER);
+fwrite(STDOUT, "    ALL URLS\n");
+foreach($url_list[0] as $link) {
+  test_url($link);
+}
+?>
+```
+
+Example output:
+
+```text
+X:\webdev>php url_tester.php http://www.google.com
+Testing http://www.google.com for broken links:
+    ANCHOR (<a href=) URLS
+        Checking "http://www.google.com/options/": OK
+        Checking "http://www.google.com/advanced_search?hl=en": OK
+        Checking "http://www.google.com/preferences?hl=en": OK
+        Checking "http://www.google.com/language_tools?hl=en": OK
+        Checking "http://www.google.com/ads/": OK
+        Checking "http://www.google.com/intl/en/about.html": OK
+    ALL URLS
+        Checking "http://groups-beta.google.com/grphp?hl=en&tab=wg&ie=UTF-8": OK
+```

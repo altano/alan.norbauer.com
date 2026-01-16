@@ -1,0 +1,54 @@
+---
+draft: false
+tags:
+  - unix
+  - linux
+  - cli
+  - bash
+title: Useful linux/unix commands
+description: Collection of handy command-line tricks for Unix/Linux systems
+date_created: 2006-02-22T18:22:11Z
+---
+
+This will let `cd` change to a directory (exactly the same functionality as the normal `cd` command), but now you can type `bd` to go back a directory. If you keep using `bd`, it keeps going back in the history of folders you've been in.
+
+```bash
+alias cd="pushd $1 > /dev/null"
+alias bd="popd > /dev/null"
+```
+
+Through subversion, move all files (NON-recursively) of type _.php from some part of the working copy to another (svn cp/mv don't seem to support _ or \*.php or any wildcards, for some reason):
+
+```bash
+find /some/path -maxdepth 1 -mindepth 1 -iname "*.php" -exec svn mv {} /some/other/path \;
+```
+
+(Replace -exec with -ok to be prompted before each `svn mv`)
+
+Find all files modified in the last day:
+
+```bash
+find /some/path -mtime -1
+```
+
+Find all files modified since 4pm on Sept 15 (adjust for your date/time):
+
+```bash
+touch 09151600 tmp_find_file
+find /some/path -newer tmp_find_file -print
+rm tmp_find_file
+```
+
+(Thanks to [linuxpowered.com](http://www.linuxpowered.com/html/editorials/find.html) for the `find` information)
+
+Remove all subversion files from a directory
+
+```bash
+find /some/path -ipath *svn* -exec rm -rf {} \;
+```
+
+Kill all processes that match some filter text:
+
+```bash
+ps aux | grep FILTER_TEXT | awk '{print $1}' | xargs kill
+```

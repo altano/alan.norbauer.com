@@ -1,0 +1,92 @@
+---
+draft: false
+tags:
+  - php
+  - programming
+title: PHP Function Overloading
+description: How to emulate function overloading in PHP using various techniques
+date_created: 2005-08-21T12:44:46Z
+---
+
+After searching far and wide, I've recently discovered that PHP does NOT support function overloading. While this may seem ridiculous, IT IS. I've seen one method of emulating this being discussed:
+
+```php
+<?php
+	function foo($value1, $value2='') {
+		echo "$value1$value2\n";
+	}
+	foo('bar');
+	foo('fu', 'bar');
+?>
+```
+
+This will echo:
+
+```
+bar
+fubar
+```
+
+Now while this works, it isn't the same type of code separation that some might seek. Another option is to use func_num_args() and func_get_args(), both introduced in PHP4.
+
+```php
+<?php
+	function foo() {
+		switch(func_num_args()) {
+			case 1:
+			foo_1(func_get_arg(0));
+			break;
+			case 2:
+			list($a, $b) = func_get_args();
+			foo_2($a, $b);
+			break;
+		}
+	}
+
+	function foo_1($value1) {
+		echo "$value1";
+	}
+
+	function foo_2($value1, $value2) {
+		echo "$value1$value2\n";
+	}
+
+	foo('bar');
+	foo('fu', 'bar');
+?>
+```
+
+This is clearly a lot more code, but at least the functions are separate. If you have a variable number of arguments, you should just be looping through func_get_args(), as discussed in [the PHP docs](http://us2.php.net/manual/en/function.func-get-args.php).
+
+## Edit/update
+
+I should have mentioned that PHP has facilities for determining the type of an argument, which is another part of function overloading.
+
+```php
+<?php
+	function foo($value) {
+		if (is_int($value)) {
+			foo_1($value);
+		}
+		else if (is_string($value)) {
+			foo_2($value);
+		}
+	}
+?>
+```
+
+Obviously, this isn't as important in PHP because it is rare that the same function would be operating on different types and actually do different operations based on those types. The only time I've really come across this is easier traversal of nested arrays. For example, to get the sum of all values in a sparse matrix:
+
+```php
+<?php
+	function deep_sum($array) {
+		$total = 0;
+		foreach($array as $v) {
+			$total += is_array($v) ? deep_sum($v) : $v;
+		}
+		return $total;
+	}
+?>
+```
+
+But, this is not what is meant by function overloading.

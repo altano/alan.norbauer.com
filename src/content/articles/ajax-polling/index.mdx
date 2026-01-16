@@ -1,0 +1,126 @@
+---
+draft: false
+tags:
+  - ajax
+  - javascript
+  - web
+title: AJAX Polling
+description: Practical guide to using XMLHttpRequest for rapid polling in AJAX applications
+date_created: 2005-08-22T18:15:52Z
+---
+
+Yes we know that there have been a lot of AJAX tutorials as of late, but we thought we would share some of our experiences and try to explain some things that other tutorials might have left out.
+
+We found that while other tutorials cover the very basic methods for using xmlhttprequest, they failed to explain how to use them in a practical manner, especially in applications that need to poll the server in quick succession. When we started work on Ramble, an open source AJAX chat client, we ran into a lot of these problems. After a lot of trial and error, we've come up with a good way to do quick successive requests and deal with all of the issues surrounding cross-browser compatibility.
+
+Here is what this tutorial will cover:
+
+- [Quick successive requests](#quick-successive-requests)
+- [How to handle exceptions](#how-to-handle-exceptions)
+- [Cross-browser issues](#cross-browser-issues)
+- [Random tips](#random-tips)
+- [Demo and Source Code](#demo-and-source-code)
+
+## Quick successive requests
+
+**Problem:**
+
+If you've ever tried to write an application that uses the xmlhttprequest to constantly get information as opposed to a one shot deal, you've probably noticed that it often behaves erratically. Sometimes the data won't come through properly or it will work properly for a while and then just stop completely. What it comes down to is the fact that the xmlhttprequest object is really just good for about one request.
+
+**Solution:**
+
+The best way we found to deal with the erratic nature of the xmlhttprequest is to actually use one object per request. So basically any time you make a request create a new object. In all of our testing, this really doesn't add much overhead and you can easily make requests to a server every 100ms\* if you wanted. An easy way to handle this is to just make a function that takes care of creating the object and then call that every time you want to make a request.
+
+Here is an example:
+
+```javascript
+function makeRequest() {
+  var xmlhttp = createXmlObj(callback);
+  var url = "XMLGenerator.php";
+  xmlhttp.open("GET", url, "true");
+  xmlhttp.send(null);
+}
+
+function createXmlObj(callback) {
+  var XmlObj;
+  // IE-specific code would go here as well
+  XmlObj = new XMLHttpRequest();
+    if (callback) {
+    XmlObj.onreadystatechange = function() { ... }
+  }
+  return XmlObj;
+}
+```
+
+Using this method of recreating the object every time you make a request should greatly reduce problems in your application. Another way to make sure you're application works correctly is to properly handle exceptions.
+
+## How to handle exceptions
+
+It is very important that you put all of your requests in try-catch blocks. If you don't and an exception occurs your application will stop working. When your code is in a try-catch block, you can easily handle the exceptions yourself and recover gracefully.
+
+The easiest and most effective way to handle exceptions is to just scrap the request that caused the exception, recreate the xmlhttprequest object and try again. This will make sure that you don't use data that is corrupt as well as allow your application to keep running without the user noticing anything unusual.
+
+Here is an example:
+
+```javascript
+try {
+    xmlhttp.open("GET", url, "true");
+    xmlhttp.send(null);
+  }
+  catch(e) {
+    setTimeout("makeRequest()", 2000);
+  }
+}
+```
+
+As you can see, it's pretty easy to handle exceptions and you should do it anywhere you make a request.
+
+## Cross-browser Issues
+
+The only non-trivial differences we encountered were:
+
+1. Initializing the xmlhttprequest object
+2. Safari's response bugs
+3. Differences in parsing the XML response
+
+The first is obviously no big deal and you can look at the code to see how it is initialized.
+
+The second deals with Safari occasionally returning an invalid status code. These invalid responses seemed to coincide with requests that were made that used cached versions of the response. Of course, the status code should still be 200 (OK) if it is using a cached version, and otherwise this would be a minor bug, but the problem here is that Safari is ignoring the header of the response page, which is telling it to not cache. On the PHP end, we are setting the appropriate header values which Firefox and IE both handle properly, but Safari ignores. So, this is a two-fold problem: Safari is caching the page when it shouldn't, and Safari is not setting the status code to 200 on these instances. Fortunately, this is easily fixed:
+
+```javascript
+xmlhttp.open("GET", url, "true");
+xmlhttp.setRequestHeader("If-Modified-Since", "Wed, 15 Nov 1995 00:00:00 GMT");
+xmlhttp.send(null);
+```
+
+Manually setting the request to ignore cached copies if more recent than Nov 15, 1995 does the trick.
+
+(Note that we are breaking standards here by using GET to make the requests and forcing the browser to not used cached copies of the code. We should be using POST since GET should be idempotent and not care whether the user decides to grab a cached version or not. Fortunately, we don't care.)
+
+## Random Tips
+
+1. Don't forget to set the content-type to text/xml in whatever scripting language you're using to generate the responses (e.g. in PHP: header("Content-type: text/xml");)
+
+2. JavaScript has multiple url-encoding functions for strings. To get the correct effect we had to:
+
+```javascript
+// escape backslashes
+message = message.replace(/\\/, "\\\\");
+// encodeURIComponent the parameter
+url = "postMessage.php?msg=" + encodeURIComponent(message);
+```
+
+3. If you're polling every 100ms or anything very fast, make sure you can handle that many requests, and make whatever is receiving the requests as lean as possible. Don't make 4 fulltext SQL queries every time you receive a request or be prepared to scrape your server off the ground.
+
+4. Don't sniff the browser every time you fork code off for IE. Do it once, do it early, and store it:
+
+```javascript
+var agt = navigator.userAgent.toLowerCase();
+var isIE = agt.indexOf("msie") != -1 && agt.indexOf("opera") == -1;
+```
+
+5. Don't panic.
+
+## Demo and Source Code
+
+You can view [an example](./xmlhttp-example) of these concepts or download the [source code](./xmlhttprequest.zip). Feel free to use the source code in any way you wish.

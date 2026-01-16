@@ -1,13 +1,7 @@
 {
   "version": "0.2",
-  "enabledLanguageIds": [
-    "mdx",
-    "!javascript"
-  ],
-  "ignoreRegExpList": [
-    "\\[\\^.*\\]",
-    "```[^`]+```"
-  ],
+  "enabledLanguageIds": ["mdx", "!javascript"],
+  "ignoreRegExpList": ["\\[\\^.*\\]", "```[^`]+```"],
   "words": [
     "alannorbauer",
     "altano",
@@ -27,6 +21,7 @@
     "Devbox",
     "Dispoable",
     "Dreamweaver",
+    "dubi",
     "excalidraw",
     "fetchable",
     "filesystems",
@@ -56,6 +51,7 @@
     "nullthrows",
     "onrejectionhandled",
     "opengraph",
+    "Podolnick",
     "pvdisplay",
     "qqmi",
     "quickstart",
@@ -95,7 +91,5 @@
     "zrepl",
     "zvol"
   ],
-  "ignoreWords": [
-    "allgroups"
-  ]
+  "ignoreWords": ["allgroups"]
 }

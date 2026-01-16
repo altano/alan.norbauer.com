@@ -1,0 +1,54 @@
+---
+draft: false
+tags:
+  - security
+  - php
+  - mysql
+  - web
+title: Web Application Security
+description: Presentation files on web application security vulnerabilities and defense
+date_created: 2005-05-14T11:54:27Z
+---
+
+A presentation on web application security.
+
+## Intro
+
+These are files from a presentation on Web Application Security, not to be confused with security related to web servers or network security in general. These slides aren't that great, but they might be a good starting point for your own presentations. You shouldn't be LEARNING from this presentation, as most of the information was in my head. If you want to learn about web app security, check out the links at the end of my PowerPoint, which are a decent starting point for information on web app security.
+
+Note: The examples use PHP and MySQL, but I stayed away from concepts that aren't cross-language. You can give this presentation using any technology.
+
+## Contents
+
+[site_files.zip](./site_files.zip) - contains all the files needed to demonstrate the examples in the PowerPoint presentation
+
+[websecDB.mysql](./websecDB.mysql) - schema for the DB used in the presentation
+
+[Web_Application_Security.ppt](./Web_Application_Security.ppt) - PowerPoint which is a good starting point for learning about Web App Sec
+
+[instructions.txt](./instructions.txt) - These instructions
+
+## How to setup
+
+1. First, you have to import/setup the MySQL DB. Ask your host/administrator how to do this. Typically, if you have shell access, you can do something like this (after having created the DB in the first place):
+
+```bash
+mysql -u USER -p DBNAME < websecDB.mysql
+```
+
+Where DBNAME Is the name of the database you created, and USER is the name of user you assigned to the database. If these instructions are completely out of the scope of anything you've done, you probably shouldn't be worried about web app security anyway.
+
+2. Once you setup the database, unzip the files in site_files.zip onto your host.
+
+You only need to edit Database.php in web_security/include/Database.php to point to the database you created earlier.
+
+3. Edit the hyperlinks in the PowerPoint to link to your site.
+
+## Topics Covered
+
+- Unvalidated Input
+- Cross Site Scripting (XSS) Flaws
+- Injection Flaws
+- Improper Error Handling
+- Insecure Storage
+- Denial of Service

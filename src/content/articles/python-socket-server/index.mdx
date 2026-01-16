@@ -1,0 +1,100 @@
+---
+draft: false
+tags:
+  - python
+  - flash
+  - networking
+  - sockets
+title: Python Socket Server
+description: Building a Flash XML Socket Server in Python
+date_created: 2005-10-26T14:21:15Z
+---
+
+Flash has the ability to open up sockets with a server and send/receive XML (well, arbitrary strings as well). [Mike](http://www.ar11.net) and I decided to hack together a chat app super fast just to see what Flash could do. He's a Flash nerd so he did that part and I learned Python to write the server. Turns out Python is pretty neat and I thought I'd provide an example of how to write a Flash XML Socket Server in Python.
+
+_Note: this code may suck, as I've never written Python before_
+
+First we import the appropriate libraries:
+
+```python
+from optparse import OptionParser
+from elementtree import ElementTree
+import thread, socket, sys
+```
+
+Then, if we're not importing the file, we make an entry point into the application (this would go _after_ the class declaration):
+
+```python
+if __name__ == '__main__':
+    parser = OptionParser()
+    parser.add_option("-p", "--port",
+                        action="store", dest="PORT", type="int", default=2900,
+                        help="PORT to bind to", metavar="PORT")
+    parser.add_option("--host",
+                        action="store", type="string", dest="HOST", default='',
+                        help="HOST to bind to", metavar="HOST")
+
+    (options, args) = parser.parse_args()
+
+    new_server = flashServer(options.HOST, options.PORT)
+```
+
+This reads an optional port and host from the command line and overrides the defaults. It also starts the server.
+
+Then we define the server class:
+
+```python
+class flashServer:
+    mySocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    open_channels = {}
+    BUFSIZE = 1024
+```
+
+_BUFSIZE_ is how much we read at one time. _open_channels_ is a dictionary of open socket connections. The key is the _(ip, port)_ tuple and the value is the _socket_.
+
+```python
+    def __init__(self, host='', port=2900):
+        print 'Starting server...'
+        try:
+            self.mySocket.bind((host, port))
+            self.mySocket.listen(5)
+            print 'Server started successfully'
+        except:
+            print 'Server failed to start'
+            return
+
+        while True:
+            try:
+                socket = self.mySocket.accept()
+
+            except:
+                print 'Error: failed to accept connection'
+                continue
+
+            channel, details = socket
+            print 'We have opened a connection with ', details
+            self.open_channels[details] = channel
+            thread.start_new_thread(self.connect, (channel, details))
+```
+
+This ctor should be straightforward. We attempt to bind to the host/port. After that, we enter an infinite loop accepting connections and threading off to handle each new connection. The function that is fired in the new thread is _flashServer.connect_ and we pass it the _(socket, (ip, port))_ nested tuple as an argument.
+
+_flashServer.connect_ accumulates data _BUFSIZE_ bytes at a time. When it encounters `\0`, it sends the data to _flashServer.parse_cmd_.
+
+_flashServer.parse_cmd_ is where the magic happens. It parses the XML and reads in the root tag. The root tag is the name of the function that the XML Document gets sent to for more processing:
+
+```python
+        func_name = 'xml_'+xmldoc.tag
+        if hasattr(self, func_name):
+            getattr(self, func_name)(xmldoc, details)
+        else:
+            self.open_channels[details].send('<error>Invalid Command</error>\0')
+```
+
+So, had the client sent `<test>1.2.3..</test>\0`, the function _xml_test_ would be called. Invalid tags (i.e. ones with no corresponding function) generate an error response. As you need more functions, all you have to do is define them. If you want to accept `<login><user>bob</user><password>god</password></login>\0`, all you have to do is define _xml_login_ and put the appropriate code in there.
+
+It should be fairly easy to extend this into a simple server that actually does something.
+
+_Note: The server and client files mentioned in the original article were not found in the archive._
+
+Happy hacking

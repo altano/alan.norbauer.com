@@ -1,0 +1,58 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.1-pl3
+-- http://www.phpmyadmin.net
+-- 
+-- Generation Time: May 14, 2005 at 11:23 AM
+-- Server version: 4.0.24
+-- PHP Version: 4.3.10
+-- 
+-- Database: `websecDB`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Messages`
+-- 
+
+CREATE TABLE IF NOT EXISTS `Messages` (
+  `Id` int(4) unsigned NOT NULL auto_increment,
+  `Name` varchar(255) NOT NULL default '',
+  `Message` varchar(255) NOT NULL default '',
+  `DateAdded` timestamp(19) NOT NULL,
+  PRIMARY KEY  (`Id`)
+) TYPE=MyISAM AUTO_INCREMENT=9 ;
+
+-- 
+-- Dumping data for table `Messages`
+-- 
+
+INSERT INTO `Messages` VALUES (1, 'Jack', 'Hello people of the interweb!', '2005-05-02 03:42:52');
+INSERT INTO `Messages` VALUES (2, 'Fred', 'Hey Jack what is up', '2005-05-02 03:42:52');
+INSERT INTO `Messages` VALUES (3, 'Amy', 'Hmm, I am upset', '2005-05-02 03:42:52');
+INSERT INTO `Messages` VALUES (4, 'Fred', 'What is wrong?', '2005-05-02 03:42:52');
+INSERT INTO `Messages` VALUES (5, 'Amy', 'Your face!', '2005-05-02 03:42:52');
+INSERT INTO `Messages` VALUES (6, 'Sam', 'Oh snap!', '2005-05-02 03:42:52');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `Staff`
+-- 
+
+CREATE TABLE IF NOT EXISTS `Staff` (
+  `Id` int(4) unsigned NOT NULL auto_increment,
+  `Name` varchar(255) NOT NULL default '',
+  `Pin` int(4) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`Id`)
+) TYPE=MyISAM AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `Staff`
+-- 
+
+INSERT INTO `Staff` VALUES (1, 'Jack', 3521);
+INSERT INTO `Staff` VALUES (2, 'Fred', 32854);
+INSERT INTO `Staff` VALUES (3, 'Amy', 19823);
+INSERT INTO `Staff` VALUES (4, 'Sam', 1293);
+        

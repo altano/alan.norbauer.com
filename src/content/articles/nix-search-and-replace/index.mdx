@@ -1,0 +1,64 @@
+---
+draft: false
+tags:
+  - unix
+  - linux
+  - cli
+  - grep
+  - sed
+title: "*nix Search and Replace"
+description: Command-line search and replace across multiple files in Unix/Linux
+date_created: 2005-08-22T13:01:00Z
+---
+
+I couldn't figure out how to do a search and replace in multiple files on the command line, so I sat down with someone who knows the CLI a lot better than I and we (he) came up with this:
+
+```bash
+find . -iname \*.php -or -iname \*.inc -or -iname \*.html -or -iname \*.htm | sed 's/ /\\ /g' | sed 's/#/\#/g' | xargs sed -i 's/text1/text2/gi'
+```
+
+This searches the contents of all .php, .inc, .htm, and .html files, recursively from the current directory, and replaces occurences of text1 with text2.
+
+This handles files with spaces and pound signs (#) in the name without breaking, the one requirement I had which I couldn't find on the net.
+
+Of course, if you're only interested in the search part:
+
+```bash
+grep -r text *
+```
+
+Problem with that is binary files mucking up your searches. Just specify "--binary-files=without-match" as an option. Also, let's say you only want to count the number of matches. Let's throw in some case-insensitivity as well:
+
+```bash
+grep --binary-files=without-match -ir text * | wc -l
+```
+
+Another neat trick is to specify -v, which inverts matches (count the number of files that _don't_ contain "text" if we added it in the above example).
+
+This can also be used to filter out something unwanted from search results. For example, to find all files that contain "text1" but don't have ".svn" in their path:
+
+```bash
+grep -R text1 * | grep -v .svn
+```
+
+or to strip out comments from a C++ project:
+
+```bash
+egrep -hv "^[[:space:]]*(/|\*)" *.cpp *.h
+```
+
+or blank lines:
+
+```bash
+egrep -hv "^[[:space:]]*$" *.cpp *.h
+```
+
+or both, giving us a rough lines of code estimate:
+
+```bash
+egrep -hv "^[[:space:]]*(/|\*)" *.cpp *.h | egrep -v "^[[:space:]]*$" | wc -l
+```
+
+For that though, you should be using find and xargs again, since it would be faster, but this is easier to remember.
+
+Happy CLIing.
