@@ -65,6 +65,15 @@ export function getArticleMarkdownURL(article: Article): string {
   return `https://github.com/altano/alan.norbauer.com/tree/main/src/content/articles/${article.slug}/index.mdx`;
 }
 
+export async function getArticlePrimaryAuthor(
+  article: Article,
+): Promise<CollectionEntry<"authors">> {
+  const data = article.data;
+  const authors = data.authors;
+  const primaryAuthor = nullthrows(authors[0]);
+  return getEntry(primaryAuthor);
+}
+
 export async function getOtherArticlesInSeries(
   article: Article,
 ): Promise<Article[]> {

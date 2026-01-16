@@ -10,6 +10,7 @@ const authors = defineCollection({
   type: "data",
   schema: z.object({
     name: z.string(),
+    firstName: z.string(), //.lowercase(),
     url: z.string(),
     socials: z
       .object({
@@ -40,7 +41,7 @@ const articleSeries = defineCollection({
 const articles = defineCollection({
   type: "content",
   schema: z.object({
-    author: reference("authors").default("alan"),
+    authors: reference("authors").array().optional().default(["alan"]),
     date_created: z.coerce.date(),
     date_updated: z.undefined().or(z.coerce.date()),
     description: z.string().min(5),

@@ -1,0 +1,52 @@
+name: Adam Podolnick
+firstName: adam
+url: https://github.com/podman
+socials:
+  bluesky:
+    name: Bluesky
+    handle: ""
+    link: "http://example.com"
+  email:
+    name: E-mail
+    handle: ""
+    link: "http://example.com"
+  facebook:
+    name: Facebook
+    handle: ""
+    link: "http://example.com"
+  github:
+    name: GitHub
+    handle: ""
+    link: "http://example.com"
+  hackernews:
+    name: Hacker News
+    handle: ""
+    link: "http://example.com"
+  instagram:
+    name: Instagram
+    handle: ""
+    link: "http://example.com"
+  lobsters:
+    name: Lobste.rs
+    handle: ""
+    link: "http://example.com"
+  mastodon:
+    name: Mastodon
+    handle: ""
+    link: "http://example.com"
+  reddit:
+    name: Reddit
+    handle: ""
+    link: "http://example.com"
+  rss:
+    name: RSS
+    handle: ""
+    link: "http://example.com"
+  threads:
+    name: Threads
+    handle: ""
+    link: "http://example.com"
+  twitter:
+    name: Twitter
+    handle: ""
+    link: "http://example.com"

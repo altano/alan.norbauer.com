@@ -1,12 +1,12 @@
 ---
 import { type CollectionEntry } from "astro:content";
 import OpenGraph from "@/components/OpenGraph.astro";
-import { getEntry } from "astro:content";
+import { getArticlePrimaryAuthor } from "@/content-utils/query/articles";
 
 type Props = CollectionEntry<"articles">;
 
 const article = Astro.props;
-const author = await getEntry(article.data.author);
+const author = await getArticlePrimaryAuthor(article);
 const subtitle = `by ${author.data.name}`;
 ---
 

@@ -1,0 +1,59 @@
+---
+import { elementList } from "@/utilities/elementList";
+import type { CollectionEntry } from "astro:content";
+import type { Props as TagProps } from "./Tag.astro";
+import Tag from "./Tag.astro";
+
+interface Props {
+  authors: CollectionEntry<"authors">[];
+  kind: TagProps["kind"];
+}
+
+const {
+  authors,
+  // TODO What on earth is the problem here
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  kind,
+} = Astro.props;
+---
+
+<style>
+  @layer components {
+    ul {
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      flex-wrap: wrap;
+    }
+    ul > :global(li:not(:first-of-type)) {
+      margin-inline-start: 0.25rem;
+    }
+    ul > :global(li:not(:last-of-type)) {
+      margin-inline-end: 0.25rem;
+    }
+    a {
+      padding: 0.25rem;
+      text-decoration: none;
+    }
+  }
+</style>
+
+{
+  authors.length === 0 ? null : (
+    <ul>
+      {elementList(
+        authors.map((author) => (
+          <Tag
+            kind={
+              // TODO What on earth is the problem here
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+              kind
+            }
+          >
+            <a href={author.data.url}>{author.data.firstName}</a>
+          </Tag>
+        ))
+      )}
+    </ul>
+  )
+}

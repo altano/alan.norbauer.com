@@ -17,17 +17,17 @@ export const GET: APIRoute = async (context) => {
     title: rssTitle,
     description: pkg.description,
     site: nullthrows(context.site),
-    items: articles.map(
-      (article) =>
-        ({
-          link: getArticleCanonicalURL(article),
-          content: article.rendered?.html,
-          title: article.data.title,
-          pubDate: article.data.date_created,
-          description: article.data.description,
-          categories: article.data.tags,
-          author: article.data.author.id,
-        }) satisfies RSSFeedItem,
-    ),
+    items: articles.map((article) => {
+      const primaryAuthor = article.data.authors?.[0];
+      return {
+        link: getArticleCanonicalURL(article),
+        content: article.rendered?.html,
+        title: article.data.title,
+        pubDate: article.data.date_created,
+        description: article.data.description,
+        categories: article.data.tags,
+        author: nullthrows(primaryAuthor).id,
+      } satisfies RSSFeedItem;
+    }),
   });
 };
