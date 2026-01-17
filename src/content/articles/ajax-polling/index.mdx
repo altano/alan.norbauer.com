@@ -19,23 +19,15 @@ Yes we know that there have been a lot of AJAX tutorials as of late, but we thou
 
 We found that while other tutorials cover the very basic methods for using xmlhttprequest, they failed to explain how to use them in a practical manner, especially in applications that need to poll the server in quick succession. When we started work on Ramble, an open source AJAX chat client, we ran into a lot of these problems. After a lot of trial and error, we've come up with a good way to do quick successive requests and deal with all of the issues surrounding cross-browser compatibility.
 
-Here is what this tutorial will cover:
-
-- [Quick successive requests](#quick-successive-requests)
-- [How to handle exceptions](#how-to-handle-exceptions)
-- [Cross-browser issues](#cross-browser-issues)
-- [Random tips](#random-tips)
-- [Demo and Source Code](#demo-and-source-code)
-
 ## Quick successive requests
 
-**Problem:**
+### Problem
 
 If you've ever tried to write an application that uses the xmlhttprequest to constantly get information as opposed to a one shot deal, you've probably noticed that it often behaves erratically. Sometimes the data won't come through properly or it will work properly for a while and then just stop completely. What it comes down to is the fact that the xmlhttprequest object is really just good for about one request.
 
-**Solution:**
+### Solution
 
-The best way we found to deal with the erratic nature of the xmlhttprequest is to actually use one object per request. So basically any time you make a request create a new object. In all of our testing, this really doesn't add much overhead and you can easily make requests to a server every 100ms\* if you wanted. An easy way to handle this is to just make a function that takes care of creating the object and then call that every time you want to make a request.
+The best way we found to deal with the erratic nature of the xmlhttprequest is to actually use one object per request. So basically any time you make a request create a new object. In all of our testing, this really doesn't add much overhead and you can easily make requests to a server every 100ms if you wanted. An easy way to handle this is to just make a function that takes care of creating the object and then call that every time you want to make a request.
 
 Here is an example:
 
