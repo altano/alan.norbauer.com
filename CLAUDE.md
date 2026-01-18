@@ -22,4 +22,6 @@ Personal website built with Astro.
 ## Commands
 
 - Build: Standard Astro build commands
-- Package manager: pnpm
+- Package manager: pnpm (see package.json for scripts)
+- `devbox search <command>` - find a command to install
+- `devbox install <command>` - install command
