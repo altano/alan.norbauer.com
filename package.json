@@ -17,7 +17,7 @@
     "check": "pnpm run '/^(check:.*)$/'",
     "check:astro": "astro check",
     "check:lint": "eslint 'src/**/*.{js,jsx,ts,tsx,astro}'",
-    "check:mdx": "mdx-local-link-checker src/content src/content '**/zerotier-start.sh|/articles/**/*.gif|/articles/**/*.avif'",
+    "check:mdx": "mdx-local-link-checker src/content src/content '**/zerotier-start.sh|/articles/**/*.gif|/articles/**/*.avif|/articles/spell-checker/**/*|/articles/ajax-polling/**/*.zip|/articles/web-application-security/**/*'",
     "check:types:test": "tsc --project ./tests/tsconfig.json",
     "convert:images": "node ./scripts/convert-images.ts",
     "dev": "astro dev",

@@ -1,12 +1,9 @@
 ---
 draft: false
 tags:
-  - unix
   - linux
   - cli
-  - grep
-  - sed
-title: "*nix Search and Replace"
+title: "Linux Search and Replace"
 description: Command-line search and replace across multiple files in Unix/Linux
 date_created: 2005-08-22T13:01:00Z
 ---
@@ -20,7 +17,7 @@ I couldn't figure out how to do a search and replace in multiple files on the co
 find . -iname \*.php -or -iname \*.inc -or -iname \*.html -or -iname \*.htm | sed 's/ /\\ /g' | sed 's/#/\#/g' | xargs sed -i 's/text1/text2/gi'
 ```
 
-This searches the contents of all .php, .inc, .htm, and .html files, recursively from the current directory, and replaces occurences of text1 with text2.
+This searches the contents of all .php, .inc, .htm, and .html files, recursively from the current directory, and replaces occurrences of text1 with text2.
 
 This handles files with spaces and pound signs (#) in the name without breaking, the one requirement I had which I couldn't find on the net.
 
