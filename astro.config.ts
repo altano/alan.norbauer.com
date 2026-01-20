@@ -7,6 +7,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeWrap from "rehype-wrap-all";
 import remarkSectionize from "remark-sectionize";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeCodeGroup from "rehype-code-group";
 import openGraph from "@altano/astro-opengraph";
 import typedLinks from "astro-typed-links";
 import icon from "astro-icon";
@@ -45,6 +46,7 @@ export default defineConfig({
           wrapper: "div.markdown-table-wrapper",
         },
       ],
+      rehypeCodeGroup,
     ],
   },
   prefetch: true,

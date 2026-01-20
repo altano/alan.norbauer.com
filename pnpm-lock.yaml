@@ -119,6 +119,9 @@ importers:
       react-dom:
         specifier: ^19.2.0
         version: 19.2.0(react@19.2.0)
+      rehype-code-group:
+        specifier: ^0.2.4
+        version: 0.2.4(typescript@5.9.3)
       rehype-wrap-all:
         specifier: ^1.1.0
         version: 1.1.0
@@ -3625,6 +3628,15 @@ packages:
 
   rehype-autolink-headings@7.1.0:
     resolution: {integrity: sha512-rItO/pSdvnvsP4QRB1pmPiNHUskikqtPojZKJPPPAVx9Hj8i8TwMBhofrrAYRhYOOBZH9tgmG5lPqDLuIWPWmw==}
+
+  rehype-code-group@0.2.4:
+    resolution: {integrity: sha512-ExGjvA5dZz+UiTyIRWGclk1RDuTjqMiC0JxxSpcQ8W9AHWaJmzdyzQB4MiofnzRc2SCTvXDzuFhd1Co5TLMKmA==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      typescript: '>=5.0.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   rehype-expressive-code@0.41.3:
     resolution: {integrity: sha512-8d9Py4c/V6I/Od2VIXFAdpiO2kc0SV2qTJsRAaqSIcM9aruW4ASLNe2kOEo1inXAAkIhpFzAHTc358HKbvpNUg==}
@@ -8912,6 +8924,15 @@ snapshots:
       hast-util-is-element: 3.0.0
       unified: 11.0.5
       unist-util-visit: 5.0.0
+
+  rehype-code-group@0.2.4(typescript@5.9.3):
+    dependencies:
+      hast-util-to-string: 3.0.1
+      rehype: 13.0.2
+      unified: 11.0.5
+      unist-util-visit: 5.0.0
+    optionalDependencies:
+      typescript: 5.9.3
 
   rehype-expressive-code@0.41.3:
     dependencies:

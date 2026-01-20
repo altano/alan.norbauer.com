@@ -65,6 +65,7 @@
     "prettier": "^3.6.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "rehype-code-group": "^0.2.4",
     "rehype-wrap-all": "^1.1.0",
     "sharp": "^0.34.5",
     "short-unique-id": "^5.3.2",

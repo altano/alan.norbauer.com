@@ -1,0 +1,164 @@
+---
+import { Code } from "astro-expressive-code/components";
+
+interface Props {
+  files: Array<{
+    name: string;
+    code: string;
+    lang: string;
+  }>;
+  maxHeight?: number;
+}
+
+const { files, maxHeight } = Astro.props;
+---
+
+<div class="code-viewer-container" style={maxHeight ? `--max-height: ${maxHeight}px` : undefined}>
+  <div class="code-viewer-nav">
+    {
+      files.map((file, index) => (
+        <button
+          class="code-viewer-button"
+          data-file-index={index}
+          data-active={index === 0}
+          type="button"
+        >
+          {file.name}
+        </button>
+      ))
+    }
+  </div>
+
+  {
+    files.map((file, index) => (
+      <div
+        class="code-viewer-content"
+        data-file-index={index}
+        data-active={index === 0}
+      >
+        <Code code={file.code} lang={file.lang} />
+      </div>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll(".code-viewer-container").forEach((container) => {
+    const buttons = container.querySelectorAll(".code-viewer-button");
+    const contents = container.querySelectorAll(".code-viewer-content");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = button.getAttribute("data-file-index");
+
+        // Update active states
+        buttons.forEach((b) => b.setAttribute("data-active", "false"));
+        contents.forEach((c) => c.setAttribute("data-active", "false"));
+
+        button.setAttribute("data-active", "true");
+        const content = container.querySelector(
+          `.code-viewer-content[data-file-index="${index}"]`
+        );
+        if (content) {
+          content.setAttribute("data-active", "true");
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .code-viewer-container {
+    margin: 1em 0;
+
+    & :global(.expressive-code) {
+      margin: 0;
+    }
+  }
+
+  .code-viewer-content {
+    display: none;
+  }
+
+  .code-viewer-content[data-active="true"] {
+    display: block;
+  }
+
+  /* Apply max-height if specified */
+  .code-viewer-container[style*="--max-height"] .code-viewer-content :global(.expressive-code pre) {
+    max-height: var(--max-height);
+    overflow-y: auto;
+  }
+
+  /* Style tabs to match Expressive Code's figcaption header */
+  .code-viewer-nav {
+    display: flex;
+    gap: 0;
+    background: var(--ec-frm-edTabBarBg);
+    border: var(--ec-brdWd) solid var(--ec-frm-edTabBarBrdCol);
+    border-bottom: var(--ec-brdWd) solid var(--ec-frm-edTabBarBrdBtmCol);
+    border-radius: calc(var(--ec-brdRad) + var(--ec-brdWd))
+      calc(var(--ec-brdRad) + var(--ec-brdWd)) 0 0;
+    padding: 0;
+    padding-inline-start: var(--ec-frm-edTabsMargInlStart);
+    margin-block-start: var(--ec-frm-edTabsMargBlkStart);
+    font-family: var(--ec-uiFontFml);
+    font-size: var(--ec-uiFontSize);
+  }
+
+  .code-viewer-button {
+    position: relative;
+    padding: calc(var(--ec-uiPadBlk) + var(--ec-frm-edActTabIndHt))
+      var(--ec-uiPadInl);
+    border: var(--ec-brdWd) solid transparent;
+    border-bottom: none;
+    background: transparent;
+    background-clip: padding-box;
+    color: var(--ec-codeFg);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 400;
+    opacity: 0.7;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      opacity 0.2s;
+    border-radius: calc(var(--ec-frm-edTabBrdRad) + var(--ec-brdWd))
+      calc(var(--ec-frm-edTabBrdRad) + var(--ec-brdWd)) 0 0;
+    overflow: hidden;
+  }
+
+  .code-viewer-button[data-active="true"] {
+    background: var(--ec-frm-edActTabBg);
+    color: var(--ec-frm-edActTabFg);
+    border-color: var(--ec-frm-edActTabBrdCol);
+    opacity: 1;
+    font-weight: 400;
+  }
+
+  .code-viewer-button[data-active="true"]::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    border-top: var(--ec-frm-edActTabIndHt) solid
+      var(--ec-frm-edActTabIndTopCol);
+    border-bottom: var(--ec-frm-edActTabIndHt) solid
+      var(--ec-frm-edActTabIndBtmCol);
+  }
+
+  .code-viewer-button:hover:not([data-active="true"]) {
+    opacity: 1;
+  }
+
+  /* Remove the top border/header from the code blocks since tabs replace it */
+  .code-viewer-content :global(.expressive-code .frame) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .code-viewer-content :global(.expressive-code .frame figcaption) {
+    display: none;
+  }
+</style>
