@@ -6,6 +6,7 @@ import eslint from "@eslint/js";
 import astroEslintParser from "astro-eslint-parser";
 import { globalIgnores } from "eslint/config";
 import globals from "globals";
+import reactHooks from "eslint-plugin-react-hooks";
 
 export default tseslint.config(
   globalIgnores([
@@ -22,6 +23,18 @@ export default tseslint.config(
     rules: {
       // override/add rules settings here, such as:
       "astro/no-set-html-directive": "error",
+    },
+  },
+
+  // React hooks
+  {
+    files: ["**/*.tsx", "**/*.jsx"],
+    plugins: {
+      "react-hooks": reactHooks,
+    },
+    rules: {
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "error",
     },
   },
 
