@@ -1,0 +1,14 @@
+---
+import CodeViewer from "@/components/CodeViewer.astro";
+import ajaxPollerText from "./xmlhttp-example/ajax_poller.js?raw";
+import characterGeneratorText from "./xmlhttp-example/characterGenerator.php?raw";
+import indexPhpText from "./xmlhttp-example/index.php?raw";
+
+const ajaxPollingFiles = [
+  { name: "index.php", code: indexPhpText, lang: "php" },
+  { name: "ajax_poller.js", code: ajaxPollerText, lang: "javascript" },
+  { name: "characterGenerator.php", code: characterGeneratorText, lang: "php" },
+];
+---
+
+<CodeViewer files={ajaxPollingFiles} maxHeight={615} />
