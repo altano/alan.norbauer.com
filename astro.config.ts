@@ -83,7 +83,7 @@ export default defineConfig({
         uiFontFamily: "var(--font-ibm-plex-mono)",
         uiFontSize: "16px",
         codeFontFamily: "var(--font-ibm-plex-mono)",
-        codeFontSize: "16px", // don't use rem, it looks like it gets applied twice (so 0.8rem is computed as 20*.8*.8=12.8 sintead of 16)
+        codeFontSize: "16px", // don't use rem, it looks like it gets applied twice (so 0.8rem is computed as 20*.8*.8=12.8 instead of 16)
         frames: {
           frameBoxShadowCssValue: "none",
           tooltipSuccessForeground: "var(--text)",
