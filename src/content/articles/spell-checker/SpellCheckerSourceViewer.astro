@@ -1,0 +1,16 @@
+---
+import CodeViewer from "@/components/CodeViewer.astro";
+import checkPhpText from "./source-code/check.php?raw";
+import doubleMetaphoneText from "./source-code/DoubleMetaphone.php?raw";
+import licenseText from "./source-code/LICENSE?raw";
+import scowlLicenseText from "./source-code/SCOWL-LICENSE?raw";
+
+const spellCheckerFiles = [
+  { name: "check.php", code: checkPhpText, lang: "php" },
+  { name: "DoubleMetaphone.php", code: doubleMetaphoneText, lang: "php" },
+  { name: "LICENSE", code: licenseText, lang: "text" },
+  { name: "SCOWL-LICENSE", code: scowlLicenseText, lang: "text" },
+];
+---
+
+<CodeViewer files={spellCheckerFiles} maxHeight={615} />
