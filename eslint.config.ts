@@ -4,14 +4,15 @@ import prettier from "eslint-plugin-prettier/recommended";
 import packageJson from "eslint-plugin-package-json";
 import eslint from "@eslint/js";
 import astroEslintParser from "astro-eslint-parser";
-import { globalIgnores } from "eslint/config";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
 
-export default tseslint.config(
+export default defineConfig(
   globalIgnores([
     "src/content/articles/browser-debugging-tricks/_scratch/",
     "postcss.config.cjs",
+    "src/content/articles/ajax-polling/xmlhttp-example/",
   ]),
   eslint.configs.recommended,
 
@@ -27,11 +28,9 @@ export default tseslint.config(
   },
 
   // React hooks
+  reactHooks.configs.flat.recommended,
   {
-    files: ["**/*.tsx", "**/*.jsx"],
-    plugins: {
-      "react-hooks": reactHooks,
-    },
+    files: ["**/*.{js,jsx,ts,tsx}"],
     rules: {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "error",

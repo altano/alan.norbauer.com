@@ -3,14 +3,24 @@ import { findLargestUsableFontSize } from "@altano/satori-fit-text";
 import { getInter } from "./font.js";
 
 export default function App() {
+  return (
+    <TextBox
+      width={300}
+      height={150}
+      text="Hello"
+      lineHeight={1}
+      weight={500}
+    />
+  );
+}
+
+function TextBox({ width, height, text, lineHeight, weight }) {
   const [fontSize, setFontSize] = useState(0);
-  const width = 300;
-  const height = 150;
-  const text = "Hello";
-  const lineHeight = 1;
-  const weight = 500;
 
   useEffect(() => {
+    // Workaround sandbox hot-reload: don't do this in production code.
+    //
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setFontSize(0);
 
     async function compute() {
