@@ -13,6 +13,27 @@ function articleDateDescending(a: Article, b: Article): number {
   return +b.data.date_created - +a.data.date_created;
 }
 
+export function groupArticlesByYear(
+  articles: Article[],
+): Map<number, Article[]> {
+  const articlesByYearUnsorted = new Map<number, Article[]>();
+  articles.forEach((article) => {
+    const year = article.data.date_created.getFullYear();
+    const existing = articlesByYearUnsorted.get(year) ?? [];
+    articlesByYearUnsorted.set(year, [...existing, article]);
+    return articlesByYearUnsorted;
+  });
+
+  // Sort years descending
+  const sortedArticlesByYearPairs = Array.from(
+    articlesByYearUnsorted.entries(),
+  ).sort(
+    // descending
+    ([a], [b]) => Number(b) - Number(a),
+  );
+  return new Map(sortedArticlesByYearPairs);
+}
+
 /**
  * Get Articles from newest to oldest. Filter out drafts unless in development.
  */

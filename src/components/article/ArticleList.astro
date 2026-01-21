@@ -1,12 +1,17 @@
 ---
-import { getArticles, getArticlesByTag } from "@/content-utils/query/articles";
+import {
+  getArticles,
+  getArticlesByTag,
+  groupArticlesByYear,
+} from "@/content-utils/query/articles";
 import ArticleCard from "./ArticleCard.astro";
 import Cards from "../Cards.astro";
 
 export type Props = { tag?: string };
-const { tag } = Astro.props;
 
+const { tag } = Astro.props;
 const articles = tag ? await getArticlesByTag(tag) : await getArticles();
+const articlesByYear = groupArticlesByYear(articles);
 ---
 
 <style>
@@ -15,9 +20,77 @@ const articles = tag ? await getArticlesByTag(tag) : await getArticles();
       display: block;
       text-decoration: none;
     }
+
+    .year-articles {
+      margin: 0;
+      gap: var(--spacing-12);
+      anchor-name: --year-anchor;
+
+      @media (--lg-up-viewport) {
+        min-height: 150px;
+
+        .year-group:not(:last-of-type) & {
+          margin-bottom: var(--spacing-8);
+          padding-bottom: var(--spacing-10);
+          border-bottom: 1px dashed var(--text-faded);
+        }
+      }
+    }
+
+    .year-group {
+      anchor-scope: --year-anchor;
+      position: relative;
+
+      margin-block: var(--spacing-8);
+
+      &:last-of-type {
+        margin-block-end: 0;
+      }
+    }
+
+    .year-heading {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
+      border-bottom: 1px dashed var(--text-faded);
+
+      @media (--lg-up-viewport) {
+        position-anchor: --year-anchor;
+        font-weight: 500;
+
+        text-box-trim: trim-start;
+        text-box-edge: cap alphabetic;
+
+        border: none;
+
+        position: absolute;
+        top: calc(anchor(top) - 0px);
+        right: calc(anchor(left) + var(--spacing-8));
+        margin: 0 var(--spacing-4) var(--spacing-4);
+
+        /**
+         * text-orientation: upright; doesn't play nice with text-box-trim, so 
+         * force the upright text with word breaking
+         */
+        word-break: break-all;
+        /* text-orientation: upright; */
+        /* writing-mode: vertical-rl; */
+      }
+    }
   }
 </style>
 
-<Cards>
-  {articles.map((article) => <ArticleCard article={article} tagToOmit={tag} />)}
-</Cards>
+{
+  articlesByYear.entries().map(([year, articles]) => (
+    <div class="year-group">
+      <h3 id={year.toString()} class="year-heading">
+        {year}
+      </h3>
+      <Cards class="year-articles">
+        {articles.map((article) => (
+          <ArticleCard article={article} tagToOmit={tag} />
+        ))}
+      </Cards>
+    </div>
+  ))
+}

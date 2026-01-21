@@ -48,7 +48,7 @@ test.describe("article", () => {
     // This is a really short page. If we have a reasonably sized device, it
     // should NOT have a vertical scrollbar
     const viewportHeight = page.viewportSize()?.height;
-    if (viewportHeight && viewportHeight >= 700) {
+    if (viewportHeight && viewportHeight >= 800) {
       await devPage.assertNotYScrollable();
     }
   });

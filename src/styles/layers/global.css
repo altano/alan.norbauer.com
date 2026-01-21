@@ -70,13 +70,13 @@
     h3 {
       font-size: 1.25rem;
       @media (--sm-up-viewport) {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
       }
     }
     h4 {
       font-size: 1.25rem; /* don't go lower than 1.25rem or 20px, since body text is 20px */
       @media (--sm-up-viewport) {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
       }
     }
     h5,

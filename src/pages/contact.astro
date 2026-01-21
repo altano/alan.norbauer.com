@@ -32,13 +32,23 @@ const size = 52;
       }
     }
 
-    section {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-8);
+    section:not(:last-of-type) {
+      margin-block-end: var(--spacing-6);
+    }
 
-      &.inactive {
+    section {
+      &.inactive > ul {
         opacity: 0.25;
+      }
+
+      & > ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-8);
+
+        li {
+          line-height: 1;
+        }
       }
     }
   }
@@ -52,65 +62,97 @@ const size = 52;
   <Main size="large">
     <PageTitle>Alan on the Internet</PageTitle>
     <div class="sections">
-      <SectionHeading>Boomer Shit</SectionHeading>
       <section>
-        <EmailLink
-          size={size}
-          text={`E-mail – ${alan.data.socials.email.handle}`}
-        />
-        <FeedLink {size} text="This Site's RSS Feed" />
+        <SectionHeading>Boomer Shit</SectionHeading>
+        <ul>
+          <li>
+            <EmailLink
+              size={size}
+              text={`E-mail – ${alan.data.socials.email.handle}`}
+            />
+          </li>
+          <li>
+            <FeedLink {size} text="This Site's RSS Feed" />
+          </li>
+        </ul>
       </section>
 
-      <SectionHeading>Programming</SectionHeading>
       <section>
-        <LobstersLink
-          {size}
-          text={`Lobste.rs – ${alan.data.socials.lobsters.handle}`}
-        />
-        <MastodonLink
-          {size}
-          text={`Mastodon – ${alan.data.socials.mastodon.handle}`}
-        />
-        <GithubLink
-          {size}
-          text={`GitHub – ${alan.data.socials.github.handle}`}
-        />
-        <BlueSkyLink
-          {size}
-          text={`Bluesky – ${alan.data.socials.bluesky.handle}`}
-        />
+        <SectionHeading>Programming</SectionHeading>
+        <ul>
+          <li>
+            <LobstersLink
+              {size}
+              text={`Lobste.rs – ${alan.data.socials.lobsters.handle}`}
+            />
+          </li>
+          <li>
+            <MastodonLink
+              {size}
+              text={`Mastodon – ${alan.data.socials.mastodon.handle}`}
+            />
+          </li>
+          <li>
+            <GithubLink
+              {size}
+              text={`GitHub – ${alan.data.socials.github.handle}`}
+            />
+          </li>
+          <li>
+            <BlueSkyLink
+              {size}
+              text={`Bluesky – ${alan.data.socials.bluesky.handle}`}
+            />
+          </li>
+        </ul>
       </section>
 
-      <SectionHeading>Social</SectionHeading>
       <section>
-        <RedditLink
-          {size}
-          text={`Reddit – ${alan.data.socials.reddit.handle}`}
-        />
+        <SectionHeading>Social</SectionHeading>
+        <ul>
+          <li>
+            <RedditLink
+              {size}
+              text={`Reddit – ${alan.data.socials.reddit.handle}`}
+            />
+          </li>
+        </ul>
       </section>
 
-      <SectionHeading>Inactive</SectionHeading>
       <section class="inactive">
-        <HackerNewsLink
-          {size}
-          text={`Hacker News – ${alan.data.socials.hackernews.handle}`}
-        />
-        <FacebookLink
-          {size}
-          text={`Facebook – ${alan.data.socials.facebook.handle}`}
-        />
-        <TwitterLink
-          {size}
-          text={`Twitter – ${alan.data.socials.twitter.handle}`}
-        />
-        <ThreadsLink
-          {size}
-          text={`Threads – ${alan.data.socials.threads.handle}`}
-        />
-        <InstagramLink
-          {size}
-          text={`Instagram – ${alan.data.socials.instagram.handle}`}
-        />
+        <SectionHeading>Inactive</SectionHeading>
+        <ul>
+          <li>
+            <HackerNewsLink
+              {size}
+              text={`Hacker News – ${alan.data.socials.hackernews.handle}`}
+            />
+          </li>
+          <li>
+            <FacebookLink
+              {size}
+              text={`Facebook – ${alan.data.socials.facebook.handle}`}
+            />
+          </li>
+          <li>
+            <TwitterLink
+              {size}
+              text={`Twitter – ${alan.data.socials.twitter.handle}`}
+            />
+          </li>
+          <li>
+            <ThreadsLink
+              {size}
+              text={`Threads – ${alan.data.socials.threads.handle}`}
+            />
+          </li>
+          <li>
+            <InstagramLink
+              {size}
+              text={`Instagram – ${alan.data.socials.instagram.handle}`}
+            />
+          </li>
+        </ul>
       </section>
     </div>
 

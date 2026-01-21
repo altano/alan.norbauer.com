@@ -25,7 +25,7 @@ test.describe("responsiveness", () => {
     await page.goto("/tags/development-environments/");
     // if this starts failing because we have more than one article for this
     // tag, replace it with another tag we only have one of
-    await expect(page.locator(`main > ul > li`)).toHaveCount(1);
+    await expect(page.locator(`main ul.year-articles > li`)).toHaveCount(1);
     await expect(page).toHaveScreenshot();
   });
 

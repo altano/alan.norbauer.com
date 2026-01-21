@@ -1,3 +1,11 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"ul">;
+
+const { class: className, ...props } = Astro.props;
+---
+
 <style>
   @layer components {
     ul {
@@ -15,4 +23,4 @@
   }
 </style>
 
-<ul><slot /></ul>
+<ul class={className} {...props}><slot /></ul>
