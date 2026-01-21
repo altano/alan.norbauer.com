@@ -7,9 +7,11 @@
     "src/content/articles/ajax-polling/xmlhttp-example/ajax_poller.js"
   ],
   "compilerOptions": {
+    "noEmit": true,
     "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
+    "allowJs": false,
     "paths": {
       "@/*": ["./src/*"],
       "@/content-utils/*": ["./src/content-utils/*"],
