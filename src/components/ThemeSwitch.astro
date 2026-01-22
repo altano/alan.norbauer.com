@@ -38,8 +38,14 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-  import { toggleTheme, updateTheme } from "@/scripts/theme.js";
+  import {
+    ensureValidTheme,
+    toggleTheme,
+    updateTheme,
+  } from "@/scripts/theme.js";
   import type { Theme } from "astro-themes";
+
+  ensureValidTheme();
 
   function getButtonLabel(preference: Theme | null): string {
     switch (preference) {
