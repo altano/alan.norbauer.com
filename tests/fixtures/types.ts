@@ -21,6 +21,25 @@ export declare class ExpectError extends Error {
   matcherResult: MatcherResultProperty;
 }
 
+// this doesn't work anymore, let's fudge it
+// export function isExpectError(e: unknown): e is ExpectError {
+//   return e instanceof ExpectError;
+// }
+export function isMatcherResultProperty(
+  m: unknown,
+): m is MatcherResultProperty {
+  return (
+    m != null &&
+    typeof m === "object" &&
+    "message" in m &&
+    typeof m.message === "string"
+  );
+}
 export function isExpectError(e: unknown): e is ExpectError {
-  return e instanceof ExpectError;
+  return (
+    e != null &&
+    typeof e === "object" &&
+    "matcherResult" in e &&
+    isMatcherResultProperty(e.matcherResult)
+  );
 }

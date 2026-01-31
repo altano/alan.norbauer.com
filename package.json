@@ -76,7 +76,7 @@
     "@astrojs/check": "^0.9.6",
     "@csstools/postcss-global-data": "^3.1.0",
     "@eslint/js": "^9.39.2",
-    "@playwright/test": "^1.57.0",
+    "@playwright/test": "^1.58.1",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.7",

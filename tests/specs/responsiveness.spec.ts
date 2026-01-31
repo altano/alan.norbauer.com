@@ -11,6 +11,8 @@ test.describe("responsiveness", () => {
   test("homepage - project list", async ({ page }) => {
     await page.goto("/#projects");
     await expect(page.getByRole("heading", { name: "Projects" })).toBeVisible();
+    // wait for scroll to go ALL the way down (to the footer)
+    await expect(page.locator("footer")).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
 
