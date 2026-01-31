@@ -10,19 +10,19 @@ importers:
     dependencies:
       '@altano/astro-opengraph':
         specifier: 0.1.1
-        version: 0.1.1(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(preact@10.26.5)
+        version: 0.1.1(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(preact@10.26.5)
       '@altano/astro-prettier-response':
         specifier: ^1.0.1
-        version: 1.0.1(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(prettier@3.6.2)
+        version: 1.0.1(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(prettier@3.6.2)
       '@altano/astro-table-of-contents':
         specifier: ^0.1.3
-        version: 0.1.3(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+        version: 0.1.3(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       '@altano/satori-fit-text':
         specifier: ^2.0.1
         version: 2.0.1
       '@astrojs/mdx':
         specifier: ^4.3.13
-        version: 4.3.13(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+        version: 4.3.13(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       '@astrojs/react':
         specifier: ^4.4.2
         version: 4.4.2(@types/node@24.10.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(jiti@2.6.1)(lightningcss@1.29.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1)
@@ -84,23 +84,23 @@ importers:
         specifier: ^1.2.5
         version: 1.2.5
       astro:
-        specifier: 5.16.8
-        version: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+        specifier: 5.17.1
+        version: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
       astro-color-scheme:
         specifier: ^1.1.6
         version: 1.1.6
       astro-expressive-code:
         specifier: ^0.41.3
-        version: 0.41.3(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+        version: 0.41.3(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
       astro-themes:
         specifier: ^0.2.7
-        version: 0.2.7(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+        version: 0.2.7(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       astro-typed-links:
         specifier: ^1.1.5
-        version: 1.1.5(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+        version: 1.1.5(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
@@ -1563,8 +1563,8 @@ packages:
     peerDependencies:
       astro: ^5.0.0
 
-  astro@5.16.8:
-    resolution: {integrity: sha512-gzZE+epuCrNuxOa8/F1dzkllDOFvxWhGeobQKeBRIAef5sUpUKMHZo/8clse+02rYnKJCgwXBgjW4uTu9mqUUw==}
+  astro@5.17.1:
+    resolution: {integrity: sha512-oD3tlxTaVWGq/Wfbqk6gxzVRz98xa/rYlpe+gU2jXJMSD01k6sEDL01ZlT8mVSYB/rMgnvIOfiQQ3BbLdN237A==}
     engines: {node: 18.20.8 || ^20.3.0 || >=22.0.0, npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -1746,6 +1746,10 @@ packages:
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
+
+  chokidar@5.0.0:
+    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
+    engines: {node: '>= 20.19.0'}
 
   chownr@3.0.0:
     resolution: {integrity: sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g==}
@@ -1977,8 +1981,8 @@ packages:
   dfa@1.2.0:
     resolution: {integrity: sha512-ED3jP8saaweFTjeGX8HQPjeC1YYyZs98jGNZx6IiBvxW7JG5v492kamAQB3m2wop07CvU/RQmzcKr6bgcC5D/Q==}
 
-  diff@5.2.2:
-    resolution: {integrity: sha512-vtcDfH3TOjP8UekytvnHH1o1P4FcUdt4eQ1Y+Abap1tk/OB2MWQvcwS2ClCd1zuIhc3JKOx6p3kod8Vfys3E+A==}
+  diff@8.0.3:
+    resolution: {integrity: sha512-qejHi7bcSD4hQAZE0tNAawRK1ZtafHDmMTMkrrIGgSLl7hTnQHmKCeB45xAcbfTqK2zowkM3j3bHt/4b/ARbYQ==}
     engines: {node: '>=0.3.1'}
 
   direction@1.0.4:
@@ -2457,8 +2461,8 @@ packages:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
 
-  h3@1.15.4:
-    resolution: {integrity: sha512-z5cFQWDffyOe4vQ9xIqNfCZdV4p//vy6fBnr8Q1AWnVZ0teurKMG66rLj++TKwKPUP3u7iMUvrvKaEUiQw2QWQ==}
+  h3@1.15.5:
+    resolution: {integrity: sha512-xEyq3rSl+dhGX2Lm0+eFQIAzlDN6Fs0EcC4f7BNUmzaRX/PTzeuM+Tr2lHB8FoXggsQIeXLj8EDVgs5ywxyxmg==}
 
   has-bigints@1.1.0:
     resolution: {integrity: sha512-R3pbpkcIqv2Pm3dUwgjclDRVmWpTJW2DcMzcIhEXEx1oh/CEMObMm3KLmRJOdvhM7o4uQBnwr8pzRK2sJWIqfg==}
@@ -2990,8 +2994,9 @@ packages:
   longest-streak@3.1.0:
     resolution: {integrity: sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g==}
 
-  lru-cache@10.4.3:
-    resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
+  lru-cache@11.2.5:
+    resolution: {integrity: sha512-vFrFJkWtJvJnD5hg+hJvVE8Lh/TcMzKnTgCWmtBipwI5yLX/iX+5UB2tfuyODF5E7k9xEzMdYgGqaSb1c0c5Yw==}
+    engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -3273,8 +3278,8 @@ packages:
   node-fetch-native@1.6.7:
     resolution: {integrity: sha512-g9yhqoedzIUm0nTnTqAQvueMPVOuIY16bqgAJJC8XOOubYFNwz6IER9qs0Gq2Xd0+CecCKFjtdDTMA4u4xG06Q==}
 
-  node-mock-http@1.0.3:
-    resolution: {integrity: sha512-jN8dK25fsfnMrVsEhluUTPkBFY+6ybu7jSB1n+ri/vOGjJxU8J9CZhpSGkHXSkFjtUhbmoncG/YG9ta5Ludqog==}
+  node-mock-http@1.0.4:
+    resolution: {integrity: sha512-8DY+kFsDkNXy1sJglUfuODx1/opAGJGyrTuFqEoN90oRc2Vk0ZbD4K2qmKXBBEhZQzdKHIVfEJpDU8Ak2NJEvQ==}
 
   node-releases@2.0.27:
     resolution: {integrity: sha512-nmh3lCkYZ3grZvqcCH+fjmQ7X+H0OeZgP40OierEaAptX4XofMh5kwNbWh7lBduUzCcV/8kZ+NDLCwm2iorIlA==}
@@ -3602,6 +3607,10 @@ packages:
   readdirp@4.1.2:
     resolution: {integrity: sha512-GDhwkLfywWL2s6vEjyhri+eXmfH6j1L7JE27WhqLeYzoh/A3DBaYGEj2H/HFZCn/kMfim73FXxEJTw06WtxQwg==}
     engines: {node: '>= 14.18.0'}
+
+  readdirp@5.0.0:
+    resolution: {integrity: sha512-9u/XQ1pvrQtYyMpZe7DXKv2p5CNvyVwzUB6uhLAnQwHMSgKMBR62lc7AHljaeteeHXn11XTAaLLUVZYVZyuRBQ==}
+    engines: {node: '>= 20.19.0'}
 
   recast@0.23.11:
     resolution: {integrity: sha512-YTUo+Flmw4ZXiWfQKGcwwc11KnoRAYgzAE2E7mXKCjSviTKShtxBsN6YUUBB2gtaBzKzeKunxhUwNHQuRryhWA==}
@@ -4140,6 +4149,9 @@ packages:
   ufo@1.6.1:
     resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
 
+  ufo@1.6.3:
+    resolution: {integrity: sha512-yDJTmhydvl5lJzBmy/hyOAA0d+aqCBuwl818haVdYCRrWV84o7YyeVm4QlVHStqNrrJSTb6jKuFAVqAFsr+K3Q==}
+
   uhyphen@0.2.0:
     resolution: {integrity: sha512-qz3o9CHXmJJPGBdqzab7qAYuW8kQGKNEuoHFYrBwV6hWIMcpAmxDLXojcHfFr9US1Pe6zUswEIJIbLI610fuqA==}
 
@@ -4250,8 +4262,8 @@ packages:
   unist-util-visit@5.0.0:
     resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
 
-  unstorage@1.17.3:
-    resolution: {integrity: sha512-i+JYyy0DoKmQ3FximTHbGadmIYb8JEpq7lxUjnjeB702bCPum0vzo6oy5Mfu0lpqISw7hCyMW2yj4nWC8bqJ3Q==}
+  unstorage@1.17.4:
+    resolution: {integrity: sha512-fHK0yNg38tBiJKp/Vgsq4j0JEsCmgqH58HAn707S7zGkArbZsVr/CwINoi+nh3h98BRCwKvx1K3Xg9u3VV83sw==}
     peerDependencies:
       '@azure/app-configuration': ^1.8.0
       '@azure/cosmos': ^4.2.0
@@ -4259,14 +4271,14 @@ packages:
       '@azure/identity': ^4.6.0
       '@azure/keyvault-secrets': ^4.9.0
       '@azure/storage-blob': ^12.26.0
-      '@capacitor/preferences': ^6.0.3 || ^7.0.0
+      '@capacitor/preferences': ^6 || ^7 || ^8
       '@deno/kv': '>=0.9.0'
       '@netlify/blobs': ^6.5.0 || ^7.0.0 || ^8.1.0 || ^9.0.0 || ^10.0.0
       '@planetscale/database': ^1.19.0
       '@upstash/redis': ^1.34.3
       '@vercel/blob': '>=0.27.1'
       '@vercel/functions': ^2.2.12 || ^3.0.0
-      '@vercel/kv': ^1.0.1
+      '@vercel/kv': ^1 || ^2 || ^3
       aws4fetch: ^1.0.20
       db0: '>=0.2.1'
       idb-keyval: ^6.2.1
@@ -4657,19 +4669,19 @@ packages:
 
 snapshots:
 
-  '@altano/astro-opengraph@0.1.1(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(preact@10.26.5)':
+  '@altano/astro-opengraph@0.1.1(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(preact@10.26.5)':
     dependencies:
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
       he: 1.2.0
       preact: 10.26.5
       satori: 0.12.2
       satori-html: 0.3.2
 
-  '@altano/astro-prettier-response@1.0.1(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(prettier@3.6.2)':
+  '@altano/astro-prettier-response@1.0.1(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))(prettier@3.6.2)':
     dependencies:
-      '@inox-tools/runtime-logger': 0.4.2(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
-      astro-integration-kit: 0.18.0(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+      '@inox-tools/runtime-logger': 0.4.2(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro-integration-kit: 0.18.0(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       mime-types: 3.0.2
       prettier: 3.6.2
     optionalDependencies:
@@ -4677,10 +4689,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@altano/astro-table-of-contents@0.1.3(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
+  '@altano/astro-table-of-contents@0.1.3(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@altano/web-components': 0.0.4
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
 
   '@altano/repository-tools@2.0.1': {}
 
@@ -4771,12 +4783,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@4.3.13(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
+  '@astrojs/mdx@4.3.13(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@astrojs/markdown-remark': 6.3.10
       '@mdx-js/mdx': 3.1.1
       acorn: 8.15.0
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
       es-module-lexer: 1.7.0
       estree-util-visit: 2.0.0
       hast-util-to-html: 9.0.5
@@ -5520,21 +5532,21 @@ snapshots:
   '@img/sharp-win32-x64@0.34.5':
     optional: true
 
-  '@inox-tools/modular-station@0.4.2(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
+  '@inox-tools/modular-station@0.4.2(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
       '@inox-tools/utils': 0.3.1
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
-      astro-integration-kit: 0.18.0(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro-integration-kit: 0.18.0(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
 
-  '@inox-tools/runtime-logger@0.4.2(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
+  '@inox-tools/runtime-logger@0.4.2(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))':
     dependencies:
-      '@inox-tools/modular-station': 0.4.2(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+      '@inox-tools/modular-station': 0.4.2(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
       '@inox-tools/utils': 0.3.1
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
-      astro-integration-kit: 0.18.0(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro-integration-kit: 0.18.0(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1))
     transitivePeerDependencies:
       - supports-color
 
@@ -6231,9 +6243,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-expressive-code@0.41.3(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
+  astro-expressive-code@0.41.3(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
       rehype-expressive-code: 0.41.3
 
   astro-icon@1.1.5:
@@ -6244,21 +6256,21 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  astro-integration-kit@0.18.0(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
+  astro-integration-kit@0.18.0(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
       pathe: 1.1.2
       recast: 0.23.11
 
-  astro-themes@0.2.7(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
+  astro-themes@0.2.7(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
 
-  astro-typed-links@1.1.5(astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
+  astro-typed-links@1.1.5(astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)):
     dependencies:
-      astro: 5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
+      astro: 5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1)
 
-  astro@5.16.8(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1):
+  astro@5.17.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.1):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -6279,7 +6291,7 @@ snapshots:
       debug: 4.4.3
       deterministic-object-hash: 2.0.2
       devalue: 5.6.2
-      diff: 5.2.2
+      diff: 8.0.3
       dlv: 1.1.3
       dset: 3.1.4
       es-module-lexer: 1.7.0
@@ -6313,7 +6325,7 @@ snapshots:
       ultrahtml: 1.6.0
       unifont: 0.7.3
       unist-util-visit: 5.0.0
-      unstorage: 1.17.3
+      unstorage: 1.17.4
       vfile: 6.0.3
       vite: 6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1)
       vitefu: 1.1.1(vite@6.4.1(@types/node@24.10.1)(jiti@2.6.1)(lightningcss@1.29.3)(sugarss@5.0.1(postcss@8.5.6))(yaml@2.8.1))
@@ -6544,6 +6556,10 @@ snapshots:
     dependencies:
       readdirp: 4.1.2
 
+  chokidar@5.0.0:
+    dependencies:
+      readdirp: 5.0.0
+
   chownr@3.0.0: {}
 
   ci-info@4.3.1: {}
@@ -6742,7 +6758,7 @@ snapshots:
 
   dfa@1.2.0: {}
 
-  diff@5.2.2: {}
+  diff@8.0.3: {}
 
   direction@1.0.4: {}
 
@@ -7364,16 +7380,16 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  h3@1.15.4:
+  h3@1.15.5:
     dependencies:
       cookie-es: 1.2.2
       crossws: 0.3.5
       defu: 6.1.4
       destr: 2.0.5
       iron-webcrypto: 1.2.1
-      node-mock-http: 1.0.3
+      node-mock-http: 1.0.4
       radix3: 1.1.2
-      ufo: 1.6.1
+      ufo: 1.6.3
       uncrypto: 0.1.3
 
   has-bigints@1.1.0: {}
@@ -7993,7 +8009,7 @@ snapshots:
 
   longest-streak@3.1.0: {}
 
-  lru-cache@10.4.3: {}
+  lru-cache@11.2.5: {}
 
   lru-cache@5.1.1:
     dependencies:
@@ -8550,7 +8566,7 @@ snapshots:
 
   node-fetch-native@1.6.7: {}
 
-  node-mock-http@1.0.3: {}
+  node-mock-http@1.0.4: {}
 
   node-releases@2.0.27: {}
 
@@ -8878,6 +8894,8 @@ snapshots:
   react@19.2.0: {}
 
   readdirp@4.1.2: {}
+
+  readdirp@5.0.0: {}
 
   recast@0.23.11:
     dependencies:
@@ -9656,6 +9674,8 @@ snapshots:
 
   ufo@1.6.1: {}
 
+  ufo@1.6.3: {}
+
   uhyphen@0.2.0: {}
 
   ultrahtml@1.6.0: {}
@@ -9816,16 +9836,16 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
 
-  unstorage@1.17.3:
+  unstorage@1.17.4:
     dependencies:
       anymatch: 3.1.3
-      chokidar: 4.0.3
+      chokidar: 5.0.0
       destr: 2.0.5
-      h3: 1.15.4
-      lru-cache: 10.4.3
+      h3: 1.15.5
+      lru-cache: 11.2.5
       node-fetch-native: 1.6.7
       ofetch: 1.5.1
-      ufo: 1.6.1
+      ufo: 1.6.3
 
   update-browserslist-db@1.1.4(browserslist@4.28.0):
     dependencies:
