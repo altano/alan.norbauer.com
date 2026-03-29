@@ -1,9 +1,9 @@
-import { expect as baseExpect } from "@playwright/test";
-import type { Locator } from "@playwright/test";
+import { expect as baseExpect, type Locator } from "@playwright/test";
 import { toHaveScrollbar } from "./toHaveScrollbar.js";
 import { toHaveTheme } from "./toHaveTheme.js";
 
 export { test } from "@playwright/test";
+export { scrollToTop } from "./scrollToTop.js";
 
 export const expect = baseExpect.extend({
   async toHaveTheme(

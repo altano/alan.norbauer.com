@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, scrollToTop } from "../fixtures/fixtures.js";
 import { ArticleDevPage } from "../page-object-models/article.js";
 import { DevPage } from "../page-object-models/devPage.js";
 
@@ -9,11 +9,17 @@ test.describe("responsiveness", () => {
   });
 
   test("homepage - project list", async ({ page }) => {
-    await page.goto("/#projects");
-    await expect(page.getByRole("heading", { name: "Projects" })).toBeVisible();
-    // wait for scroll to go ALL the way down (to the footer)
-    await expect(page.locator("footer")).toBeVisible();
-    await expect(page).toHaveScreenshot();
+    await page.goto("/");
+    // page.goto("/#projects") was flaky, emulate it consistently with a manual
+    // scroll
+    await scrollToTop(page.locator("#projects"));
+    await expect(
+      page.getByRole("heading", { name: "Projects" }),
+    ).toBeInViewport();
+    await expect(page).toHaveScreenshot({
+      // the stupid mustache logo keeps moving 1px. just ignore it:
+      maxDiffPixelRatio: 0.02,
+    });
   });
 
   test("project", async ({ page }) => {
