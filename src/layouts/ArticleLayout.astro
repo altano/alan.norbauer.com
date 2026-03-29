@@ -11,7 +11,7 @@ type Props = {
 };
 
 const { article } = Astro.props;
-const { slug } = article;
+const { id } = article;
 const { title, description } = article.data;
 ---
 
@@ -150,7 +150,7 @@ const { title, description } = article.data;
 <BaseLayout
   {title}
   {description}
-  slug={slug}
+  slug={id}
   type="article"
   opengraphImage="./opengraph.png"
 >

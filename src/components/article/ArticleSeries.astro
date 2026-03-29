@@ -41,7 +41,7 @@ const otherArticlesInSeries = await getOtherArticlesInSeries(article);
       <ol>
         {otherArticlesInSeries.map((seriesArticle) => (
           <li>
-            {article.slug === seriesArticle.slug ? (
+            {article.id === seriesArticle.id ? (
               <b>{seriesArticle.data.title} &lt;== you are here</b>
             ) : (
               <a href={getArticleURL(seriesArticle)}>

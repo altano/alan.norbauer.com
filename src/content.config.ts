@@ -1,4 +1,6 @@
-import { defineCollection, reference, z } from "astro:content";
+import { defineCollection, reference } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const social = z.object({
   name: z.string(),
@@ -7,10 +9,10 @@ const social = z.object({
 });
 
 const authors = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/authors" }),
   schema: z.object({
     name: z.string(),
-    firstName: z.string(), //.lowercase(),
+    firstName: z.string(),
     url: z.string(),
     socials: z
       .object({
@@ -32,16 +34,16 @@ const authors = defineCollection({
 });
 
 const articleSeries = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/articleSeries" }),
   schema: z.object({
     name: z.string(),
   }),
 });
 
 const articles = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/articles" }),
   schema: z.object({
-    authors: reference("authors").array().optional().default(["alan"]),
+    authors: reference("authors").array().optional().default([{ collection: "authors", id: "alan" }]),
     date_created: z.coerce.date(),
     date_updated: z.undefined().or(z.coerce.date()),
     description: z.string().min(5),

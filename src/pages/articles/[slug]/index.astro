@@ -1,10 +1,10 @@
 ---
-import { type CollectionEntry } from "astro:content";
+import { type CollectionEntry, render } from "astro:content";
 import Chrome from "@/components/browser-logos/Chrome.astro";
 import Firefox from "@/components/browser-logos/Firefox.astro";
 import Edge from "@/components/browser-logos/Edge.astro";
 import { Code } from "astro-expressive-code/components";
-import { getArticleMarkdownURL } from "@/content-utils/query/articles";
+import { getArticleMarkdownURL, getArticleAuthors } from "@/content-utils/query/articles";
 import ArticleLayout from "@/layouts/ArticleLayout.astro";
 import { getArticles } from "@/content-utils/query/articles";
 import DateTime from "@/components/article/DateTime.astro";
@@ -20,13 +20,12 @@ import { shouldShowTableOfContents } from "@/utilities/table-of-contents.js";
 import { Image, Picture } from "astro:assets";
 import IconRow from "@/components/IconRow.astro";
 import Callout from "@/components/article/Callout.astro";
-import { getEntries } from "astro:content";
 import Authors from "@/components/article/Authors.astro";
 
 export async function getStaticPaths() {
   const articles = await getArticles();
   return articles.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: post,
   }));
 }
@@ -34,9 +33,9 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"articles">;
 
 const article = Astro.props;
-const { Content, headings } = await article.render();
+const { Content, headings } = await render(article);
 const { title, date_created, date_updated } = article.data;
-const authors = await getEntries(article.data.authors);
+const authors = await getArticleAuthors(article);
 const shouldShowTOC = shouldShowTableOfContents(headings);
 
 // Fail when an article starts with a heading and has no preamble (starting

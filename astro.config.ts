@@ -78,7 +78,4 @@ export default defineConfig({
     react(),
     prettierResponse(),
   ],
-  experimental: {
-    preserveScriptOrder: true,
-  },
 });

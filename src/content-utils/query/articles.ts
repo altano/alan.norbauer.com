@@ -1,4 +1,4 @@
-import { type CollectionEntry, getCollection, getEntry } from "astro:content";
+import { type CollectionEntry, getCollection, getEntry, getEntries } from "astro:content";
 import nullthrows from "nullthrows";
 import { site } from "astro:config/server";
 import { link } from "astro-typed-links/link";
@@ -73,26 +73,24 @@ export async function getArticleBySlug(slug: string): Promise<Article> {
 }
 
 export function getArticleURL(article: Article): string {
-  return link("/articles/[slug]", { params: { slug: article.slug } });
+  return link("/articles/[slug]", { params: { slug: article.id } });
 }
 
 export function getArticleCanonicalURL(article: Article): string {
   // The canonical URL has always had a trailing slash so let's not break it.
   // Would mess up RSS readers (since this is a unique id there)
-  return new URL(`/articles/${article.slug}/`, site).toString();
+  return new URL(`/articles/${article.id}/`, site).toString();
 }
 
 export function getArticleMarkdownURL(article: Article): string {
-  return `https://github.com/altano/alan.norbauer.com/tree/main/src/content/articles/${article.slug}/index.mdx`;
+  return `https://github.com/altano/alan.norbauer.com/tree/main/src/content/articles/${article.id}/index.mdx`;
 }
 
 export async function getArticlePrimaryAuthor(
   article: Article,
 ): Promise<CollectionEntry<"authors">> {
-  const data = article.data;
-  const authors = data.authors;
-  const primaryAuthor = nullthrows(authors[0]);
-  return getEntry(primaryAuthor);
+  const primaryAuthorRef = nullthrows(article.data.authors[0]);
+  return nullthrows(await getEntry(primaryAuthorRef));
 }
 
 export async function getOtherArticlesInSeries(
@@ -104,4 +102,13 @@ export async function getOtherArticlesInSeries(
   }
   const articles = await getArticles();
   return articles.filter((a) => a.data.series?.id === article.data.series?.id);
+}
+
+/**
+ * Get all authors for an article.
+ */
+export async function getArticleAuthors(
+  article: Article,
+): Promise<CollectionEntry<"authors">[]> {
+  return getEntries(article.data.authors);
 }
