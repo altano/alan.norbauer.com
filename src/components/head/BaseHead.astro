@@ -1,7 +1,7 @@
 ---
 // Has to go first so global <style>s are placed in <head> first.
 import GlobalStyles from "./GlobalStyles.astro";
-import FontPreloads from "./FontPreloads.astro";
+import { Font } from "astro:assets";
 import { link } from "astro-typed-links/link";
 import OpenGraphMeta from "@altano/astro-opengraph/components/meta.astro";
 import { rssTitle } from "../../pages/rss.xml";
@@ -61,5 +61,6 @@ const pageTitle =
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
-<FontPreloads />
+<Font cssVariable="--font-inter" preload />
+<Font cssVariable="--font-ibm-plex-mono" preload />
 <GlobalStyles />

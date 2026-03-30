@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pkg from "./package.json";
@@ -21,6 +21,22 @@ export default defineConfig({
     process.env.NODE_ENV === "development"
       ? "http://localhost:4321"
       : pkg.homepage,
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+      weights: [400, 500, 600, 700, 800],
+      fallbacks: ["sans-serif"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "IBM Plex Mono",
+      cssVariable: "--font-ibm-plex-mono",
+      weights: [400, 700],
+      fallbacks: ["ui-monospace"],
+    },
+  ],
   devToolbar: {
     // Disable in production and testing
     enabled: process.env.NODE_ENV === "development",
