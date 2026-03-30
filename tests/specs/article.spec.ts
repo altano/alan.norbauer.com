@@ -1,4 +1,4 @@
-import { test, expect } from "../fixtures/fixtures.js";
+import { test, expect, scrollToTop } from "../fixtures/fixtures.js";
 import { ArticleDevPage } from "../page-object-models/article.js";
 import { DevPage } from "../page-object-models/devPage.js";
 
@@ -51,5 +51,23 @@ test.describe("article", () => {
     if (viewportHeight && viewportHeight >= 800) {
       await devPage.assertNotYScrollable();
     }
+  });
+
+  test("light mode svg", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "light" });
+    const article = new ArticleDevPage(page, "devbox");
+    await article.goto();
+    const paragraph = page.locator("p", { hasText: "visually inclined" });
+    await scrollToTop(paragraph);
+    await article.toHaveScreenshot({ goto: false, disambiguator: "light" });
+  });
+
+  test("dark mode svg", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    const article = new ArticleDevPage(page, "devbox");
+    await article.goto();
+    const paragraph = page.locator("p", { hasText: "visually inclined" });
+    await scrollToTop(paragraph);
+    await article.toHaveScreenshot({ goto: false, disambiguator: "dark" });
   });
 });

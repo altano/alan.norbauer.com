@@ -48,20 +48,20 @@ test.describe("responsiveness", () => {
   test("relay article", async ({ page }) => {
     const article = new ArticleDevPage(page, "relay");
     await article.toHaveScreenshot();
-    await article.toHaveScreenshot("#shifting-goals"); // table
-    await article.toHaveScreenshot("#an-example-relay-component"); // code
-    await article.toHaveScreenshot(
-      "#benefit-3-your-components-are-easier-to-reason-about",
-    ); // blockquote
-    await article.toHaveScreenshot("#faq"); // question/answer components
-    await article.toHaveScreenshot("#footnote-label");
+    await article.toHaveScreenshot({ fragment: "#shifting-goals" }); // table
+    await article.toHaveScreenshot({ fragment: "#an-example-relay-component" }); // code
+    await article.toHaveScreenshot({
+      fragment: "#benefit-3-your-components-are-easier-to-reason-about",
+    }); // blockquote
+    await article.toHaveScreenshot({ fragment: "#faq" }); // question/answer components
+    await article.toHaveScreenshot({ fragment: "#footnote-label" });
   });
 
   test("browser debugging article", async ({ page }) => {
     const article = new ArticleDevPage(page, "browser-debugging");
     await article.toHaveScreenshot();
-    await article.toHaveScreenshot("#never-pause-here"); // browser logo + images
-    await article.toHaveScreenshot("#tracing-callstacks"); // h4
+    await article.toHaveScreenshot({ fragment: "#never-pause-here" }); // browser logo + images
+    await article.toHaveScreenshot({ fragment: "#tracing-callstacks" }); // h4
   });
 
   test("devbox article", async ({ page }) => {

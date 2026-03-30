@@ -67,12 +67,23 @@ export class ArticleDevPage extends DevPage {
     return result;
   }
 
-  async toHaveScreenshot(fragment?: string): Promise<void> {
-    await this.goto(fragment);
-    const screenshotPrefix = fragment
-      ? `article--${this.slug}-${fragment}.png`
-      : `article--${this.slug}.png`;
-    await expect(this.page).toHaveScreenshot(screenshotPrefix, {
+  async toHaveScreenshot({
+    fragment,
+    disambiguator,
+    goto = true,
+  }: {
+    fragment?: string;
+    disambiguator?: string;
+    goto?: boolean;
+  } = {}): Promise<void> {
+    if (goto) {
+      await this.goto(fragment);
+    }
+    const name = [`article-`, this.slug, fragment, disambiguator]
+      .filter(Boolean)
+      .join("-");
+    const prefix = `${name}.png`;
+    await expect(this.page).toHaveScreenshot(prefix, {
       // Mask out gifs which, because they are auto-playing, introduce flakiness
       mask: [
         this.page.locator(`img[src$=".gif"]`),
