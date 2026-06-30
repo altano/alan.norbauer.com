@@ -270,6 +270,21 @@ if (article.body) {
         margin-block-end: var(--spacing-1);
       }
 
+      /* description lists (e.g. glossaries) */
+      & dl {
+        margin-block-start: var(--spacing-5);
+        margin-block-end: var(--spacing-2);
+        &:first-child {
+          margin-block-start: var(--spacing-2);
+        }
+      }
+      & dt {
+        font-weight: 700;
+        &:not(:first-child) {
+          margin-block-start: var(--spacing-5);
+        }
+      }
+
       /* separate rule: workaround for https://github.com/parcel-bundler/lightningcss/issues/964 */
       & blockquote {
         @mixin card;
