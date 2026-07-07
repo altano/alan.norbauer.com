@@ -3,7 +3,7 @@ import tseslint from "typescript-eslint";
 import prettier from "eslint-plugin-prettier/recommended";
 import packageJson from "eslint-plugin-package-json";
 import eslint from "@eslint/js";
-import astroEslintParser from "astro-eslint-parser";
+import * as astroEslintParser from "astro-eslint-parser";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
