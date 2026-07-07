@@ -9,6 +9,7 @@ tags:
   - replication
   - zfs
 series: offsite backup of a zfs pool
+date_updated: 2026-07-07T00:17:59.002Z
 ---
 
 TrueNAS mounts several root directories as temporary filesystems (tmpfs) that are erased on every reboot. This includes the zrepl service script located at `/usr/local/etc/rc.d/zrepl`. This guide demonstrates how to setup zrepl in a way that survives reboots and OS updates while preserving `service zrepl XXX` functionality.
@@ -25,7 +26,7 @@ TrueNAS mounts several root directories as temporary filesystems (tmpfs) that ar
 
 ## Non-goals
 
-This guide only shows you how to _install_ zrepl on TrueNAS. Consult [my other guide on replacing zettarepl with zrepl for more information on using it](/articles/truenas-replace-zettarepl-with-zrepl)
+This guide only shows you how to _install_ zrepl on TrueNAS. Not how to use it.
 
 ## Setup
 
