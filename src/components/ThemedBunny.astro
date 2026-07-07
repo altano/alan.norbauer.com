@@ -3,10 +3,10 @@ import LightBunny from "assets/images/bunny-carrot-hole/bunny-light.svg";
 import DarkBunny from "assets/images/bunny-carrot-hole/bunny-dark.svg";
 ---
 
-<LightBunny class="light" aria-label="A stupid bunny" width={64} height={64} />
+<LightBunny class="bunny light" aria-label="A stupid bunny" width={64} height={64} />
 <DarkBunny
   fill="white"
-  class="dark"
+  class="bunny dark"
   aria-label="A stupid, sleeping bunny"
   width={64}
   height={64}
@@ -14,7 +14,14 @@ import DarkBunny from "assets/images/bunny-carrot-hole/bunny-dark.svg";
 
 <style>
   @layer components {
-    :global(svg path) {
+    /*
+     * The bunny SVGs have no per-path fills, so they rely on this rule for
+     * their color. It MUST stay scoped to `.bunny`: a bare `:global(svg path)`
+     * leaks site-wide in production builds (Astro bundles this `:global` rule
+     * into shared CSS that loads on every page) and clobbers the fills of every
+     * other SVG — e.g. the charts in the astro-vs-nextjs article.
+     */
+    :global(.bunny path) {
       fill: var(--text);
     }
 
