@@ -5,7 +5,7 @@ import { z } from "astro/zod";
 const social = z.object({
   name: z.string(),
   handle: z.string(),
-  link: z.string().url(),
+  link: z.url(),
 });
 
 const authors = defineCollection({
@@ -43,7 +43,10 @@ const articleSeries = defineCollection({
 const articles = defineCollection({
   loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/articles" }),
   schema: z.object({
-    authors: reference("authors").array().optional().default([{ collection: "authors", id: "alan" }]),
+    authors: reference("authors")
+      .array()
+      .optional()
+      .default([{ collection: "authors", id: "alan" }]),
     date_created: z.coerce.date(),
     date_updated: z.undefined().or(z.coerce.date()),
     description: z.string().min(5),
