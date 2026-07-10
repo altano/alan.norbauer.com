@@ -83,6 +83,7 @@ export class ArticleDevPage extends DevPage {
       .filter(Boolean)
       .join("-");
     const prefix = `${name}.png`;
+    await this.waitForVisibleImagesDecoded();
     await expect(this.page).toHaveScreenshot(prefix, {
       // Mask out gifs which, because they are auto-playing, introduce flakiness
       mask: [
