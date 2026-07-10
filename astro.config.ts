@@ -14,7 +14,7 @@ import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
 import react from "@astrojs/react";
 import prettierResponse from "@altano/astro-prettier-response";
-
+import linkValidator from "astro-link-validator";
 // https://astro.build/config
 export default defineConfig({
   site:
@@ -93,5 +93,6 @@ export default defineConfig({
     typedLinks(),
     react(),
     prettierResponse(),
+    linkValidator(),
   ],
 });

@@ -89,6 +89,9 @@ importers:
       astro-icon:
         specifier: ^1.1.5
         version: 1.1.5
+      astro-link-validator:
+        specifier: github:rodgtr1/astro-link-validator
+        version: https://codeload.github.com/rodgtr1/astro-link-validator/tar.gz/025a27b2582234084b3676bc725418b5fc429dcd(astro@6.1.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.3))
       astro-themes:
         specifier: ^0.2.7
         version: 0.2.7(astro@6.1.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.3))
@@ -1664,6 +1667,12 @@ packages:
     resolution: {integrity: sha512-VQQs7hS9M3XrJtxSLHVDhvHzgqwZuhot3sMoYImBJSvL7fMnleSVgkZhoEeRJd1+Qh96eb469nRnn5mdjIJJMQ==}
     peerDependencies:
       astro: ^4.14.0 || ^5.0.0 || ^6.0.0
+
+  astro-link-validator@https://codeload.github.com/rodgtr1/astro-link-validator/tar.gz/025a27b2582234084b3676bc725418b5fc429dcd:
+    resolution: {tarball: https://codeload.github.com/rodgtr1/astro-link-validator/tar.gz/025a27b2582234084b3676bc725418b5fc429dcd}
+    version: 1.0.0
+    peerDependencies:
+      astro: ^4.0.0 || ^5.0.0
 
   astro-themes@0.2.7:
     resolution: {integrity: sha512-HJAQx0QRCMd3Jn4nzYSYAYC1PwGjCVz0DPX7/+8kMZ3/ut2MWgVDSc4k9WTzlcp1ftBfjnqxZhf/vYlu0aJ8ag==}
@@ -6535,6 +6544,12 @@ snapshots:
     dependencies:
       astro: 6.1.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.3)
       pathe: 2.0.3
+
+  astro-link-validator@https://codeload.github.com/rodgtr1/astro-link-validator/tar.gz/025a27b2582234084b3676bc725418b5fc429dcd(astro@6.1.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.3)):
+    dependencies:
+      astro: 6.1.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.3)
+      cheerio: 1.1.2
+      picocolors: 1.1.1
 
   astro-themes@0.2.7(astro@6.1.1(@types/node@25.5.0)(jiti@2.6.1)(lightningcss@1.29.3)(rollup@4.53.3)(sugarss@5.0.1(postcss@8.5.6))(typescript@5.9.3)(yaml@2.8.3)):
     dependencies:
