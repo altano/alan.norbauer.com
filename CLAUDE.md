@@ -19,6 +19,12 @@ Personal website built with Astro.
 - `tags`: string array
 - `title`: string (min 5 chars)
 
+## Version Control
+
+- This repository uses **Jujutsu (`jj`)**, not `git`. Use `jj` commands (e.g.
+  `jj restore <path>` to discard working-copy changes, `jj diff`, `jj status`,
+  `jj log`). Do not run `git` commands here.
+
 ## Commands
 
 - Build: Standard Astro build commands

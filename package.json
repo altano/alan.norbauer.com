@@ -24,6 +24,7 @@
     "test": "playwright test",
     "test:ci": "CI=1 playwright test --forbid-only --reporter=dot",
     "test:dev": "playwright test --ui",
+    "test:screenshot-stress": "playwright test tests/specs/article.spec.ts --grep \"mode svg\" --project \"Mobile Safari - iPhone SE\" --retries 0 --repeat-each 50 --workers 4 --reporter=dot",
     "test:setup": "playwright install --with-deps"
   },
   "dependencies": {
