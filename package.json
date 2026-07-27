@@ -28,16 +28,17 @@
     "test:setup": "playwright install --with-deps"
   },
   "dependencies": {
-    "@altano/astro-opengraph": "1.0.0",
-    "@altano/astro-prettier-response": "^2.0.1",
-    "@altano/astro-table-of-contents": "^1.0.0",
-    "@altano/satori-fit-text": "^2.0.2",
-    "@astrojs/mdx": "^5.0.3",
-    "@astrojs/react": "^5.0.2",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
+    "@altano/astro-opengraph": "2.0.0",
+    "@altano/astro-prettier-response": "^3.0.0",
+    "@altano/astro-table-of-contents": "^2.0.0",
+    "@altano/satori-fit-text": "^3.0.0",
+    "@astrojs/markdown-remark": "^7.2.2",
+    "@astrojs/mdx": "^7.0.3",
+    "@astrojs/react": "^6.0.1",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
     "@codesandbox/sandpack-react": "^2.20.0",
-    "@expressive-code/plugin-line-numbers": "^0.41.7",
+    "@expressive-code/plugin-line-numbers": "^0.44.1",
     "@fontsource/inter": "^5.2.8",
     "@iconify-json/ant-design": "^1.2.5",
     "@iconify-json/bi": "^1.2.7",
@@ -51,13 +52,13 @@
     "@iconify-json/ri": "^1.2.10",
     "@iconify-json/simple-icons": "^1.2.75",
     "@iconify-json/solar": "^1.2.5",
-    "astro": "6.1.1",
+    "astro": "7.1.3",
     "astro-color-scheme": "^1.1.6",
-    "astro-expressive-code": "^0.41.7",
+    "astro-expressive-code": "^0.44.1",
     "astro-icon": "^1.1.5",
-    "astro-link-validator": "github:rodgtr1/astro-link-validator",
+    "astro-link-validator": "^1.1.1",
     "astro-themes": "^0.2.7",
-    "astro-typed-links": "^1.2.0",
+    "astro-typed-links": "^2.0.0",
     "dotenv": "^17.3.1",
     "nullthrows": "^1.1.1",
     "prettier": "^3.9.4",
@@ -71,7 +72,7 @@
   },
   "devDependencies": {
     "@altano/tiny-async-pool": "^4.0.2",
-    "@astrojs/check": "^0.9.8",
+    "@astrojs/check": "^0.9.9",
     "@csstools/postcss-global-data": "^4.0.0",
     "@eslint/js": "^9.39.4",
     "@playwright/test": "^1.58.2",
@@ -104,5 +105,12 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.2"
   },
-  "packageManager": "pnpm@10.32.1"
+  "packageManager": "pnpm@10.32.1",
+  "pnpm": {
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "astro-typed-links>astro": "7"
+      }
+    }
+  }
 }

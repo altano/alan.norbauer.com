@@ -1,4 +1,5 @@
 import { defineConfig, fontProviders } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pkg from "./package.json";
@@ -43,27 +44,31 @@ export default defineConfig({
   },
   markdown: {
     syntaxHighlight: false, // handle with expressive-code instead
-    remarkPlugins: [remarkSectionize],
-    rehypePlugins: [
-      rehypeSlug,
-      [
-        rehypeAutolinkHeadings,
-        {
-          behavior: "wrap",
-          properties: {
-            className: "auto-link-toc-anchor",
+    // Astro 7 defaults to the Sätteri processor. Keep the remark/rehype
+    // (unified) stack; @astrojs/mdx inherits these plugins from it.
+    processor: unified({
+      remarkPlugins: [remarkSectionize],
+      rehypePlugins: [
+        rehypeSlug,
+        [
+          rehypeAutolinkHeadings,
+          {
+            behavior: "wrap",
+            properties: {
+              className: "auto-link-toc-anchor",
+            },
           },
-        },
+        ],
+        [
+          rehypeWrap,
+          {
+            selector: "table",
+            wrapper: "div.markdown-table-wrapper",
+          },
+        ],
+        rehypeCodeGroup,
       ],
-      [
-        rehypeWrap,
-        {
-          selector: "table",
-          wrapper: "div.markdown-table-wrapper",
-        },
-      ],
-      rehypeCodeGroup,
-    ],
+    }),
   },
   prefetch: true,
   integrations: [
