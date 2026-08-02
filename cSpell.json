@@ -1,7 +1,13 @@
 {
   "version": "0.2",
-  "enabledLanguageIds": ["mdx", "!javascript"],
-  "ignoreRegExpList": ["\\[\\^.*\\]", "```[^`]+```"],
+  "enabledLanguageIds": [
+    "mdx",
+    "!javascript"
+  ],
+  "ignoreRegExpList": [
+    "\\[\\^.*\\]",
+    "```[^`]+```"
+  ],
   "words": [
     "alannorbauer",
     "Alleline",
@@ -90,6 +96,7 @@
     "Sandpack",
     "Sarratt",
     "SATA",
+    "Sätteri",
     "Scalphunters",
     "seafoam",
     "Securicor",
@@ -125,5 +132,7 @@
     "zrepl",
     "zvol"
   ],
-  "ignoreWords": ["allgroups"]
+  "ignoreWords": [
+    "allgroups"
+  ]
 }

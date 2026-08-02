@@ -1,14 +1,11 @@
 import { defineConfig, fontProviders } from "astro/config";
-import { unified } from "@astrojs/markdown-remark";
+import { satteri } from "@astrojs/markdown-satteri";
+import { sectionize } from "./src/markdown/plugins/sectionize";
+import { headingAnchors } from "./src/markdown/plugins/heading-anchors";
+import { tableWrapper } from "./src/markdown/plugins/table-wrapper";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pkg from "./package.json";
-import rehypeSlug from "rehype-slug";
-// @ts-expect-error package has no types
-import rehypeWrap from "rehype-wrap-all";
-import remarkSectionize from "remark-sectionize";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypeCodeGroup from "rehype-code-group";
 import openGraph from "@altano/astro-opengraph";
 import typedLinks from "astro-typed-links";
 import icon from "astro-icon";
@@ -44,30 +41,9 @@ export default defineConfig({
   },
   markdown: {
     syntaxHighlight: false, // handle with expressive-code instead
-    // Astro 7 defaults to the Sätteri processor. Keep the remark/rehype
-    // (unified) stack; @astrojs/mdx inherits these plugins from it.
-    processor: unified({
-      remarkPlugins: [remarkSectionize],
-      rehypePlugins: [
-        rehypeSlug,
-        [
-          rehypeAutolinkHeadings,
-          {
-            behavior: "wrap",
-            properties: {
-              className: "auto-link-toc-anchor",
-            },
-          },
-        ],
-        [
-          rehypeWrap,
-          {
-            selector: "table",
-            wrapper: "div.markdown-table-wrapper",
-          },
-        ],
-        rehypeCodeGroup,
-      ],
+    // POC: Sätteri (Astro 7's default processor) instead of the unified stack.
+    processor: satteri({
+      hastPlugins: [sectionize, headingAnchors, tableWrapper],
     }),
   },
   prefetch: true,

@@ -3,6 +3,8 @@
   "include": [".", "playwright.config.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
+    "types": ["node"],
+
     // General settings
     "composite": false,
     "declaration": true,

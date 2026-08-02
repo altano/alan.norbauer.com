@@ -58,6 +58,24 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      /**
+       * Node-only unit tests — no browser is ever launched, because these tests
+       * never touch the `page` fixture. Named `*.unit.ts` so the browser
+       * projects below skip them via Playwright's default `*.spec.ts` matcher.
+       */
+      name: "unit",
+      testMatch: "**/*.unit.ts",
+      /**
+       * Drop the default `{-projectName}{-snapshotSuffix}` from the snapshot
+       * path. That suffix defaults to `process.platform`, which earns its keep
+       * for the e2e screenshots below (font rendering is OS-specific) but is
+       * just noise for rendered HTML, which is identical everywhere.
+       */
+      snapshotPathTemplate:
+        "{snapshotDir}/{testFileDir}/{testFileName}-snapshots/{arg}{ext}",
+    },
+
+    {
       name: "Desktop Chrome",
       use: { ...devices["Desktop Chrome"] },
     },

@@ -1,0 +1,28 @@
+section
+  h2 #shallow-first
+    a .auto-link-toc-anchor -> #shallow-first
+  p
+section
+  h2 #still-shallow
+    a .auto-link-toc-anchor -> #still-shallow
+  p
+section
+  h1 #now-a-top-level
+    a .auto-link-toc-anchor -> #now-a-top-level
+  p
+  section
+    h5 #depth-jump
+      a .auto-link-toc-anchor -> #depth-jump
+    p
+  section
+    h2 #back-up
+      a .auto-link-toc-anchor -> #back-up
+    p
+  section
+    h2 #back-up-1
+      a .auto-link-toc-anchor -> #back-up-1
+    p
+    section
+      h3 #back-up-2
+        a .auto-link-toc-anchor -> #back-up-2
+      p

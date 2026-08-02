@@ -1,0 +1,15 @@
+<section><h2 id="shallow-first"><a class="auto-link-toc-anchor" href="#shallow-first">Shallow First</a></h2>
+<p>An <code>h2</code> before any <code>h1</code> — the shape that broke an earlier sectionize
+implementation, which grouped by the document's shallowest heading depth.</p>
+</section><section><h2 id="still-shallow"><a class="auto-link-toc-anchor" href="#still-shallow">Still Shallow</a></h2>
+<p>Second sibling at the same depth.</p>
+</section><section><h1 id="now-a-top-level"><a class="auto-link-toc-anchor" href="#now-a-top-level">Now A Top Level</a></h1>
+<p>This <code>h1</code> must become a sibling of the two <code>h2</code>s above, not their parent.</p>
+<section><h5 id="depth-jump"><a class="auto-link-toc-anchor" href="#depth-jump">Depth Jump</a></h5>
+<p>Jumping from <code>h1</code> straight to <code>h5</code> should still nest.</p>
+</section><section><h2 id="back-up"><a class="auto-link-toc-anchor" href="#back-up">Back Up</a></h2>
+<p>Returning to <code>h2</code> must close the <code>h5</code>.</p>
+</section><section><h2 id="back-up-1"><a class="auto-link-toc-anchor" href="#back-up-1">Back Up</a></h2>
+<p>A duplicate heading, for slug de-duplication.</p>
+<section><h3 id="back-up-2"><a class="auto-link-toc-anchor" href="#back-up-2">Back Up</a></h3>
+<p>Same text at a different depth — the slugger does not care about level.</p></section></section></section>

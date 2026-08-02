@@ -1,0 +1,44 @@
+p
+section
+  h2 #getting-started
+    a .auto-link-toc-anchor -> #getting-started
+  p
+    a -> https://example.com
+  section
+    h3 #prerequisites
+      a .auto-link-toc-anchor -> #prerequisites
+    ul
+      li
+      li
+    div .markdown-table-wrapper
+      table
+  section
+    h3 #installation
+      a .auto-link-toc-anchor -> #installation
+    p
+      sup
+        a #user-content-fnref-setup -> #user-content-fn-setup
+section
+  h2 #configuration
+    a .auto-link-toc-anchor -> #configuration
+  p
+  section
+    h3 #options
+      a .auto-link-toc-anchor -> #options
+    div .markdown-table-wrapper
+      table
+    section
+      h4 #advanced
+        a .auto-link-toc-anchor -> #advanced
+      p
+section
+  h2 #getting-started-1
+    a .auto-link-toc-anchor -> #getting-started-1
+  p
+section .footnotes
+  h2 #footnote-label .sr-only
+    a .auto-link-toc-anchor -> #footnote-label
+  ol
+    li #user-content-fn-setup
+      p
+        a .data-footnote-backref -> #user-content-fnref-setup
