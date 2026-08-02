@@ -8,7 +8,6 @@
   ],
   "compilerOptions": {
     "noEmit": true,
-    "baseUrl": ".",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "allowJs": false,
