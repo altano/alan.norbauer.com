@@ -221,7 +221,7 @@ if (article.body) {
         overflow-x: auto;
       }
 
-      & table {
+      & table:not([data-no-style]) {
         @mixin card;
 
         transition: background var(--durations-color-scheme);

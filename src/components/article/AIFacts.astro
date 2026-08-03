@@ -1,0 +1,249 @@
+---
+/**
+ * An AI disclosure dressed up as a US Nutrition Facts label. Deliberately a
+ * caricature of the real thing — the rule weights, the Helvetica Black
+ * headline and the asterisked footnote do most of the work — but the numbers
+ * in it are meant to be honest.
+ */
+export type Props = {
+  /** The line above the serving size, e.g. `1 article per container`. */
+  servings: string;
+  /** What one serving is, e.g. `1 read (1,000 words)`. */
+  servingSize: string;
+  /** Small caps-ish line above the headline, e.g. `Amount per serving`. */
+  amountPer?: string | undefined;
+  /** The blown-up figure the label leads with, the way `Calories` is. */
+  headline: { label: string; value: string };
+  /** Heading for the value column. The asterisk points at `footnote`. */
+  valueHeading?: string | undefined;
+  /** The nutrients: the main breakdown, hairline-ruled between rows. */
+  rows: Row[];
+  /** The vitamins and minerals: a second block below the thick rule. */
+  extras?: Row[] | undefined;
+  /** The fine print. Rendered after the asterisk. */
+  footnote: string;
+};
+
+export type Row = {
+  /** The bold name in the left column. */
+  name: string;
+  /** An not-bold line under the name, for whatever a percentage can't say. */
+  detail?: string | undefined;
+  /** The right column. Not obliged to be a percentage. */
+  value: string;
+  /** Indents the row, the way `Saturated Fat` sits under `Total Fat`. */
+  indent?: boolean | undefined;
+};
+
+const {
+  servings,
+  servingSize,
+  amountPer = "Amount per serving",
+  headline,
+  valueHeading = "% Machine*",
+  rows,
+  extras,
+  footnote,
+} = Astro.props;
+
+/**
+ * Both blocks render as one flat list so that every row shares a single grid —
+ * that shared grid is what keeps the figures in a column across the thick rule
+ * dividing them. The row that opens the second block carries that rule.
+ */
+const allRows = (extras === undefined ? [rows] : [rows, extras]).flatMap(
+  (group, groupIndex) =>
+    group.map((row, rowIndex) => ({
+      ...row,
+      divider: groupIndex > 0 && rowIndex === 0,
+    })),
+);
+---
+
+<style>
+  @layer components {
+    .ai-facts {
+      /* Rule weights, in the FDA's three flavors. */
+      --rule-hair: 1px;
+      --rule-medium: 4px;
+      --rule-thick: 10px;
+
+      font-family:
+        "Helvetica Neue", Helvetica, Arial, var(--font-inter), sans-serif;
+      font-size: 0.8125rem;
+      line-height: var(--line-height-tight);
+      font-variant-numeric: tabular-nums;
+      background: var(--bg);
+      color: var(--text);
+      /* Children inherit `color`, and their borders are `currentColor`, so
+         animating it here carries the whole label through a theme switch. */
+      transition:
+        background var(--durations-color-scheme),
+        color var(--durations-color-scheme);
+      border-width: 2px;
+      padding: var(--spacing-2) var(--spacing-3) var(--spacing-3);
+      margin-block: var(--spacing-8);
+      width: 100%;
+      max-width: 26rem;
+    }
+
+    .title {
+      font-size: clamp(2rem, 11vw, 2.75rem);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: var(--line-height-tighter);
+      padding-block-end: var(--spacing-1);
+      border-block-end-width: var(--rule-hair);
+    }
+
+    .servings {
+      padding-block-start: var(--spacing-1);
+    }
+
+    /* The two loose label/figure lines above the breakdown. The rows below get
+       a grid instead, because they have a column to keep. */
+    .serving-size,
+    .headline-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--spacing-4);
+    }
+
+    .serving-size {
+      font-weight: 700;
+      padding-block-end: var(--spacing-1);
+    }
+
+    .headline {
+      border-block-start-width: var(--rule-thick);
+      padding-block-start: var(--spacing-1);
+    }
+
+    .amount-per {
+      font-size: 0.6875rem;
+      font-weight: 700;
+    }
+
+    .headline-row {
+      font-size: 1.125rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .headline-value {
+      font-size: clamp(1.75rem, 9vw, 2.25rem);
+      line-height: var(--line-height-tighter);
+    }
+
+    .value-heading {
+      text-align: end;
+      font-weight: 700;
+      margin-block-start: var(--spacing-1);
+      border-block-start-width: var(--rule-medium);
+      padding-block: var(--spacing-1);
+    }
+
+    .rows {
+      /* Article prose gives bare lists bullets, indentation and vertical
+         margin; the label sets its own rhythm out of rules and padding. */
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      /* One grid for the whole list, so the figures form an actual column
+         rather than each row sizing its own. */
+      display: grid;
+      grid-template-columns: 1fr auto;
+      column-gap: var(--spacing-4);
+    }
+
+    .row {
+      /* Borrow the columns above, so a row keeps a box of its own to hang the
+         rule on while its name and figure still line up with every other row. */
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: 1 / -1;
+      align-items: baseline;
+      margin: 0;
+      padding-block: var(--spacing-1);
+      border-block-start-width: var(--rule-hair);
+    }
+
+    /* Where the vitamins and minerals start. */
+    .row.divider {
+      border-block-start-width: var(--rule-thick);
+    }
+
+    .name {
+      font-weight: 700;
+    }
+
+    .indent {
+      padding-inline-start: var(--spacing-4);
+      font-weight: 400;
+    }
+
+    .detail {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-wrap: pretty;
+    }
+
+    .value {
+      text-align: end;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .footnote {
+      margin: 0;
+      font-size: 0.6875rem;
+      text-wrap: pretty;
+      border-block-start-width: var(--rule-medium);
+      padding-block-start: var(--spacing-2);
+    }
+  }
+</style>
+
+<section class="ai-facts" aria-labelledby="ai-facts-title">
+  <div class="title" id="ai-facts-title">AI Facts</div>
+  <div class="servings">{servings}</div>
+  <div class="serving-size">
+    <span>Serving size</span><span>{servingSize}</span>
+  </div>
+
+  <div class="headline">
+    <div class="amount-per">{amountPer}</div>
+    <div class="headline-row">
+      <span>{headline.label}</span>
+      <span class="headline-value">{headline.value}</span>
+    </div>
+  </div>
+
+  <div class="value-heading">{valueHeading}</div>
+
+  {
+    /* Redundant per spec — and deliberate: Safari/VoiceOver drops list
+      semantics from a list styled `list-style: none` unless the role is
+      spelled out. */
+  }
+  {/* eslint-disable-next-line astro/jsx-a11y/no-redundant-roles */}
+  <ul class="rows" role="list">
+    {
+      allRows.map((row) => (
+        <li class:list={["row", { divider: row.divider }]}>
+          <span class:list={["name", { indent: row.indent }]}>
+            {row.name}
+            {row.detail !== undefined && (
+              <span class="detail">{row.detail}</span>
+            )}
+          </span>
+          <span class="value">{row.value}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="footnote">* {footnote}</p>
+</section>
