@@ -580,6 +580,71 @@
         "foreground": "#0A84FF",
         "fontStyle": "italic"
       }
+    },
+    {
+      "name": "TOML base text",
+      "scope": "source.toml",
+      "settings": {
+        "foreground": "#4A4A4F"
+      }
+    },
+    {
+      "name": "TOML table header",
+      "scope": "entity.name.section.toml",
+      "settings": {
+        "foreground": "#8000D7"
+      }
+    },
+    {
+      "name": "TOML key",
+      "scope": "variable.other.key.toml",
+      "settings": {
+        "foreground": "#058B00"
+      }
+    },
+    {
+      "name": "TOML section brackets and dotted-name separators",
+      "scope": [
+        "punctuation.definition.section",
+        "meta.group.toml",
+        "meta.group.double.toml"
+      ],
+      "settings": {
+        "foreground": "#DD00A9"
+      }
+    },
+    {
+      "name": "TOML structural punctuation",
+      "scope": [
+        "punctuation.separator.key-value.toml",
+        "punctuation.separator.variable.toml",
+        "punctuation.definition.array.begin.toml",
+        "punctuation.definition.array.end.toml",
+        "punctuation.separator.array.toml",
+        "punctuation.definition.inline-table.begin.toml",
+        "punctuation.definition.inline-table.end.toml",
+        "punctuation.separator.inline-table.toml"
+      ],
+      "settings": {
+        "foreground": "#4A4A4F"
+      }
+    },
+    {
+      "name": "TOML boolean",
+      "scope": "constant.language.boolean.toml",
+      "settings": {
+        "foreground": "#DD00A9"
+      }
+    },
+    {
+      "name": "TOML multi-line string",
+      "scope": [
+        "string.quoted.triple.double.toml",
+        "string.quoted.triple.single.toml"
+      ],
+      "settings": {
+        "foreground": "#003EAA"
+      }
     }
   ],
   "colors": {

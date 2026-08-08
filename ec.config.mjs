@@ -11,6 +11,16 @@ export default {
       theme.name = "light";
     } else if (theme.name.toLocaleLowerCase().includes("dracula")) {
       theme.name = "dark";
+      // Dracula deliberately gives TOML table headers and keys the same cyan:
+      // a single rule covers `entity.name.section.toml` and
+      // `variable.other.key.toml`. Split them so a header reads as a header,
+      // and so both themes agree on what a color means - a key is green here,
+      // as it is in the light theme.
+      theme.settings.push({
+        name: "TOML key",
+        scope: ["variable.other.key.toml"],
+        settings: { foreground: "#50FA7B" },
+      });
     }
   },
   defaultProps: {
