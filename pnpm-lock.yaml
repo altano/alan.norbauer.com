@@ -41,6 +41,9 @@ importers:
       '@fontsource/inter':
         specifier: ^5.2.8
         version: 5.2.8
+      '@hpcc-js/wasm-graphviz':
+        specifier: ^1.28.0
+        version: 1.28.0
       '@iconify-json/ant-design':
         specifier: ^1.2.5
         version: 1.2.5
@@ -924,6 +927,9 @@ packages:
 
   '@fontsource/inter@5.2.8':
     resolution: {integrity: sha512-P6r5WnJoKiNVV+zvW2xM13gNdFhAEpQ9dQJHt3naLvfg+LkF2ldgSLiF4T41lf1SQCM9QmkqPTn4TH568IRagg==}
+
+  '@hpcc-js/wasm-graphviz@1.28.0':
+    resolution: {integrity: sha512-KqvPy7ckxPc1xv8Kt7H3bo9cj8U4gfOXxQ8grLZvDZxyQQjnXsKxrweJLLJtEoWWtQqAk4biUB0g2qsjkTiMVA==}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -5512,6 +5518,8 @@ snapshots:
       '@expressive-code/core': 0.44.1
 
   '@fontsource/inter@5.2.8': {}
+
+  '@hpcc-js/wasm-graphviz@1.28.0': {}
 
   '@humanfs/core@0.19.1': {}
 

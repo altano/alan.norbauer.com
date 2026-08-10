@@ -1,0 +1,344 @@
+---
+import {
+  renderJJGraph,
+  renderJJGraphPair,
+  type JJGraphSpec,
+  type JJRevision,
+} from "@/utilities/jj-graph";
+
+type PropsCommon = {
+  /** The revisions to draw. Parents default to the inferred `root` revision. */
+  revisions: JJRevision[];
+  /**
+   * Captions the figure with something that is not a revset — a command, say.
+   * Takes precedence over `revset` for display.
+   */
+  caption?: string | undefined;
+  /**
+   * Folds a fork back into the straight column instead of letting it fan out
+   * sideways, at the cost of an edge that has to bend around the row it skips.
+   * `JJStack` is this component with it turned on.
+   */
+  aggressivelyStackCommits?: boolean | undefined;
+};
+
+type PropsSingle = PropsCommon & {
+  /**
+   * Ids of the revisions the revset selects; everything else is dimmed. Omit
+   * it when no revset is being illustrated and nothing will be dimmed.
+   */
+  selected?: string[] | undefined;
+  /**
+   * The revset this diagram illustrates, e.g. `trunk()..@`. Captions the
+   * figure and names the selection for screen readers.
+   */
+  revset?: string | undefined;
+};
+
+type PropsPair = PropsCommon & {
+  /**
+   * Draws a second graph to the right of the first, joined by an arrow
+   * captioned with `command`. Use it to show what a command did.
+   */
+  after: JJGraphSpec;
+  /** The command taking `revisions` to `after`, e.g. `jj top`. */
+  command: string;
+};
+
+export type Props = PropsSingle | PropsPair;
+
+const isPair = (props: Props): props is PropsPair => "after" in props;
+const isSingle = (props: Props): props is PropsSingle => !isPair(props);
+
+const props = Astro.props;
+const { revisions, caption, aggressivelyStackCommits = false } = props;
+const singleProps = isSingle(props) ? props : null;
+const pairProps = isPair(props) ? props : null;
+const options = { aggressivelyStackCommits };
+const figureCaption = caption ?? singleProps?.revset;
+const command = pairProps?.command;
+
+const pair =
+  pairProps != null
+    ? await renderJJGraphPair(
+        { revisions },
+        pairProps.after,
+        pairProps.command,
+        options,
+      )
+    : null;
+const single =
+  singleProps != null
+    ? await renderJJGraph(
+        revisions,
+        singleProps?.selected,
+        singleProps?.revset,
+        options,
+      )
+    : null;
+---
+
+<figure class="jj-graph">
+  {
+    single !== null && (
+      /* eslint-disable-next-line astro/no-set-html-directive */
+      <div class="jj-graph-canvas" set:html={single} />
+    )
+  }
+  {
+    pair !== null && (
+      <div class="jj-graph-pair">
+        {/* eslint-disable-next-line astro/no-set-html-directive */}
+        <div class="jj-graph-canvas" set:html={pair.before} />
+        <div class="jj-op">
+          <code class="jj-op-command">{command}</code>
+          <svg
+            class="jj-op-arrow"
+            viewBox="0 0 64 12"
+            width="64"
+            height="12"
+            aria-hidden="true"
+          >
+            <path class="jj-op-shaft" fill="none" d="M2,6 H54" />
+            <path class="jj-op-head" d="M53,2.2 L61,6 L53,9.8 Z" />
+          </svg>
+        </div>
+        {/* eslint-disable-next-line astro/no-set-html-directive */}
+        <div class="jj-graph-canvas" set:html={pair.after} />
+      </div>
+    )
+  }
+  {
+    figureCaption !== undefined && (
+      <figcaption>
+        <code>{figureCaption}</code>
+      </figcaption>
+    )
+  }
+</figure>
+
+<style>
+  @layer components {
+    .jj-graph {
+      /* Role defaults. A revision's `color` overrides --jj-dot-* inline. */
+      --jj-default-light: #2563eb;
+      --jj-default-dark: #60a5fa;
+      --jj-working-copy-light: #16a34a;
+      --jj-working-copy-dark: #4ade80;
+      --jj-immutable-light: #6366f1;
+      --jj-immutable-dark: #818cf8;
+
+      /* Unselected revisions: present, but clearly out of the revset. */
+      --jj-dim-light: #d6dae1;
+      --jj-dim-dark: #333b47;
+      --jj-dim-text-light: #a3abb6;
+      --jj-dim-text-dark: #5b6678;
+
+      --jj-edge-light: #cbd2da;
+      --jj-edge-dark: #3f4855;
+      --jj-arrow-light: #9aa3af;
+      --jj-arrow-dark: #6b7280;
+      --jj-command-light: #ea580c;
+      --jj-command-dark: #fbbf24;
+    }
+
+    .jj-graph-canvas {
+      display: flex;
+      justify-content: center;
+    }
+
+    .jj-graph :global(.jj-graph-svg) {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* IBM Plex Mono advances 600/1000 em, exactly like the Courier metrics
+       Graphviz laid this text out with, so the columns stay aligned. The rest
+       of these declarations undo `reset.css`'s `* { font: inherit }`, which
+       would otherwise inherit the article's body font into the diagram. */
+    .jj-graph :global(:is(.jj-label, .jj-dot) text) {
+      font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+      font-style: normal;
+      letter-spacing: normal;
+      word-spacing: normal;
+    }
+
+    /* ---- dots ------------------------------------------------------- */
+
+    .jj-graph :global(.jj-dot) {
+      --jj-dot-light: var(--jj-default-light);
+      --jj-dot-dark: var(--jj-default-dark);
+    }
+
+    .jj-graph :global(.jj-dot.is-working-copy) {
+      --jj-dot-light: var(--jj-working-copy-light);
+      --jj-dot-dark: var(--jj-working-copy-dark);
+    }
+
+    .jj-graph :global(.jj-dot.is-immutable) {
+      --jj-dot-light: var(--jj-immutable-light);
+      --jj-dot-dark: var(--jj-immutable-dark);
+    }
+
+    .jj-graph :global(.jj-dot.is-selected :is(ellipse, polygon)) {
+      fill: light-dark(var(--jj-dot-light), var(--jj-dot-dark));
+    }
+
+    .jj-graph :global(.jj-dot:not(.is-selected) :is(ellipse, polygon)) {
+      fill: light-dark(var(--jj-dim-light), var(--jj-dim-dark));
+    }
+
+    /* `@`, drawn inside the working copy's circle. On a coloured dot it reads
+       as punched out of it, in the page background. */
+    .jj-graph :global(.jj-working-copy-glyph) {
+      fill: var(--bg);
+    }
+
+    /* A dimmed dot is close enough to the page background that punching out
+       would erase the glyph, so invert it there: dark on light grey, light on
+       dark grey. */
+    .jj-graph :global(.jj-dot:not(.is-selected) .jj-working-copy-glyph) {
+      fill: var(--text);
+    }
+
+    /* ---- labels ----------------------------------------------------- */
+
+    .jj-graph :global(.jj-label text) {
+      fill: light-dark(var(--jj-dim-text-light), var(--jj-dim-text-dark));
+    }
+
+    .jj-graph :global(.jj-label.is-selected :is(.jj-change-id, .jj-bookmark)) {
+      fill: var(--text);
+    }
+
+    .jj-graph :global(.jj-label.is-selected .jj-change-id-rest) {
+      fill: light-dark(#9aa2ad, #6b7280);
+    }
+
+    /* ---- edges ------------------------------------------------------ */
+
+    .jj-graph :global(.jj-edge path) {
+      stroke: light-dark(var(--jj-edge-light), var(--jj-edge-dark));
+    }
+
+    /* ---- before -> after --------------------------------------------- */
+
+    /* The halves stay separate SVGs at their intrinsic size, so the text never
+       scales down with the layout. What does change is the arrangement, and it
+       keys off the *container*, never the viewport: the article column is not
+       a function of window width — the table of contents appears at wide
+       viewports and makes this column narrower, not wider.
+     *
+     * Three arrangements, narrowest first. Each one pins `flex-basis` so the
+     * wrapping flexbox actually performs matches what the query assumed;
+     * otherwise the graphs can wrap while the command still thinks it is
+     * laid out in a row, which strands it beside a half-column. */
+    .jj-graph-pair {
+      display: flex;
+      flex-wrap: wrap;
+      /* Bottom-aligned so shared history lines up across the two halves. */
+      align-items: flex-end;
+      justify-content: center;
+      column-gap: var(--spacing-3);
+      row-gap: var(--spacing-6);
+      container-type: inline-size;
+    }
+
+    .jj-graph-pair .jj-graph-canvas {
+      /* Wrap rather than shrink — a shrunk graph is an unreadable graph — but
+         never let one overflow the figure either. */
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+    .jj-op {
+      --jj-arrow-length: 64px;
+      --jj-arrow-thickness: 12px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-1);
+      align-self: center;
+      /* Stacked by default: the command sits *between* the halves, where it
+         separates them and its arrow can point down the page. */
+      order: 0;
+      flex-basis: 100%;
+    }
+
+    .jj-op-command {
+      color: light-dark(var(--jj-command-light), var(--jj-command-dark));
+      font-size: 0.875rem;
+      text-align: center;
+      /* Stacked or on its own line the command has the full width to itself,
+         so it only needs to be reined in for the single-row arrangement. */
+      max-width: 100%;
+    }
+
+    .jj-op-arrow {
+      width: var(--jj-arrow-length);
+      height: var(--jj-arrow-thickness);
+      transform: rotate(90deg);
+      /* Rotating leaves the layout box alone, so reserve the height the
+         upright arrow actually occupies or it overlaps the command. */
+      margin-block: calc(
+        (var(--jj-arrow-length) - var(--jj-arrow-thickness)) / 2
+      );
+    }
+
+    .jj-op-shaft {
+      stroke: light-dark(var(--jj-arrow-light), var(--jj-arrow-dark));
+      stroke-width: 1.6;
+    }
+
+    .jj-op-head {
+      fill: light-dark(var(--jj-arrow-light), var(--jj-arrow-dark));
+    }
+
+    /* Room for both graphs abreast (2 x 228px + the gap = 468px): keep them on
+       one line and lift the command above them, which is exactly the width the
+       command would otherwise have taken up between them. */
+    @container (width >= 480px) {
+      .jj-graph-pair .jj-graph-canvas {
+        flex-basis: auto;
+      }
+
+      .jj-op {
+        order: -1;
+      }
+
+      .jj-op-arrow {
+        transform: none;
+        margin-block: 0;
+      }
+    }
+
+    /* Room for the command between the halves too. Capping the command's
+       width is what makes that budget fixed: 2 x 228px + 2 gaps + 160px =
+       640px, whatever the command happens to say. Without the cap a long
+       command silently pushes the row over the threshold it was measured
+       against, and the layout wraps into a state this query never intended. */
+    @container (width >= 656px) {
+      .jj-op {
+        order: 0;
+        flex-basis: auto;
+      }
+
+      .jj-op-command {
+        max-width: 160px;
+      }
+    }
+
+    /* Everything else about the figure — the card, the caption's type — comes
+       from the article layout's shared `figure` styling. */
+    figcaption {
+      /* A graph is ~230px wide, so an unconstrained caption runs two or three
+         times its width and stops reading as a label for it. Wrapping sooner
+         keeps the caption tied to the thing it captions. */
+      max-width: 42ch;
+      margin-inline: auto;
+      text-align: center;
+      text-wrap: balance;
+    }
+  }
+</style>

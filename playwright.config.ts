@@ -76,6 +76,27 @@ export default defineConfig({
     },
 
     {
+      /**
+       * Layout tests: ones that set the viewport themselves to assert how a
+       * given width is arranged, rather than how a given engine renders. One
+       * browser is enough for that, so these run here instead of across every
+       * project below.
+       *
+       * Reserve this for a *small* number of tests. Each one sweeps many more
+       * viewports than the fixed-device projects below ever do, so a single
+       * spec here can outweigh a whole browser project in screenshots and
+       * runtime. If a test does not genuinely change behavior with width, it
+       * belongs in a `*.spec.ts` instead.
+       *
+       * Named `*.layout.ts` so the browser projects' default `*.spec.ts`
+       * matcher skips them.
+       */
+      name: "layout",
+      testMatch: "**/*.layout.ts",
+      use: { ...devices["Desktop Chrome"] },
+    },
+
+    {
       name: "Desktop Chrome",
       use: { ...devices["Desktop Chrome"] },
     },

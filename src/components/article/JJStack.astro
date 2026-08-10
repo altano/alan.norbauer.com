@@ -1,0 +1,21 @@
+---
+import JJGraph, { type Props as JJGraphProps } from "./JJGraph.astro";
+
+/**
+ * `Omit` applied straight to `JJGraphProps` would flatten its union down to the
+ * keys both halves share, dropping `selected`/`revset` and `after`/`command`,
+ * so it is distributed over the union one branch at a time.
+ */
+type DistributiveOmit<T, K extends PropertyKey> = T extends unknown
+  ? Omit<T, K>
+  : never;
+
+/**
+ * A {@link JJGraph} that keeps its revisions in one column, bending an edge
+ * around a fork rather than spending a second column of dots and labels on it.
+ * Worth it wherever the stack itself is the point of the diagram.
+ */
+export type Props = DistributiveOmit<JJGraphProps, "aggressivelyStackCommits">;
+---
+
+<JJGraph {...Astro.props} aggressivelyStackCommits={true} />

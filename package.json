@@ -39,6 +39,7 @@
     "@codesandbox/sandpack-react": "^2.20.0",
     "@expressive-code/plugin-line-numbers": "^0.44.1",
     "@fontsource/inter": "^5.2.8",
+    "@hpcc-js/wasm-graphviz": "^1.28.0",
     "@iconify-json/ant-design": "^1.2.5",
     "@iconify-json/bi": "^1.2.7",
     "@iconify-json/fa6-brands": "^1.2.6",

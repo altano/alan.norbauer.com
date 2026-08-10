@@ -27,7 +27,12 @@ export default async function setup(config: FullConfig) {
 
   // Routes our screenshot tests scroll within. Warming these settles the dep
   // graph shared by the rest of the site too.
-  const routes = ["/", "/articles/devbox-intro"];
+  const routes = [
+    "/",
+    "/articles/devbox-intro",
+    "/articles/astro-vs-nextjs-page-size",
+    "/articles/stacks-in-jujutsu",
+  ];
 
   const browser = await chromium.launch();
   try {

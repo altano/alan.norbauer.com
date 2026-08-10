@@ -1,0 +1,2339 @@
+### heads
+<!-- prettier-ignore --><svg width="345pt" height="256pt" viewBox="0 0 345 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The revset stack_heads() selects 2 of 7 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- e -->
+<g class="node jj-node jj-dot jj-rev-e is-selected">
+
+<ellipse  stroke-width="0" cx="186.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;e -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M21.48,-156.65C24.39,-158.29 27.73,-159.94 30.96,-161.04 89.75,-181.07 110.17,-163.01 168.96,-183.04 172.19,-184.14 175.53,-185.79 178.44,-187.43"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wl</text>
+<text xml:space="preserve" text-anchor="start" x="50.45" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">xwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+<!-- label__e -->
+<g class="node jj-node jj-label jj-rev-e is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="211.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wk</text>
+<text xml:space="preserve" text-anchor="start" x="224.45" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">sqooso</text>
+<text xml:space="preserve" text-anchor="start" x="264.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="277.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-5</text>
+</g>
+<!-- e-&gt;label__e -->
+</g>
+</svg>
+
+### top
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The revset stack_top() selects 1 of 6 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+
+### top-ambiguous
+<!-- prettier-ignore --><svg width="345pt" height="256pt" viewBox="0 0 345 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The revset stack_top() selects 0 of 7 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- e -->
+<g class="node jj-node jj-dot jj-rev-e">
+
+<ellipse  stroke-width="0" cx="186.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;e -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M21.48,-156.65C24.39,-158.29 27.73,-159.94 30.96,-161.04 89.75,-181.07 110.17,-163.01 168.96,-183.04 172.19,-184.14 175.53,-185.79 178.44,-187.43"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wl</text>
+<text xml:space="preserve" text-anchor="start" x="50.45" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">xwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+<!-- label__e -->
+<g class="node jj-node jj-label jj-rev-e">
+
+<text xml:space="preserve" text-anchor="start" x="211.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wk</text>
+<text xml:space="preserve" text-anchor="start" x="224.45" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">sqooso</text>
+<text xml:space="preserve" text-anchor="start" x="264.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="277.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-5</text>
+</g>
+<!-- e-&gt;label__e -->
+</g>
+</svg>
+
+### tree
+<!-- prettier-ignore --><svg width="345pt" height="256pt" viewBox="0 0 345 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The revset tree() selects 5 of 7 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- e -->
+<g class="node jj-node jj-dot jj-rev-e is-selected">
+
+<ellipse  stroke-width="0" cx="186.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;e -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M21.48,-156.65C24.39,-158.29 27.73,-159.94 30.96,-161.04 89.75,-181.07 110.17,-163.01 168.96,-183.04 172.19,-184.14 175.53,-185.79 178.44,-187.43"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wl</text>
+<text xml:space="preserve" text-anchor="start" x="50.45" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">xwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+<!-- label__e -->
+<g class="node jj-node jj-label jj-rev-e is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="211.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wk</text>
+<text xml:space="preserve" text-anchor="start" x="224.45" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">sqooso</text>
+<text xml:space="preserve" text-anchor="start" x="264.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="277.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-5</text>
+</g>
+<!-- e-&gt;label__e -->
+</g>
+</svg>
+
+### bottom
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The revset stack_bottom() selects 1 of 6 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+
+### stack
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The revset stack() selects 4 of 6 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+
+### substack
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The revset substack() selects 3 of 6 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+
+### plain
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="A jj revision graph of 6 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+
+### fork
+<!-- prettier-ignore --><svg width="345pt" height="256pt" viewBox="0 0 345 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="A jj revision graph of 7 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- e -->
+<g class="node jj-node jj-dot jj-rev-e is-selected">
+
+<ellipse  stroke-width="0" cx="186.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;e -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M21.48,-156.65C24.39,-158.29 27.73,-159.94 30.96,-161.04 89.75,-181.07 110.17,-163.01 168.96,-183.04 172.19,-184.14 175.53,-185.79 178.44,-187.43"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wl</text>
+<text xml:space="preserve" text-anchor="start" x="50.45" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">xwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+<!-- label__e -->
+<g class="node jj-node jj-label jj-rev-e is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="211.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">wk</text>
+<text xml:space="preserve" text-anchor="start" x="224.45" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">sqooso</text>
+<text xml:space="preserve" text-anchor="start" x="264.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="277.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-5</text>
+</g>
+<!-- e-&gt;label__e -->
+</g>
+</svg>
+
+### merge
+<!-- prettier-ignore --><svg width="197pt" height="256pt" viewBox="0 0 197 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="A jj revision graph of 7 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="112.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M21.43,-112.97C24.1,-114.53 27.1,-116.16 29.96,-117.44 58.16,-130.11 67.76,-126.77 95.96,-139.44 98.82,-140.72 101.82,-142.35 104.49,-143.91"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="36.56" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.16" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- m -->
+<g class="node jj-node jj-dot jj-rev-m is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;m -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="36.56" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.16" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- c-&gt;m -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M104.49,-156.57C101.82,-158.13 98.82,-159.76 95.96,-161.04 67.76,-173.71 58.16,-170.37 29.96,-183.04 27.1,-184.32 24.1,-185.95 21.43,-187.51"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="136.56" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="143.16" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- z -->
+<g class="node jj-node jj-dot jj-rev-z is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- m-&gt;z -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__m -->
+<g class="node jj-node jj-label jj-rev-m is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="36.45" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">t</text>
+<text xml:space="preserve" text-anchor="start" x="43.05" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">xnttpsp</text>
+<text xml:space="preserve" text-anchor="start" x="89.26" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="102.46" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">merge</text>
+</g>
+<!-- m-&gt;label__m -->
+<!-- label__z -->
+<g class="node jj-node jj-label jj-rev-z is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="36.56" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">u</text>
+<text xml:space="preserve" text-anchor="start" x="43.16" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">qvluyqp</text>
+</g>
+<!-- z-&gt;label__z -->
+</g>
+</svg>
+
+### merge-stacked
+<!-- prettier-ignore --><svg width="159pt" height="300pt" viewBox="0 0 159 300" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="A jj revision graph of 7 revisions.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 295.84)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="18.75,-25.92 5.79,-12.96 18.75,0 31.71,-12.96 18.75,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="18.75,-73.84 5.79,-60.88 18.75,-47.92 31.71,-60.88 18.75,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-25.55C18.75,-32.46 18.75,-41.2 18.75,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="44.94" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="58.14" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="97.75" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="110.95" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-73.84C18.75,-80.82 18.75,-89.52 18.75,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="44.54" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="57.74" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="97.35" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="110.55" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-117.29C18.75,-124.01 18.75,-132.93 18.75,-139.64"/>
+</g>
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M13.09,-115.55C9.05,-121.73 3.94,-130.7 1.75,-139.44 -0.58,-148.75 -0.58,-151.73 1.75,-161.04 3.94,-169.78 9.05,-178.75 13.09,-184.93"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="42.35" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="48.95" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- b-&gt;c -->
+<!-- m -->
+<g class="node jj-node jj-dot jj-rev-m is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-237.44" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="18.75" y="-234.44" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;m -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M27.22,-156.57C29.89,-158.13 32.89,-159.76 35.75,-161.04 63.95,-173.71 83.67,-157.96 101.75,-183.04 107.36,-190.83 107.36,-196.85 101.75,-204.64 83.67,-229.72 63.95,-213.97 35.75,-226.64 32.89,-227.92 29.89,-229.55 27.22,-231.11"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="42.35" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="48.95" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- c-&gt;m -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-204.49C18.75,-211.21 18.75,-220.13 18.75,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="42.35" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="48.95" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- z -->
+<g class="node jj-node jj-dot jj-rev-z is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-281.04" rx="10.8" ry="10.8"/>
+</g>
+<!-- m-&gt;z -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-248.09C18.75,-254.81 18.75,-263.73 18.75,-270.44"/>
+</g>
+<!-- label__m -->
+<g class="node jj-node jj-label jj-rev-m is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="42.24" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">t</text>
+<text xml:space="preserve" text-anchor="start" x="48.84" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">xnttpsp</text>
+<text xml:space="preserve" text-anchor="start" x="95.05" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="108.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">merge</text>
+</g>
+<!-- m-&gt;label__m -->
+<!-- label__z -->
+<g class="node jj-node jj-label jj-rev-z is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="42.35" y="-278.74" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">u</text>
+<text xml:space="preserve" text-anchor="start" x="48.95" y="-278.74" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">qvluyqp</text>
+</g>
+<!-- z-&gt;label__z -->
+</g>
+</svg>
+
+### pair:move-to
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph before running jj move-to w.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-234.44" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">yr</text>
+<text xml:space="preserve" text-anchor="start" x="50.45" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+<!-- prettier-ignore --><svg width="176pt" height="300pt" viewBox="0 0 176 300" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph after running jj move-to w.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 295.84)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="18.75,-25.92 5.79,-12.96 18.75,0 31.71,-12.96 18.75,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="18.75,-73.84 5.79,-60.88 18.75,-47.92 31.71,-60.88 18.75,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-25.55C18.75,-32.46 18.75,-41.2 18.75,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="44.94" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="58.14" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="97.75" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="110.95" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-73.84C18.75,-80.82 18.75,-89.52 18.75,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="44.54" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="57.74" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="97.35" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="110.55" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-117.29C18.75,-124.01 18.75,-132.93 18.75,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="43.04" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="49.64" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="95.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="109.05" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M13.09,-159.15C9.05,-165.33 3.94,-174.3 1.75,-183.04 -0.58,-192.35 -0.58,-195.33 1.75,-204.64 3.94,-213.38 9.05,-222.35 13.09,-228.53"/>
+</g>
+<!-- new -->
+<g class="node jj-node jj-dot jj-rev-new is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-193.84" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="18.75" y="-190.84" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- b-&gt;new -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-160.89C18.75,-167.61 18.75,-176.53 18.75,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="43.04" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="49.64" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="95.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="109.05" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="18.75" cy="-281.04" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M18.75,-248.09C18.75,-254.81 18.75,-263.73 18.75,-270.44"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="43.04" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="49.64" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="95.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="109.05" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="43.04" y="-278.74" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">yr</text>
+<text xml:space="preserve" text-anchor="start" x="56.24" y="-278.74" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="95.85" y="-278.74" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="109.05" y="-278.74" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+<!-- new-&gt;c -->
+<!-- label__new -->
+<g class="node jj-node jj-label jj-rev-new is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="42.35" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">yy</text>
+<text xml:space="preserve" text-anchor="start" x="55.55" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">uzspzl</text>
+</g>
+<!-- new-&gt;label__new -->
+</g>
+</svg>
+
+### pair:move-to-edit
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph before running jj move-to w --edit.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-234.44" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph after running jj move-to w --edit.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-147.24" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+
+### pair:top
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph before running jj top.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-147.24" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">yr</text>
+<text xml:space="preserve" text-anchor="start" x="50.45" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+<!-- prettier-ignore --><svg width="171pt" height="300pt" viewBox="0 0 171 300" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph after running jj top.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 295.84)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- new -->
+<g class="node jj-node jj-dot jj-rev-new is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-281.04" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-278.04" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- d-&gt;new -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-248.09C12.96,-254.81 12.96,-263.73 12.96,-270.44"/>
+</g>
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">yr</text>
+<text xml:space="preserve" text-anchor="start" x="50.45" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+<!-- label__new -->
+<g class="node jj-node jj-label jj-rev-new is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="36.56" y="-278.74" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">yy</text>
+<text xml:space="preserve" text-anchor="start" x="49.76" y="-278.74" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">uzspzl</text>
+</g>
+<!-- new-&gt;label__new -->
+</g>
+</svg>
+
+### pair:top-edit
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph before running jj top --edit.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-147.24" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
+<!-- prettier-ignore --><svg width="171pt" height="256pt" viewBox="0 0 171 256" xmlns="http://www.w3.org/2000/svg" class="jj-graph-svg" role="img" aria-label="The jj revision graph after running jj top --edit.">
+<g class="graph" transform="scale(1 1) rotate(0) translate(4 252.24)">
+<!-- root -->
+<g class="node jj-node jj-dot jj-rev-root is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-25.92 0,-12.96 12.96,0 25.92,-12.96 12.96,-25.92"/>
+</g>
+<!-- main -->
+<g class="node jj-node jj-dot jj-rev-main is-selected is-immutable">
+
+<polygon  stroke-width="0" points="12.96,-73.84 0,-60.88 12.96,-47.92 25.92,-60.88 12.96,-73.84"/>
+</g>
+<!-- root-&gt;main -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-25.55C12.96,-32.46 12.96,-41.2 12.96,-48.14"/>
+</g>
+<!-- label__root -->
+<g class="node jj-node jj-label jj-rev-root is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="39.15" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zz</text>
+<text xml:space="preserve" text-anchor="start" x="52.35" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">zzzzzz</text>
+<text xml:space="preserve" text-anchor="start" x="91.96" y="-10.66" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="105.16" y="-10.66" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">root()</text>
+</g>
+<!-- root-&gt;label__root -->
+<!-- a -->
+<g class="node jj-node jj-dot jj-rev-a is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-106.64" rx="10.8" ry="10.8"/>
+</g>
+<!-- main-&gt;a -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-73.84C12.96,-80.82 12.96,-89.52 12.96,-96.05"/>
+</g>
+<!-- label__main -->
+<g class="node jj-node jj-label jj-rev-main is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="38.75" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">zm</text>
+<text xml:space="preserve" text-anchor="start" x="51.95" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">tlvzsq</text>
+<text xml:space="preserve" text-anchor="start" x="91.56" y="-58.58" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="104.76" y="-58.58" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">main</text>
+</g>
+<!-- main-&gt;label__main -->
+<!-- b -->
+<g class="node jj-node jj-dot jj-rev-b is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-150.24" rx="10.8" ry="10.8"/>
+</g>
+<!-- a-&gt;b -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-117.29C12.96,-124.01 12.96,-132.93 12.96,-139.64"/>
+</g>
+<!-- label__a -->
+<g class="node jj-node jj-label jj-rev-a is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">n</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">pqsryyx</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-104.34" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-104.34" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-1</text>
+</g>
+<!-- a-&gt;label__a -->
+<!-- c -->
+<g class="node jj-node jj-dot jj-rev-c is-selected">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-193.84" rx="10.8" ry="10.8"/>
+</g>
+<!-- b-&gt;c -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-160.89C12.96,-167.61 12.96,-176.53 12.96,-183.24"/>
+</g>
+<!-- label__b -->
+<g class="node jj-node jj-label jj-rev-b is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">w</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lxwlryt</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-147.94" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-147.94" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-2</text>
+</g>
+<!-- b-&gt;label__b -->
+<!-- d -->
+<g class="node jj-node jj-dot jj-rev-d is-selected is-working-copy">
+
+<ellipse  stroke-width="0" cx="12.96" cy="-237.44" rx="10.8" ry="10.8"/>
+<text xml:space="preserve" text-anchor="middle" x="12.96" y="-234.44" font-family="Courier,monospace" font-weight="bold" font-size="10.00" class="jj-working-copy-glyph" style="font-size:10.00px;font-weight:bold">@</text>
+</g>
+<!-- c-&gt;d -->
+<g class="edge jj-edge">
+
+<path fill="none"  stroke-width="1.6" d="M12.96,-204.49C12.96,-211.21 12.96,-220.13 12.96,-226.84"/>
+</g>
+<!-- label__c -->
+<g class="node jj-node jj-label jj-rev-c is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">x</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">lsmxnzw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-191.54" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-191.54" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-3</text>
+</g>
+<!-- c-&gt;label__c -->
+<!-- label__d -->
+<g class="node jj-node jj-label jj-rev-d is-selected">
+
+<text xml:space="preserve" text-anchor="start" x="37.25" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-change-id" style="font-size:11.00px;font-weight:bold">y</text>
+<text xml:space="preserve" text-anchor="start" x="43.85" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-change-id-rest" style="font-size:11.00px">rpnwlsw</text>
+<text xml:space="preserve" text-anchor="start" x="90.06" y="-235.14" font-family="Courier,monospace" font-size="11.00" class="jj-bookmark" style="font-size:11.00px"> &#160;</text>
+<text xml:space="preserve" text-anchor="start" x="103.26" y="-235.14" font-family="Courier,monospace" font-weight="bold" font-size="11.00" class="jj-bookmark" style="font-size:11.00px;font-weight:bold">feature-4</text>
+</g>
+<!-- d-&gt;label__d -->
+</g>
+</svg>
