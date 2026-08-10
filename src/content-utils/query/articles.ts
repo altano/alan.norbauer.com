@@ -112,3 +112,39 @@ export async function getArticleAuthors(
 ): Promise<CollectionEntry<"authors">[]> {
   return getEntries(article.data.authors);
 }
+
+/**
+ * Get the articles in a series in reading order (oldest first). Note that
+ * `getArticlesInSeries` returns them newest-first, like every other article
+ * query.
+ */
+export async function getArticlesInSeriesReadingOrder(
+  series: CollectionEntry<"articleSeries"> | null,
+): Promise<Article[]> {
+  return (await getArticlesInSeries(series)).reverse();
+}
+
+/**
+ * Get the articles immediately before and after `article` within its series,
+ * in reading order (oldest first). Both are null when the article isn't part
+ * of a series.
+ */
+export async function getSeriesNeighbors(article: Article): Promise<{
+  previous: Article | null;
+  next: Article | null;
+}> {
+  const seriesRef = article.data.series;
+  if (seriesRef == null) {
+    return { previous: null, next: null };
+  }
+  const series = (await getEntry(seriesRef)) ?? null;
+  const articles = await getArticlesInSeriesReadingOrder(series);
+  const index = articles.findIndex((a) => a.id === article.id);
+  if (index === -1) {
+    return { previous: null, next: null };
+  }
+  return {
+    previous: articles[index - 1] ?? null,
+    next: articles[index + 1] ?? null,
+  };
+}

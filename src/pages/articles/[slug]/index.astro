@@ -11,6 +11,7 @@ import DateTime from "@/components/article/DateTime.astro";
 import Tags from "@/components/article/Tags.astro";
 import TableOfContents from "@/components/article/TableOfContents.astro";
 import ArticleSeries from "@/components/article/ArticleSeries.astro";
+import ArticleSeriesNavigation from "@/components/article/ArticleSeriesNavigation.astro";
 import Translation from "@/components/article/Translation.astro";
 import QuestionHeading from "@/components/article/QuestionHeading.astro";
 import QuestionBody from "@/components/article/QuestionBody.astro";
@@ -462,5 +463,6 @@ if (article.body) {
         }}
       />
     </div>
+    <ArticleSeriesNavigation {article} />
   </article>
 </ArticleLayout>
