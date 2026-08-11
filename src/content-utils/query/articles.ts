@@ -1,4 +1,9 @@
-import { type CollectionEntry, getCollection, getEntry, getEntries } from "astro:content";
+import {
+  type CollectionEntry,
+  getCollection,
+  getEntry,
+  getEntries,
+} from "astro:content";
 import nullthrows from "nullthrows";
 import { site } from "astro:config/server";
 import { link } from "astro-typed-links/link";
@@ -93,15 +98,14 @@ export async function getArticlePrimaryAuthor(
   return nullthrows(await getEntry(primaryAuthorRef));
 }
 
-export async function getOtherArticlesInSeries(
-  article: Article,
+export async function getArticlesInSeries(
+  series: CollectionEntry<"articleSeries"> | null,
 ): Promise<Article[]> {
-  const { series } = article.data;
   if (series == null) {
     return [];
   }
   const articles = await getArticles();
-  return articles.filter((a) => a.data.series?.id === article.data.series?.id);
+  return articles.filter((a) => a.data.series?.id === series.id);
 }
 
 /**

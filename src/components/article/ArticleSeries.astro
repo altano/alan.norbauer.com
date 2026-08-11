@@ -1,6 +1,6 @@
 ---
 import {
-  getOtherArticlesInSeries,
+  getArticlesInSeries,
   getArticleURL,
 } from "@/content-utils/query/articles";
 import type { CollectionEntry } from "astro:content";
@@ -13,7 +13,7 @@ export type Props = {
 const { article } = Astro.props;
 const series =
   article.data.series == null ? null : await getEntry(article.data.series);
-const otherArticlesInSeries = await getOtherArticlesInSeries(article);
+const otherArticlesInSeries = await getArticlesInSeries(series);
 ---
 
 <style>
@@ -36,8 +36,8 @@ const otherArticlesInSeries = await getOtherArticlesInSeries(article);
 {
   series && otherArticlesInSeries.length ? (
     <div>
-      This article is part of a series on {series.data.name}. Other articles in
-      the series:
+      This article is part of a series on <b>{series.data.title}</b>. Other
+      articles in the series:
       <ol>
         {otherArticlesInSeries.map((seriesArticle) => (
           <li>

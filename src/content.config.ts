@@ -36,7 +36,7 @@ const authors = defineCollection({
 const articleSeries = defineCollection({
   loader: glob({ pattern: "**/*.yaml", base: "./src/content/articleSeries" }),
   schema: z.object({
-    name: z.string(),
+    title: z.string(),
   }),
 });
 
