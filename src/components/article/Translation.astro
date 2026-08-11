@@ -23,7 +23,6 @@ const { language, link, attributionName, attributionLink } = Astro.props;
 </style>
 
 <Callout>
-  {/* eslint-disable @typescript-eslint/no-unsafe-assignment */}
   <a href={link} class="language"><Language language={language} /></a>{" "}
   translation available (courtesy of{" "}
   <a href={attributionLink}>{attributionName}</a>)

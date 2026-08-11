@@ -6,14 +6,18 @@ export type Props = {
 
 <style>
   @layer components {
-    p.callout {
+    div.callout {
       @mixin card;
 
       font-size: 1rem;
+
+      p:only-child {
+        margin: 0;
+      }
     }
   }
 </style>
 
-<p class="callout">
+<div class="callout">
   <slot />
-</p>
+</div>
