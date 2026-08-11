@@ -1,0 +1,491 @@
+---
+title: Stacks in Jujutsu
+description: Managing commit stacks with jj
+series: stacks-in-jujutsu
+date_created: 2026-08-08T23:15:53.759Z
+tags:
+  - jj
+  - vcs
+---
+
+import JJGraph from "@/components/article/JJGraph.astro";
+import JJStack from "@/components/article/JJStack.astro";
+import AIFacts from "@/components/article/AIFacts.astro";
+
+export const exampleStack = [
+  { id: "main", bookmarks: ["main"], immutable: true },
+  { id: "a", bookmarks: ["feature-1"], parentIds: ["main"] },
+  { id: "b", bookmarks: ["feature-2"], parentIds: ["a"] },
+  { id: "c", bookmarks: ["feature-3"], parentIds: ["b"], workingCopy: true },
+  { id: "d", bookmarks: ["feature-4"], parentIds: ["c"] },
+];
+
+export const exampleGraphAmbiguous = [
+  { id: "main", bookmarks: ["main"], immutable: true },
+  { id: "a", bookmarks: ["feature-1"], parentIds: ["main"], workingCopy: true },
+  { id: "b", bookmarks: ["feature-2"], parentIds: ["a"] },
+  { id: "c", bookmarks: ["feature-3"], parentIds: ["b"] },
+  { id: "d", bookmarks: ["feature-4"], parentIds: ["c"] },
+  { id: "e", bookmarks: ["feature-5"], parentIds: ["b"] },
+];
+export const exampleGraphUnambiguous = [
+  { id: "main", bookmarks: ["main"], immutable: true },
+  { id: "a", bookmarks: ["feature-1"], parentIds: ["main"] },
+  { id: "b", bookmarks: ["feature-2"], parentIds: ["a"] },
+  { id: "c", bookmarks: ["feature-3"], parentIds: ["b"], workingCopy: true },
+  { id: "d", bookmarks: ["feature-4"], parentIds: ["c"] },
+  { id: "e", bookmarks: ["feature-5"], parentIds: ["b"] },
+];
+
+export const stackWithWorkingCopyAt = (id) =>
+  exampleStack.map((r) => ({ ...r, workingCopy: r.id === id }));
+
+export const stackWithNewCommitAbove = (parentId) => [
+  ...exampleStack.map((r) => ({ ...r, workingCopy: false })),
+  { id: "new", parentIds: [parentId], workingCopy: true },
+];
+
+Here are some helpers to make basic stack operations easier with Jujutsu (jj).
+
+## Full configuration
+
+Everything below, distilled into one config. Run `jj config edit --user` and add the following to get it all:
+
+```toml title=~/.config/jj/config.toml
+[aliases.move-to]
+definition = ["util", "exec", "--", "bash", "-c", """
+cd "${JJ_WORKSPACE_ROOT:-.}"
+revset=$1
+shift
+edit=$(jj config get ui.movement.edit 2>/dev/null || echo false)
+args=()
+for a in "$@"; do
+  case $a in
+    -e|--edit)    edit=true ;;
+    -n|--no-edit) edit=false ;;
+    *)            args+=("$a") ;;
+  esac
+done
+if $edit; then verb=edit; else verb=new; fi
+exec jj "$verb" "${args[@]}" "$revset"
+""", "jj-move"]
+doc = "Move to a revset: new child of it, or edit it with -e"
+
+[aliases.bottom]
+definition = ["move-to", "stack_bottom()"]
+doc = "Move to the bottom of the current stack, stack_bottom()"
+
+[aliases.top]
+definition = ["move-to", "stack_top()"]
+doc = "Move to the top of the current stack, stack_top()"
+
+[aliases.sb]
+definition = ["stack-bookmarks"]
+doc = "Shorthand for stack-bookmarks"
+
+[aliases.stack-bookmarks]
+definition = [
+  "--config",
+  "revsets.log=substack()",
+  "log",
+  "--no-graph",
+  "--reversed",
+  "-T",
+  'if(local_bookmarks, local_bookmarks.map(|b| b.name()).join(" ") ++ " ", "")'
+]
+doc = "Local bookmark names in substack(@), oldest first, space-separated"
+
+[revset-aliases."stack_heads()"]
+definition = "stack_heads(@)"
+doc = "Newest mutable commits at or ahead of the working copy"
+
+[revset-aliases."stack_heads(to)"]
+definition = "heads(mutable() & to::)"
+doc = "Newest mutable commits at or ahead of to"
+
+[revset-aliases."stack_top()"]
+definition = "stack_top(@)"
+doc = "Newest mutable, single commit at or ahead of the working copy"
+
+[revset-aliases."stack_top(to)"]
+definition = "exactly(stack_heads(to), 1)"
+doc = "Newest mutable, single commit at or ahead of to"
+
+[revset-aliases."stack_bottom(to)"]
+definition = "roots(mutable() & ::to)"
+doc = "Oldest mutable commits at or behind to"
+
+[revset-aliases."stack_bottom()"]
+definition = "stack_bottom(@)"
+doc = "Oldest mutable commits at or behind the working copy"
+
+[revset-aliases."stack(to)"]
+definition = "stack_bottom(to)::stack_top(to)"
+doc = "Full stack containing to, from stack_bottom(to) to stack_top(to)"
+
+[revset-aliases."stack()"]
+definition = "stack(@)"
+doc = "Full stack containing the working copy, from its bottom to its top"
+
+[revset-aliases."substack(to)"]
+definition = "stack_bottom(to)::to"
+doc = "Stack containing to, from stack_bottom(to) through to"
+
+[revset-aliases."substack()"]
+definition = "substack(@)"
+doc = "Stack from its bottom through the working copy"
+
+[revset-aliases."tree()"]
+definition = "tree(@)"
+doc = "Full tree (all stacks) containing the working copy"
+
+[revset-aliases."tree(to)"]
+definition = "reachable(to, mutable())"
+doc = "Full tree (all stacks) containing to"
+```
+
+## Revset aliases
+
+[Revsets](https://docs.jj-vcs.dev/latest/revsets/#revsets) in jj are expressions in "a functional language for selecting a set of revisions." jj allows you [to define revset aliases](https://docs.jj-vcs.dev/latest/revsets/#aliases) that can be used anywhere that accepts revsets. The revset aliases that follow make it easier to select revisions in stacks.
+
+### `stack_heads()`
+
+Select the topmost commits. Selects all topmost commits if there is a fork.
+
+```toml title=~/.config/jj/config.toml
+[revset-aliases."stack_heads()"]
+definition = "stack_heads(@)"
+doc = "Newest mutable commits at or ahead of the working copy"
+
+[revset-aliases."stack_heads(to)"]
+definition = "heads(mutable() & to::)"
+doc = "Newest mutable commits at or ahead of to"
+```
+
+<JJGraph
+  revisions={exampleGraphAmbiguous}
+  selected={["d", "e"]}
+  revset="stack_heads()"
+/>
+
+### `stack_top()`
+
+Select the single, topmost commit. Errors if there are multiple top commits (e.g. there is a fork above the current commit).
+
+```toml title=~/.config/jj/config.toml
+[revset-aliases."stack_top()"]
+definition = "stack_top(@)"
+doc = "Newest mutable, single commit at or ahead of the working copy"
+
+[revset-aliases."stack_top(to)"]
+definition = "exactly(stack_heads(to), 1)"
+doc = "Newest mutable, single commit at or ahead of to"
+```
+
+<JJGraph
+  revisions={exampleGraphUnambiguous}
+  selected={["d"]}
+  revset="stack_top()"
+/>
+
+<JJGraph
+  revisions={exampleGraphAmbiguous}
+  selected={[]}
+  revset="stack_top()"
+  caption="stack_top() => Error: The revset has more than the expected 1 revisions"
+/>
+
+### `stack_bottom()`
+
+Select the bottommost commits.
+
+```toml title=~/.config/jj/config.toml
+[revset-aliases."stack_bottom(to)"]
+definition = "roots(mutable() & ::to)"
+doc = "Oldest mutable commits at or behind to"
+
+[revset-aliases."stack_bottom()"]
+definition = "stack_bottom(@)"
+doc = "Oldest mutable commits at or behind the working copy"
+```
+
+<JJStack revisions={exampleStack} selected={["a"]} revset="stack_bottom()" />
+
+### `stack()`
+
+Select the entire stack.
+
+```toml title=~/.config/jj/config.toml
+[revset-aliases."stack(to)"]
+definition = "stack_bottom(to)::stack_top(to)"
+doc = "Full stack containing to, from stack_bottom(to) to stack_top(to)"
+
+[revset-aliases."stack()"]
+definition = "stack(@)"
+doc = "Full stack containing the working copy, from its bottom to its top"
+```
+
+<JJStack
+  revisions={exampleStack}
+  selected={["a", "b", "c", "d"]}
+  revset="stack()"
+/>
+
+### `substack()`
+
+Same as `stack()`, but the top is the current commit instead of the top of the stack.
+
+```toml title=~/.config/jj/config.toml
+[revset-aliases."substack(to)"]
+definition = "stack_bottom(to)::to"
+doc = "Stack containing to, from stack_bottom(to) through to"
+
+[revset-aliases."substack()"]
+definition = "substack(@)"
+doc = "Stack from its bottom through the working copy"
+```
+
+<JJStack
+  revisions={exampleStack}
+  selected={["a", "b", "c"]}
+  revset="substack()"
+/>
+
+### `tree()`
+
+Same as `stack()`, but selects all connected branches to the stack as well.
+
+```toml title=~/.config/jj/config.toml
+[revset-aliases."tree()"]
+definition = "tree(@)"
+doc = "Full tree (all stacks) containing the working copy"
+
+[revset-aliases."tree(to)"]
+definition = "reachable(to, mutable())"
+doc = "Full tree (all stacks) containing to"
+```
+
+<JJGraph
+  revisions={exampleGraphAmbiguous}
+  selected={["a", "b", "c", "d", "e"]}
+  revset="tree()"
+/>
+
+<JJGraph
+  revisions={exampleGraphUnambiguous}
+  selected={["a", "b", "c", "d", "e"]}
+  revset="tree()"
+/>
+
+### Command examples
+
+| Command                    | Explanation                                 |
+| -------------------------- | ------------------------------------------- |
+| `jj edit -r "stack_top()"` | edit the top commit in your current stack   |
+| `jj log -r "stack(w)"`     | log all commits in the stack containing `w` |
+| `jj diff -r "stack()"`     | total diff of the entire stack              |
+
+## Aliases
+
+jj allows you [to define aliases](https://docs.jj-vcs.dev/latest/config/#aliases) for commands, including their arguments.
+
+### `move-to`
+
+Add `move-to`, a bash script alias. This behaves like `jj next`/`jj edit` and moves to a specific revision, honoring the `ui.movement.edit` configuration, which `--edit`/`--no-edit` override. In `~/.config/jj/config.toml` add:
+
+```toml title=~/.config/jj/config.toml
+[aliases.move-to]
+definition = ["util", "exec", "--", "bash", "-c", """
+cd "${JJ_WORKSPACE_ROOT:-.}"
+revset=$1
+shift
+edit=$(jj config get ui.movement.edit 2>/dev/null || echo false)
+args=()
+for a in "$@"; do
+  case $a in
+    -e|--edit)    edit=true ;;
+    -n|--no-edit) edit=false ;;
+    *)            args+=("$a") ;;
+  esac
+done
+if $edit; then verb=edit; else verb=new; fi
+exec jj "$verb" "${args[@]}" "$revset"
+""", "jj-move"]
+doc = "Move to a revset: new child of it, or edit it with -e"
+```
+
+You can call this directly from the CLI with `jj move-to <revset>`, but it's mainly a helper function for other aliases we will call.
+
+Examples:
+
+<JJStack
+  revisions={stackWithWorkingCopyAt("d")}
+  after={{ revisions: stackWithNewCommitAbove("b") }}
+  command="jj move-to w"
+  caption="By default it runs `jj new ...`, creating a new revision on top of the given revision wherever it sits in the stack"
+/>
+
+<JJStack
+  revisions={stackWithWorkingCopyAt("d")}
+  after={{ revisions: stackWithWorkingCopyAt("b") }}
+  command="jj move-to w --edit"
+  caption="Passing `--edit` (or setting `ui.movement.edit = true`) moves `@` to the given revision"
+/>
+
+### `top` and `bottom`
+
+jj has built-ins for moving forward/backward: `jj next` and `jj prev`. Let's add `jj top` and `jj bottom` to move all the way to the top or bottom of the current stack. In `~/.config/jj/config.toml` add:
+
+```toml title=~/.config/jj/config.toml
+[aliases.bottom]
+definition = ["move-to", "stack_bottom()"]
+doc = "Move to the bottom of the current stack, stack_bottom()"
+
+[aliases.top]
+definition = ["move-to", "stack_top()"]
+doc = "Move to the top of the current stack, stack_top()"
+```
+
+Examples:
+
+<JJStack
+  revisions={stackWithWorkingCopyAt("b")}
+  after={{ revisions: stackWithNewCommitAbove("d") }}
+  command="jj top"
+  caption="`jj top` by default adds a new empty revision on top of the stack and leaves `feature-4` where it was"
+/>
+
+<JJStack
+  revisions={stackWithWorkingCopyAt("b")}
+  after={{ revisions: stackWithWorkingCopyAt("d") }}
+  command="jj top --edit"
+  caption="Passing `--edit` (or setting `ui.movement.edit = true`) moves `@` to the existing top revision"
+/>
+
+Alternatively, if you always want `jj new` functionality and never `jj edit`, or vice versa, you can omit the `move-to` alias and just hard-code `new`:
+
+```toml title=~/.config/jj/config.toml
+[aliases.bottom]
+definition = ["new", "stack_bottom()"]
+doc = "Move to the bottom of the current stack, stack_bottom()"
+
+[aliases.top]
+definition = ["new", "stack_top()"]
+doc = "Move to the top of the current stack, stack_top()"
+```
+
+or `edit`:
+
+```toml title=~/.config/jj/config.toml
+[aliases.bottom]
+definition = ["edit", "stack_bottom()"]
+doc = "Move to the bottom of the current stack, stack_bottom()"
+
+[aliases.top]
+definition = ["edit", "stack_top()"]
+doc = "Move to the top of the current stack, stack_top()"
+```
+
+### `stack-bookmarks` (`sb`)
+
+Next, configure `jj stack-bookmarks` (alias: `jj sb`) to give you a bottom-up, space-separated list of local bookmark names in your stack. This is useful for workflows that need the stack bookmarks, e.g. `gh stack`. In `~/.config/jj/config.toml` add:
+
+```toml title=~/.config/jj/config.toml
+[aliases.sb]
+definition = ["stack-bookmarks"]
+doc = "Shorthand for stack-bookmarks"
+
+[aliases.stack-bookmarks]
+definition = [
+  "--config",
+  "revsets.log=substack()",
+  "log",
+  "--no-graph",
+  "--reversed",
+  "-T",
+  'if(local_bookmarks, local_bookmarks.map(|b| b.name()).join(" ") ++ " ", "")'
+]
+doc = "Local bookmark names in substack(@), oldest first, space-separated"
+```
+
+Examples:
+
+Either call it with no arguments (the default revset is `substack()`):
+
+<JJStack
+  revisions={exampleStack}
+  selected={["a", "b", "c"]}
+  caption="jj sb => feature-1 feature-2 feature-3"
+/>
+
+Or pass it a revset:
+
+<JJStack
+  revisions={exampleStack}
+  selected={["b", "c", "d"]}
+  caption="jj sb -r w::y => feature-2 feature-3 feature-4"
+/>
+
+Or hand it a revset alias, e.g. to get the whole stack:
+
+<JJStack
+  revisions={exampleStack}
+  selected={["a", "b", "c", "d"]}
+  caption={`jj sb -r "stack()" => feature-1 feature-2 feature-3 feature-4`}
+/>
+
+## Production Notes
+
+<AIFacts
+  servings="1 serving per container"
+  servingSize="About 1 article"
+  headline={{ label: "Machine-Written Words", value: "0%" }}
+  rows={[
+    {
+      name: "Prose",
+      detail: "Written by hand. Proof-read by machine. Edits applied by hand.",
+      value: "0%",
+    },
+    {
+      name: "Code & Config",
+      value: "0%",
+    },
+    {
+      name: "Creation",
+      detail: "All code/configuration written by hand.",
+      value: "0%",
+      indent: true,
+    },
+    {
+      name: "Validation",
+      detail:
+        "All code/configuration programmatically verified by Claude Opus 5 for correctness and consistency. Fixes applied by hand.",
+      value: "100%",
+      indent: true,
+    },
+    {
+      name: "Diagram Content",
+      detail: "Commits, bookmarks, revsets, etc.",
+      value: "0%",
+    },
+    {
+      name: "Component Code",
+      value: "100%",
+    },
+    {
+      name: "Commit Graph Component",
+      detail:
+        "The code for the Astro component that draws the jj commit graphs, built on @hpcc-js/wasm-graphviz.",
+      value: "100%",
+      indent: true,
+    },
+    {
+      name: `AI Facts Component`,
+      detail: "The code (not content) for this Astro component.",
+      value: "100%",
+      indent: true,
+    },
+  ]}
+  extras={[{ name: "Human Review", value: "100%" }]}
+  footnote="% Machine tells you how much  of this article a machine wrote. Values are yolo'd, not a measurement. This label has not been evaluated by the Food and Drug Administration."
+/>
