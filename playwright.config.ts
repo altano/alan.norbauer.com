@@ -97,6 +97,25 @@ export default defineConfig({
     },
 
     {
+      /**
+       * Simple snapshot tests: Chrome only, at the default desktop viewport.
+       *
+       * For assertions that do not vary by engine or by width — a syntax
+       * token's color in light versus dark, say, which comes from our own
+       * theme config and is the same everywhere. Running those across the
+       * fixed-device projects below would multiply screenshots without
+       * testing anything new, and they have no reason to sweep viewports the
+       * way the `layout` project above does.
+       *
+       * Named `*.simple.ts` so the browser projects' default `*.spec.ts`
+       * matcher skips them.
+       */
+      name: "simple",
+      testMatch: "**/*.simple.ts",
+      use: { ...devices["Desktop Chrome"] },
+    },
+
+    {
       name: "Desktop Chrome",
       use: { ...devices["Desktop Chrome"] },
     },
