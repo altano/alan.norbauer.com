@@ -1,7 +1,18 @@
 ---
 export type Props = {
+  kind?: undefined | "info" | "warning" | "alarm";
   children: unknown;
 };
+
+const { kind } = Astro.props;
+const icon =
+  kind === "info"
+    ? "💡"
+    : kind === "warning"
+      ? "⚠️"
+      : kind === "alarm"
+        ? "🚨"
+        : null;
 ---
 
 <style>
@@ -11,13 +22,30 @@ export type Props = {
 
       font-size: 1rem;
 
-      p:only-child {
+      p:last-child {
         margin: 0;
+      }
+
+      .icon {
+        float: left;
+        margin: 0 var(--spacing-3);
+        font-size: 2rem;
       }
     }
   }
 </style>
 
 <div class="callout">
-  <slot />
+  {
+    icon != null ? (
+      <>
+        <span class="icon">{icon}</span>
+        <div class="text">
+          <slot />
+        </div>
+      </>
+    ) : (
+      <slot />
+    )
+  }
 </div>

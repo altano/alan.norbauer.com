@@ -1,13 +1,7 @@
 {
   "version": "0.2",
-  "enabledLanguageIds": [
-    "mdx",
-    "!javascript"
-  ],
-  "ignoreRegExpList": [
-    "\\[\\^.*\\]",
-    "```[^`]+```"
-  ],
+  "enabledLanguageIds": ["mdx", "!javascript"],
+  "ignoreRegExpList": ["\\[\\^.*\\]", "```[^`]+```"],
   "words": [
     "alannorbauer",
     "Alleline",
@@ -16,6 +10,7 @@
     "avifenc",
     "Backblaze's",
     "backplane",
+    "bengesoff",
     "bhyve",
     "Borisovna",
     "Brixton",
@@ -35,6 +30,7 @@
     "Deferreds",
     "Devbox",
     "Dispoable",
+    "dominicm",
     "downstack",
     "Dreamweaver",
     "Drummond",
@@ -67,6 +63,7 @@
     "interdiffs",
     "Kahlin",
     "linkedom",
+    "lltmmqnymopn",
     "Lobste.rs",
     "Lubyanka",
     "Marsden",
@@ -82,6 +79,7 @@
     "nullthrows",
     "nums",
     "Oberbaumbrücke",
+    "offby1",
     "onrejectionhandled",
     "opengraph",
     "openmoji",
@@ -96,6 +94,8 @@
     "RAII",
     "React's",
     "rejectionhandled",
+    "retarget",
+    "retargets",
     "revset",
     "revsets",
     "Roedean",
@@ -147,7 +147,5 @@
     "zrepl",
     "zvol"
   ],
-  "ignoreWords": [
-    "allgroups"
-  ]
+  "ignoreWords": ["allgroups"]
 }
