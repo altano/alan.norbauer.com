@@ -32,6 +32,9 @@ export default async function setup(config: FullConfig) {
     "/articles/devbox-intro",
     "/articles/astro-vs-nextjs-page-size",
     "/articles/stacks-in-jujutsu",
+    // The article-navigation snapshots scroll their `<nav>` into view on these.
+    "/articles/github-stacks-with-jujutsu",
+    "/articles/relay-style-graphql",
   ];
 
   const browser = await chromium.launch();

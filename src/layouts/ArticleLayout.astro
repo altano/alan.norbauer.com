@@ -4,7 +4,6 @@ import BaseLayout from "./BaseLayout.astro";
 import type { CollectionEntry } from "astro:content";
 import Bio from "@/components/Bio.astro";
 import SiteFooter from "@/components/SiteFooter.astro";
-import pkg from "@root/package.json";
 
 type Props = {
   article: CollectionEntry<"articles">;
@@ -46,7 +45,6 @@ const { title, description } = article.data;
         "...... title   ......"
         "...... header  ......"
         "...... article ......"
-        "...... writing ......"
         "footer footer  footer";
 
       @media (--md-down-viewport) {
@@ -85,7 +83,6 @@ const { title, description } = article.data;
         grid-template-areas:
           "...... ...... title   ......"
           "...... header article ......"
-          "...... header writing ......"
           "footer footer footer  footer";
       }
     }
@@ -115,31 +112,6 @@ const { title, description } = article.data;
       }
     }
 
-    .writing {
-      grid-area: writing;
-
-      hr {
-        margin-block: var(--spacing-5);
-        color: var(--text-faded);
-      }
-      a {
-        display: flex;
-        flex-direction: row;
-        gap: var(--spacing-2);
-        text-decoration: none;
-        color: var(--text-faded);
-        &:hover {
-          color: var(--text);
-          .text {
-            text-decoration: underline;
-          }
-        }
-        @media (--md-up-viewport) {
-          font-size: 1.5rem;
-        }
-      }
-    }
-
     div.page-footer-content {
       margin: auto;
       max-width: var(--breakpoints-xl);
@@ -157,14 +129,6 @@ const { title, description } = article.data;
   <ArticleSectionVisibilityObserver>
     <main>
       <slot />
-      <section class="writing">
-        <hr />
-        <a href="/#writing"
-          ><span class="arrow">&lt;-</span><span class="text"
-            >Find more writing back at {pkg.homepage}</span
-          ></a
-        >
-      </section>
       <footer>
         <div class="page-footer-content">
           <Bio width="wide" font="small" />

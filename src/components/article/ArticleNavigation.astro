@@ -1,0 +1,154 @@
+---
+import {
+  getSeriesNeighbors,
+  getArticleURL,
+} from "@/content-utils/query/articles";
+import type { CollectionEntry } from "astro:content";
+import pkg from "@root/package.json";
+
+export type Props = {
+  article: CollectionEntry<"articles">;
+};
+
+const { article } = Astro.props;
+const { previous, next } = await getSeriesNeighbors(article);
+---
+
+<style>
+  @layer components {
+    nav {
+      @mixin card;
+
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-6);
+      margin-block-start: var(--spacing-8);
+      transition: background var(--durations-color-scheme);
+    }
+
+    .previous-next {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      /* relevant when side-by-side */
+      justify-content: space-between;
+      column-gap: var(--spacing-4);
+
+      /* relevant when wrapped */
+      row-gap: var(--spacing-6);
+    }
+
+    a {
+      flex-basis: auto;
+
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--text);
+
+      &:hover .title {
+        text-decoration: underline;
+      }
+
+      /* Sit in the trailing column so a lone "next" link stays on the right.
+       * Works in the one-column layout too, where -2 is the first line. */
+      &.next {
+        margin-left: auto; /* relevant when wrapped */
+        text-align: end;
+      }
+    }
+
+    .direction {
+      display: flex;
+      flex-direction: row;
+      gap: var(--spacing-2);
+      font-size: 0.75rem;
+      line-height: var(--line-height-tight);
+      text-transform: uppercase;
+      color: var(--text-faded);
+      transition: color var(--durations-color-scheme);
+
+      .next & {
+        justify-content: flex-end;
+      }
+    }
+
+    .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: var(--line-height-tight);
+    }
+
+    .description {
+      font-size: 0.8rem;
+      line-height: var(--line-height-normal);
+      color: var(--text-faded);
+      transition: color var(--durations-color-scheme);
+    }
+
+    .writing {
+      hr {
+        margin-block: var(--spacing-4);
+        color: var(--text-faded);
+        border-style: dashed;
+      }
+      a {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-2);
+        text-decoration: none;
+        &:hover {
+          color: var(--text);
+          .text {
+            text-decoration: underline;
+          }
+        }
+        @media (--md-up-viewport) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+</style>
+
+{
+  (
+    <nav aria-label="More articles">
+      {(previous || next) && (
+        <div class="previous-next">
+          {previous && (
+            <a class="previous" rel="prev" href={getArticleURL(previous)}>
+              <span class="direction">
+                <span class="arrow">&lt;-</span>
+                <span>Previous in series</span>
+              </span>
+              <span class="title">{previous.data.title}</span>
+              <span class="description">{previous.data.description}</span>
+            </a>
+          )}
+          {next && (
+            <a class="next" rel="next" href={getArticleURL(next)}>
+              <span class="direction">
+                <span>Next in series</span>
+                <span class="arrow">-&gt;</span>
+              </span>
+              <span class="title">{next.data.title}</span>
+              <span class="description">{next.data.description}</span>
+            </a>
+          )}
+        </div>
+      )}
+
+      <section class="writing">
+        {previous || next ? <hr /> : null}
+        <a href="/#writing">
+          <>
+            <span class="arrow">&lt;-</span>
+            <span class="text">Find more writing back at {pkg.homepage}</span>
+          </>
+        </a>
+      </section>
+    </nav>
+  )
+}
