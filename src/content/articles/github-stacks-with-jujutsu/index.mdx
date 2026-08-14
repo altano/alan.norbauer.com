@@ -7,7 +7,7 @@ tags:
   - jj
   - vcs
   - github
-date_updated: 2026-08-14T19:47:42.569Z
+date_updated: 2026-08-15T04:51:52.691Z
 ---
 
 import AIFacts from "@/components/article/AIFacts.astro";
@@ -262,7 +262,7 @@ So, just do this from the web UI. You'll probably be there anyway, checking on t
      revisions={stackBeforeReorder}
      after={{ revisions: stackAfterReorder }}
      command="jj arrange"
-     caption="Swapping the middle two commits. Each bookmark follows its commit, so the stack is now `bookmark-1 bookmark-3 bookmark-2 bookmark-4`, bottom-up."
+     caption="Swap the middle two commits. Each bookmark follows its commit, so the stack is now `bookmark-1 bookmark-3 bookmark-2 bookmark-4`, bottom-up."
    />
 
 1. Go to the GitHub web UI and remove the stack:
@@ -288,11 +288,26 @@ So, just do this from the web UI. You'll probably be there anyway, checking on t
    done
    ```
 
-#### OPTIONAL: deep dive
+#### OPTIONAL: Deep dive
 
-Why is reordering commits so fucking complicated, you ask? Why can't you just reorder your commits and run `jj git push -r "stack()"`?
+Why is reordering commits so fucking complicated, you ask? First, let's see the problem you hit, then we'll explore why you hit it.
 
-Needed terminology, [in GitHub parlance](https://docs.github.com/en/rest/pulls/pulls):
+Referring back to the same example as before, you have a stack of commits and you reorder the two middle ones:
+
+<JJStack
+  revisions={stackBeforeReorder}
+  after={{ revisions: stackAfterReorder }}
+  command="jj arrange"
+  caption="Same as before: swap the middle two commits."
+/>
+
+That's the _local_ state. After you run `jj git push -r "stack()"`, the PR for `bookmark-3` will be marked as merged on GitHub:
+
+![GitHub screenshot showing a stack of 4 PRs, with "bookmark 3" marked as "Merged" and the other ones marked as "Draft." Shows "Unable to merge as a stack" error above the stack.](bookmark-3-merged.png)
+
+It cannot be reopened, not with `gh stack link` or any other command.
+
+To explain why it got merged, we need some terminology, [in GitHub parlance](https://docs.github.com/en/rest/pulls/pulls):
 
 - `head` = The branch you are pulling from. The PR source branch.
 - `base` = The branch you are merging into. The PR target branch.
