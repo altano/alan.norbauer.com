@@ -40,3 +40,6 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 .claude/settings.local.json
+
+# locally installed jj worktree hooks
+.claude/hooks/jj-worktree/
