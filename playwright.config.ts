@@ -7,6 +7,8 @@ import isCI from "is-ci";
  * https://github.com/motdotla/dotenv
  */
 import dotenv from "dotenv";
+import { mkdirSync } from "fs";
+import { tmpdir } from "os";
 import path from "path";
 dotenv.config({
   quiet: true,
@@ -21,6 +23,23 @@ const env = {
     command: nullthrows(process.env.WEBSERVER_COMMAND),
     url: nullthrows(process.env.WEBSERVER_URL),
   },
+};
+
+/**
+ * On macOS 27, Firefox can't read `~/Library/Application Support/Firefox` when
+ * it is started from a terminal that lacks full disk access, so it exits with
+ * "Could not find profile folder" (or hangs, on older builds). Every Firefox
+ * build uses that directory even when Playwright passes `-profile`.
+ * `MOZ_APP_DATA` moves it somewhere Firefox can read, and the profile itself
+ * still lives in Playwright's own temporary directory.
+ */
+const firefoxEnv = (): Record<string, string> => {
+  if (process.platform !== "darwin") {
+    return {};
+  }
+  const appData = path.join(tmpdir(), "playwright-firefox-app-data");
+  mkdirSync(appData, { recursive: true });
+  return { MOZ_APP_DATA: appData };
 };
 
 /**
@@ -121,7 +140,11 @@ export default defineConfig({
     },
     {
       name: "Desktop Firefox",
-      use: { ...devices["Desktop Firefox"] },
+      use: {
+        ...devices["Desktop Firefox"],
+        // `env` replaces the browser's whole environment, so keep the rest.
+        launchOptions: { env: { ...process.env, ...firefoxEnv() } },
+      },
     },
     {
       name: "Desktop Safari" /* HiDPI testing (deviceScaleFactor=2)  */,
