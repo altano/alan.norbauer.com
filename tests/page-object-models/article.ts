@@ -85,10 +85,12 @@ export class ArticleDevPage extends DevPage {
     const prefix = `${name}.png`;
     await this.waitForVisibleImagesDecoded();
     await expect(this.page).toHaveScreenshot(prefix, {
-      // Mask out gifs which, because they are auto-playing, introduce flakiness
+      // Mask out gifs which, because they are auto-playing, introduce flakiness.
+      // Animated AVIFs are served from public/; AVIFs under /_astro/ are
+      // static images Astro optimized, so they stay in the screenshot.
       mask: [
         this.page.locator(`img[src$=".gif"]`),
-        this.page.locator(`img[src$=".avif"]`),
+        this.page.locator(`img[src$=".avif"]:not([src^="/_astro/"])`),
       ],
     });
   }

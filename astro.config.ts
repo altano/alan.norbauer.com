@@ -3,6 +3,8 @@ import { satteri } from "@astrojs/markdown-satteri";
 import { sectionize } from "./src/markdown/plugins/sectionize";
 import { headingAnchors } from "./src/markdown/plugins/heading-anchors";
 import { tableWrapper } from "./src/markdown/plugins/table-wrapper";
+import { imageFormat } from "./src/markdown/plugins/image-format";
+import { imageServiceConfig } from "./src/image-service";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import pkg from "./package.json";
@@ -35,6 +37,13 @@ export default defineConfig({
       fallbacks: ["ui-monospace"],
     },
   ],
+  image: {
+    // Sharp, plus serving originals untouched; see src/image-service.ts.
+    service: {
+      entrypoint: "./src/image-service.ts",
+      config: imageServiceConfig,
+    },
+  },
   devToolbar: {
     // Disable in production and testing
     enabled: process.env.NODE_ENV === "development",
@@ -43,7 +52,12 @@ export default defineConfig({
     syntaxHighlight: false, // handle with expressive-code instead
     // POC: Sätteri (Astro 7's default processor) instead of the unified stack.
     processor: satteri({
-      hastPlugins: [sectionize, headingAnchors, tableWrapper],
+      hastPlugins: [
+        sectionize,
+        headingAnchors,
+        tableWrapper,
+        imageFormat("avif"),
+      ],
     }),
   },
   prefetch: true,
