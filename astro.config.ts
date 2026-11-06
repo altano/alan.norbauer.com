@@ -4,6 +4,7 @@ import { sectionize } from "./src/markdown/plugins/sectionize";
 import { headingAnchors } from "./src/markdown/plugins/heading-anchors";
 import { tableWrapper } from "./src/markdown/plugins/table-wrapper";
 import { imageFormat } from "./src/markdown/plugins/image-format";
+import { mermaid } from "./src/markdown/plugins/mermaid";
 import { imageServiceConfig } from "./src/image-service";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
@@ -53,6 +54,8 @@ export default defineConfig({
     // POC: Sätteri (Astro 7's default processor) instead of the unified stack.
     processor: satteri({
       hastPlugins: [
+        // Before Expressive Code, which appends its plugin after these.
+        mermaid,
         sectionize,
         headingAnchors,
         tableWrapper,

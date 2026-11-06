@@ -10,10 +10,6 @@ tags:
   - nix
 ---
 
-import SoftwareInstallationDecisionFlowLight from "./software-installation-decision-flow-light.svg";
-import SoftwareInstallationDecisionFlowDark from "./software-installation-decision-flow-dark.svg";
-import MermaidDiagram from "@/components/article/MermaidDiagram.astro";
-
 > ⚠️ NOTE: This guide is macOS and Linux only (<IconRow>✅<Icon class="inline" name="ant-design:apple-filled" size={22} /><Icon name="ant-design:linux-outlined" size={22} /></IconRow>). The software mentioned is NOT natively supported on Windows (<IconRow>❌<Icon name="ant-design:windows-filled" size={22} /></IconRow>) but can be used in [WSL](https://learn.microsoft.com/en-us/windows/wsl/install).
 
 ## Intended Audience
@@ -279,18 +275,16 @@ My decision making process is:
 
 For the visually inclined:
 
-<MermaidDiagram alt="Flow chart describing how I choose to install software, summarizing the text above">
-  <SoftwareInstallationDecisionFlowLight
-    style="background-color: var(--bg); max-width: 100%"
-    width="600px"
-    slot="light"
-  />
-  <SoftwareInstallationDecisionFlowDark
-    style="background-color: var(--bg); max-width: 100%"
-    width="600px"
-    slot="dark"
-  />
-</MermaidDiagram>
+```mermaid
+flowchart TD
+    accTitle: How I choose to install software
+    accDescr: Flow chart summarizing the text above
+    R[I need a software package. Where am I starting it?] -->|" In a shell (or in an app I started from a shell) "| UD(Use Devbox)
+    R --> |Outside of a shell| UH("Use Homebrew")
+    UD --> P{{Is this for a project?}}
+    P --> |No| UDG("Use #96;devbox global#96;")
+    P --> |Yes| UDR("Use #96;devbox#96;")
+```
 
 Read more about Devbox global packages on [the official docs](https://www.jetpack.io/devbox/docs/devbox_global/).
 

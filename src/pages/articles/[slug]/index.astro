@@ -225,6 +225,41 @@ if (article.body) {
         overflow-x: auto;
       }
 
+      /* Mermaid diagrams rendered by src/markdown/plugins/mermaid.ts */
+      & .mermaid-diagram {
+        display: flex;
+        justify-content: center;
+        margin-block: var(--spacing-5);
+        @media (--md-up-viewport) {
+          margin-block: var(--spacing-7);
+        }
+
+        & .pele {
+          --pele-font: var(--font-inter);
+          --pele-font-mono: var(--font-ibm-plex-mono);
+          --pele-bg: var(--bg);
+          --pele-fg: var(--text);
+          --pele-muted: var(--text-faded);
+          --pele-line: var(--text);
+          --pele-surface: var(--bg-card);
+          --pele-surface-alt: light-dark(
+            var(--color-gray-200),
+            var(--color-gray-800)
+          );
+          --pele-border: light-dark(var(--color-gray-400), var(--color-gray-600));
+          --pele-accent: var(--accent-primary);
+
+          /*
+           * Pele marks labels xml:space="preserve", but astro-prettier-response
+           * indents the text inside each <tspan>, and preserving that
+           * whitespace pushes labels off-center.
+           */
+          & text {
+            white-space: normal;
+          }
+        }
+      }
+
       & table:not([data-no-style]) {
         @mixin card;
 
