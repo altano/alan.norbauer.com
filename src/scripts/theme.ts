@@ -1,15 +1,16 @@
-import { z } from "astro/zod";
+const RESOLVED_THEMES = ["dark", "light"] as const;
+type ResolvedTheme = (typeof RESOLVED_THEMES)[number];
 
-const ResolvedThemeSchema = z.union([z.literal("dark"), z.literal("light")]);
-type ResolvedTheme = z.infer<typeof ResolvedThemeSchema>;
+function isResolvedTheme(value: unknown): value is ResolvedTheme {
+  return RESOLVED_THEMES.some((theme) => theme === value);
+}
 
 function getResolvedTheme(): ResolvedTheme {
   const theme =
     document.documentElement.attributes.getNamedItem("data-theme")?.value;
 
   // support old versions of the site, e.g. (data-theme=eighties)
-  const resolved = ResolvedThemeSchema.safeParse(theme);
-  return resolved.success ? resolved.data : "light";
+  return isResolvedTheme(theme) ? theme : "light";
 }
 
 // support old versions of the site, e.g. (data-theme=eighties), by unsetting the bad theme
